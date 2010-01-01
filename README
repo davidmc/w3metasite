@@ -1,0 +1,9 @@
+The history of how this got created and sent to the git hub, as per directions online.
+
+  518  git config --global user.name "David McCombs"
+  519  git config --global user.email w3sysdesign@gmail.com
+  520  mkdir w3metasite
+  521  touch README
+  522  git commit -m 'first commit'
+  523  history
+
