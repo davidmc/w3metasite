@@ -1,0 +1,101 @@
+<!--@top-->
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+
+    <script src='openDom.js'></script>
+    <script>
+    var myDom = new openDom();
+    var updates = new Array();
+    </script>
+    <script src='forms.js'></script>
+    <script src='formEvents.js'></script>
+  </head>
+  <body onLoad='finalize()'>
+  <a name='top'> </a>
+  <h2>_entity_ Editor</h2>
+  <table>
+  <tr><td><strong>Navigation</strong>&nbsp;
+        <a href='_link_'>Back</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='admin.cgi'>Admin Main</a>
+      </td></tr>
+  <tr><td><strong>Instructions:</strong>&nbsp;
+        Edit the data below.<br>
+        Hit the Insert, Update or Delete buttons to commit edits.
+  </td></tr>
+  <tr>
+  <td>
+    <form action='__link__' method='post'>
+    <table class='ui'>
+    <!--/@top-->
+    <!--@formitem-->
+    <tr><th>_label_</th><td>_form_item_</td></tr>
+    <!--/@formitem-->
+    <!--@bottom-->
+    <tr><th colspan='2'>_form_buttons_</th></tr>
+    </table>
+    </form>
+  </td>
+  </tr>
+  <tr><td><strong>Result:</strong>&nbsp;
+        __results__
+      </td></tr>
+  </table>
+  </body>
+</html>
+<script>
+function finalize()
+{
+  myDom.setCookie("formaction","s");
+  myDom.setCookie("changes","");
+  __js__
+}
+</script>
+<!--/@bottom-->
+<!--@altbottom1-->
+    <tr><th colspan='2'>_form_buttons_</th></tr>
+    </table>
+    </form>
+  </td></tr>
+  <tr><td>
+    <table class='status'>
+<!--/@altbottom1-->
+<!--@altbottom2-->
+      <tr><td>
+        <strong>Result:</strong> &nbsp; __results__
+      </td></tr>
+    </table>
+  </tr>
+  </table>
+  </body>
+</html>
+<script>
+function finalize()
+{
+  myDom.setCookie("formaction","s");
+  myDom.setCookie("changes","");
+  __js__
+}
+function jopen( url )
+{
+  window.open( url, "_child", "scrollbars,resizable,width=500,height=400");
+}
+</script>
+<!--/@altbottom2-->
+
+<!--@childtop-->
+ <tr><th class='status'>__child__</th></tr>
+ <tr><td>
+ <table class='ui'>
+  <tr><th>Id</th><th>_header_</th><th><img border='0' src='new.png' onClick="jopen('_link_')"></th></tr>
+<!--/@childtop-->
+  <!--@childitem-->
+  <tr><td>_id_</td><td> _listdata_ </td><td><img border='0' src='go_right.png' onClick="jopen('_link_?id=_id_')"></td></tr>
+  <!--/@childitem-->
+<!--@childbottom-->
+  </table>
+  </td></tr>
+<!--/@childbottom-->
+

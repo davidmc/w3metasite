@@ -1,0 +1,57 @@
+<!-- for template paragraph form_begin, replace $action$ and $name$ -->
+<!--@list_begin-->
+<div class='ui_list'>
+<!--/@list_begin-->
+<!--@tr--><div class="row">
+<!--/@tr-->
+<!--@th--><div class='listheader'>$data$</div><!--/@th-->
+<!--@td--><div class='listdata'>$data$</div><!--/@td-->
+<!--@end_tr--></div><br class="clearall">
+<!--/@end_tr-->
+<!--@list_end-->
+</div>
+&nbsp;<br>
+<script type="text/javascript">
+myDom.setCookie( 'lPg','$lpg');
+</script>
+<!--/@list_end-->
+
+<!--@hotcolumn-->
+<a href="javascript:jopen('$prog$?Id=$key$','scrollbars,resizable,width=450,height=300','subchild')">$col$</a>
+<!--/@hotcolumn-->
+
+<!--@list_filter-->
+<div class="list_filter">
+<form method='get' action='$location' 
+      name='uiListCriteria' id='uiListCriteria'>$label:
+<input type='text' size='20' name='filter' id='filter' value="$value"> 
+&nbsp;
+<input type='submit' class='searchbutton' value='Search'>
+&nbsp;
+<a href='$location?init=1'>Show All</a>
+</form>
+</div><br class="clearall">
+<!--/@list_filter-->
+
+<!--@list_new-->
+<div class="newitem">
+<a href="javascript:jopen('$location')">New $item</a>
+</div><br class="clearall">
+<!--/@list_new-->
+
+<!--@list_nav-->
+<div class="nav">Showing $dsetCount of $recCount entries.<br>
+<form action='$location' name='uiListPosition'>
+&nbsp;
+<a style='text-decoration: none;' href="$location?navigate=prev">&lt; previous</a> 
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+Page
+<input type='text' size='5' name='Pg' id='Pg' value='$Page'> of $total$
+<input type='submit' value='get'>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+<a style='text-decoration: none;' href="$location?navigate=next">next &gt;</a>
+</form>
+</div><br class="clearall">
+<!--/@list_nav-->
+
+

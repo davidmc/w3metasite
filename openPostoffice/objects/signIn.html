@@ -1,0 +1,38 @@
+<!--@all-->
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>
+    body{ background:azure; color: black; font: bold italic 16pt arial;}
+    .ui{ background: floralwhite; padding: 5pt; border: 1pt solid black; margin-left: 50px; }
+    .ctrl { width: 220px; text-align: right; }
+    a { color: #500050; text-decoration: none; }
+    a:hover { color: #005050; }
+    th{ border: 2pt solid purple; }
+    td{ border: 1pt solid purple; text-align: center; }
+    h2{ color: darkcyan; }
+    </style>
+  </head>
+  <body>
+  <h2>Admin Sign In</h2>
+ 
+  <p>Please enter your user id and password</p>
+
+  <form action='admin.cgi'>
+  <table class='ui'>
+    <tr><td class=ctrl>
+      Login <input type='text' name='login' id='login' size='12' maxlength='12'>
+    </td>
+    <tr><td class=ctrl>
+      Password <input type='password' name='password' id='password' size='12' maxlength='12'>
+    </td>
+    <tr><td class=ctrl>
+      <input type='image' src='go_right.png'>
+    </td>
+  </table>
+  </form>
+
+  </body>
+</html>
+<!--/@all-->

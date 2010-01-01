@@ -1,0 +1,53 @@
+<!-- for template paragraph form_begin, replace $action$ and $name$ -->
+<!--@list_begin-->
+<table class='ui_list' style='float: right;'>
+<!--/@list_begin-->
+<!--@tr--><tr>
+<!--/@tr-->
+<!--@th--><td class='listheader'>$data$</td><!--/@th-->
+<!--@td--><td class='listdata'>$data$</td><!--/@td-->
+<!--@end_tr--></tr>
+<!--/@end_tr-->
+<!--@list_end-->
+</table>
+<script type="text/javascript">
+myDom.setCookie( 'lPg','$lpg');
+</script>
+<!--/@list_end-->
+
+<!--@hotcolumn-->
+<a href="javascript:jopen('$prog$?Id=$key$')">$col$</a>
+<!--/@hotcolumn-->
+
+<!--@list_filter-->
+<div id="list_filter">
+<form method='get' action='$location' target="pop" name='uiListCriteria' id='uiListCriteria'>
+$label: <input type='text' size='20' name='filter' id='filter'> 
+&nbsp; <input type='submit' value='Search'>
+&nbsp; <a target="pop" href='$location?filter=+'>Show All</a>
+</form>
+</div>
+<!--/@list_filter-->
+
+<!--@list_new-->
+<tr><td colspan='$cols' style='text-align:right'>
+<a href="javascript:jopen('$location')">New $item</a>
+</td></tr>
+<!--/@list_new-->
+
+<!--@list_nav-->
+<tr><td colspan='$cols' id="list_nav"><form action='$location' name='uiListPosition'>
+&nbsp;
+<a style='text-decoration: none;' target="pop" href="$location?navigate=prev">&lt; previous</a> 
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+Page
+<input type='text' size='5' name='Pg' id='Pg' value='$Page'> of $total$
+<input type='submit' value='get'>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+<a style='text-decoration: none;' target="pop" href="$location?navigate=next">next &gt;</a>
+</form>
+</td></tr>
+<tr><td colspan='$cols' style='text-align:right'>Showing $dsetCount of $recCount entries.</td></tr>
+<!--/@list_nav-->
+
+

@@ -1,0 +1,12 @@
+*.o
+*.cgi
+*.meta
+testharness
+*~
+T2
+spellRight
+aucdaemon
+*.bin
+metasiteExport
+metasiteImport
+

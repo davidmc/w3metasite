@@ -1,0 +1,89 @@
+<!--@top--><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>Metasite Images</title>
+    <style type="text/css">@import "lists.css";</style>
+    <script src='openDom.js'></script>
+    <script src='icomm.js'></script>
+    <script>
+    function deleteImage(img)
+    {
+      var imagePrompt = "Are you sure you want to delete ";
+      imagePrompt += img;
+      imagePrompt += "?";
+      var doDeleteThisImage = confirm(imagePrompt);
+      if(doDeleteThisImage)
+      {
+        var newHref = "imagePick.cgi?delete=";
+        newHref += img;
+        document.location.href=newHref;
+      }
+    }
+    function addImageUpload( )
+    {
+      var dm = new openDom();
+      var td=dm.getElementById("uploadfiles");
+      var newBr=document.createElement("br");
+      td.appendChild( newBr );
+      var newFile=document.createElement("input");
+      newFile.setAttribute("type", "file");
+      newFile.setAttribute("name", "File");
+      td.appendChild(newFile);
+    }
+    </script>
+  </head>
+  <body>
+  <center>
+  <table cellspacing='0' width='100%' height='100%' id='repMain'>
+  <tr>
+    <td id='repBody' valign='top' align='left' height='100%' colspan='2'>
+      <table  id='report'  width='100%'>
+      <caption class="repTitle">
+      &nbsp;<br>
+      __REPORT_TITLE_GOES_HERE
+      <br>&nbsp;
+      </caption>
+      <tr>
+      <td colspan="3">     
+      <form action='imagePick.cgi?relPath=$relPath$&noBasePath=$noBasePath$' encType='multipart/form-data' method='post'>
+      <input type='hidden' name='FSboundX' value='610'>
+      <input type='hidden' name='FSboundY' value='610'> 
+      <table>      
+      <tr><th>Image Search: </th>
+          <td><input type="text" name="filter"></td>                   
+          <td><input type='submit' value='Filter'></td>      
+      </tr>
+      <tr><th>Upload images to the server: <input type="button" onClick="addImageUpload()" value="More"/></th>
+          <td id='uploadfiles'><input type='file' name='File'></td>
+          <td><input type='submit' value='Upload'></td>
+      </tr>
+      </table></form>
+      <a href="?relPath=$relPath$&showall=2000&noBasePath=$noBasePath$">Show All Images</a> (The default shows last image uploaded.)
+      </td>
+      </tr>
+      <tr id='heading'>
+<!--/@top-->
+<!--@headitem-->
+        <th class='headcell'>__hcell_label</th>
+<!--/@headitem-->
+<!--@rowsep-->
+      </tr>
+      <tr>
+<!--/@rowsep-->
+<!--@oddcell-->
+        <td class='odd_cell'>__cell_data</td>
+<!--/@oddcell-->
+      </tr>
+      <tr>
+<!--@evencell-->
+        <td class='even_cell'>__cell_data</td>
+<!--/@evencell-->
+<!--@bottom-->
+      </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+  </body>
+</html>
+<!--/@bottom-->

@@ -1,0 +1,394 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="color pick javascript program">
+    <style>
+    body {
+      background-image: url(cube.png); 
+      background-repeat: no-repeat;
+      background-position: 10 80;
+    }
+    #cubic {
+      position: absolute;
+      top: 80px;
+      left: 10px;    
+      padding: 10px;
+      height: 400px;
+      width: 400px;
+      }           
+    img{ border: none; }
+    a { text-decoration: none; }
+    label { 
+      display: block;
+      float: left;
+      width: 100px; 
+      border-bottom: blue solid 1px;
+      }
+    #cursor {
+      position: absolute;
+      background: transparent;
+      top: 80px;
+      left: 290px;
+      }
+    #hsvPanel {
+    border: black 1px dashed;
+    position: absolute;
+    top: 80px;
+    left: 400px;
+    width: 250px;
+    padding: 3px;
+    font-size: 9pt;
+    }
+    #swatches {
+    border: black 1px dashed;
+    position: absolute;
+    top: 250px;
+    left: 400px;
+    width: 500px;
+    padding: 3px;
+    font-size: 12pt;
+    }
+    div.inputGroup { 
+    clear: both; 
+    margin: 2px;
+    }
+    input:submit { float: right; }
+    </style>
+    <script src="openDom.js"></script> 
+    <script src="color_conversions.js"></script>
+    <script>
+    var myDom = new openDom();
+    var converter = new colorConverter();    
+    var r = 0, g = 0, b = 0;    
+    var dragging = false;    
+    var redCursorTop = 80;
+    var redCursorLeft = 290;
+    var CubeLeft = 10;
+    var clearsquareImg;
+    var redCursorImg;
+    clearsquareImg = newImage("clrsqr.gif");
+    redCursorImg = newImage("color_cursor.jpg");
+          
+    function newImage(ipath) 
+    {
+      var rslt;
+      if (document.images) 
+		{
+        rslt = new Image();
+        rslt.src = ipath;        
+      }
+      return rslt;
+    }
+    function setColor( red, green, blue )
+    {
+      r = red;
+      g = green;
+      b = blue;
+      converter.R=red;
+      converter.G=green;
+      converter.B=blue;
+      myDom.getElementById('rgbEntry').value = r+","+g+","+b;
+      converter.RGBtoHSV();
+      myDom.getElementById('hsvEntry').value = converter.H+","+converter.S+","+converter.V;
+    }
+    function reportColor( red, green, blue )
+    {
+      var retVal = new String("rgb value: ");
+      retVal += red + "," + green + "," + blue;
+      var rgbdiv = myDom.getElementById('rgb');
+      if( rgbdiv ) rgbdiv.innerHTML = retVal;
+    } 
+    function reportPosition( x, y )
+    {
+      var retVal = new String("position: ( ");
+      retVal += x + "," + y + " )";
+      var rgbdiv = myDom.getElementById('rgb');
+      if( rgbdiv ) rgbdiv.innerHTML = retVal;
+    } 
+    function colorColors()
+    {      
+      var retVal = new String("");  
+      retVal += "<table cellspacing='1px' cellpadding='4px'>";           
+      for( g=0; g<=255; g+=15 ) 
+      {
+        retVal += "<tr>";
+        for( b=0; b<=255; b+=15 ) 
+        {
+          retVal += "<td style='background:"; 
+          retVal += "rgb(" + r + "," + g + "," + b + ")'>";
+          retVal += "<a href=\"javascript:setColor( ";
+          retVal += r + "," + g + "," + b ; 
+          retVal += ")\">"; 
+          retVal += "<img src='clrsqr.gif' alt='' onMouseOver='reportColor(";
+          retVal += r + "," + g + "," + b;
+          retVal += ")'></a>";
+          retVal += "</td>";
+        }
+        retVal += "</tr>\n";
+      }          
+      retVal += "</table>";  
+      
+      var tbl = myDom.getElementById('cubic');
+      if( tbl ) tbl.innerHTML = retVal; 
+    } // >
+    function redStart(e)
+    { 
+      dragging = true;
+      if(!e) e=window.event;
+    }
+    function drag(e)
+    {
+      return false;
+    }    
+    function redShift(e)
+    {
+      if( dragging )
+      {
+        if(!e) e=window.event;      
+        var ypos = e.clientY;
+        var xpos = redCursorLeft + (ypos-redCursorTop);
+        var cubexpos = CubeLeft + (ypos-redCursorTop);  
+        reportPosition( xpos, ypos );      
+        if( ypos >= 80 && ypos <= 140 )
+        {
+          myDom.setPosition( 'cursor', xpos, ypos); 
+          myDom.setPosition( 'cubic', cubexpos, ypos);
+        }  
+      }
+    }
+    function redEnd(e)
+    {
+      if( dragging )
+      {
+        dragging = false;        
+        if(!e) e=window.event;
+        var report = "Moused Moved ";
+        r = Math.round((( e.clientY-redCursorTop )*17)/4);
+        if(r >255)r=255;
+        if(r<0)r=0; 
+        reportColor( r, 0, 0 );        
+        colorColors();           
+      } 
+    }
+    function initPage()
+    {
+
+      var redCursor = myDom.getElementById('cursor');
+      myDom.addListener(redCursor,"drag", drag, true); // random guess hack for IE
+      myDom.addListener(redCursor,"mousedown", redStart, true);
+      myDom.addListener(redCursor,"mousemove", redShift, false);
+      myDom.addListener(redCursor,"mouseup", redEnd, false);      
+    
+      colorColors();      
+    }
+    function normalizeClrs()
+    {
+      // first normalize the thing!
+      converter.R=r;
+      converter.G=g;
+      converter.B=b;
+      converter.RGBtoHSV();
+    }
+    function stylize( container, colorEl, backEl )
+    {
+      var prime=myDom.getElementById(container);
+      var primeFore=myDom.getElementById(colorEl);
+      var primeBack=myDom.getElementById(backEl);
+      converter.HSVtoRGB();
+      prime.style.color="rgb("+converter.R+","+converter.G+","+converter.B+")";
+      primeFore.replaceChild(
+             document.createTextNode( " " + converter.R+","
+                                          + converter.G+","
+                                          + converter.B ), primeFore.childNodes[0] ); 
+      // suitable background?
+      if( converter.V >= 125 ) // go dark
+      {
+        converter.V /= 2;
+      }
+      else // go light
+      {
+        converter.V *= 2;
+      }
+      converter.HSVtoRGB();
+      
+      prime.style.background= "rgb"+"("+converter.R+","
+                                  +converter.G+","
+                                  +converter.B+")";
+      primeBack.replaceChild(
+             document.createTextNode( " " + converter.R+","
+                                          + converter.G+","
+                                          + converter.B ), primeBack.childNodes[0] );  
+    }          
+    function genComplements( )
+    {
+      normalizeClrs(); // first normalize the thing! 
+      
+      var angle = myDom.getElementById('angleEntry').value;
+      if( angle < 0 || angle > 60 ) 
+      {
+        alert( " Bad Angle Value ! " );
+        return;
+      }
+
+      stylize( 'prime', 'primeFore', 'primeBack' );
+                                                  
+      // vary the thing
+      normalizeClrs(); // first normalize the thing
+      converter.S /= 2;
+      stylize( 'primel', 'primelFore', 'primelBack' );
+      
+      var v = converter.V;
+      var vDiff = 255-v;
+      
+      converter.V = v + vDiff/2;
+      stylize( 'primell', 'primellFore', 'primellBack' );
+      
+      converter.V = v / 1.5;
+      stylize( 'primed', 'primedFore', 'primedBack' );
+
+      
+      // make the first complement
+      normalizeClrs();
+      converter.H -= (180-angle);
+      stylize( 'comp1', 'comp1Back', 'comp1Fore' );
+      converter.S /= 2;
+      stylize( 'comp1L', 'comp1LFore', 'comp1LBack' );
+      
+      v = converter.V;
+      vDiff = 255-v;
+      
+      converter.V = v + vDiff/2;
+      stylize( 'comp1LL', 'comp1LLFore', 'comp1LLBack' );
+      
+      converter.V = v / 1.5;
+      stylize( 'comp1D', 'comp1DFore', 'comp1DBack' );
+      
+      // make the second complement
+      normalizeClrs();
+      converter.H += (180-angle);
+      stylize( 'comp2', 'comp2Back', 'comp2Fore' );
+      converter.S /= 2;
+      stylize( 'comp2L', 'comp2LFore', 'comp2LBack' ); 
+      
+      v = converter.V;
+      vDiff = 255-v;
+      
+      converter.V = v + vDiff/2;
+      stylize( 'comp2LL', 'comp2LLFore', 'comp2LLBack' );
+      
+      converter.V = v / 1.5;
+      stylize( 'comp2D', 'comp2DFore', 'comp2DBack' );  
+      
+    }
+    </script>
+  </head>
+  <body onLoad="initPage()">
+  <h2>Color Lab:</h2>
+  <div id="rgb">rgb value: </div>  
+  <div id="cubic">  </div>
+  <img id="cursor" 
+       alt="red value"       
+       src="color_cursor.jpg">
+  <div id="hsvPanel">
+  <form action="javascript:genComplements()">
+  <div class="inputgroup" id="rgbGroup">
+  <label>RGB Value</label> 
+  <input id="rgbEntry" type="text" size="12">
+  </div>
+  <div class="inputgroup" id="hsvGroup">
+  <label>HSV Value</label> 
+  <input id="hsvEntry" type="text" size="12">
+  </div>
+
+  <div class="inputgroup" id="complementAngle">
+  <label>Complement Angle</label>
+  <input id="angleEntry" type="text" size="3" value="0"> (0-60)
+  </div>
+  <input type="submit" value="GO">
+  </form>
+  </div> 
+  
+  <div id="swatches">
+  
+  <div id="prime">
+  <h1>Primary</h1>
+  -----------------<br>
+  Background: <span id="primeBack">?</span>
+  Foreground: <span id="primeFore">?</span>
+  </div>
+  <div id="primel">
+  <h1>Primary (less saturated)</h1>
+  -----------------<br>
+  Background: <span id="primelBack">?</span>
+  Foreground: <span id="primelFore">?</span>
+  </div>
+  <div id="primell">
+  <h1>Primary (lighter)</h1>
+  -----------------<br>
+  Background: <span id="primellBack">?</span>
+  Foreground: <span id="primellFore">?</span>
+  </div>  
+  <div id="primed">
+  <h1>Primary (darker)</h1>
+  -----------------<br>
+  Background: <span id="primedBack">?</span>
+  Foreground: <span id="primedFore">?</span>
+  </div>
+  
+  <div id="comp1">
+  <h1>Complement 1</h1>
+  -----------------<br>
+  Background: <span id="comp1Back">?</span>
+  Foreground: <span id="comp1Fore">?</span>
+  </div>
+  <div id="comp1L">
+  <h1>Complement 1 (less saturated)</h1>
+  -----------------<br>
+  Background: <span id="comp1LBack">?</span>
+  Foreground: <span id="comp1LFore">?</span>
+  </div> 
+  
+  <div id="comp1LL"> 
+  <h1>Complement 1 (lighter)</h1>
+  -----------------<br>
+  Background: <span id="comp1LLBack">?</span>
+  Foreground: <span id="comp1LLFore">?</span>
+  </div> 
+  
+  <div id="comp1D">
+  <h1>Complement 1 (darker)</h1>
+  -----------------<br>
+  Background: <span id="comp1DBack">?</span>
+  Foreground: <span id="comp1DFore">?</span>
+  </div>    
+  
+  <div id="comp2">
+  <h1>Complement 2</h1>
+  -----------------<br>
+  Background: <span id="comp2Back">?</span>
+  Foreground: <span id="comp2Fore">?</span>
+  </div>
+  <div id="comp2L">
+  <h1>Complement 2 (less saturated)</h1>
+  -----------------<br>
+  Background: <span id="comp2LBack">?</span>
+  Foreground: <span id="comp2LFore">?</span>
+  </div>  
+  
+  <div id="comp2LL"> 
+  <h1>Complement 2 (lighter)</h1>
+  -----------------<br>
+  Background: <span id="comp2LLBack">?</span>
+  Foreground: <span id="comp2LLFore">?</span>
+  </div> 
+  
+  <div id="comp2D">
+  <h1>Complement 2 (darker)</h1>
+  -----------------<br>
+  Background: <span id="comp2DBack">?</span>
+  Foreground: <span id="comp2DFore">?</span>
+  </div> 
+   
+  </div>    
+  </body>
+</html>

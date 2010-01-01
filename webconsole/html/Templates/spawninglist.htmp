@@ -1,0 +1,35 @@
+<!-- for template paragraph form_begin, replace $action$ and $name$ -->
+<!--@list_begin-->
+<table class='ui_list'>
+<!--/@list_begin-->
+<!--@tr--><tr>
+<!--/@tr-->
+<!--@th--><td class='listheader'>$data$</td><!--/@th-->
+<!--@td--><td class='listdata'>$data$</td><!--/@td-->
+<!--@ltd--><td class='lightlistdata'>$data$</td><!--/@ltd-->
+<!--@htd--><td class='hotlistdata'>$data$</td><!--/@htd-->
+<!--@end_tr--></tr>
+<!--/@end_tr-->
+<!--@list_end-->
+</table>
+&nbsp;<br>
+<script type="text/javascript">
+myDom.setCookie( 'lPg','$lpg');
+</script>
+<!--/@list_end-->
+
+<!--@hotcolumn-->
+<a href="javascript:jopen('$prog$?Id=$key$')">$col$</a>
+<!--/@hotcolumn-->
+
+
+
+<!--@list_new-->
+<tr><td colspan='$cols' style='text-align:right'>
+<a href="javascript:jopen('$location')">New Item</a>
+</td></tr>
+<!--/@list_new-->
+
+
+
+

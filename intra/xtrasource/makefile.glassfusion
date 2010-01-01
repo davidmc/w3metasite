@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/siltanium/
+OLOGIN = -DALTSLOGINSOURCE="\"../../mgdist/source/openLogin.h\"" 
+

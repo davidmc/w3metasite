@@ -1,0 +1,36 @@
+<!--@top-->
+<html>
+<head>
+<style type=text/css media=screen>@import url(styles/reports.css );</style>
+</head>
+<body>
+<h1>$name$</h1>
+<table><tbody>
+<!--/@top-->
+        
+
+<!--@tr--><tr>
+<!--/@tr-->
+
+<!--@multicol--><td colspan='$cols$' class='listheader'> &nbsp; $data$ &nbsp; </td><!--/@multicol-->
+
+<!--@th--><td class='listheader'> &nbsp; $data$ &nbsp; </td><!--/@th-->
+
+<!--@td--><td class='listdata'> &nbsp; $data$ &nbsp; </td><!--/@td-->
+
+<!--@tg--><td class='grouped'> &nbsp; $data$ &nbsp; </td><!--/@tg-->
+
+<!--@ts--><td class='summed'> &nbsp; $data$ &nbsp; </td><!--/@ts-->
+
+<!--@end_tr--></tr>
+<!--/@end_tr-->
+
+<!--@end-->
+</tbody></table>
+</body>
+</html>
+<!--/@end-->
+
+
+
+

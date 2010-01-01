@@ -1,0 +1,127 @@
+<!--@top--><html>
+  <head>
+    <title>Metasite</title>
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <meta content="">
+    <style>
+    pre { margin: 0px; padding: 2px; font: normal 8pt "courier new"; }
+    a { color: black; text-decoration: none; }
+    a:hover { color: darkblue; background: rgb(255,255,175); }
+    span.ex { color: navy; }
+    td.collection {
+          
+    }
+    div.object {      
+      vertical-align: top;
+      background: rgb(200,225,125);      
+      border: solid black 1px;
+      padding: 0px;
+      margin: 10px;
+      width: 150px; 
+      height: 200px;          
+      }
+    span.title {
+      width: 100%;
+      background: #fdfdff;      
+      color: black;
+      font: normal 10pt "courier new";      
+      } 
+      #site { float: left; }
+      #templates { float: left; }
+      #hyperlinks { float: left; }
+      #menus { float: left; }
+      #pages { float: left; }
+    </style>
+  </head>
+  <body>
+<h2>MetaSite Manager</h2><form action="site-admin.cgi" method="post">
+  <table>
+  <tr><td style="height: 20px;">  
+  <strong>Navigation:</strong>&nbsp;
+  <a href='admin.cgi'>Admin Main</a>
+  &nbsp; &nbsp; &nbsp; Current Site:
+  <input type="hidden" name="changeSite" value="true">
+  <select name="site_id" onChange="this.form.submit()">
+  $OPTIONS$
+  </select>   
+  </td></tr>
+<!--/@top-->
+<!--@adminstrators-->    
+
+<tr><td class="collection"> 
+<h5>For System Administration...</h5>
+<div class="object" id="site">
+<span class="title"><a href="siteList.cgi">Go to Site(s)</a></span>
+<pre><em>Container for 
+all other objects.</em>
+  
+Properties:
+- name 
+- domain
+- url
+Collections:
+- global_contents</pre>
+</div>
+  
+  
+<div class="object" id="templates">
+<span class="title"><a href="templateList.cgi">Go to Templates</a></span>
+<pre><em>List of web page 
+templates on the 
+site.</em>
+  
+Properties:
+- name
+- path</pre> 
+</div>
+
+</td></tr>
+<!--/@adminstrators-->  
+<!--@webmasters-->  
+<tr><td class="collection"> 
+<h5>For Site Administration...</h5> 
+<div class="object" id="hyperlinks">
+<span class="title"><a href="linkList.cgi">Go to Hyperlinks</a></span>
+<pre><em>List of links. 
+Used by menus.</em>
+  
+Properties:
+- name
+- url
+- target</pre> 
+</div> 
+  
+<div class="object" id="menus">
+<span class="title"><a href="menuList.cgi">Go to Menus</a></span>
+<pre><em>Site wide menus.   
+Used by pages.</em> 
+ 
+Properties:
+- name
+Collections: 
+- hyperlinks</pre>
+</div>  
+  
+<div class="object" id="pages">
+<span class="title"><a href="pageList.cgi">Go to Pages</a></span>
+<pre><em>All Web Pages
+on the site.</em>
+  
+Properties:
+- template_id
+- name
+- url
+- meta_description
+Collections:  
+- menus
+- paragraphs</pre> 
+</div>    
+
+</td></tr>
+<!--/@webmasters-->  
+
+<!--@end-->
+  </table></form>  
+  </body>
+</html>
+<!--/@end-->

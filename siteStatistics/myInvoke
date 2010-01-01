@@ -1,0 +1,2 @@
+# /usr/bin/sh
+mysql   --user='http_admin' --password='mydeal77' --database='sitestats'

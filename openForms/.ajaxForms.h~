@@ -1,0 +1,323 @@
+#ifndef OPEN_CORE_AJAX_FORMS_H
+#define OPEN_CORE_AJAX_FORMS_H 123456
+#include "ocControls.h"
+#include "read_base.hpp"
+#include "forms.h"
+
+#ifdef WEB_USER_RESTRICTED
+
+string formButtons( long long key, string formId )
+{
+  string ret;
+  if( key )       
+  { // Appropriate for update/delete
+#ifndef NO_UPDATE_BUTTON    
+    ret += "<input type='button' onclick=\"doAsyncUpdate('"+formId+"')\" name='action' class='action' value='";
+    ret += "&nbsp;Update&nbsp;";
+    ret += "'>&nbsp;&nbsp;&nbsp;";
+#endif 
+#ifndef NO_DELETE_BUTTON       
+    ret += "<input type='button' onclick=\"doAsyncDelete('"+formId+"')\" name='action' class='action' value='";
+    ret += "&nbsp;Delete&nbsp;"
+    ret += "'>&nbsp;&nbsp;&nbsp;\n";
+#endif    
+#ifndef NO_INSERT_BUTTON     
+    ret += "<input type='button' onclick=\"doAsyncReset('"+formId+"')\" name='action' class='action' value='&nbsp;New - Reset Form&nbsp;'>";
+    ret += "&nbsp;&nbsp;&nbsp;";
+    ret += "<input type='button' onclick=\"doAsyncNew('"+formId+"')\" name='action' class='action' value='&nbsp;New - Keep Data&nbsp;'>";
+#endif       
+  }
+  else
+  { // Appropriate for insert
+#ifndef NO_INSERT_BUTTON       
+    ret += "<input type='button' onclick=\"doAsyncInsert('"+formId+"')\" name='action' class='action' value='";
+    ret += "&nbsp;Insert&nbsp;";
+    ret += "'>";
+#else // hide the fact your inserting, make it look like an update, you will never get here unless this is the intent
+   ret += "<input type='button' onclick=\"doAsyncInsert('"+formId+"')\" name='action' class='action' value='";
+   ret += "&nbsp;Update&nbsp;";
+   ret += "'>";
+#endif    
+  }
+  return ret;
+}
+#endif
+
+/*
+  textEntry & checkEntry
+*/
+
+ocTextbox * ajxTextEntry
+ (  string name, string size,
+    string length = "",
+    string attr = "onchange='ajxCtrlChanged(this)'" )
+{
+  return textEntry(name,size,length,attr);
+}
+ocFilebox * ajxFileEntry( string name, string size, string length = "", string xtra_attr = "" )
+{
+  string attr = "onchange='ajxCtrlChanged(this)' id='";
+  attr += name;
+  attr += "'";
+  if(xtra_attr.length())
+  {
+    attr += " ";
+    attr += xtra_attr; 
+  }
+  return fileEntry(  name,  size,  length ,  xtra_attr  );
+}
+
+ocTextbox * ajxDateEntry( string name, string size )
+{
+  string attr = "onchange='ajxValidDate(this,true)' id='";
+  attr += name;
+  attr += "' class='mooDateChoice'";
+  ocTextbox * box = new ocTextbox( name, size, size, attr );
+  return box;
+}
+ocTextbox * timeEntry( string name, string size )
+{
+  string attr = "onChange='ajxValidTime(this,true)' id='";
+  attr += name;
+  attr += "'";
+  ocTextbox * box = new ocTextbox( name, size, size, attr );
+  return box;
+}
+ocTextbox * emailEntry( string name, string size, string length = ""  )
+{
+  string attr = "onChange='ajxIsEmail(this,true)' id='";
+  attr += name;
+  attr += "'";
+  string len = length.length()?length:size; // max length
+  ocTextbox * box = new ocTextbox( name, len, size, attr );
+  return box;
+}
+ocTextbox * ssnEntry( string name, string size )
+{
+  string attr = "onChange='ajxValidSSN(this,true)' id='";
+  attr += name;
+  attr += "'";
+  ocTextbox * box = new ocTextbox( name, size, size, attr );
+  return box;
+}
+ocTextbox * zipEntry( string name, string size )
+{
+  string attr = "onChange='ajxIsZip(this,true)' id='";
+  attr += name;
+  attr += "'";
+  ocTextbox * box = new ocTextbox( name, size, size, attr );
+  return box;
+}
+ocTextbox * phoneEntry( string name, string size )
+{
+  string attr = "onChange='ajxIsPhoneNumber(this,true)' id='";
+  attr += name;
+  attr += "'";
+  ocTextbox * box = new ocTextbox( name, size, size, attr );
+  return box;
+}
+ocTextbox * longNumberEntry( string name, string size )
+{
+  string attr = "onChange='ajxHasFormattedNumericData(this,true)' id='";
+  attr += name;
+  attr += "'";
+  ocTextbox * box = new ocTextbox( name, size, size, attr );
+  return box;
+}
+ocTextbox * shortNumberEntry( string name, string size )
+{
+  string attr = "onChange='ajxHasNumericData(this,true)' id='";
+  attr += name;
+  attr += "'";
+  ocTextbox * box = new ocTextbox( name, size, size, attr );
+  return box;
+}
+ocPassword * pswdEntry( string name, string size )
+{
+  string attr = "onChange='ajxCtrlChanged(this)' id='";
+  attr += name;
+  attr += "'";
+  ocPassword * box = new ocPassword( name, size, size, attr );
+  return box;
+}
+
+// This function Always gets All data
+ocSelect * cmboEntry( string name, string sql,
+                      ocString defaulted = "",
+                      string multiple = "" )
+{  
+  // instance of the combo box
+  string attributes = " name='";
+  attributes += name;
+  attributes += "' id='";
+  attributes += name;
+  attributes += "'";
+  attributes += " onChange='ajxCtrlChanged(this)' ";
+  attributes += multiple;
+  ocSelect * combo = new ocSelect(attributes);
+  // fill the combo box
+  if(  defaulted.length() > 0 )
+  {
+    if(defaulted.find("=") == string::npos) // just a label 
+    {
+      combo->addOption( defaulted, "-1" );
+    }
+    else // a label with a specific value
+    {
+      string lbl =  defaulted.parse("=");
+      string vlu =   defaulted.parse("="); 
+      combo->addOption( lbl,  vlu ); 
+    }
+  }
+  if( sql.length() )
+  {
+    quickQuery qq;
+    openRS & rs = qq.getData(sql);
+    for( bool result=qq.opened; result; result=rs.next() )
+    {
+      string label = "";
+      for( int lx=1; lx<rs.getFieldCount(); lx++ )
+      {
+        if( label.length() && rs.getField(lx).format().length() ) label += " - ";
+        label += rs.getField(lx).format();
+      }
+      combo->addOption( label, rs.getField(0).format() );
+    }
+  }
+  return combo;
+}
+
+/* 
+  keyVals must be in form "label1=key1,label2=key2,...,labeln=keyn"
+  CAVEAT:
+  Since keyVals uses a comma "," to delimit pairs and 
+  an equal sign "=" to separate the value from the label, 
+  those values should be avoided in the key or the label.
+*/  
+ocSelect * cmboManualEntry( string name,
+                            ocString keyVals = "",
+                            string defaulted = "",
+                            string multiple = "" )
+{
+  // instance of the combo box
+  string attributes = " name='";
+  attributes += name;
+  attributes += "' id='";
+  attributes += name;
+  attributes += "'";
+  attributes += " onChange='ajxCtrlChanged(this)' ";
+  attributes += multiple;
+  ocSelect * combo = new ocSelect(attributes);
+  // fill the combo box
+  if(  defaulted.length() > 0 )
+  {
+    combo->addOption( defaulted, "-1" );
+  }
+  if( keyVals.length() )
+  {    
+    while( keyVals.endOfParse() == false )
+    {
+      ocString pair = keyVals.parse(",");
+      string val = pair.parse("=");
+      string label = pair.parse("=");
+      combo->addOption( val, label );
+    }
+  }
+  return combo;
+}
+/* 
+  keyVals must be in form "label1=key1,label2=key2,...,labeln=keyn"
+  CAVEAT:
+  Since keyVals uses a comma "," to delimit pairs and
+  an equal sign "=" to separate the value from the label,
+  those values should be avoided in the key or the label.
+*/
+ocCheckBoxes * checksEntry( string name,
+                            ocString keyVals = "",
+                            string defaulted = "",
+                            string moreattributes = "" )
+{
+  // instance of the combo box
+  string attributes = " name='";
+  attributes += name;
+  attributes += "' id='";
+  attributes += name;
+  attributes += "' ";
+  attributes += moreattributes;
+  ocCheckBoxes * chks = new ocCheckBoxes(name, attributes);
+  // fill the combo box
+  if(  defaulted.length() > 0 )
+  {
+    chks->addOption( defaulted, "-1" );
+  }
+  if( keyVals.length() )
+  {
+    while( keyVals.endOfParse() == false )
+    {
+      ocString pair = keyVals.parse(",");
+      string val = pair.parse("=");
+      string label = pair.parse("=");
+      chks->addOption( val, label, " onChange='ajxCtrlChanged(this)' " );
+    }
+  }
+  return chks;
+}
+ocRadio * radioEntry( string name,
+                      ocString keyVals = "",
+                      string defaulted = "",
+                      string moreattributes = ""  )
+{
+  // instance of the combo box
+  string attributes = " name='";
+  attributes += name;
+  attributes += "' id='";
+  attributes += name;
+  attributes += "' ";
+  attributes += moreattributes;
+  ocRadio * rads = new ocRadio(name, attributes);
+  // fill the combo box
+  if(  defaulted.length() > 0 )
+  {
+    rads->addOption( defaulted, "-1" );
+  }
+  if( keyVals.length() )
+  {
+    while( keyVals.endOfParse() == false )
+    {
+      ocString pair = keyVals.parse(",");
+      string val = pair.parse("=");
+      string label = pair.parse("=");
+      rads->addOption( val, label," onChange='ajxCtrlChanged(this)' " );
+    }
+  }
+  return rads;
+}
+
+
+ocTextarea * areaEntry( string name, string rows="12", string cols="80" )
+{
+  string attr = " name='";
+  attr += name;
+  attr += "' id='";
+  attr += name;
+  attr += "' rows='";
+  attr += rows;
+  attr += "' cols='";
+  attr += cols;
+  attr += "'";
+  attr += " onChange='ajxCtrlChanged(this)'";
+  ocTextarea * ta = new ocTextarea(attr);
+  return ta;
+}
+
+ocBoolbox * boolBox( string name, string id )
+{
+  string attr = "class='checkbox' onChange='ajxCtrlChanged(this)' id='";
+  attr += id;
+  attr += "'";
+  ocBoolbox * bbox = new ocBoolbox( name , attr, "1", "1" );
+  return bbox;
+}
+
+#endif
+

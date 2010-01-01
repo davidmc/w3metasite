@@ -1,0 +1,16 @@
+Test Numbers (cvv and avv)
+
+Type        Number              Exp       Address           City        State       Zip       CVV
+Visa        4111111111111111    0404      123 Test St.      Somewhere   CA          90001     123
+Mastercard  5411111111111115    0404      4000 Main St.     Anytown     AZ          85001     777
+
+Test Numbers with Errors
+
+4012345678909 0404 Decline
+5555444433332226   Call
+4444111144441111   Card Error
+
+
+
+
+

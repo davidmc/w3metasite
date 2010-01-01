@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/hydrospec/intra/
+OLOGIN = -DALTSLOGINSOURCE="\"../../hydrospec/source/openLogin.h\"" -DREPORTDOESPDF
+

@@ -1,0 +1,21 @@
+<!--@INSERTBEFORELINK-->
+ <div  class='editlink' onclick="contentedit('content',-1,'$page$','$id$')">[INSERT]</div>
+<!--/@INSERTBEFORELINK-->
+
+ <!--@INSERTAFTERLINK-->
+ <div  class='editlink' onclick="contentedit('content',1,'$page$','$id$')">[INSERT]</div><br />
+<!--/@INSERTAFTERLINK-->
+
+<!--@EDITLINK-->
+<div  class='editlink' onclick="contentedit('content',0,'$page$','$id$')">[EDIT]</div>
+<!--/@EDITLINK-->
+
+
+<!--@NAVEDITLINK-->
+<div  class='editlink' onclick="navedit('Tabs','$id$')">[EDIT]</div>
+<!--/@NAVEDITLINK-->
+
+
+<!--@GLOBALEDITLINK-->
+<span class='editlink' onclick="globedit('top','$id$')">[EDIT]</span>
+<!--/@GLOBALEDITLINK-->

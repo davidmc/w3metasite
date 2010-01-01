@@ -1,0 +1,758 @@
+-- MySQL dump 10.9
+--
+-- Host: localhost    Database: w3sys
+-- ------------------------------------------------------
+-- Server version	4.1.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Appointment`
+--
+
+DROP TABLE IF EXISTS `Appointment`;
+CREATE TABLE `Appointment` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Company` bigint(20) default NULL,
+  `Contact` bigint(20) default NULL,
+  `Location` text,
+  `Title` text,
+  `Description` text,
+  `Starts` datetime default NULL,
+  `Stops` datetime default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Appointment`
+--
+
+
+/*!40000 ALTER TABLE `Appointment` DISABLE KEYS */;
+LOCK TABLES `Appointment` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Appointment` ENABLE KEYS */;
+
+--
+-- Table structure for table `Attachments`
+--
+
+DROP TABLE IF EXISTS `Attachments`;
+CREATE TABLE `Attachments` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Message` bigint(20) default NULL,
+  `Task` bigint(20) default NULL,
+  `Type` bigint(20) default NULL,
+  `URL` text,
+  `Data_Id` bigint(20) default NULL,
+  `Title` text,
+  `Description` text,
+  `Search_String` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Attachments`
+--
+
+
+/*!40000 ALTER TABLE `Attachments` DISABLE KEYS */;
+LOCK TABLES `Attachments` WRITE;
+INSERT INTO `Attachments` VALUES (1,-1,66,NULL,'Conversemos2.doc',NULL,'Conversemos?','I have no idea',NULL),(2,-1,121,NULL,'InTheBleak-1.pdf',NULL,'In The Bleak Mid Winter','Bleak Christmas Song',NULL);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Attachments` ENABLE KEYS */;
+
+--
+-- Table structure for table `Company`
+--
+
+DROP TABLE IF EXISTS `Company`;
+CREATE TABLE `Company` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Key_Contact` bigint(20) default NULL,
+  `Address1` text,
+  `Address2` text,
+  `City` text,
+  `State` text,
+  `Zip` text,
+  `Country` text,
+  `Notes` text,
+  `Last_Contacted` datetime default NULL,
+  `Status` bigint(20) default NULL,
+  `Open_PO` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Company`
+--
+
+
+/*!40000 ALTER TABLE `Company` DISABLE KEYS */;
+LOCK TABLES `Company` WRITE;
+INSERT INTO `Company` VALUES (1,'Hydrospec',7,'P. O. Box 160','','Ball Ground','GA','30107','','','2006-04-12 14:58:19',12,''),(2,'ATRIUM',19,'P.O. Box 1163','','Dalton','GA','30720','','','2006-04-12 14:58:19',15,''),(3,'Splash Media',5,'Northwest Georgia Trade and Convention Center','2211 Dug Gap Battle Road','Dalton','Georgia','30720','USA','','2006-04-12 14:58:19',12,''),(4,'Southern Logistics',6,'1033 Union Grove','','Adairsville','GA','30103','','','2006-04-12 15:01:20',12,''),(5,'MG Distribution Inc.',3,'6 Boorkland Drive','','Cartersville','GA','30120','USA','','2006-04-12 14:58:19',12,''),(6,'Woodhollow Cabinets',22,'3286 Dug Gap Rd Sw','','Dalton','GA','30720-4923','','','2006-04-12 14:58:19',12,''),(7,'Innovative Tech Inc',8,'P.O. Box 1163','','Dalton','GA','30722','USA','Reseller','2006-04-12 14:58:19',12,''),(8,'WTCI',0,'','','','','','','','2006-04-14 11:01:32',12,''),(9,'Northside Pediatrics',17,'333 Sandy Springs Circle','Suite 207','Atlanta','GA','30328','','','2006-04-12 14:58:19',12,''),(11,'Custom Logo Mats',9,'','','','','','','','2006-05-13 10:39:35',15,''),(14,'KleenTex',15,'1516 Orchard Hill Road ','','LaGrange','GA','30240-5767 ','USA','','2006-09-05 15:33:00',12,''),(16,'Ethnic Expressions',20,'','','Atlanta','GA','','','','2006-11-16 15:36:00',12,''),(17,'Design a Mat Inc.',21,'','','','','','','','2006-12-04 18:01:00',12,''),(18,'Purchase Sales Barter & Auction LLC',24,'Northwest Georgia Trade and Convention Center','2211 Dug Gap Battle Road','Dalton','GA','30720','USA','Joint Venture','2006-12-13 20:56:00',12,''),(19,'Ruslan',25,'113 Lee Court','','Ringgold','GA','30736','','','2007-01-22 08:57:00',11,''),(20,'Kendrik Family Practice',26,'','','','','','770 987-8349 #203','770 982-2155 #203 Pam Kuffnal','2007-01-30 09:26:00',11,''),(21,'McCright and Associates',27,'200 High Street','PO Box 6038','Chattanooga','TN','37401','USA','','2007-02-09 11:00:00',12,''),(22,'Quality Connections',29,'2639 Chattanooga Road','','Rocky Face','GA','30740','USA','','2007-04-26 10:06:00',12,''),(23,'North Atlanta Kidney Specialist',31,'','','','','','','','2007-05-08 11:04:00',11,''),(24,'HOSPITALITY CARPET INDUSTRIES',32,'81 LOWY','','CHATT','GA','30705','','Initial Meeting 11:30 today.','2007-05-08 13:25:00',11,'');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Company` ENABLE KEYS */;
+
+--
+-- Table structure for table `Composite_Query`
+--
+
+DROP TABLE IF EXISTS `Composite_Query`;
+CREATE TABLE `Composite_Query` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Site_Id` bigint(20) default NULL,
+  `Name` text,
+  `Select_Part` text,
+  `From_Part` text,
+  `Where_Part` text,
+  `Group_Part` text,
+  `Having_Part` text,
+  `Order_Part` text,
+  `Is_Workflow` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Composite_Query`
+--
+
+
+/*!40000 ALTER TABLE `Composite_Query` DISABLE KEYS */;
+LOCK TABLES `Composite_Query` WRITE;
+INSERT INTO `Composite_Query` VALUES (1,0,'Invoice','concat( proj.Id, \'-\', \r\n        date_format( current_date(), \'%d-%m-%y\' ) ), date_format(current_date(), \'%m/%d/%y\'),\r\nconcat( cntc.First, \' \', cntc.Last ), \r\ncmp.Name, \r\nconcat(cmp.Address1 , \' \',  cmp.Address2) , \r\ncmp.City , \r\ncmp.State ,cmp.Zip ,\r\nproj.Rate,   \r\nproj.Name,\r\ncntc.Phone , \r\ndate_format(proj.Actual_Start,\'%m/%d/%y\'),\r\nproj.Id','Company as cmp\r\nleft join Contact as cntc on cntc.Id=cmp.Key_Contact\r\nleft join Project as proj on proj.Company=cmp.Id \r\n','proj.Id = {{project}}','','','',0),(4,0,'Invoice Items','date_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Status = 8\nand tsk.Project = {{12}}','','','tm.Start, tsk.Name, tm.Description',0),(5,0,'Outstanding Invoice Items','proj.Name,\r\ndate_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Status < 10','','','tm.Start',0),(6,0,'Test Form','concat( proj.Id, \'-\', \r\n        date_format( current_date(), \'%d-%m-%y\' ) ) as invoice_no, date_format(current_date(), \'%m/%d/%y\') as invoice_date,\r\nconcat( cntc.First, \' \', cntc.Last ) as contact, \r\ncmp.Name as company, \r\nconcat(cmp.Address1 , \' \',  cmp.Address2) as address, \r\ncmp.City as city, \r\ncmp.State as state, cmp.Zip as zip,\r\nproj.Rate as rate,   \r\nproj.Name as project,\r\ncntc.Phone as phone, \r\ndate_format(proj.Actual_Start,\'%m/%d/%y\') as start_date,\r\nproj.Id','Company as cmp\r\ninner join Contact as cntc on cntc.Id=cmp.Key_Contact\r\ninner join Project as proj on proj.Company=cmp.Id \r\n','proj.Id = {{project}}','','','',0),(7,0,'Invoice Records','concat( inv.Id, \'-\', \r\n        date_format( inv.Invoice_Date, \'%d-%m-%y\' ) ), date_format(inv.Invoice_Date, \'%m/%d/%y\'),\r\nconcat( cntc.First, \' \', cntc.Last ), \r\ncmp.Name, \r\nconcat(cmp.Address1 , \' \',  cmp.Address2) , \r\ncmp.City , \r\ncmp.State ,cmp.Zip ,\r\nproj.Rate,   \r\nproj.Name,\r\ncntc.Phone , \r\ndate_format(proj.Actual_Start,\'%m/%d/%y\'),\r\ninv.Id','Invoice as inv\ninner join Project as proj on proj.Id = inv.Project\nleft join Company as cmp on proj.Company=cmp.Id \nleft join Contact as cntc on cntc.Id=inv.Contact\n\n','inv.Id = {{invoice}}','','','',0),(8,0,'New Invoice Items','date_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Invoice = {{12}}','','','tm.Start, tsk.Name, tm.Description',0),(9,0,'Due Invoice Items','cmp.Name, proj.Name,\r\ndate_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Company as cmp \r\ninner join Project as proj on proj.Company = cmp.Id\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\ninner join Invoice as inv on inv.Id = tm.Invoice\r\n','inv.Status = 9\n','','','cmp.Name, proj.Name,\r\ntm.Start, tsk.Name, tm.Description',0),(10,0,'Estimate','proj.Name as \'Project\',  \r\ntsk.Name as \'Task\', \r\nconcat( \'<pre>\',tsk.Description, \'</pre>\') as \'Work\', \r\ntsk.Estimated_Time as \'Estimated Hours\',\r\nproj.Rate*tsk.Estimated_Time as \'Estimated Cost\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Status as sts on tsk.Status = sts.Id\r\n','sts.Name=\'Estimate\' and proj.Id = {{project}}','','','',0),(11,0,'Status','*','Status','','','','',0),(12,0,'Paid Invoice Items','concat(cmp.Name, \' - \', proj.Name), tm.Invoice,\r\ndate_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Company cmp on cmp.Id = proj.Company\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Status = 10 ','','','1,2,3,4',0),(13,0,'Need to Invoice','cmp.Name as \'Company\', proj.Name as \'Project\' , proj.Id as \'Project Id\', cmp.Id as \'Company Id\', sum(tm.Hours) as \'Hours\', \r\nsum( proj.Rate*tm.Hours) as \'Amount\'','Project as proj\r\ninner join Company cmp on cmp.Id = proj.Company\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\ninner join Status sts on sts.Id = tm.Status\r\n\r\n\r\n','tm.Invoice < 1 and sts.Prog_Enum = 10','1,2,3,4','Amount > 0','1,2',0),(14,0,'Invoices ready to Send','inv.Id, \nconcat( cntc.First, \' \', cntc.Last ) as \'Contact\', \ncmp.Name as \'Company\', \nconcat(cmp.Address1 , \' \',  cmp.Address2) as \'Address\', \ncmp.City , \ncmp.State ,cmp.Zip ,\nproj.Rate,   \nproj.Name,\ncntc.Phone , \ndate_format(proj.Actual_Start,\'%m/%d/%y\') as \'Started\',\ninv.Id, inv.Id\n','Invoice as inv\ninner join Project as proj on proj.Id = inv.Project\ninner join Status as sts  on sts.Id = inv.Status\nleft join Company as cmp on proj.Company=cmp.Id \nleft join Contact as cntc on cntc.Id=cmp.Key_Contact\n\n','sts.Prog_Enum = 10','','','',0),(15,0,'Work over Time','date_format(tm.Start, \'%m/%d/%y\') as \'Date\',\nconcat(cmp.Name, \' - \', proj.Name) as \'Company and Project\',\ntm.Hours as \'Hours/Units\', \ntsk.Name as \'Task\', \ntm.Description as \'Description\' ,\nproj.Rate*tm.Hours as \'Amount\', \ntm.Invoice','Project as proj\ninner join Company cmp on cmp.Id = proj.Company\ninner join Task as tsk on tsk.Project=proj.Id\ninner join Time as tm on tm.Task=tsk.Id\n\n\n','','','','tm.Start desc, 2,3,4',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Composite_Query` ENABLE KEYS */;
+
+--
+-- Table structure for table `Contact`
+--
+
+DROP TABLE IF EXISTS `Contact`;
+CREATE TABLE `Contact` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `First` text,
+  `Last` text,
+  `Prefix` text,
+  `Phone` text,
+  `Mobile` text,
+  `Email` text,
+  `Fax` text,
+  `Home_Phone` text,
+  `Company` bigint(20) default NULL,
+  `Password` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Contact`
+--
+
+
+/*!40000 ALTER TABLE `Contact` DISABLE KEYS */;
+LOCK TABLES `Contact` WRITE;
+INSERT INTO `Contact` VALUES (1,'Shawn','','','706 280-4905','','','','',3,''),(2,'Randy','','','','','','','',12,''),(3,'Tom','McNiff','','770 231-7225','','tommcniff@msn.com','770-387-2728','',5,''),(4,'George','','','706 280-4905','','','','',3,''),(5,'Steve','Grass','','706 280-4905','','','','',3,''),(6,'Lawrence','Cole','','706 624-4388','','','','',4,''),(7,'Christopher','Geist','','770 345-3406 x224','770-617-3575','cgeist@hydrospec.com','','',1,''),(8,'Chris','Bond','','706-673-9239','','','','',7,''),(9,'Danny','Pilzer','','','404 441-7537','','','',11,''),(10,'Rita','','','','','','','',11,''),(20,'Eric','Johnson','','','678 427-5966','','','',16,''),(18,'Vicky','Tittle','','404.705.8990 x110','','','','',9,''),(15,'Peter','Bennington','','800.241.2323.1229 ','','pnbinnington@kleen-tex.com','','',14,''),(16,'Jim','Levesque','Sales & Marketing','800.241.2323.1272','','jclevesque@kleen-tex.com','','',14,''),(17,'Nancy','Gilbride','','404.705.8990 x104','','','','',9,''),(19,'Holly','Miller','Office Manager','','','hmiller@atriumimaginggroup.com','','',2,''),(21,'Danny','Pilzer','','','404 441-7537','dpilzer@comcast.net','','',17,''),(22,'Charles','Brogdon','','(706) 272-3797','706.463.1560','charles@woodhollowcabinets.com','','',6,''),(23,'PLEASE CHOOSE','','','','','','','',6,''),(24,'Steve','Grass','','706 280-4905','','','','',18,''),(25,'Ruslan','Popovych','','','','','','',19,''),(26,'Pam','Kuffnal','','770 987-8349 #203','','','','',20,''),(27,'Huy','LeQuan','','423.267.1300','423.321.2257','hlequan@mccright.com','','',21,''),(28,'Andy','Falter','','','','andy.falter@wosu.org','','',18,''),(29,'Mike','Cook','','','','mike@qualityconnections.net','','',22,''),(30,'Stan','McCright','','423.267.1300','423-280-5133','smccri5673@aol.com','','',21,''),(31,'Andrea','Jordan','','404-252-0256 ex 212','','','','',23,''),(32,'HOWARD & JEANESE','HADLER','','706 517 6362 X0','','','','',24,'');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Contact` ENABLE KEYS */;
+
+--
+-- Table structure for table `Invoice`
+--
+
+DROP TABLE IF EXISTS `Invoice`;
+CREATE TABLE `Invoice` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Company` bigint(20) default NULL,
+  `Project` bigint(20) default NULL,
+  `Contact` bigint(20) default NULL,
+  `Notes` text,
+  `Invoice_Date` date default NULL,
+  `Invoice_Time` time default NULL,
+  `Status` bigint(20) default NULL,
+  `Paid_Date` date default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Invoice`
+--
+
+
+/*!40000 ALTER TABLE `Invoice` DISABLE KEYS */;
+LOCK TABLES `Invoice` WRITE;
+INSERT INTO `Invoice` VALUES (1,3,2,5,'','2006-07-31','11:00:00',10,'0000-00-00'),(4,7,14,8,'Disputed by Chris,\r\nSet the billable amount = 0 and marked no-charge.\r\nFacts:\r\nCustomer asked for design,\r\nI provided,\r\nCustomer liked then changed mind.\r\nNever got very good feedback from AMY.\r\n\r\n','2006-10-02','22:10:00',18,'0000-00-00'),(2,7,16,12,'','2006-08-22','20:22:00',10,'0000-00-00'),(3,7,17,8,'','2006-07-31','20:49:00',10,'0000-00-00'),(5,7,12,8,'','2006-08-22','22:10:00',10,'0000-00-00'),(6,7,1,8,'','2006-07-31','22:12:00',10,'2006-07-31'),(7,4,18,6,'','2006-07-31','22:16:00',10,'2006-07-31'),(8,3,20,5,'','2006-08-22','14:07:00',10,'2006-08-22'),(10,7,17,8,'','2006-08-22','14:12:00',10,'0000-00-00'),(11,3,10,5,'','2006-08-22','14:18:00',10,'2006-08-22'),(12,1,1,-1,'','0000-00-00','09:14:00',10,'0000-00-00'),(13,3,21,-1,'','0000-00-00','14:23:00',18,'0000-00-00'),(14,3,20,5,'','2006-09-15','14:24:00',10,'0000-00-00'),(16,3,2,-1,'','2006-09-15','14:27:00',10,'0000-00-00'),(17,3,10,-1,'','2006-09-15','12:11:00',10,'2006-09-15'),(18,7,16,8,'pd chk 1916','2006-09-29','10:29:00',10,'2006-09-29'),(19,3,2,5,'1st half of under the radar','2006-10-11','11:28:00',10,'2006-11-25'),(23,3,2,5,'Second half of 10/11 invoice, broken out for under radar','2006-10-19','10:31:02',10,'0000-00-00'),(21,3,10,-1,'','2007-02-08','11:30:00',10,'2006-09-29'),(22,7,17,8,'Pd Chk # 1916','2006-10-02','07:06:00',10,'2006-10-02'),(24,14,22,-1,'First Invoice','2006-10-19','17:09:00',10,'2006-10-19'),(26,3,2,5,'Work done before production lock down (Part A)','2006-12-04','08:07:33',10,'2006-12-12'),(27,5,6,3,'','2006-12-04','16:46:00',10,'2007-01-02'),(28,1,23,7,'Spell Checking and Email, initial image upload handling.','2007-01-08','12:53:00',10,'0000-00-00'),(29,3,2,5,'Work done before production lock down (Part B)','2006-12-04','08:07:00',10,'2006-12-12'),(30,9,26,18,'','2006-12-06','18:30:00',10,'2006-12-05'),(31,14,24,15,'','2007-01-08','11:58:00',10,'2006-12-11'),(32,6,19,22,'','2007-01-08','08:20:00',10,'2007-01-08'),(33,18,30,24,'Initial work in porting PBS Auction','2007-01-15','09:18:00',10,'2007-01-15'),(34,3,2,5,'','2007-01-15','09:31:00',10,'2007-01-15'),(35,3,2,5,'LMS Changes, Login, Site Replication to Dal Tile and Unilin','2007-01-22','09:31:00',10,'0000-00-00'),(36,1,23,7,'Daily Inspection, Weekly Inspection Changes and Email Support','2007-02-09','21:52:00',10,'2007-02-23'),(38,14,11,15,'','0000-00-00','21:55:00',8,'0000-00-00'),(39,19,33,25,'','2007-01-22','09:05:00',10,'2007-01-22'),(40,3,2,5,'','2007-01-29','09:49:07',10,'0000-00-00'),(42,5,35,3,'','2007-02-27','21:38:00',9,'0000-00-00'),(43,21,36,27,'','2007-03-09','09:50:00',10,'2007-03-09'),(44,5,35,3,'Rework of preceding project, added Company and Contact types \'Self\' and Vendor.  Added Job Area form.\r\nCompletely rebuilt 0-11, 0-12 and 0-13 forms','2007-03-21','09:24:00',9,'0000-00-00'),(45,14,11,15,'Affiliate Engine, Preliminary Line of Credit work.  Support new pages.\r\n(I think it\'s paid, check with Billie.)','2007-03-21','10:02:00',9,'2007-03-21'),(46,3,10,-1,'','2007-03-21','10:12:00',9,'2007-03-21'),(47,18,37,24,'','2007-03-21','10:15:00',9,'2007-03-21'),(48,18,30,-1,'','2007-03-21','10:21:00',9,'2007-03-21'),(49,18,32,24,'','0000-00-00','10:22:00',8,'0000-00-00'),(50,3,2,5,'','2007-04-12','14:27:00',9,'2007-04-04'),(51,3,10,-1,'','2007-04-12','13:38:00',9,'2007-04-12'),(52,3,38,5,'','2007-04-12','13:45:00',9,'2007-04-12'),(53,21,36,27,'','2007-04-12','13:47:00',10,'2007-04-12'),(54,1,23,7,'Daily Report Enhancements and Improved Installation program.','2007-05-14','15:51:00',9,'0000-00-00'),(55,3,2,5,'Really 05-08,\r\nI goofed!','2007-05-14','08:24:00',9,'0000-00-00'),(56,6,19,22,'','2007-05-14','08:25:00',9,'0000-00-00'),(57,21,36,30,'Support Contract','2007-05-08','07:56:00',10,'0000-00-00'),(58,21,36,30,'','2007-05-21','13:35:00',9,'0000-00-00'),(59,18,40,24,'','2007-05-14','13:36:00',9,'0000-00-00'),(61,3,2,5,'','2007-05-14','19:30:10',9,'0000-05-14');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Invoice` ENABLE KEYS */;
+
+--
+-- Table structure for table `Messages`
+--
+
+DROP TABLE IF EXISTS `Messages`;
+CREATE TABLE `Messages` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Subject` text,
+  `From_Id` bigint(20) default NULL,
+  `To_Id` bigint(20) default NULL,
+  `Importance` int(11) default NULL,
+  `Content` text,
+  `From_String` text,
+  `To_String` text,
+  `Company` bigint(20) default NULL,
+  `Project` bigint(20) default NULL,
+  `Task` bigint(20) default NULL,
+  `Author` bigint(20) default NULL,
+  `Created` datetime default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Messages`
+--
+
+
+/*!40000 ALTER TABLE `Messages` DISABLE KEYS */;
+LOCK TABLES `Messages` WRITE;
+INSERT INTO `Messages` VALUES (1,'Henry',1,2,2,'Poor Henry','','',0,0,0,1,'2007-03-06 07:59:31'),(2,'Hey',1,2,1,'Hey','','',0,0,95,1,'2007-03-06 08:12:01'),(3,'Beer',1,2,1,'<p>Hey where is the beer?</p><p>You got any?</p>','','',0,0,121,1,'2007-04-18 06:36:50'),(4,'TO DO',1,1,1,'<p>HTMLDoc test&nbsp; suppress cookie on reports.cgi through HTML DOC</p><p>GET / RESTORE LATEST DATABASE DUMP</p><p>SWITCH INET ENTRIES ON BOTH BOXES&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>','','',0,0,117,1,'2007-05-12 11:03:19');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Messages` ENABLE KEYS */;
+
+--
+-- Table structure for table `Notes`
+--
+
+DROP TABLE IF EXISTS `Notes`;
+CREATE TABLE `Notes` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Company` bigint(20) default NULL,
+  `Project` bigint(20) default NULL,
+  `Task` bigint(20) default NULL,
+  `Author` bigint(20) default NULL,
+  `Created` datetime default NULL,
+  `Status` bigint(20) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Notes`
+--
+
+
+/*!40000 ALTER TABLE `Notes` DISABLE KEYS */;
+LOCK TABLES `Notes` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Notes` ENABLE KEYS */;
+
+--
+-- Table structure for table `Project`
+--
+
+DROP TABLE IF EXISTS `Project`;
+CREATE TABLE `Project` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Company` bigint(20) default NULL,
+  `Estimated_Start` datetime default NULL,
+  `Actual_Start` datetime default NULL,
+  `Estimated_Time` int(11) default NULL,
+  `Actual_Time` int(11) default NULL,
+  `Phase` int(11) default NULL,
+  `Parent_Project` bigint(20) default NULL,
+  `Notes` text,
+  `Status` bigint(20) default NULL,
+  `Rate` double default NULL,
+  `PO` text,
+  `Estimate` double default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Project`
+--
+
+
+/*!40000 ALTER TABLE `Project` DISABLE KEYS */;
+LOCK TABLES `Project` WRITE;
+INSERT INTO `Project` VALUES (1,'Hydrospec Inspection System',7,'2006-04-12 15:39:20','2006-04-12 15:39:20',0,0,0,-1,'',2,60,'',7000),(2,'Mohawk Safety',3,'2006-04-12 17:01:23','2006-04-12 17:01:23',35,0,0,-1,'',6,60,'',20000),(3,'Southern Logistics Support',4,'2006-04-14 11:02:10','2006-04-14 11:02:10',0,0,1,-1,'',6,0,'',1000),(4,'Southern Logistics Business Systems',4,'2006-04-14 11:02:10','2006-04-14 11:02:10',0,0,1,3,'',6,60,'',2500),(27,'Support',16,'2006-11-16 15:45:00','2006-11-16 15:45:00',0,0,0,-1,'Support for Sign On',16,70,'',0),(6,'Glass Fusion Sealant',5,'2006-05-02 11:47:48','2006-05-02 11:47:48',20,0,1,-1,'',6,65,'',0),(7,'PBS AUCTIONS',8,'2006-05-07 16:05:28','2006-05-07 16:05:28',0,0,0,-1,'',1,0,'',0),(10,'Mohawk Contractor Database',3,'2006-05-10 10:48:27','2006-05-10 10:48:27',8,0,0,-1,'',2,60,'',0),(9,'Northside Support and Development',7,'2006-05-09 09:45:11','2006-05-09 09:45:11',0,0,0,-1,'',16,60,'',0),(11,'Custom Logomats ongoing support',14,'2006-05-13 10:40:01','2006-05-13 10:40:01',0,0,0,-1,'',1,60,'',0),(12,'Earthscapes Website',7,'2006-05-16 12:25:08','2006-05-16 12:25:08',0,0,0,-1,'',16,60,'',0),(13,'Hydrospec Web Site',7,'2006-03-15 15:00:00','2006-03-15 15:00:00',12,0,0,-1,'',1,60,'',720),(14,'AOG Website',7,'2006-06-08 11:57:00','2006-06-08 11:57:00',0,0,0,-1,'',16,60,'',0),(19,'Woodhollow Project System',6,'2006-08-02 09:17:00','2006-08-02 09:17:00',0,0,0,-1,'',1,60,'',0),(21,'Building Infrastructure',3,'2006-08-30 18:59:00','2006-08-30 18:59:00',0,0,0,-1,'Various tasks',1,60,'',0),(16,'Atrium Medical Imaging Workflow',7,'2006-06-09 11:46:00','2006-06-09 11:46:00',0,0,0,-1,'',6,60,'',0),(17,'AOSM Website',7,'2006-07-10 15:51:25','2006-07-10 15:51:25',0,0,0,-1,'',2,60,'',0),(18,'Southern Logistics Ongoing',4,'2006-04-14 11:02:00','2006-04-14 11:02:00',0,0,1,-1,'',6,65,'',1000),(20,'Media Center',3,'2006-08-10 10:18:00','2006-08-10 10:18:00',20,0,0,-1,'',1,60,'',0),(22,'Port Rainbow Custom Logo Mats',14,'2006-09-05 15:34:00','2006-09-05 15:34:00',0,0,0,-1,'',16,60,'',0),(23,'Hydrospec - Phase 2',1,'2006-10-24 10:52:00','2006-10-24 10:52:00',0,0,0,1,'And ongoing support and maintenance',6,60,'',0),(24,'Kleentext - Rainbow Site Maintenance and Training',14,'2006-10-24 14:50:00','2006-10-24 14:50:00',0,0,0,-1,'',1,60,'',0),(25,'Incident Demo System',3,'2006-10-30 10:35:00','2006-10-30 10:35:00',0,0,0,-1,'',1,0,'',0),(26,'Northside Pediatrics Web',9,'2006-10-31 08:40:00','2006-10-31 08:40:00',0,0,0,-1,'',1,60,'',0),(28,'Site Development',17,'2006-12-04 18:02:00','2006-12-04 18:02:00',0,0,0,-1,'',1,0,'',0),(30,'Auxion Site Building',18,'2006-12-13 20:57:00','2006-12-13 20:57:00',0,0,0,-1,'1/2 of 60.00 discount rate other half is contribution to new company.',1,30,'',0),(31,'Travel',14,'2006-12-19 11:36:00','2006-12-19 11:36:00',0,0,0,-1,'Per Mile ',1,0.45,'',0),(32,'Auxion Training',18,'2007-01-17 16:02:00','2007-01-17 16:02:00',0,0,0,30,'',1,30,'',0),(33,'Client Code',19,'2007-01-22 08:57:00','2007-01-22 08:57:00',0,0,0,-1,'',16,-10,'',0),(34,'AOSM Web - 2007',7,'2006-07-10 15:51:00','2006-07-10 15:51:00',0,0,0,-1,'',16,60,'',0),(35,'MG GF 2007 Work',5,'2007-02-07 10:13:00','2007-02-07 10:13:00',0,0,0,-1,'',1,60,'',0),(36,'McCright Systems Support Contract',21,'2007-02-09 11:03:00','2007-02-09 11:03:00',0,0,0,-1,'',1,60,'',0),(37,'WOSU',18,'2007-02-14 09:01:00','2007-02-14 09:01:00',0,0,0,-1,'',1,30,'',0),(38,'Mohawk Learning Center',3,'2007-03-23 09:59:00','2007-03-23 09:59:00',0,0,0,-1,'',1,60,'',0),(39,'Site Maintenance',22,'2007-04-27 08:15:00','2007-04-27 08:15:00',0,0,0,-1,'Maintenance on Site ',6,60,'',0),(40,'WTCI',18,'2007-02-14 09:01:00','2007-02-14 09:01:00',0,0,0,-1,'',1,30,'',0),(41,'Web Design',23,'2007-05-08 11:09:00','2007-05-08 11:09:00',0,0,0,-1,'Complete web site with new logo graphic design.\r\n',1,0,'',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Project` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report`
+--
+
+DROP TABLE IF EXISTS `Report`;
+CREATE TABLE `Report` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Site_Id` bigint(20) default NULL,
+  `Template_Id` bigint(20) default NULL,
+  `Query_Id` bigint(20) default NULL,
+  `Composite_Query` bigint(20) default NULL,
+  `Name` text,
+  `Media_Type` bigint(20) default NULL,
+  `Sum_Columns` text,
+  `Average_Columns` text,
+  `Category` text,
+  `Show_In_List` int(11) default NULL,
+  `Formatting_Modulus` int(11) default NULL,
+  `Items_Per_Page` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report`
+--
+
+
+/*!40000 ALTER TABLE `Report` DISABLE KEYS */;
+LOCK TABLES `Report` WRITE;
+INSERT INTO `Report` VALUES (9,0,2,0,11,'Status',-1,NULL,NULL,'Status',1,0,0),(8,0,3,0,10,'Estimate',-1,NULL,NULL,'Info',1,0,0),(3,0,3,0,5,'Outstanding Time and Money',-1,NULL,NULL,'Info',1,0,0),(4,0,5,0,6,'Test Form',1,NULL,NULL,'New Invoice',1,0,0),(5,0,1,0,7,'New Invoices',2,NULL,NULL,'Invoice',1,0,0),(6,0,4,0,8,'New Invoice Items',-1,NULL,NULL,'Invoice',0,0,0),(7,0,3,0,9,'Info',-1,NULL,NULL,'Invoice',1,0,0),(10,0,3,0,12,'Time and Money Paid',-1,NULL,NULL,'Info',1,0,0),(11,0,3,0,13,'Need to create invoices',-1,NULL,NULL,'Invoice',1,0,0),(12,0,3,0,14,'Invoices to Send',1,NULL,NULL,'Invoice',1,0,0),(13,0,3,0,15,'Work Over Time',1,NULL,NULL,'Info',1,0,0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Conditioning`
+--
+
+DROP TABLE IF EXISTS `Report_Conditioning`;
+CREATE TABLE `Report_Conditioning` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Report_Id` bigint(20) default NULL,
+  `Col` int(11) default NULL,
+  `Sort_Pos` int(11) default NULL,
+  `Col_Handler` text,
+  `Direction` text,
+  `Format` text,
+  `Tuple_Section` text,
+  `spawnedReport` bigint(20) default NULL,
+  `spawnedTuplePretext` text,
+  `spawnedTuplePosttext` text,
+  `spawningEvent` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Conditioning`
+--
+
+
+/*!40000 ALTER TABLE `Report_Conditioning` DISABLE KEYS */;
+LOCK TABLES `Report_Conditioning` WRITE;
+INSERT INTO `Report_Conditioning` VALUES (1,1,0,0,'NONE','NONE','STRING','section0',1,'','',0),(2,1,1,0,'NONE','NONE','STRING','section1',1,'','',0),(3,1,2,0,'NONE','NONE','STRING','section2',1,'','',0),(4,1,3,0,'NONE','NONE','STRING','section3',1,'','',0),(5,1,4,0,'NONE','NONE','STRING','section4',1,'','',0),(6,1,5,0,'NONE','NONE','STRING','section5',1,'','',0),(7,1,6,0,'NONE','NONE','STRING','section6',1,'','',0),(8,1,7,0,'NONE','NONE','STRING','section7',1,'','',0),(9,1,8,0,'NONE','NONE','CURRENCY','section8',1,'','',0),(10,1,9,0,'NONE','NONE','STRING','section9',1,'','',0),(11,1,10,0,'NONE','NONE','STRING','section10',1,'','',0),(12,1,11,0,'NONE','NONE','STRING','section11',1,'','',2),(13,2,1,0,'SUM','NONE','DECIMAL','',1,'','',0),(14,2,4,0,'SUM','NONE','CURRENCY','',1,'','',0),(15,1,12,0,'SPAWN','NONE','STRING','section12',2,'','',2),(16,3,5,0,'SUM','NONE','CURRENCY','',1,'','',0),(41,11,5,0,'SUM','NONE','CURRENCY','',8,'','',0),(18,5,0,0,'NONE','NONE','STRING','section0',1,'','',0),(19,5,1,0,'NONE','NONE','STRING','section1',1,'','',0),(20,5,2,0,'NONE','NONE','STRING','section2',1,'','',0),(21,5,3,0,'NONE','NONE','STRING','section3',1,'','',0),(22,5,4,0,'NONE','NONE','STRING','section4',1,'','',0),(23,5,5,0,'NONE','NONE','STRING','section5',1,'','',0),(24,5,6,0,'NONE','NONE','STRING','section6',1,'','',0),(25,5,7,0,'NONE','NONE','STRING','section7',1,'','',0),(26,5,8,0,'NONE','NONE','STRING','section8',1,'','',0),(27,5,9,0,'NONE','NONE','STRING','section9',1,'','',0),(28,5,10,0,'NONE','NONE','STRING','section10',1,'','',0),(29,5,11,0,'NONE','NONE','STRING','section11',1,'','',0),(30,5,12,0,'SPAWN','NONE','STRING','section12',6,'','',2),(31,6,1,0,'SUM','NONE','DECIMAL','',1,'','',0),(32,6,4,0,'SUM','NONE','CURRENCY','',1,'','',0),(33,7,0,0,'GROUP','NONE','STRING','',7,'','',0),(36,8,0,0,'GROUP','NONE','STRING','',8,'','',0),(35,7,6,0,'SUM','NONE','CURRENCY','',7,'','',0),(37,8,3,0,'SUM','NONE','DECIMAL','',8,'','',0),(38,8,4,0,'SUM','NONE','CURRENCY','',8,'','',0),(39,10,0,0,'GROUP','NONE','STRING','',8,'','',0),(40,10,6,0,'SUM','NONE','CURRENCY','',8,'','',0),(42,11,0,0,'GROUP','NONE','STRING','',8,'','',0),(43,10,1,0,'GROUP','NONE','STRING','',8,'','',0),(44,12,0,0,'SPAWN','NONE','STRING','',6,'','',4),(45,13,0,0,'GROUP','NONE','STRING','',8,'','',0),(46,13,2,0,'SUM','NONE','DECIMAL','',8,'','',0),(47,13,5,0,'SUM','NONE','CURRENCY','',8,'','',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Conditioning` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Parameters`
+--
+
+DROP TABLE IF EXISTS `Report_Parameters`;
+CREATE TABLE `Report_Parameters` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Report_Id` bigint(20) default NULL,
+  `Display_Label` text,
+  `Data_Element` text,
+  `Tag_Name` text,
+  `Choices_Query` text,
+  `Parameter_Type` text,
+  `List_Order` int(11) default NULL,
+  `Pre_Content` text,
+  `Post_Content` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Parameters`
+--
+
+
+/*!40000 ALTER TABLE `Report_Parameters` DISABLE KEYS */;
+LOCK TABLES `Report_Parameters` WRITE;
+INSERT INTO `Report_Parameters` VALUES (1,1,'Project?','Project','{{project}}','select Id, Name from Project\r\n','SELECT',NULL,NULL,NULL),(2,4,'Project?','Project','{{project}}','select Id, Name from Project','SELECT',NULL,NULL,NULL),(3,5,'Invoice?','Invoice','{{invoice}}','select iv.Id, concat( p.Name, \'-\', Invoice_Date )from Invoice iv inner join Project p on p.Id = iv.Project ','SELECT',NULL,NULL,NULL),(4,8,'Project?','Project','{{project}}','select Id, Name from Project','SELECT',0,'','');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Parameters` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Templates`
+--
+
+DROP TABLE IF EXISTS `Report_Templates`;
+CREATE TABLE `Report_Templates` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Site_Id` bigint(20) default NULL,
+  `Name` text,
+  `Path` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Templates`
+--
+
+
+/*!40000 ALTER TABLE `Report_Templates` DISABLE KEYS */;
+LOCK TABLES `Report_Templates` WRITE;
+INSERT INTO `Report_Templates` VALUES (1,0,'Invoice','InvoiceTemplate.html'),(2,0,'Generic','Generic.htmp'),(3,0,'Advanced','reportlist.htmp'),(4,0,'Spawned','reportspawned.htmp'),(5,0,'Form Test','test.ftmp');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Templates` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Type`
+--
+
+DROP TABLE IF EXISTS `Report_Type`;
+CREATE TABLE `Report_Type` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `File_Extension` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Type`
+--
+
+
+/*!40000 ALTER TABLE `Report_Type` DISABLE KEYS */;
+LOCK TABLES `Report_Type` WRITE;
+INSERT INTO `Report_Type` VALUES (1,'text/html',''),(2,'application/pdf','pdf'),(3,'application/vnd.ms-excel','');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Type` ENABLE KEYS */;
+
+--
+-- Table structure for table `Scheme_Field`
+--
+
+DROP TABLE IF EXISTS `Scheme_Field`;
+CREATE TABLE `Scheme_Field` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Scheme_Table` bigint(20) default NULL,
+  `Name` text,
+  `Col_Type` text,
+  `Links_To` bigint(20) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Scheme_Field`
+--
+
+
+/*!40000 ALTER TABLE `Scheme_Field` DISABLE KEYS */;
+LOCK TABLES `Scheme_Field` WRITE;
+INSERT INTO `Scheme_Field` VALUES (1,1,'Id','bigint(20)',0),(2,1,'Company','bigint(20)',9),(3,1,'Contact','bigint(20)',32),(4,1,'Location','text',0),(5,1,'Title','text',0),(6,1,'Description','text',0),(7,1,'Starts','datetime',0),(8,1,'Stops','datetime',0),(9,2,'Id','bigint(20)',0),(10,2,'Name','text',0),(11,2,'Key_Contact','bigint(20)',32),(12,2,'Address1','text',0),(13,2,'Address2','text',0),(14,2,'City','text',0),(15,2,'State','text',0),(16,2,'Zip','text',0),(17,2,'Country','text',0),(18,2,'Notes','text',0),(19,2,'Last_Contacted','datetime',0),(20,2,'Status','bigint(20)',0),(21,2,'Open_PO','text',0),(22,3,'Id','bigint(20)',0),(23,3,'Site_Id','bigint(20)',0),(24,3,'Name','text',0),(25,3,'Select_Part','text',0),(26,3,'From_Part','text',0),(27,3,'Where_Part','text',0),(28,3,'Group_Part','text',0),(29,3,'Having_Part','text',0),(30,3,'Order_Part','text',0),(31,3,'Is_Workflow','int(11)',0),(32,4,'Id','bigint(20)',0),(33,4,'First','text',0),(34,4,'Last','text',0),(35,4,'Prefix','text',0),(36,4,'Phone','text',0),(37,4,'Mobile','text',0),(38,4,'Email','text',0),(39,4,'Fax','text',0),(40,4,'Home_Phone','text',0),(41,4,'Company','bigint(20)',9),(42,4,'Password','text',0),(43,5,'Id','bigint(20)',0),(44,5,'Company','bigint(20)',9),(45,5,'Project','bigint(20)',50),(46,5,'Task','bigint(20)',116),(47,5,'Author','bigint(20)',166),(48,5,'Created','datetime',0),(49,5,'Status','bigint(20)',111),(50,6,'Id','bigint(20)',0),(51,6,'Name','text',0),(52,6,'Company','bigint(20)',9),(53,6,'Estimated_Start','datetime',0),(54,6,'Actual_Start','datetime',0),(55,6,'Estimated_Time','int(11)',0),(56,6,'Actual_Time','int(11)',0),(57,6,'Phase','int(11)',0),(58,6,'Parent_Project','bigint(20)',50),(59,6,'Notes','text',0),(60,6,'Status','bigint(20)',111),(61,6,'Rate','double',0),(62,6,'PO','text',0),(63,6,'Estimate','double',0),(64,7,'Id','bigint(20)',0),(65,7,'Site_Id','bigint(20)',0),(66,7,'Template_Id','bigint(20)',0),(67,7,'Query_Id','bigint(20)',0),(68,7,'Composite_Query','bigint(20)',0),(69,7,'Name','text',0),(70,7,'Media_Type','bigint(20)',0),(71,7,'Sum_Columns','text',0),(72,7,'Average_Columns','text',0),(73,7,'Category','text',0),(74,7,'Show_In_List','int(11)',0),(75,7,'Formatting_Modulus','int(11)',0),(76,7,'Items_Per_Page','int(11)',0),(77,8,'Id','bigint(20)',0),(78,8,'Report_Id','bigint(20)',0),(79,8,'Col','int(11)',0),(80,8,'Sort_Pos','int(11)',0),(81,8,'Col_Handler','text',0),(82,8,'Direction','text',0),(83,8,'Format','text',0),(84,8,'Tuple_Section','text',0),(85,8,'spawnedReport','bigint(20)',0),(86,8,'spawnedTuplePretext','text',0),(87,8,'spawnedTuplePosttext','text',0),(88,8,'spawningEvent','int(11)',0),(89,9,'Id','bigint(20)',0),(90,9,'Report_Id','bigint(20)',0),(91,9,'Display_Label','text',0),(92,9,'Data_Element','text',0),(93,9,'Tag_Name','text',0),(94,9,'Choices_Query','text',0),(95,9,'Parameter_Type','text',0),(96,10,'Id','bigint(20)',0),(97,10,'Site_Id','bigint(20)',0),(98,10,'Name','text',0),(99,10,'Path','text',0),(100,11,'Id','bigint(20)',0),(101,11,'Name','text',0),(102,11,'File_Extension','text',0),(103,12,'Id','bigint(20)',0),(104,12,'Scheme_Table','bigint(20)',0),(105,12,'Name','text',0),(106,12,'Col_Type','text',0),(107,12,'Links_To','bigint(20)',0),(108,13,'Id','bigint(20)',0),(109,13,'Name','text',0),(110,13,'Abbr','text',0),(111,14,'Id','bigint(20)',0),(112,14,'Name','text',0),(113,14,'Class','text',0),(114,14,'Sequence','int(11)',0),(115,14,'Prog_Enum','int(11)',0),(116,15,'Id','bigint(20)',0),(117,15,'Project','bigint(20)',50),(118,15,'Name','text',0),(119,15,'Description','text',0),(120,15,'Start','datetime',0),(121,15,'Task_Order','int(11)',0),(122,15,'Hierarchy','int(11)',0),(123,15,'Status','bigint(20)',0),(124,15,'Percent_Complete','int(11)',0),(125,15,'Parent_Task','bigint(20)',0),(126,15,'Estimate','double',0),(127,15,'Estimated_Time','double',0),(128,15,'Actual_Time','double',0),(129,16,'Id','bigint(20)',0),(130,16,'Task','bigint(20)',116),(131,16,'Start','datetime',0),(132,16,'Stop','datetime',0),(133,16,'Description','text',0),(134,16,'Hours','double',0),(135,16,'Status','bigint(20)',0),(136,16,'Invoice','bigint(20)',0),(137,17,'Id','bigint(20)',0),(138,17,'Name','text',0),(139,17,'Description','text',0),(140,17,'Query','bigint(20)',0),(141,17,'User','bigint(20)',0),(142,17,'User_Group','bigint(20)',0),(143,17,'User_Role','bigint(20)',0),(144,17,'URL','text',0),(145,17,'Search','text',0),(146,18,'id','bigint(20)',0),(147,18,'role_id','bigint(20)',0),(148,18,'service_id','bigint(20)',0),(149,18,'enabled','int(11)',0),(150,18,'xml_params','text',0),(151,19,'id','bigint(20)',0),(152,19,'name','text',0),(153,19,'comment','text',0),(154,20,'id','bigint(20)',0),(155,20,'sequence','int(11)',0),(156,20,'tree_depth','int(11)',0),(157,20,'enabled','int(11)',0),(158,20,'cat_name','text',0),(159,20,'menu_name','text',0),(160,20,'uri','text',0),(161,20,'target','text',0),(162,21,'id','bigint(20)',0),(163,21,'user_id','bigint(20)',0),(164,21,'role_id','bigint(20)',0),(165,21,'enabled','int(11)',0),(166,22,'id','bigint(20)',0),(167,22,'last','text',0),(168,22,'first','text',0),(169,22,'login','text',0),(170,22,'password','text',0),(171,22,'email','text',0),(172,22,'phone','text',0),(173,22,'mobile','text',0),(174,22,'fax','text',0),(175,22,'pager','text',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Scheme_Field` ENABLE KEYS */;
+
+--
+-- Table structure for table `Scheme_Table`
+--
+
+DROP TABLE IF EXISTS `Scheme_Table`;
+CREATE TABLE `Scheme_Table` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Abbr` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Scheme_Table`
+--
+
+
+/*!40000 ALTER TABLE `Scheme_Table` DISABLE KEYS */;
+LOCK TABLES `Scheme_Table` WRITE;
+INSERT INTO `Scheme_Table` VALUES (1,'Appointment','appt'),(2,'Company','cmp'),(3,'Composite_Query',''),(4,'Contact','cntc'),(5,'Notes','note'),(6,'Project','proj'),(7,'Report',''),(8,'Report_Conditioning',''),(9,'Report_Parameters',''),(10,'Report_Templates',''),(11,'Report_Type',''),(12,'Scheme_Field',''),(13,'Scheme_Table',''),(14,'Status','sts'),(15,'Task','tsk'),(16,'Time','tm'),(17,'Work',''),(18,'role_services',''),(19,'roles',''),(20,'services',''),(21,'user_roles',''),(22,'users','');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Scheme_Table` ENABLE KEYS */;
+
+--
+-- Table structure for table `Status`
+--
+
+DROP TABLE IF EXISTS `Status`;
+CREATE TABLE `Status` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Class` text,
+  `Sequence` int(11) default NULL,
+  `Prog_Enum` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Status`
+--
+
+
+/*!40000 ALTER TABLE `Status` DISABLE KEYS */;
+LOCK TABLES `Status` WRITE;
+INSERT INTO `Status` VALUES (1,'Awaiting Approval','Project',0,0),(2,'High Level Design','Project',1,0),(3,'Planned','Task',1,10),(4,'In Progress','Task',2,20),(5,'Complete','Task',2,30),(6,'Developing','Project',3,0),(7,'Invoiced','Task',3,40),(8,'Pre Invoice','Time',0,10),(9,'Invoiced','Time',1,20),(10,'Paid','Time',2,30),(11,'Prospect','Company',0,0),(12,'Active','Company',1,0),(13,'Paid','Task',5,50),(14,'Estimate','Task',0,0),(15,'Former','Company',0,0),(16,'Complete','Project',2000,0),(17,'No Charge','Task',6,60),(18,'No Charge','Time',3,40),(19,'Need to Estimate','Task',-1,0),(20,'Archived','Project',3000,3000);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Status` ENABLE KEYS */;
+
+--
+-- Table structure for table `Task`
+--
+
+DROP TABLE IF EXISTS `Task`;
+CREATE TABLE `Task` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Project` bigint(20) default NULL,
+  `Name` text,
+  `Description` text,
+  `Start` datetime default NULL,
+  `Task_Order` int(11) default NULL,
+  `Hierarchy` int(11) default NULL,
+  `Status` bigint(20) default NULL,
+  `Percent_Complete` int(11) default NULL,
+  `Parent_Task` bigint(20) default NULL,
+  `Estimate` double default NULL,
+  `Estimated_Time` double default NULL,
+  `Actual_Time` double default NULL,
+  `Requestor` bigint(20) default NULL,
+  `Requested` date default NULL,
+  `Estimated_End` datetime default NULL,
+  `Actual_End` date default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Task`
+--
+
+
+/*!40000 ALTER TABLE `Task` DISABLE KEYS */;
+LOCK TABLES `Task` WRITE;
+INSERT INTO `Task` VALUES (1,1,'High Level Design','UML Design','2006-04-12 15:42:36',1001000,1,5,100,-1,0,NULL,6,NULL,NULL,NULL,NULL),(2,1,'User Interfaces and Logic - Intranet','Design UI Panels and set Business Logic','2006-04-12 15:42:36',1000000,1,5,100,-1,0,NULL,10.5,NULL,NULL,NULL,NULL),(3,2,'GUI Development Input Panels','','2006-04-12 17:02:33',1002000,0,5,100,-1,0,NULL,13.25,NULL,NULL,NULL,NULL),(4,26,'Documention Page on Intranet','','2006-04-19 12:58:27',100,0,4,0,-1,0,NULL,1.25,NULL,NULL,NULL,NULL),(5,2,'Reports','Creating, managing safety reports.','2006-04-21 13:48:19',100000,0,5,100,-1,0,NULL,14.5,NULL,NULL,NULL,NULL),(6,6,'Web Site Update','Add new photos with description in new Page Content to site in folder order, after images only.','2006-05-02 11:49:03',1010000,1,5,100,-1,0,NULL,8,NULL,NULL,NULL,NULL),(7,6,'Xtranet update','Add new documents to sales, New Doc format','2006-05-02 11:49:03',1100000,1,5,100,-1,0,NULL,8,NULL,NULL,NULL,NULL),(8,4,'Web Site - Design and Construct','Build Templates and initial pages','2006-05-02 14:10:16',13000000,1,13,100,-1,0,NULL,10,NULL,NULL,NULL,NULL),(9,4,'Coding Ship Order Entry System','','2006-05-02 14:10:16',12000000,1,13,100,-1,0,NULL,35,NULL,NULL,NULL,NULL),(10,7,'Pick-Up and Pay','Add Payment Authorization Status Bidder, \r\nshow and make sortable on Pickup and Pay','2006-05-07 16:05:51',1000000,0,5,100,-1,0,5,3,NULL,NULL,NULL,NULL),(11,26,'Support','On Call Support for systems','2006-05-09 09:45:47',30,0,4,50,-1,0,10,3.75,NULL,NULL,NULL,NULL),(12,11,'May Support','Support of System','2006-05-13 10:40:39',1000100,0,5,100,-1,0,0,1,NULL,NULL,NULL,NULL),(13,1,'Web Site','','2006-05-02 14:10:16',1000000,1,5,100,-1,0,0,9,NULL,NULL,NULL,NULL),(14,12,'Index page - Emergency Construction','Custom Build Page to look like Popwerpoint last page.  Hand scaling and fixed positinoning of all elements.','2006-05-16 12:25:42',1000000,0,5,100,-1,0,0,4.5,NULL,NULL,NULL,NULL),(15,2,'Phase 2 - GUI Development Input Panels','','2006-04-12 05:02:00',1000,0,5,100,3,0,0,22,NULL,NULL,NULL,NULL),(16,10,'Design and Construct','Phase 1','2006-05-29 18:20:00',1000003,0,5,100,-1,0,0,27.75,NULL,NULL,NULL,NULL),(17,2,'Phase 3 - GUI Development Input Panels','','2006-05-30 14:05:00',1000000,0,5,100,3,0,0,14,NULL,NULL,NULL,NULL),(19,1,'Changes from Customer Feedback','Change business logic and make enhancments based on customer feedback.\r\n\r\n1) When you are writing an inspection up on a project and you get to the deficiency page, the Project and date can not be optional when writing a new def.  They must match the inspection cover sheet. \r\n\r\n2) I do not want the inspector to be able to add/delete or edit a developer nor do I want them to have access to the developer page and list (only admin)  My sales guys will have to enter in a new developer when they land them. \r\n\r\n3) Can we hide the directions for the inspectors when you sign in as a client? \r\n\r\n4) Last, when you begin writing a new inspection, the project drop down is highlighted.  If someone doesn’t realize this and they scroll down the page using the mouse, they will end up choosing a different project without realizing it.  ?? \r\n\r\n5) I think we may want to make some slight changes to appearance to simplify for the inspector (Bottons, Bold Next Choices, Etc)  The two guys that have look at the program kept asking me, “What do I do Next?” \r\n\r\n','2006-05-30 15:14:38',1000000,1,5,100,2,0,10,16.25,NULL,NULL,NULL,NULL),(20,2,'Task and Project Management','','2006-05-31 08:16:00',1000000,0,5,100,-1,0,8,1.5,NULL,NULL,NULL,NULL),(21,6,'Internet Updates','On Going internet updates','2006-06-04 22:55:00',1000000,0,5,100,-1,0,0,3.5,NULL,NULL,NULL,NULL),(22,3,'Tweek User Interfaces','','2006-06-06 20:26:00',100000,0,5,0,-1,0,4,6,NULL,NULL,NULL,NULL),(23,14,'Initial Templates','Design Initial Templates','2006-06-08 12:00:00',1000000,0,5,100,-1,0,0,4,NULL,NULL,NULL,NULL),(24,14,'Spanish/English','This is mode easily accomplished by having a second site in a subdir \'es\' for espanol.','2006-06-09 11:43:00',1000000,0,5,100,-1,0,0,0,NULL,NULL,NULL,NULL),(25,16,'Support','1) block multiple referring physicians\r\n2) referring physicians in alpha order.\r\n3) Provide means to fix cases.','2006-06-12 08:00:00',1000000,0,5,100,-1,0,0,2.5,NULL,NULL,NULL,NULL),(26,2,'Modifications and Enhancements','Ongoing modifications and enhancements to safety system.','2006-05-30 14:05:00',1000001,0,5,100,3,0,0,46,NULL,NULL,NULL,NULL),(28,1,'Standalone Client','Create Standalone client and synching code','2006-07-08 12:21:00',1000000,0,5,100,-1,0,40,62.75,NULL,NULL,NULL,NULL),(29,17,'Lees Requests 7/10','Lees Requests 7/10','2006-07-10 15:29:00',1000000,0,5,100,-1,0,0,17.5,NULL,NULL,NULL,NULL),(30,2,'July GUI Refinement for I/A','More work, beginning w \r\nVincent Gross notes Widen E Contact list Admin to Corp, Add Unlin, Shift ABCMods to various list, replace checkboxes with yse no radio buttons.\r\n','2006-07-03 14:05:00',1000000,0,5,100,17,0,0,18,NULL,NULL,NULL,NULL),(31,18,'New Work, July','Meeting, new web content, Inventory Adjustment ','2006-07-18 19:15:00',1000001,0,5,100,-1,0,0,8,NULL,NULL,NULL,NULL),(32,1,'More Changes from Heather','Add Project Status to Inspection\r\nRemove Comment from Project\r\nMake Poject List show Contact, not Comment','2006-07-18 19:25:00',1000000,0,5,100,-1,0,0,5,NULL,NULL,NULL,NULL),(33,11,'July Support','Find and fix issue with KleenTex orders','2006-07-24 18:49:00',1000000,0,5,100,-1,0,3,3.5,NULL,NULL,NULL,NULL),(34,10,'Refinements','Phase 1.5','2006-08-01 10:11:48',1000001,0,5,100,-1,0,0,14,NULL,NULL,NULL,NULL),(35,19,'Project Editor Start Date and Checking Combos','Fix prolbems with sequencing days when both project combo and optional selects are done together.  (Days are not being added correctly.)','2006-08-02 09:18:00',1000000,0,5,100,-1,0,0,0,NULL,NULL,NULL,NULL),(36,19,'Status report task sequence and dates.','Status report.\r\nFor tasks with sequenced across days, show different days on the status report.','2006-08-02 09:19:00',200,0,3,0,-1,0,0,0,NULL,NULL,NULL,NULL),(37,19,'Expeditied projects','Problems reported around weekends. date is not added to account for optional tasks.','2006-08-02 09:20:00',200,0,3,0,-1,0,0,0,NULL,NULL,NULL,NULL),(38,19,'Project Complete on Project Search Page','Will you add the production complete date on the project search page. Please add this in the chart after the start date and before the install date. You can make the project name, customer name, file, start date, install date, & paper holder fields smaller. A couple of these can be a lot smaller. This extra data on this screen would be very helpful.','2006-08-03 12:49:00',200,0,3,0,-1,0,0,0,NULL,NULL,NULL,NULL),(39,6,'MSDS Sheets','Add new MSDS to Sales and operations.\r\nConvert all to PDF format','2006-08-07 21:56:00',1000000,0,5,100,-1,0,0,0.75,NULL,NULL,NULL,NULL),(40,20,'Build','Build version 1','2006-08-10 10:19:00',1000000,0,5,100,-1,0,20,20,NULL,NULL,NULL,NULL),(41,1,'PDF Reports','Reformatting of Inspection reports','2006-08-15 14:44:00',1000000,0,5,100,-1,0,4,4,NULL,NULL,NULL,NULL),(42,20,'First 3 Sites','WTCIPRESENTS.COM & WTCIPRESENTS.ORG & \r\nSPLASH-TV.COM & SPLASHTUBE.COM\r\nall point to 248.\r\n\r\nI\'d like, however, to have the application run at this address:\r\nhttp://www.splash-tv.com/wtci for WTCI, obviously, and so forth.\r\n\r\nIn the directories for WTCIPRESENTS.COM & WTCIPRESENTS.ORG there will  \r\nsimply be an html refresh to the http://www.splash-tv.com/wtci  \r\ndirectory.\r\n\r\nthus the SPLASH-TV directory contains sub-directories ->  wtci  -  \r\nmhk - splash-tv\r\n\r\nwith more likely to follow.\r\nLet me know if any of this sounds stupid of if I have missed an issue.\r\n','2006-08-22 14:47:00',300,0,3,0,-1,0,0,0,NULL,NULL,NULL,NULL),(43,1,'OFFLINE FEEDBACK CHANGES','1. New Keep Data on inspection\r\n2. Local delete\r\n3. Move Upload data to top menu bar. {Upload Data]\r\n4. Refresh tree on inspection changes\r\n','2006-08-25 11:21:00',1010000,0,5,100,-1,0,0,0,NULL,NULL,NULL,NULL),(44,20,'Training','Training Code','2006-08-25 11:46:00',1000000,0,5,100,-1,0,0,18.25,NULL,NULL,NULL,NULL),(45,20,'Updates','Exteded functionality','2006-08-29 11:41:00',1000000,0,5,100,-1,0,0,4,NULL,NULL,NULL,NULL),(48,2,' Mohawk Dev Site','Create a generic template for GP content on the safety site.','2006-08-30 19:14:00',1000001,0,5,100,-1,0,0,3,NULL,NULL,NULL,NULL),(49,21,'Mail form for splash','Create a mail form and set up a site to run it from ','2006-08-30 19:15:00',1000000,0,5,100,-1,0,0,1,NULL,NULL,NULL,NULL),(50,17,'Mail Forms','Mail Forms\r\n\r\nUpdate Appointement requuest, build workers comp form.','2006-08-30 19:19:00',1000000,0,5,100,-1,0,0,2.5,NULL,NULL,NULL,NULL),(51,2,'Train and Test System','Initial functionality for train/test to be integrated with media presenter','2006-08-31 12:15:00',1000001,0,5,100,-1,0,0,49,NULL,NULL,NULL,NULL),(52,22,'ECommerce Account','ECommerce Account','2006-09-05 15:48:00',1000000,0,5,100,-1,0,0,2,NULL,NULL,NULL,NULL),(53,2,'I/A Data Validation','Form Validation and post form TODO\'s for data integrity','2006-09-15 16:20:00',1000001,0,5,100,-1,0,0,3,NULL,NULL,NULL,NULL),(54,2,'Media and training fixes','Minor Fixes after 9/13 meeting','2006-09-15 18:43:00',2000000,0,5,100,-1,0,0,7.5,NULL,NULL,NULL,NULL),(55,22,'Site Changes','To Kleen Tex IDs.\r\nFix blank of order adjust\r\nReal Proof.\r\n','2006-09-16 11:21:00',2000000,0,5,100,-1,0,0,1,NULL,NULL,NULL,NULL),(56,16,'Support','Support, Fixes, Upgrades\r\n','2006-09-16 11:26:00',500,0,3,0,-1,0,0,3,NULL,NULL,NULL,NULL),(57,1,'Quality Assurance','Quality Assurance for both online/offline','2006-09-18 12:18:00',2000000,0,5,100,-1,0,0,2,NULL,NULL,NULL,NULL),(58,2,'New Pereto Report(s)','New Pereto Report(s)\r\n','2006-09-20 11:24:00',1000001,0,5,100,-1,0,0,6.75,NULL,NULL,NULL,NULL),(59,22,'General','For General Maintenance support configuration and training','2006-09-29 07:51:00',1000005,0,5,100,-1,0,0,1,NULL,NULL,NULL,NULL),(60,22,'Payment Processor Link Up','Finalizing link to NOVA merchant account link to Trust Commerce (via clix?)','2006-10-03 15:03:00',1000000,0,5,100,-1,0,0,1,NULL,NULL,NULL,NULL),(61,2,'I/A Form Maintenance','General Task for work on I/A Form','2006-10-11 15:56:00',1000001,0,5,100,-1,0,0,12.5,NULL,NULL,NULL,NULL),(62,19,'Project install Dates','New Sorting for Install Date\r\nHad to add Not Scheduled hiddend column and changed default sort to sort inverse.','2006-10-24 08:36:00',1000000,0,5,100,-1,0,0,1.25,NULL,NULL,NULL,NULL),(63,23,'Spell Checking and Email','Spell Check Custom Dictionary\r\nSpell check uploaded document\r\nTO DO: Misspelled items','2006-10-24 10:53:00',1000000,0,5,100,-1,0,3,28,NULL,NULL,NULL,NULL),(64,23,'Email Client','Email client when new inspections have been created and spell checked.\r\nNeed to be able to enter multiple email addresses for each client and also \r\ndifferent email addresses for each project.','2006-10-24 10:53:00',1000000,0,5,100,-1,0,4,0.5,NULL,NULL,NULL,NULL),(65,23,'Daily Inspections','Add Daily Inspections to online.\r\n(Later to do off-line)','2006-10-24 10:53:00',1000001,0,5,100,-1,0,8,26.5,NULL,NULL,NULL,NULL),(66,23,'Imaging','Capability to assign and upload images to deficiencies from digital camera.\r\n- User plugs in camera\r\n- Store preference for path (drive) to digital camera per user.\r\n- Offline scans for images, allows attachment to deficiencies\r\n- Online allows inspector to upload / assign uploaded images to deficiencies.\r\n- Images flagged as deficiency or corrected.\r\nImages available to developers in Project Tree.\r\n\r\n','1900-11-00 00:00:00',1,0,4,0,-1,0,6,0,NULL,NULL,NULL,NULL),(67,24,'Training Manual','Manual on Site administration.','2006-10-24 14:51:00',1000000,0,5,100,-1,0,4,9.5,NULL,NULL,NULL,NULL),(68,24,'Exit pages','Landing Pages and product entry for Exit Realty','2006-10-24 14:51:00',1000000,0,5,100,-1,0,0,7,NULL,NULL,NULL,NULL),(69,24,'DISCOUNT COUPON','Discount Coupon in Session (insert by landing page or by coupon entry page.)\r\nProvide global discount or discount by product.\r\nDISCOUNT OPTIONS\r\n----------------\r\npercentage of price\r\nfree shipping.\r\n','2006-10-24 14:51:00',1000002,0,5,100,-1,0,8,6.75,NULL,NULL,NULL,NULL),(70,25,'Complete Incident Demo Site','Fixes to make the demo site fully functional','2006-10-30 10:36:00',1000000,0,5,100,-1,0,0,2,NULL,NULL,NULL,NULL),(71,26,'New Dynamic Menu','New Dynamic Menu','2006-10-31 08:40:00',1000001,0,5,100,-1,0,0,8,NULL,NULL,NULL,NULL),(72,10,'After demo fixes','After demo fixes','2006-11-06 16:49:00',1000000,0,5,100,-1,0,0,0,NULL,NULL,NULL,NULL),(73,6,'FAX No - Date','Add FAX Numbers to generated documents O and S.\r\nFL: 866-288-6958\r\nALL ELSE: 770-387-2728\r\n(Must add Fax No to division)\r\nAlso set Sales Date to SO Creation not NOW.\r\n\r\n\r\n','2006-11-09 11:48:00',1000009,0,5,100,-1,0,0,5.75,NULL,NULL,NULL,NULL),(74,24,'Correct char max for size and orientation',' ** NOTE - Characters could also mean empty spaces.  In other words, a space\r\n> also counts as a character. \r\n> 2\'x3\' Horizontal -- 16 characters \r\n> 3\'x4\' Vertical  -- 16 characters \r\n> 3\'x4\' Horizontal -- 22 characters \r\n> 3\'x5\' Vertical  -- 16 characters \r\n> 3\'x5\' Horizontal -- 24 characters \r\n> 4\'x6\' Vertical -- 22 characters \r\n> 4\'x6\' Horizontal -- 28 characters ','2006-11-13 15:10:00',1000000,0,5,100,-1,0,3,6.75,NULL,NULL,NULL,NULL),(75,23,'Legacy Data Reports','Fix appearance of legacy reports.','2006-11-13 16:00:00',1000000,0,5,100,-1,0,3,0,NULL,NULL,NULL,NULL),(76,20,'Media Editor','Make sure all media / folder editors work.','2006-11-13 16:20:00',8,0,4,0,-1,0,0,0,NULL,NULL,NULL,NULL),(77,27,'Diagnose, create workaround for login','Create a workaround for login failures due to new database installtion.','2006-11-16 15:45:00',1000000,0,5,100,-1,0,0,1,NULL,NULL,NULL,NULL),(78,23,'Inpection Forms','Business Rules for Inspection Forms','2006-12-06 20:36:00',10,0,4,0,-1,0,0,0.75,NULL,NULL,NULL,NULL),(79,19,'General Updates - Support','Wildcard % Project searches, next page search corruption','2006-12-07 07:59:00',2000008,0,5,100,-1,0,0,6.5,NULL,NULL,NULL,NULL),(80,21,'Servers','Support 205.144.210.12 server','2006-12-11 14:14:00',1010000,0,5,100,-1,0,0,1,NULL,NULL,NULL,NULL),(81,30,'Generic Template and Commercial Logic','New Template and Logic','2006-12-13 20:57:00',1000001,0,5,100,-1,0,0,32.5,NULL,NULL,NULL,NULL),(82,31,'','Travel to and from Marietta\r\n','2006-12-19 11:36:00',20,0,3,0,-1,0,0,160,NULL,NULL,NULL,NULL),(83,24,'In-Site Training','On-Site Training ','2006-12-19 11:38:00',1000000,0,5,100,-1,0,0,2,NULL,NULL,NULL,NULL),(84,6,'Support','General Support','2006-12-20 17:21:00',18,0,4,50,-1,0,0,1,NULL,NULL,NULL,NULL),(85,30,'Back End Admin Changes','Changes to the administration of the site.','2006-12-20 17:24:00',20,0,4,0,-1,0,0,3,NULL,NULL,NULL,NULL),(86,2,'2007 Support and Development','2007 Support and Development','2007-01-12 12:05:00',8,0,4,0,-1,0,0,37.5,NULL,NULL,NULL,NULL),(87,32,'Auxion Training Sessions','Training Sessions','2007-01-17 16:02:00',1000000,0,5,100,-1,0,0,2,NULL,NULL,NULL,NULL),(88,33,'Color Lab','','2007-01-22 08:58:00',20,0,14,0,-1,0,8,6,NULL,NULL,NULL,NULL),(89,33,'Scroll Bar','','2007-01-22 08:58:00',20,0,14,0,-1,0,8,25,NULL,NULL,NULL,NULL),(90,23,'Support','Support, email, uploads, and general maintenance of application and site.','2007-01-25 08:30:00',20,0,14,0,-1,0,0,13.5,NULL,NULL,NULL,NULL),(91,34,'Template Refresh',' 1.  Format – The website alignment & appearance look different on varying computers.\r\n\r\nThis will take a refresh of the current template(s)\r\n\r\n','2007-01-25 11:06:00',30,0,14,0,-1,0,4,0,NULL,NULL,NULL,NULL),(92,34,'Forms Interfaces','(6 Hours for each major form item x 4) t=24\r\n(4 hours extra for special form logic) (t=28)\r\n 2. Appointment Request Link – 1 of 4 forms\r\n 1. Needs a “First Available” added to the “Physician” field.   (part of lookups - 2 hours) t=30\r\n 2. Needs Pop-up Calendar for “Proposed Date.”                  (AJAX component - 4 hours) t=34\r\n 3. Needs a free-text field for “Comments” under “Have you      (part of forms)\r\n               Been to our office before.” \r\n\r\n 3. Workers’ Compensation Link – 2 of four forms\r\n         1. Needs apostrophe after the “s” in link title, to read “Workers’ Compensation, make same correction to the title of the form.                                                 (fixed)\r\n         2. First field “Date” needs to automatically fill-in with the current date.  (forms logic)\r\n         3. “Appointment Date” field needs to read, “Desired Appointment Date”        (part of forms changes)\r\n         4. “Time” field should read “Desire Time”.(part of forms changes)\r\n         5. Add “First Available” to “Dr.” field.                                 (part of lookups)\r\n         6. All fields requiring a date need calendar pop-ups.\r\n         7. Date formats need to be easily filled in regarding format (hyphens, slashes, etc..) or give an example of what the format needs to be.                          (part of forms db changes)\r\n         8. “Right, Left, Bilat, etc…” need to have check or “x” boxes to click on, not free text fields.                (part of forms db changes)\r\n         9. Add apostrophe after “s” in “Workers’ Compensation Carrier” (done)\r\n        10. There needs to be a filled in form for Mohawk, Beaulieu, Hamilton Medical Center, Shiroki North America Inc, J& J Industries, Shaw, Springs Industries.  (special logic quoted above)\r\n        11. Form needs to go to sjackson@aosmclinic.com , right now it does not go anywhere. (email logic - included in special logic est. above)\r\n\r\n   5. Patient Forms – Need to be able to be filled in on-line and submitted to AOSM,\r\n      sjackson@aosmclinic.com   ( 2 of the 4 forms)\r\n\r\n\r\n\r\n','2007-01-25 11:06:00',30,0,14,0,-1,0,34,0,NULL,NULL,NULL,NULL),(94,30,'New Features - proof of Concept','Research, Proof of Concept ','2007-01-27 09:27:00',10,0,14,0,-1,0,0,3,NULL,NULL,NULL,NULL),(93,34,'Web Content','   4. Add an “Imaging” Link\r\n\r\n          1. On the home page, on left, under the phone number, please add in bold,\r\n\r\n              NOW OFFERING ON-SITE MRI SERVICES WITH SAME DAY\r\n\r\n             APPOINTMENTS.\r\n\r\n      2.I will email a few images of the scanner for placement on the site.','2007-01-25 11:36:00',30,0,14,0,-1,0,2,0,NULL,NULL,NULL,NULL),(95,10,'2007 Maintenance ','2007 Maintenance ','2007-01-29 10:32:00',1000001,0,5,100,-1,0,0,22.75,NULL,NULL,NULL,NULL),(96,23,'Daily Inspections - Offline','Add Daily Inspections to off-line.','2006-10-24 10:53:00',1000000,0,5,100,-1,0,5,17.5,NULL,NULL,NULL,NULL),(97,11,'2007 Support and Development','2007 Support and Development','2007-01-31 14:44:00',5,0,4,0,-1,0,0,15.5,NULL,NULL,NULL,NULL),(98,35,'P&L and Operations forms','Form Clean-up \r\nOperations and Sales\r\nP&L Systems and Entry forms.\r\n','2007-02-07 10:13:00',1000000,0,7,100,-1,0,0,14.25,NULL,NULL,NULL,NULL),(99,35,'Change Instructions','Change Instructions on substrate Double Scrub\r\nOn\r\nCeramic, porcelain, quarry tile, use Terrazzo as guide.','2007-02-07 10:13:00',1000000,0,7,100,-1,0,0,0,NULL,NULL,NULL,NULL),(100,35,'Photo','Before and After Photo\r\n\r\nLOW PRIORITY','2007-02-07 10:13:00',30,0,3,0,-1,0,0,0,NULL,NULL,NULL,NULL),(101,35,'Mail System','Mail Systems with Report Attachments.\r\n','2007-02-07 10:13:00',30,0,3,0,-1,0,0,0,NULL,NULL,NULL,NULL),(102,35,'Schedule Creation','Create Schedule / Calendar\r\nCalls, Meeting, or TODOs\r\nLine Seperators on Daily View\r\n\r\nCalls, TODOS , Phone Numbers, Contact  on Left.\r\nReschedule Ability for all items.\r\nPersistent Scheduled Work.\r\n\r\n\r\n\r\n\r\n\r\n\r\n','2007-02-07 10:13:00',30,0,19,0,-1,0,0,0,NULL,NULL,NULL,NULL),(103,35,'Contractor Company and Contacts.','Contact, Company for both customers and contractors.\r\nAdd Type field to both to distinguish.\r\n','2007-02-07 10:13:00',30,0,5,0,-1,0,0,0,NULL,NULL,NULL,NULL),(104,35,'Job Snapshot','Job Snapshot\r\nOne document that has all the details of the job.','2007-02-07 11:57:00',30,0,19,0,-1,0,0,0,NULL,NULL,NULL,NULL),(105,35,'Meeting / High Level Design','Meeting / High Level Design of new P&L\r\n','2007-02-07 13:00:00',30,0,5,0,-1,0,0,2,NULL,NULL,NULL,NULL),(106,36,'Report Generation','Work portion of Kickoff Meeting, Report generation','2007-02-09 15:32:00',1,0,4,30,-1,0,40,15.5,1,NULL,NULL,NULL),(107,35,'Notes Consolidation','DAVID:\r\nIf we plan to use as a x net data base, we will need all notes that\r\nare in jobs to be consolidated by contacts/companies for quick review\r\nof customer status.  I believe they should be date and job name stamped.\r\nJust a thought to note as you move forward.\r\ntom','2007-02-13 17:23:00',30,0,19,0,-1,0,0,0,NULL,NULL,NULL,NULL),(108,37,'Build out new site','Template and all','2007-02-14 09:02:00',30,0,4,90,-1,0,0,9,NULL,NULL,NULL,NULL),(109,36,'Reverse Engineering database and JSP','','2007-02-20 08:28:00',7,0,4,20,-1,0,0,2,1,NULL,NULL,NULL),(110,30,'Server Maintenance','Server Maintenance','2007-02-20 08:38:00',20,0,14,0,-1,0,0,1,NULL,NULL,NULL,NULL),(111,37,'Improved logic','Improved logic\r\nChanges in logic, fixes for template and script issues caused by WOSU subdirctory.','2007-02-22 16:51:00',30,0,4,90,-1,0,0,10,NULL,NULL,NULL,NULL),(112,36,'General Operations Support','General Operations Support','2007-02-26 14:23:00',2,0,4,10,-1,0,0,1.25,NULL,NULL,NULL,NULL),(113,11,'General Support','All else','2007-02-28 07:22:00',10,0,14,0,-1,0,0,0.5,NULL,NULL,NULL,NULL),(114,36,'Task Manager - Tickets','Create and install task management on info server.','2007-03-02 08:30:00',2,0,4,70,-1,0,0,20.25,1,NULL,NULL,NULL),(124,19,'External Project Reporting for customers','External Project Reporting for customers\r\nAllow customers to sign in and review only their projects.\r\nA special project viewer with reports.\r\nNeed to complete by 29/30th of March','2007-04-04 13:26:00',2,0,4,0,0,0,0,0,1,'2007-04-04',NULL,NULL),(117,2,'Automatic Backup and Failover, Development Environment ','<p>Build <strong>PRODUCTION</strong> box, Create fail-over mechanism. <br />Implement SVN in team environment.</p>','2007-03-16 09:24:00',2,0,4,10,-1,0,0,12.75,1,'2007-03-16',NULL,NULL),(118,35,'P&L and Operations forms, Rework','Form Clean-up \r\nOperations and Sales\r\nP&L Systems and Entry forms.\r\n','2007-02-07 10:13:00',3,0,4,90,-1,0,0,9.5,-1,'2007-03-16',NULL,NULL),(119,19,'Pre Production Calendar','Develop Pre-Production Stages and calendar to track work before project approval.\r\n','2007-03-19 22:56:00',2,0,4,90,-1,0,0,9.75,1,'2007-03-19',NULL,NULL),(120,36,'Print Postcard Reports','David,  sorry it took me so long to get this information to you.  Attached file \'very\' briefly walks you through steps to letter generation through McCright systems.\r\n \r\nProcess is the same for yellow, purple or blue servers.\r\n \r\nOur ultimate goal is to be able to chose between generating a file (text) or generating letter document (pdf) for mailing to customers.  We have leased a post card printer from Pitney Bowes and intent to use it initially to replace notification letters and pass result letters.  (Savings on postage, envelopes, paper, etc.)  The software for this printer will except an excel, csv, or text format as an import for data necessary to print the postcards.\r\n \r\nThe only issue not noted on the document is related to \'McCright Local Phone #\'  - we are slowly adding local phone numbers for each housing authority that can be used by our customers to contact the office (obviously to reduce long distance phone cost).  These numbers are not stored anywhere on the database so we have 2 options\r\n\r\n   1. Long term -- create a new field within customer file to store local contact number for McCright and modify letter generation and file generation to retrieve information from Customer file.\r\n   2. Short term -- we can manually update this field once letter file is extracted from database. (as of today we are using 3 local numbers that print on all letters for (Knoxville,Sarasota and Worcester) and we have updated the phone number on the template that is used for letter generation for these housing authorities\r\n\r\n \r\nAny questions, please let me know. KAY','2007-03-21 17:45:00',1,0,4,90,-1,0,8,24.5,1,'2007-03-21',NULL,NULL),(121,23,'Marketing Documents','Create Marketing Document on features','1900-03-00 00:00:00',1000000,0,5,100,-1,0,0,0,1,'2007-03-21','2007-05-15 00:00:00',NULL),(122,38,'Media Player for Mary/Learning Center','Install new instance of Media Player with a separate DB\r\nURLs: \r\ntrainingatmohawk.com\r\nlearningatmohawk.com','2007-03-23 10:30:00',1000002,0,5,100,-1,0,0,13,1,'2007-03-23',NULL,NULL),(123,2,'Visitor Pass','Create a visitor pass system that creates a pass for each location.','2007-03-29 09:49:00',2,0,4,90,0,0,0,15.5,1,'2007-03-29',NULL,NULL),(125,36,'Public Rent Reasoner','Validated Input for External Clients.\r\n','1900-04-00 00:00:00',5,0,14,0,0,0,0,0,1,'2007-04-09',NULL,NULL),(126,37,'Install Reporting','Custom Build and Install of new report engine.','2007-04-19 16:31:00',1000,0,14,0,0,0,0,0,1,'2007-04-19','4007-04-19 00:00:00','4007-04-19'),(127,39,'Site Maintenance','Update Site to status of current service offerings<br />','2007-04-27 08:16:00',1000,0,14,0,0,0,0,1.5,1,'2007-04-27','4007-04-27 00:00:00','4007-04-27'),(128,40,'Financial Reports','<h3>Financial Reports for Steve</h3><p>Revenue by price bracket<br />Revenue by hour </p>','2007-05-01 10:27:00',1000,0,14,0,0,0,0,2,1,'2007-05-01','4007-05-01 00:00:00','4007-05-01'),(129,35,'Trial Dicount Changes','<p>Implement Trial Discount in Quote (S-13)</p><p>Add Trial Discount by Sq. Ft.</p><p>Auto Calculate on form Total Discount.&nbsp;</p>','2007-05-08 10:13:00',1000,0,14,0,99,0,6,0,1,'2007-05-08','4007-05-08 00:00:00','4007-05-08'),(130,35,'Seperate Intranet Sites','<p>Replicate database, (new encrypted connect strings). 2 hrs</p><p>Remove  &#39;leaving party&#39; data from both databases. 2 hrs</p><p>Replicate Intranets. 3 hrs<br /></p>','2007-05-08 10:19:00',1000,0,14,0,99,0,7,0,1,'2007-05-08','4007-05-08 00:00:00','4007-05-08'),(132,40,'support','','2007-05-09 11:56:00',1000,0,19,0,128,0,0,0,1,'2007-05-09','4007-05-09 00:00:00','4007-05-09'),(131,35,'New GFF Site with intranet','<p>Domain Registration and DNS Setup on w3sys nameserver (2 hours)</p><p>Main / Contact Templates from open source template design with GFF log work (6 hours)</p><p>3 Pages of initial content (home, about us, contact us.) (4 hours)&nbsp;</p><p>&nbsp;</p>','2007-05-08 10:23:00',1000,0,14,0,99,0,12,0,1,'2007-05-08','4007-05-08 00:00:00','4007-05-08'),(133,35,'General Support','Support for operations etc.<br />','2007-05-29 10:33:00',1000,0,19,0,0,0,0,0,1,'2007-05-29','4007-05-29 00:00:00','4007-05-29');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Task` ENABLE KEYS */;
+
+--
+-- Table structure for table `Task_Assignment`
+--
+
+DROP TABLE IF EXISTS `Task_Assignment`;
+CREATE TABLE `Task_Assignment` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `User` bigint(20) default NULL,
+  `Task` bigint(20) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Task_Assignment`
+--
+
+
+/*!40000 ALTER TABLE `Task_Assignment` DISABLE KEYS */;
+LOCK TABLES `Task_Assignment` WRITE;
+INSERT INTO `Task_Assignment` VALUES (8,1,95),(23,1,125),(29,1,117),(13,1,118),(20,1,119),(19,1,120),(16,1,121),(18,1,123),(27,1,126),(28,2,65),(30,1,129),(31,1,133);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Task_Assignment` ENABLE KEYS */;
+
+--
+-- Table structure for table `Time`
+--
+
+DROP TABLE IF EXISTS `Time`;
+CREATE TABLE `Time` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Task` bigint(20) default NULL,
+  `Start` datetime default NULL,
+  `Stop` datetime default NULL,
+  `Description` text,
+  `Hours` double default NULL,
+  `Status` bigint(20) default NULL,
+  `Invoice` bigint(20) default NULL,
+  `Performed_By` bigint(20) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Time`
+--
+
+
+/*!40000 ALTER TABLE `Time` DISABLE KEYS */;
+LOCK TABLES `Time` WRITE;
+INSERT INTO `Time` VALUES (1,1,'2006-04-10 12:05:00','2006-04-10 18:05:00','Complete UML Diagram',6,10,6,NULL),(5,2,'2006-04-12 17:00:00','2006-04-12 17:30:00','Design UI Panels and set Business Logic',0.5,10,6,NULL),(6,3,'2006-04-18 11:37:53','2006-04-18 12:04:36','Add Behavior Factors',0.445278,10,NULL,NULL),(7,3,'2006-04-18 12:05:26','2006-04-18 12:44:45','Add Equipment and Materials',0.655278,10,NULL,NULL),(8,3,'2006-04-18 14:12:10','2006-04-18 14:58:39','Root Cause ',0.774722,10,NULL,NULL),(9,3,'2006-04-18 16:10:56','2006-04-18 18:56:36','Incorporate WorkFlow',2.76111,10,NULL,NULL),(10,4,'2006-04-19 12:59:07','2006-04-19 15:16:39','Add Page upload docs, Talk to Vicki',1.25,18,NULL,NULL),(11,3,'2006-04-20 08:00:38','2006-04-20 12:31:56','New mySite Console - Template',4.52167,10,NULL,NULL),(12,3,'2006-04-20 16:00:38','2006-04-20 20:00:00','New mySite Console - Code',3.98944,10,NULL,NULL),(13,3,'2006-04-21 14:34:40','2006-04-21 14:39:25','Building People Involved',0.0791667,10,NULL,NULL),(14,7,'2006-05-02 11:30:00','2006-05-02 12:00:00','Add new documents to sales folder',0.5,10,NULL,NULL),(15,7,'2006-05-02 13:00:00','2006-05-02 15:30:00','New Universal WORD Sales Doc.',2.5,10,NULL,NULL),(16,8,'2006-04-22 08:43:00','2006-04-22 15:43:00','Create Template',7,10,NULL,NULL),(17,8,'2006-05-02 14:45:09','2006-05-02 15:45:29','Modify Templates',1,10,NULL,NULL),(18,15,'2006-05-05 15:00:44','2006-05-05 20:30:00','Changed to Sign On and registration, add location, division select.  Had to modify registrar to do and change Login Validation to accomodate new registered and terminated condition for limiting access ',5.5,9,0,NULL),(19,10,'2006-05-05 16:07:17','2006-05-05 19:07:42','',3,8,0,NULL),(20,8,'2006-05-04 18:00:00','2006-05-04 20:00:00','Get Domain and Initial site working',2,10,0,NULL),(21,9,'2006-05-01 08:10:00','2006-05-01 14:10:00','Design',6,10,0,NULL),(22,9,'2006-05-07 15:11:00','2006-05-07 16:11:00','Create Database',1,10,0,NULL),(23,9,'2006-05-07 17:55:00','2006-05-07 18:55:00','Create Business Objects and Interfaces',1,10,0,NULL),(24,11,'2006-05-09 08:30:40','2006-05-09 09:15:00','Help Nancy Add Content to Site',0.75,10,30,NULL),(25,9,'2006-05-08 16:00:00','2006-05-08 19:00:00','Building Intranet',3,10,0,NULL),(244,71,'2006-12-06 08:00:00','2006-12-06 09:00:48','Install Changes',1,18,-1,0),(28,9,'2006-05-12 12:30:00','2006-05-12 22:30:00','Custom Order from Inventory',10,10,0,NULL),(29,12,'2006-05-13 09:41:04','2006-05-13 10:41:14','Setup May Ad Special',1.00278,18,0,NULL),(30,6,'2006-05-27 08:01:09','2006-05-27 16:01:09','Add new pictures Categorized by Folder Name,\r\nCreated new template',8,10,0,NULL),(31,2,'2006-05-14 20:30:00','2006-05-14 20:45:00','Status on top',0.25,10,6,NULL),(32,2,'2006-05-14 20:45:00','2006-05-14 21:45:00','Project List First, \r\nFilter by:\r\nDate (from, to)\r\nProject name',1,10,6,NULL),(33,2,'2006-05-16 12:37:05','2006-05-16 12:37:05','Add Salesman Role, Add Salesman to Developer and Project',0,10,6,NULL),(34,2,'2006-05-14 20:45:00','2006-05-14 21:00:00','Remove Status, Stage from Project UI\r\nAuto track with last inspection\r\n(Completed check box?)\r\n',0.25,10,6,NULL),(35,2,'2006-05-14 21:00:00','2006-05-14 21:15:00','Inspection List First,\r\nHave \"Add New Inspection\" linke to show form.',0.25,10,6,NULL),(36,2,'2006-05-14 21:15:00','2006-05-14 22:00:00','Fix Styles for IE',0.75,10,6,NULL),(37,2,'2006-05-14 22:00:00','2006-05-14 22:30:00','Kill Status on report and everywhere else\r\n(redundant with stage)',0.5,10,6,NULL),(38,2,'2006-05-14 18:32:48','2006-05-14 19:33:00','Implement Spellcheck',1.01667,10,6,NULL),(40,13,'2006-05-14 21:00:00','2006-05-14 22:00:00','MOVE HOME TO SERVICES\r\nINTRO PICURES ATLANTA ON MAIN INSTEAD\r\nHISTORY: REMOVE JOHN\r\nADD CONTACT US\r\n\r\n',1,10,6,NULL),(41,14,'2006-05-16 08:00:00','2006-05-16 12:30:00','Custom Build Index Page to look like powerpoint last slide.',4.5,10,5,NULL),(42,7,'2006-05-16 16:00:00','2006-05-16 18:00:00','Notes TODO Management',2,10,0,NULL),(43,7,'2006-05-15 18:00:00','2006-05-15 18:30:00','Add Work Description to Substrate',0.5,10,0,NULL),(44,7,'2006-05-16 16:09:17','2006-05-16 17:09:17','Add new records to Substrate',1,10,0,NULL),(45,7,'2006-05-16 15:09:00','2006-05-16 16:09:00','Fix job Order Database for new Amount Calc and Quote Sheet.',1,10,0,NULL),(46,7,'2006-05-16 17:00:00','2006-05-16 17:30:00','New Quote Sheet Report, Fixup Report DB for new reporting engine.',0.5,10,0,NULL),(48,2,'2006-05-18 12:29:54','2006-05-18 19:30:24','Interface and Report Refinement',6.00833,10,6,NULL),(49,9,'2006-05-20 08:00:00','2006-05-20 13:00:00','Reports - Shipping Document',5,10,0,NULL),(50,15,'2006-05-23 08:00:00','2006-05-23 12:30:00','Report and workflow changes, new reports, multiple location per employee, employee involved on flash.',4.5,9,0,NULL),(51,15,'2006-05-22 15:00:33','2006-05-22 17:00:57','New safety reports',2,9,0,NULL),(52,15,'2006-05-23 14:00:37','2006-05-23 18:00:00','Report and workflow changes, new reports, multiple location per employee, employee involved on flash.',4,9,0,NULL),(53,15,'2006-05-24 08:00:00','2006-05-24 14:00:00','Finish Multi Location, Mandatory fields on Flash, including Employee Involved, Ne Steve Brenske reports for Location, Division, Program Catagory, Product handled 1,2 week, 1, 2 month combos, workflow sequencing, Backend business logic.',6,9,0,NULL),(54,9,'2006-05-26 08:00:00','2006-05-26 17:00:00','Reports - Bill of Lading',9,10,0,NULL),(61,13,'2006-03-30 10:10:00','2006-03-30 18:10:00','Template Design and Initial Content',8,10,6,NULL),(57,0,'2006-05-29 19:03:00','2006-05-29 19:15:42','',0.2,8,0,NULL),(62,19,'2006-05-30 15:40:00','2006-05-30 16:41:48','Make Deficiency Project and First Notation dates track calling inspection.',1.01667,10,6,NULL),(63,20,'2006-05-31 08:00:00','2006-05-31 09:30:00','Add Project and task forms',1.5,18,0,NULL),(64,17,'2006-05-31 10:59:00','2006-05-31 11:40:06','Fix List New items on I/A to be left justified, bolder and indicate type of new item.',0.683333,9,0,NULL),(65,17,'2006-05-31 18:43:00','2006-05-31 18:44:16','Data Audit System',1,9,0,NULL),(66,17,'2006-05-31 21:14:00','2006-05-31 22:34:00','Data Audit System',1.33333,9,0,NULL),(67,17,'2006-06-01 16:16:00','2006-06-01 16:34:51','Add Requestor and Requested Date to task',0.3,9,0,NULL),(68,21,'2006-06-04 22:55:00','2006-06-04 22:56:37','Latest changes from new emails after invoice\r\nStone Fusion, Brick, Concrete and Anti Graffiti pages.',1,10,27,NULL),(69,22,'2006-06-06 18:27:00','2006-06-06 20:27:00','Simplify Order Entry.\r\nAdd Ability to add Consignee, Shipper, Thrd Party\r\n',2,10,0,NULL),(70,22,'2006-06-07 08:00:00','2006-06-07 15:07:05','email notification, lock down orders, inventory and stock types for client viewing.',4,10,0,NULL),(71,19,'2006-06-07 16:19:00','2006-06-07 16:19:46','Remove Developer Edit Service from Inspector Role',0,10,6,NULL),(72,19,'2006-06-07 16:11:00','2006-06-07 17:49:08','Create Role Sensitive Content\r\n(for developer and inspector instructions)',1.63333,10,6,NULL),(73,19,'2006-06-08 12:15:11','2006-06-08 13:04:53','User Interface Simplifying tweeks\r\nFix Style sheets for service index.',0.816667,10,6,NULL),(74,23,'2006-06-08 08:01:00','2006-06-08 12:01:21','Initial Templates (3)\r\nNot yet marked up for metasite',4,18,4,NULL),(75,19,'2006-06-08 13:58:08','2006-06-08 18:35:00','User Interface Simplifying tweeks.\r\nBetter navigation, clearer separation between list and form.  Wider Inspection form.  View report links.  Inspection lists sort by date Descending, button style new link with name of created object.\r\n',4.61667,10,6,NULL),(76,17,'2006-06-09 12:15:00','2006-06-09 13:04:39','Add Limited Project Management Role (for clients) not allowed to see or adjust task percent complete.',0.816667,9,0,NULL),(77,17,'2006-06-09 13:05:00','2006-06-09 14:00:00','Fix I/A - BOLDER HEADER with \r\n\'INCIDENT INVESTIGATION REPORT; larger and bold\r\n\r\nTo Medical section PDF\r\nPDF Generation of I/A\r\nFrom top to medical, Title: FIRST REPORT OF INJURY\r\n',0.916667,9,0,NULL),(78,17,'2006-06-10 09:00:00','2006-06-10 14:00:00','To Medical section PDF\r\nPDF Generation of I/A\r\nFrom top to medical, Title: FIRST REPORT OF INJURY\r\n\r\nFix I/A Time Entry.\r\n',5,9,0,NULL),(79,17,'2006-06-13 15:48:00','2006-06-13 15:48:58','OSHA FORMS',1,9,0,NULL),(80,16,'2006-06-13 15:49:00','2006-06-13 23:29:49','Gen code / schema from UML model',2,9,0,NULL),(81,16,'2006-06-14 13:42:16','2006-06-14 15:35:40','Gen code / schema from UML model',1.88333,9,0,NULL),(82,16,'2006-06-14 16:15:58','2006-06-14 19:18:50','Gen code / schema from UML model',3,9,0,NULL),(83,25,'2006-06-15 16:31:00','2006-06-15 18:56:48','Sort Physicians, Duplicate prevention',2.41667,10,2,NULL),(84,16,'2006-06-16 08:42:00','2006-06-16 10:39:41','Create Supporting forms ',1.95,9,0,NULL),(85,16,'2006-06-16 13:35:00','2006-06-16 16:15:00','Re-configure as stand alone site, using safety people locations etc.  Add security',2.66667,9,0,NULL),(86,17,'2006-06-16 17:07:00','2006-06-16 20:08:38','Fixes for Flash Report Person Involved',3.01667,9,0,NULL),(87,16,'2006-06-19 10:05:00','2006-06-19 13:12:04','Work on Templates Styles',3.11667,9,0,NULL),(88,16,'2006-06-19 15:12:00','2006-06-19 19:12:00','Contractor Documents',4,9,0,NULL),(89,16,'2006-06-20 08:30:00','2006-06-20 11:18:03','Contractor Documents, Style and Navigation aids',2.8,9,0,NULL),(90,16,'2006-06-20 11:18:00','2006-06-20 12:43:23','Contractor Evauluation',1.41667,9,0,NULL),(91,16,'2006-06-20 15:00:00','2006-06-20 19:50:00','Contractor Evauluation',4.83333,9,0,NULL),(92,19,'2006-06-22 11:23:00','2006-06-22 17:24:17','Fixed Dificiency Listing on Inspections, Dificiencies and reports.',6.01667,10,6,NULL),(93,26,'2006-06-27 14:31:00','2006-06-27 14:51:08','Fix to medical section PDF',0.333333,9,0,NULL),(94,26,'2006-06-27 15:13:00','2006-06-27 16:15:00','Several small tasks on the safety list at mohawk.\r\nGet I/A Title right, Get Department and Exact Location working.  Add Photo update on I/A.\r\n',1.03333,9,0,NULL),(95,26,'2006-06-28 11:00:00','2006-06-28 17:00:00','Add Exact Location, and Departments to I/A Report,\r\nAdd Shift Table',6,9,0,NULL),(96,26,'2006-06-29 08:10:00','2006-06-29 16:34:00','Add Exact Location, and Departments to I/A Report,\r\nAdd Shift Table.\r\nAllow Photo management from I/A form.',8.4,9,0,NULL),(97,19,'2006-06-30 14:45:05','2006-06-30 14:45:05','Make Textbox Fonts Larger ',0,10,6,NULL),(99,19,'2006-06-30 13:01:00','2006-06-30 13:02:20','Make Inpector search box for Inspection and Projects.',0.0166667,10,6,NULL),(100,28,'2006-07-05 12:22:00','2006-07-05 17:23:00','Multi Document Interface Micorsoft C   .Net',5.01667,10,12,NULL),(101,28,'2006-07-07 12:00:00','2006-07-07 18:24:00','initial sqlite db interfaces',6.4,10,12,NULL),(102,0,'2006-07-08 12:25:00','2006-07-08 12:25:37','sqlite interfaces',0,8,0,NULL),(103,28,'2006-07-08 12:25:00','2006-07-08 15:47:02','sqlite interfaces',5,10,12,NULL),(104,29,'2006-07-11 12:30:00','2006-07-11 13:45:00','Put Movies on Site - Initial Trial Encoding',1.25,10,3,NULL),(105,29,'2006-08-22 13:52:42','2006-08-22 13:52:36','PDF Download forms',1,10,10,NULL),(107,29,'2006-07-18 19:44:20','2006-07-18 19:44:20','Larger Clinic Picture',0.5,10,3,NULL),(108,29,'2006-07-17 14:42:00','2006-07-17 18:42:00','Page with service to local schools w links to local schools,\r\nPage with professionl links',4,10,3,NULL),(98,19,'2006-06-30 10:56:00','2006-06-30 13:00:58','Order deficiency by Inspection, Id\r\n',2.06667,10,6,NULL),(109,29,'2006-07-10 15:50:00','2006-07-10 15:50:14','Train Lee on Metasite',0,10,10,NULL),(145,40,'2006-08-18 13:56:00','2006-08-18 13:56:00','Complete Initial Version',6.2,10,8,0),(111,29,'2006-07-11 12:54:16','2006-07-11 12:54:16','Put Movies on Site - Create FLASH playlist control',2,10,10,NULL),(112,28,'2006-07-11 09:00:00','2006-07-11 12:00:00','Build Form Interfaces',3,10,12,NULL),(113,28,'2006-07-11 13:11:10','2006-07-11 15:11:00','Build Form Interfaces',2,10,12,NULL),(114,28,'2006-07-12 08:00:00','2006-07-12 16:00:00','Synch Get',8,10,12,NULL),(115,28,'2006-07-13 08:00:00','2006-07-13 16:00:00','Synch Get',8,10,12,NULL),(116,28,'2006-07-14 10:34:00','2006-07-14 15:34:31','Synch Get ',5,10,12,NULL),(117,21,'2006-07-15 13:35:00','2006-07-15 15:10:11','New Images for Graffiti, Starbucks tile and grout, \r\nStatesville park',1.5,10,27,NULL),(118,29,'2006-07-16 15:00:00','2006-07-16 16:49:35','Put Movies on Site - Final Encoding',1.81667,10,3,NULL),(119,29,'2006-08-22 13:53:10','2006-08-22 13:53:10','Appointment Email Request Form',1,10,10,NULL),(120,30,'2006-07-18 10:00:00','2006-07-18 18:00:00','Multiple Items from Vincent Gross\' list',8,10,1,NULL),(121,31,'2006-07-16 10:00:00','2006-07-16 11:00:00','Meeting, upload images',1,10,7,NULL),(122,31,'2006-07-18 19:18:00','2006-07-18 19:19:44','Ship Order Form \r\nAdd show shipped and open orders checks as list criteria, default off. ',0,8,0,NULL),(123,31,'2006-07-26 19:00:00','2006-07-26 19:35:58','Ship Order Form \r\nAdd Inventory adjustment to offset vailable count,\r\nAdd freeform \'reason\' textarea.\r\n',0.5,10,7,NULL),(124,31,'2006-07-25 20:01:38','2006-07-25 21:57:51','Site\r\nVirtual warehouse page based on images,\r\nSlide automatic presentation',2,10,7,NULL),(125,31,'2006-07-27 17:10:23','2006-07-27 17:13:26','Add Phone and Address to footer',0.25,10,7,NULL),(126,31,'2006-07-27 13:15:00','2006-07-27 16:15:00','Add Contact Us Page.',3,10,7,NULL),(127,32,'2006-07-15 10:00:00','2006-07-15 15:00:00','Mods to Inspection Report',5,10,6,NULL),(128,32,'2006-07-18 19:36:00','2006-07-18 19:38:34','Add Project Status to Inspection',0.0333333,10,6,NULL),(129,30,'2006-07-20 08:00:00','2006-07-20 16:00:00','Pareto Chart Reports',8,10,1,NULL),(130,30,'2006-07-19 14:00:00','2006-07-19 16:00:00','Meeting with Chris and Charles',2,10,1,NULL),(131,33,'2006-07-24 15:30:00','2006-07-24 18:30:00','Pull all data down to test, reproduce kleentext order problem in test environment.  Findings, data entry problem setting up products, no design numbers.\r\nFixed by adding design numbers.',3,8,0,NULL),(132,33,'2006-07-25 09:30:00','2006-07-25 10:03:29','Fix Sizes on Commercial Design products.\r\n3x2',0.55,8,0,NULL),(133,31,'2006-07-27 10:02:58','2006-07-27 11:14:57','Ship Order Form \r\nAdd Inventory adjustment to offset vailable count,\r\nAdd freeform \'reason\' textarea.\r\n',1.2,10,7,NULL),(134,29,'2006-07-29 10:00:00','2006-07-29 16:00:00','Put Movies on Site - ESPN Page',6,10,3,0),(313,106,'2007-02-09 09:00:00','2007-02-09 15:30:00','Generate HUD Summary Report Template',6.5,10,43,0),(136,34,'2006-08-01 10:19:00','2006-08-01 10:40:22','Contractor Sign In',0.35,10,11,0),(137,34,'2006-08-02 12:00:00','2006-08-02 13:10:32','More filtering options, contractor list view.',1.16667,10,11,0),(138,39,'2006-08-07 20:00:00','2006-08-07 20:45:00','Downlaod Convert and add MSDS to operations and sales pages',0.75,10,27,0),(139,34,'2006-08-05 12:00:00','2006-08-05 20:00:00','Complete Sign In, Anonymous Access, \r\nSelf Registration for Contractors',8,10,11,0),(140,40,'2006-08-09 10:20:00','2006-08-09 10:20:00','Create Template, code schema, build interfaces',10,10,8,0),(141,40,'2006-08-10 10:00:00','2006-08-10 12:34:40','Build media.meta interfaces',2.56667,10,8,0),(142,40,'2006-08-10 16:00:00','2006-08-10 17:14:46','Build media.meta edit interfaces',1.23333,10,8,0),(143,41,'2006-08-15 10:45:00','2006-08-15 14:45:00','Bottom justify footing.  Make font size smaller, external border, increase model space resolution.',4,10,12,0),(144,28,'2006-08-15 14:46:00','2006-08-15 14:47:47','Changes to object design, because web application model changed.',0.5,10,12,0),(146,0,'2006-08-22 09:16:00','2006-08-22 09:17:00','Synch Upload',8,8,-1,0),(147,28,'2006-08-21 09:19:00','2006-08-21 09:19:00','Synch Put',8,10,12,0),(148,44,'2006-08-25 09:46:00','2006-08-25 11:47:32','Initial design, changes to media page to accomodate.',2.01667,10,14,0),(149,45,'2006-08-28 13:42:00','2006-08-28 14:42:00','Folder Title default for folder id=0, based on global content.',1,10,14,0),(150,149,'2006-08-28 13:43:00','2006-08-28 14:43:00','Default Folder title when folder is nil.',1,8,-1,0),(151,45,'2006-08-29 09:30:00','2006-08-29 10:30:00','Meet with Shawn and Kris, train on metasite mohawk.',1,10,14,0),(152,49,'2006-08-30 14:15:00','2006-08-30 15:11:00','Contact Form',1,18,13,0),(153,48,'2006-08-30 19:16:00','2006-08-30 19:17:10','Create Template',1,10,16,0),(154,48,'2006-08-30 19:17:00','2006-08-30 19:17:37','Set up backup development site',2,10,16,0),(155,50,'2006-08-30 19:20:00','2006-08-30 20:04:14','Appointment request changes',0.75,10,22,0),(156,50,'2006-08-30 20:00:00','2006-08-30 21:45:00','Build Workers Comp Form',1.75,10,22,0),(157,51,'2006-08-31 12:00:00','2006-08-31 13:44:23','Build Schema / Objects / Initial Admin UI',1.73333,10,16,0),(158,45,'2006-09-06 10:15:00','2006-09-06 12:15:00','UI fixes for IE.\r\nquirks mode fix by adding doc type.  removed sizing from template and put in style sheet.\r\ntweeked dimensions.\r\n(div size, IE 6 has no png image transparency support)',2,10,14,0),(159,44,'2006-09-05 08:18:00','2006-09-07 08:19:30','Tree view',4,10,14,0),(160,44,'2006-09-07 07:19:00','2006-09-07 16:30:01','Code Generation',9.18333,10,14,0),(161,26,'2006-09-07 18:42:00','2006-09-07 21:42:00','Move Supervisors to People Involved, \r\nGive Employee Involved dialog \'Add Supervisor\' Capability.',3,10,16,0),(162,26,'2006-09-08 08:29:00','2006-09-08 12:31:02','Fix Radio Buttons on I/A \r\nAdd first part of form authentication to I/A\r\nFix duplicate items in services menu.\r\nFixes for service menu url construction.\r\n\r\n',4,10,16,0),(163,26,'2006-09-08 13:18:21','2006-09-08 15:30:00','Add validation to I/A\r\n\r\n',2.2,10,16,0),(164,44,'2006-09-12 09:07:00','2006-09-12 12:07:59','Test Program',3,10,14,0),(165,34,'2006-09-14 10:00:00','2006-09-14 11:05:50','Changes after 9/13/06 meeting\r\n1.Better explanatory text,\r\n2.Quick route to Search\r\n3.Add Forms Document',1,10,17,0),(166,21,'2006-09-14 16:00:00','2006-09-14 18:00:00','More new images',1,10,27,0),(167,34,'2006-09-15 08:30:00','2006-09-15 12:00:00','Changes after 9/13/06 meeting\r\n1.Better explanatory text,\r\n2.Quick route to Search\r\n3.Add Forms Document',3.5,10,17,0),(168,28,'2006-09-01 12:04:00','2006-09-15 12:04:52','Refinement / Fixes ',10,10,12,0),(169,53,'2006-09-15 15:21:00','2006-09-15 16:21:52','Add Please Choose to Combos, Validate on Form that choices were made.',1,10,19,0),(170,54,'2006-09-15 16:45:00','2006-09-15 18:45:45','Minor Fixes, Center video putsignon dialog on media window. \r\nAdd List order to Folder Edit. \r\nFix training query.',2,10,23,0),(171,53,'2006-09-16 09:16:00','2006-09-16 11:16:00','Add Please Choose to Combos, Validate on Form that choices were made.',2,10,19,0),(172,52,'2006-09-10 11:22:00','2006-09-10 11:22:00','Trust Commerce Order',1,10,24,0),(173,52,'2006-09-14 11:22:00','2006-09-16 11:23:30','Merchant Account Integration',1,10,24,0),(174,56,'2006-09-12 11:30:00','2006-09-12 14:30:00','Debugging, repairing issues with site stoppage caused by bad data.',3,10,18,0),(175,28,'2006-09-18 08:30:00','2006-09-18 10:17:00','QA: Friendly messages to handle internet not available.\r\n',1.78333,10,12,0),(176,57,'2006-09-18 10:18:00','2006-09-18 12:19:50','Report fixes for inspection / deficiency with inspection date changes. (away from id)',2.01667,10,12,0),(177,5,'2006-09-18 12:21:00','2006-09-18 19:28:51','Pereto multi-configurable report',7,10,19,0),(178,58,'2006-09-20 11:24:00','2006-09-20 11:25:00','pereto version 1,\r\nChoose\"Division\", \"Location\",\"Person_Involved\",\"Shift\",\"Incident_Type\",\r\n\"OSHA_Status\", \"Department\",\"Activity_At_Time_Of_Accident\",\r\n\"High_Risk_Task\", \"Injury_Source\",\"Injury_Type\",\r\n\"Body_Part\",\"Operating_Conditions\", \"Incident_Environment\",\r\n\"Incident_PPE_Factors\"',4,10,19,0),(179,58,'2006-09-21 11:26:00','2006-09-21 11:27:00','Pereto beta 2\r\nChoose\r\n\"Division\", \"Location\",\"Department\",\"Shift\"',2,10,19,0),(180,26,'2006-09-26 09:00:00','2006-09-26 13:00:00','Blank I/A Form',4,10,19,0),(181,59,'2006-09-28 17:51:00','2006-09-28 18:51:00','Place Exit Realty Page up.',1,10,24,0),(182,55,'2006-09-25 07:53:00','2006-09-25 08:53:00','Move all orders to KleenTex',1,10,24,0),(183,51,'2006-10-02 10:00:00','2006-10-02 14:00:00','Updates to media center',4,10,19,0),(184,26,'2006-10-02 14:55:00','2006-10-02 18:55:00','Secure training, programs, monthly info, video page\r\nand contact us.<br>\r\n(Now secure intranet pages.)',4,10,23,0),(185,60,'2006-10-03 10:22:00','2006-10-03 11:22:00','Finalizing link to NOVA merchant account link to Trust Commerce (via clix?)',1,10,24,0),(186,51,'2006-10-03 12:24:00','2006-10-03 15:25:14','New Media Page, tree view, expanded control section',4,10,23,0),(187,51,'2006-10-04 08:00:00','2006-10-04 16:00:00','Media Page Template',8,10,23,0),(188,51,'2006-10-05 07:30:00','2006-10-05 12:30:00','Training Media page code changes for new template directives.',5,10,23,0),(189,51,'2006-10-06 09:00:00','2006-10-06 14:30:00','Training Administration refinements',5.5,10,23,0),(190,61,'2006-10-11 15:57:00','2006-10-11 17:02:00','View only to supervisors that are not initial filers.\r\nNew requirement - Kris 10/11/06',1,10,26,0),(191,51,'2006-10-11 18:35:00','2006-10-11 19:36:39','Tree Control - make to work like hierarchical menu',1,10,26,0),(192,51,'2006-10-11 19:37:00','2006-10-11 19:38:27','Employee sign on and self registration',0.5,10,26,0),(193,51,'2006-10-11 19:37:00','2006-10-11 19:39:01','Employee Test Panel',0.5,10,26,0),(194,51,'2006-10-11 19:37:00','2006-10-11 19:39:40','Employee Admin Panel',0.5,10,26,0),(195,51,'2006-10-13 13:00:00','2006-10-13 15:00:00','Tree Control,\r\nCollapse code',2,10,26,0),(196,51,'2006-10-14 13:00:00','2006-10-14 14:45:00','Test Admin Interface - tweeks for ease of use',1.75,10,26,0),(197,51,'2006-10-16 10:00:00','2006-10-16 12:00:00','Login multi-mode sign in\r\nDifferentiate between employees and system users',2,10,26,0),(198,51,'2006-10-16 13:00:00','2006-10-16 14:30:00','Emplyees Admin Panel',1.5,10,26,0),(199,51,'2006-10-16 15:00:00','2006-10-16 18:00:00','Position Admin Panel and import',3,10,26,0),(200,51,'2006-10-17 08:00:00','2006-10-17 10:00:00','Enrollment by position with renewal period.',2,10,26,0),(201,51,'2006-10-18 08:00:00','2006-10-18 12:00:00','Test Results Panel and test cleanup',4,10,26,0),(202,51,'2006-10-19 10:12:00','2006-10-19 12:12:00','LMS Documentation and testing',2,10,26,0),(203,5,'2006-10-27 09:00:00','2006-10-27 11:00:00','Report Consolidation',2,10,26,0),(204,62,'2006-10-23 07:30:00','2006-10-23 08:15:00','First Trial Code for review, previous filter as default, no NULL install dates.',0.75,10,32,0),(205,62,'2006-10-24 08:00:00','2006-10-24 08:30:00','Final version, hidden null detect column to sort \'not scheduled\' last, then descending order on install, back to \'all filter as default.',0.5,10,32,0),(206,68,'2006-10-24 10:52:00','2006-10-24 12:53:00','Finish Exit Landing Page.\r\n',2,10,31,0),(208,61,'2006-10-24 15:00:00','2006-10-24 17:30:00','Blank Form - Save as excel, add menu to pop up',2.5,10,26,0),(209,26,'2006-10-25 09:00:00','2006-10-25 10:00:00','Finish new splash page with sign-on, registration, and new menu options.  Upload and test.',1,10,26,0),(210,54,'2006-10-25 12:00:00','2006-10-25 13:00:00','Admin: Auto re-indexing Media and folders from lists using AJAX call to XML services.\r\n',1,10,26,0),(211,70,'2006-10-30 08:36:00','2006-10-30 10:36:00','1. Set fake accounts jane and john doe with supervisor roles.\r\n2. Fix Service, Role, Flash, (all) Report and Workflow pages, Tasks and Emergency Contacts.\r\n3. Fix Banner on template.\r\n4. Change ownership group to \'apache\' on wtci video directory.\r\n',2,8,-1,0),(212,71,'2006-10-31 08:15:00','2006-10-31 08:48:46','Set up local site for development',0.5,10,30,0),(213,68,'2006-11-01 13:31:00','2006-11-01 17:31:00','Add new Scrape King Products,\r\nAdd new catalog entries for kleentex.\r\nAdd Approved vendor.\r\nImage processing for pages.',4,10,31,0),(214,63,'2006-11-01 07:34:00','2006-11-01 09:35:00','Add Status to Inspection and deficiency for spell checking.\r\nChanges to xml service for uploads to change status to \'needs spellcheck\'\r\nChanges to Online forms to set \'spellchecked\'.',2,10,28,0),(215,26,'2006-11-02 07:25:00','2006-11-02 07:46:45','Sign On, Registration\r\nForm Text Changes',5,10,29,0),(216,58,'2006-11-02 13:00:00','2006-11-02 13:47:42','Add materials handled ',0.75,10,29,0),(217,5,'2006-11-02 14:00:00','2006-11-02 17:30:00','Incident Report Unification',3.5,10,29,0),(312,106,'2007-02-08 09:00:00','2007-02-08 12:00:00','Work portion of Kickoff Meeting',3,10,43,0),(219,68,'2006-11-13 10:00:00','2006-11-13 10:30:00','Add Exit fixed text style - THINK RESIDUALS',0.5,10,31,0),(220,68,'2006-11-13 14:00:00','2006-11-13 14:30:00','Perspective view of Mats on EXIT pages.',0.5,10,31,0),(222,63,'2006-11-15 07:30:00','2006-11-15 10:30:00','Test, Finish, Upload changes to spell checking, TO DO list. (Also has updates to make attach deficiencies more reliable)',3,10,28,0),(223,26,'2006-11-15 14:18:00','2006-11-15 15:46:47','Support on Armando Diaz,\r\nChange Workflow TODO\'s to have Report and incident dates\r\nAdd proxy noStore header to server.\r\nAdd menu items to media player.\r\nFix intranet menus.',1.5,10,29,0),(224,54,'2006-11-15 16:30:00','2006-11-15 19:00:04','Fixes to test \'score keeping\' after changes in login mandated by Mohawk.\r\nNow same person can take multiple tests.\r\nTest Editor can take test.',2.5,10,29,0),(225,77,'2006-11-16 15:46:00','2006-11-16 15:47:42','Diagnose Error\r\nCreate Work around\r\nsuggest permanent solution',1,8,-1,0),(226,54,'2006-11-16 13:00:00','2006-11-16 15:00:00','Compile and Upload administration programs with Mohawk people based login, train Shawn how to create tests.',2,10,29,0),(227,73,'2006-11-16 16:00:00','2006-11-16 17:30:00','Set S and O docs date to JO date.\r\nAdd Fax No to Division for Fax No on Sales and Operations Docs.',1.5,10,27,0),(229,63,'2006-11-20 10:06:00','2006-11-20 12:06:00','Test, Finish, Upload changes to spell checking, TO DO list. (Also has updates to make attach deficiencies more reliable)',2,10,28,0),(230,73,'2006-11-21 10:00:00','2006-11-21 12:30:00','Set S and O docs date to JO date.\r\nAdd Fax No to Division for Fax No on Sales and Operations Docs.',2.5,10,27,0),(231,5,'2006-11-22 09:00:00','2006-11-22 11:00:00','Report Writer Help and User Friendliness.\r\nMeet with Joe Bolduc',2,10,29,0),(232,64,'2006-11-22 16:08:00','2006-11-22 16:29:01','Email Client - Updates to User to have project list and Developer list',0.5,10,28,0),(233,63,'2006-11-24 10:51:00','2006-11-24 16:52:00','User - Project linkage for email,\r\nSpell check enhancements',6,10,28,0),(234,63,'2006-11-27 06:53:00','2006-11-27 15:53:00','Email process for developers',9,10,28,0),(235,63,'2006-11-28 10:54:00','2006-11-28 16:54:59','Email Process, Project View changes for mutliple company contacts, login and password changes, minor fixes.',6,10,28,0),(236,73,'2006-11-29 14:00:00','2006-11-29 16:00:00','Finish adding Fax No logic to 4 Operations documents',1.75,10,27,0),(237,26,'2006-11-30 14:30:00','2006-11-30 17:52:00','Turn Behavior Factors, Equipment/Material Factors,\r\nRoot Causes, and Corrective Action(s) in to multi controls',3.5,10,29,0),(238,61,'2006-12-01 10:00:00','2006-12-01 17:00:00','New Control Lists for child tables on \r\nCorrective_Actions, Root_Causes, Behavior_Factors,\r\nMaterial_Factors, Contractor_Involved, and Witnesses',7,10,29,0),(239,61,'2006-12-04 08:00:00','2006-12-04 10:00:00','Install Changes to I/A form, task 238.\r\nDebug/fix \'Save and Close\' on Employee popup.\r\nInitial version of \'Unified Report\'',2,10,29,0),(240,26,'2006-12-04 17:00:00','2006-12-04 18:00:41','Sign Off menu item,\r\nMake inner pages bottom menu similar to splash page',1,10,34,0),(241,71,'2006-12-05 09:00:00','2006-12-05 13:00:00','Build Dynamic Menu',4,10,30,0),(242,71,'2006-12-05 14:02:38','2006-12-05 14:32:00','Build Dynamic Menu',0.5,10,30,0),(243,71,'2006-12-05 16:30:00','2006-12-05 18:30:00','Build Paragraph Menu Item Builder',2,10,30,0),(245,11,'2006-12-06 09:16:00','2006-12-06 10:18:35','Refine Intranet Administrator Role.\r\nAdd Intranet link to bottom menu.\r\nSupport Nancy on Referring physician administration.\r\n',1,10,30,0),(246,74,'2006-12-06 11:44:00','2006-12-06 12:42:37','add max characters to size-price object',1,10,31,0),(247,74,'2006-12-06 13:30:00','2006-12-06 19:15:42','Finish code for adding max characters to size-price object.  Deploy to custom logo mats site.',5.75,10,31,0),(248,78,'2006-12-06 20:36:00','2006-12-06 21:24:27','Add Logic to clear text areas when new keep data is pressed.',0.8,10,28,0),(249,79,'2006-12-07 08:01:00','2006-12-07 10:36:32','Fix Wild-card Searches',2.5,10,32,0),(250,79,'2006-12-07 14:00:00','2006-12-07 18:00:00','Code, optimize and install expedited project indicator (flashing item on calendar.)',4,10,32,0),(251,69,'2006-12-08 07:00:00','2006-12-08 08:00:06','UML Design, initial class and UI entry form',1,10,31,0),(252,69,'2006-12-08 09:00:00','2006-12-08 10:55:04','Promotion Entry Page',1.75,10,31,0),(253,69,'2006-12-08 14:22:00','2006-12-08 17:23:12','Modify Projects page and Checkout page to handle promotion',3,10,31,0),(254,69,'2006-12-09 09:00:00','2006-12-09 10:00:00','Upload Promotion Changes',1,10,31,0),(255,80,'2006-12-11 09:25:00','2006-12-11 10:25:00','Try to get mysql-php working, fix errors with package manager.',1,18,13,0),(256,67,'2006-12-11 14:34:00','2006-12-11 15:00:00','Help Page',0.5,10,31,0),(257,67,'2006-12-12 13:55:00','2006-12-12 15:55:00','Site Content Editor Manual',2,10,31,0),(258,81,'2006-12-12 15:30:00','2006-12-12 18:00:00','Create new main board template',2.5,10,33,0),(259,81,'2006-12-13 08:00:00','2006-12-13 10:30:00','Move Compile Load and test site',2.5,10,33,0),(260,81,'2006-12-13 18:00:00','2006-12-13 21:00:14','Bring up administration system.',3,10,33,0),(261,81,'2006-12-14 08:00:00','2006-12-14 13:00:00','Debug and add data\r\n',5,10,33,0),(262,26,'2006-12-15 13:54:00','2006-12-15 14:55:00','Change text on sign on, and registration dialogs.\r\nInitial incident report Date to current date.',1,10,34,0),(263,67,'2006-12-15 08:00:00','2006-12-15 18:57:23','Rainbow administration training manual',7,10,31,0),(275,86,'2007-01-15 12:18:00','2007-01-15 14:03:23','Please make the login field accept numeric characters only. ',1.5,10,35,0),(264,82,'2006-12-18 11:37:00','2006-12-18 11:37:00','Round Trip',160,8,-1,0),(265,83,'2006-12-18 11:39:00','2006-12-18 13:39:00','On Site Training',2,10,31,0),(266,84,'2006-12-20 16:00:00','2006-12-20 17:00:00','Advise on Laptop, consolidate images to graffiti page.  Fix JO list (hide price for ops)',1,8,-1,0),(267,85,'2006-12-20 09:24:00','2006-12-20 12:24:00','New Donor, Donation and Images Admin Pages',3,10,33,0),(268,81,'2006-12-27 10:36:00','2006-12-27 16:36:00','New Template from SMG Graphic',6,10,33,0),(269,81,'2006-12-29 10:24:00','2006-12-29 11:24:22','New Template from SMG Graphic',1,10,33,0),(270,81,'2007-01-02 14:06:00','2007-01-02 17:21:08','New Front Page Logic ',3.25,10,33,0),(271,81,'2007-01-04 10:55:00','2007-01-04 14:55:00','Payment System Changes\r\nForce Payment Setup before bidding',4,10,33,0),(272,81,'2007-01-05 08:35:00','2007-01-05 12:35:00','Force Payment Setup and Site Certificate setup',4,10,33,0),(273,86,'2007-01-10 13:30:00','2007-01-10 15:30:00','Mohawk Meeting, Spec Gathering on Contractor System and Safety System changes.',2,10,34,0),(274,86,'2007-01-11 12:08:00','2007-01-12 12:09:26','Fixes to Splash Page\r\nLink MSDS and New Window on TRAINING.',0.5,10,34,0),(276,86,'2007-01-16 13:50:00','2007-01-16 17:50:00','LMS - Add scroll logic to folder and media area.',3,10,35,0),(281,86,'2007-01-21 14:30:00','2007-01-21 17:31:33','File Upload Progress Bar',3,10,35,0),(277,86,'2007-01-17 10:00:00','2007-01-17 11:30:00','Training Session',1.5,10,35,0),(278,87,'2007-01-17 13:03:00','2007-01-17 15:03:00','Training Session at SPLASH',2,8,49,0),(279,86,'2007-01-18 15:36:00','2007-01-18 16:37:11','Create new dal tile, unilin site directories',1,10,35,0),(280,86,'2007-01-19 08:30:00','2007-01-19 12:30:00','New dal tile, unilin sites, replicate databases, media and meta-site.  Set up web server for virtual hosts.',4,10,35,0),(282,86,'2007-01-21 18:37:00','2007-01-21 21:37:24','File Upload Progress Bar',3,10,35,0),(283,88,'2006-11-22 09:00:00','2006-11-22 15:00:00','Mouse Drag Function',6,10,39,0),(284,89,'2006-12-22 01:01:00','2006-12-28 01:01:00','Scroll Bar Replacement',25,10,39,0),(285,81,'2007-01-22 10:30:00','2007-01-22 11:15:00','Install permanent site certificate',0.75,9,48,0),(286,86,'2007-01-22 15:30:00','2007-01-22 16:30:00','File Upload Status XML Service',1,10,40,0),(287,86,'2007-01-22 17:00:00','2007-01-22 22:00:00','File Upload Status Controls',5,10,40,0),(288,86,'2007-01-23 08:00:00','2007-01-23 11:00:00','Media Changes - Cross Browser tests and fixes.',3,10,40,0),(289,86,'2007-01-23 14:00:00','2007-01-23 19:00:00','Full Screen Video',5,10,40,0),(290,86,'2007-01-24 07:32:00','2007-01-24 08:02:46','Full Screen Video',0.5,10,40,0),(291,90,'2007-01-25 08:31:00','2007-01-25 08:31:47','Investigate and Fix Rich port co. mail problem.',2,10,36,0),(292,90,'2007-01-31 09:00:00','2007-01-31 11:36:19','\'New Keep Data\'  1. Drop down menus back to good\r\nExcept have the NA stay NA.  2. Text cleared (done already). 3. Change inspector to logged in inspector.',2.6,10,36,0),(293,90,'2007-01-29 09:15:00','2007-01-29 09:30:00','Remove the deficiencies attached from the Online Inspection dialog. ',0.25,10,36,0),(294,90,'2007-01-27 09:00:00','2007-01-27 09:30:00','Daily Inspection - Add by month filter',0.5,10,36,0),(295,86,'2007-01-26 09:00:00','2007-01-26 10:30:00','Deploy / Symolic Link media player upgrades to daltile and unilin web sites',1.5,10,40,0),(296,94,'2007-01-26 10:30:00','2007-01-26 13:30:00','Patentable Event based web,\r\nDevelop design and test proof of concept.',3,9,48,0),(297,86,'2007-01-24 09:30:00','2007-01-24 11:30:00','Install Changes to Mohawk Safety site',2,10,40,0),(298,90,'2007-01-29 06:25:00','2007-01-29 07:25:00','Daily Inspection - Add by month filter',1,10,36,0),(299,95,'2007-01-29 10:33:00','2007-01-29 11:03:41','Evaluation Type Dialog.\r\nList and Sequence added to better manage list items and order.',1,10,21,0),(300,95,'2007-01-30 08:35:00','2007-01-30 09:35:03','Sign On Redirect',1,10,21,0),(301,95,'2007-01-29 10:35:00','2007-01-29 16:35:00','Contractor Administration Panel Changes and Button based site options. Embedded contacts on contractor form. Sorts on contractor list.  Alternate Form / List view on Contractor UI.\r\n',7,10,21,0),(302,90,'2007-01-30 12:23:00','2007-01-30 14:23:00','Investigate/Resolve Mail Issues\r\nPut up new mailer / Test Lee Williams.',2,10,36,0),(303,65,'2007-01-15 08:25:00','2007-01-15 11:26:00','Create Schema / Dialogs for Daily Inspections',3,10,36,0),(304,96,'2007-02-01 12:09:00','2007-02-01 15:09:00','Offline daily - view data datagrid',3,10,36,0),(305,90,'2007-01-31 14:30:00','2007-01-31 17:45:00','OFF-LINE \'New Keep Data\'  1. Drop down menus back to good\r\nExcept have the NA stay NA.  2. Text cleared (done already). 3. Change inspector to logged in inspector.',3.25,10,36,0),(306,97,'2007-01-31 14:45:00','2007-01-31 15:00:00','Fix Professional Logo mat Product information',0.25,9,45,0),(307,90,'2007-02-01 10:30:00','2007-02-01 12:30:00','OFF-LINE \'New Keep Data\'  1. Drop down menus back to good\r\nExcept have the NA stay NA.  2. Text cleared (done already). 3. Change inspector to logged in inspector.',2,10,36,0),(308,96,'2007-02-02 09:09:50','2007-02-02 11:09:00','Offline daily - view data, switch to table panel - MS data-grid has no date control!',2,10,36,0),(309,96,'2007-02-05 09:00:00','2007-02-05 16:00:00','Offline daily - editor insert / update / delete',7,10,36,0),(310,96,'2007-02-06 09:06:00','2007-02-06 14:36:00','Offline daily - complete the offline editing, add month navigation, start upload and download',5.5,10,36,0),(311,105,'2007-02-07 10:00:00','2007-02-07 12:00:00','Meet with Tom, Go over new work and changes,\r\nRevise UML Design',2,9,42,0),(314,81,'2007-02-08 20:30:00','2007-02-08 21:00:00','Add Seals to templates.\r\nInsure forms with user information are all secured.\r\n',0.5,9,48,0),(315,11,'2007-02-11 19:00:00','2007-02-11 20:00:00','Move Site to new server - Build Meta-site on UBUNTU Linux mail server.',1,8,-1,0),(316,108,'2007-02-13 09:02:00','2007-02-13 09:03:00','Create WOSU sub-site and create generic templates ',4,9,47,0),(317,108,'2007-02-14 09:03:00','2007-02-14 09:04:05','Build and integrate new auction code on PBSAUCTIONS server and integrate with WOSU site',4,9,47,0),(318,106,'2007-02-19 08:29:00','2007-02-20 08:29:49','Install, customize and test HTMLDOC.',2,10,43,0),(319,109,'2007-02-15 08:30:00','2007-02-15 10:30:00','Reverse engineer UPCS, and document system',2,10,43,0),(320,110,'2007-02-19 13:00:00','2007-02-19 14:00:00','Move and Install Auction Server',1,9,48,0),(321,95,'2007-02-16 11:15:00','2007-02-16 12:00:00','Meet with Chris, insert new forms',0.75,9,46,0),(322,98,'2007-02-10 13:30:00','2007-02-10 15:30:00','0-11 Form',2,9,42,0),(323,98,'2007-02-20 13:31:00','2007-02-20 17:31:49','P and L schema, business objects and forms',4,9,42,0),(324,111,'2007-02-22 08:00:00','2007-02-22 16:00:00','Improved Donor - Donation - Item - Board, and distributor functionality.',8,9,47,0),(325,111,'2007-02-22 16:54:00','2007-02-22 16:54:20','>Center Links (from SG)\r\n>Bid button in popup window (from SG)\r\n>wosu link opens in new window (from SG)\r\n',0,8,-1,0),(326,98,'2007-02-23 05:59:00','2007-02-23 07:30:34','Job Task Interfaces for Operations P&L',3,9,42,0),(327,98,'2007-02-24 08:45:43','2007-02-24 09:59:46','O-11 form',1.25,9,42,0),(328,112,'2007-02-26 13:15:00','2007-02-26 14:00:00','Help Jada with Worcester Housing Report',0.75,10,43,0),(329,98,'2007-02-26 14:25:00','2007-02-26 15:25:00','O-12 Form',1,9,42,0),(330,98,'2007-02-26 17:00:00','2007-02-26 18:59:43','O-13 Form',2,9,42,0),(331,98,'2007-02-27 07:00:00','2007-02-27 08:00:00','Form 0-20',1,8,42,0),(332,113,'2007-02-28 06:52:00','2007-02-28 07:22:53','Issue and install new site certificate',0.5,8,38,0),(333,111,'2007-03-01 07:00:00','2007-03-01 09:00:00','Change URL to wosu.pbsauctions.com\r\nFix tv boards',2,9,47,0),(334,106,'2007-03-01 13:39:00','2007-03-01 15:09:19','Templates for new UPCS reports',1.5,10,43,0),(336,114,'2007-03-02 08:31:00','2007-03-02 08:31:33','Simple Task interface to Project Manager',6,10,43,0),(337,106,'2007-03-02 10:30:00','2007-03-02 11:00:00','conference call - reports',0.5,10,43,0),(338,112,'2007-03-05 10:30:00','2007-03-05 14:00:00','Summary Report Support,\r\nRent Reasonableness Import Default - to Electric, and Tenant Charge.',3.5,10,43,0),(339,114,'2007-03-16 09:32:24','2007-03-16 11:14:00','Test and install on McCright Server',1.7,10,53,0),(340,108,'2007-03-06 11:18:00','2007-03-06 12:18:00','Add session.User_Id glue for Bidding from Operator Console. Check Email on Board close.\r\n',1,9,47,0),(341,95,'2007-03-06 14:30:00','2007-03-06 16:18:54','Inline Evaluations with Instant Score Totals',1.8,9,46,0),(342,95,'2007-03-06 17:15:00','2007-03-06 19:30:00','Inline Evaluations with Instant Score Totals',2.25,9,46,0),(343,106,'2007-03-07 10:30:00','2007-03-07 12:30:00','Work on Inspection Complete Summary report.\r\nResearch and Identify fix for PDF generation.',2,10,43,0),(344,95,'2007-03-07 13:30:00','2007-03-07 15:45:00','Inline Evaluations with Instant Score Totals',2.25,9,46,0),(345,97,'2007-03-09 08:00:00','2007-03-09 10:00:00','Dealer Affiliate Pages with commissions report capability.',2,9,45,0),(346,97,'2007-03-07 15:59:00','2007-03-07 15:59:39','Line of Credit on payment system',0,8,-1,0),(347,97,'2007-03-09 08:00:00','2007-03-09 12:30:00','Affiliate Promotion appears on Order',4.5,9,45,0),(348,98,'2007-03-10 15:00:00','2007-03-10 18:00:00','Rework Operations Schema and panels to clarified specs',3,9,44,0),(349,97,'2007-03-10 15:47:01','2007-03-10 16:17:00','Dealer Affiliate Pages with commissions report capability.',0.5,9,45,0),(350,97,'2007-03-13 09:30:00','2007-03-13 11:45:32','Fix templates for proper catalog wrapping.\r\nFix size price max chars issues in template and admin.',2.25,9,45,0),(351,97,'2007-03-13 11:46:08','2007-03-13 16:46:00','Dealer Affiliate Pages with commissions report capability.',5,9,45,0),(352,114,'2007-03-17 15:48:00','2007-03-17 16:48:00','Install MySQL server, client and development.',1,10,53,0),(353,118,'2007-03-16 16:03:00','2007-03-16 17:03:00','New Work Area form from new Schema',1,9,44,0),(354,118,'2007-03-17 09:49:00','2007-03-17 11:49:41','Task Item Sublist with setup',2,9,44,0),(355,118,'2007-03-18 08:00:00','2007-03-18 11:00:00','0-11 Report Generation against new schema',3,9,44,0),(356,118,'2007-03-20 09:03:00','2007-03-20 11:03:22','Replace 0-12, 0-13 templates and make new reports',2,9,44,0),(357,118,'2007-03-20 16:20:00','2007-03-20 17:50:00','Install and test',1.5,9,44,0),(358,114,'2007-03-21 12:25:00','2007-03-21 15:25:00','Install',3,10,53,0),(359,65,'2007-03-21 20:30:00','2007-03-21 21:45:39','Daily reports off project view, \r\nMade Daily Month Count report\r\nadded filters to daily report.',1.25,9,54,0),(360,114,'2007-03-22 07:58:31','2007-03-22 08:58:00','Page Template',1,10,53,0),(361,65,'2007-03-22 13:26:00','2007-03-22 14:26:00','Add daily / weekly rain amount discrepancy TO DO report.',1,9,54,0),(362,65,'2007-03-22 14:20:00','2007-03-22 14:50:00','Modify Off-line Daily to be like a spreadsheet, enter all at once, modify download to return only last of each daily.',0.5,9,54,0),(363,112,'2007-03-22 17:30:00','2007-03-22 20:00:00','Purple Server - re write scripts, and crons schedules.  Change index frames.  investigate JDBC errors.',2.5,10,53,0),(364,90,'2007-03-23 12:00:00','2007-03-23 12:30:00','Update Web Page Templates to fix IE 7.0 issues',0.5,9,54,0),(365,65,'2007-03-23 12:30:19','2007-03-23 13:30:00','Modify Off-line Daily to be like a spreadsheet, enter all at once, modify download to return only last of each daily.',1,9,54,0),(366,112,'2007-03-23 16:00:00','2007-03-23 18:00:00','Meeting',2,10,53,0),(367,114,'2007-03-24 10:06:00','2007-03-24 14:06:00','Build and test web environment',4,10,53,0),(368,114,'2007-03-26 09:00:00','2007-03-26 12:30:00','Build and test web environment',3.5,10,53,0),(369,122,'2007-03-26 15:00:00','2007-03-26 19:00:00','Setup server',4,9,52,0),(370,122,'2007-03-27 08:45:00','2007-03-27 16:45:00','Template creation, and testing.\r\nInstallation.',8,9,52,0),(371,123,'2007-03-28 07:00:00','2007-03-28 12:30:00','Creation',5.5,9,50,0),(372,123,'2007-03-28 17:30:00','2007-03-29 01:30:00','Test, Refine and install',8,9,50,0),(373,11,'2007-03-29 11:47:00','2007-03-29 11:48:00','Support with new content on site.\r\nFix service links.\r\nAdd table to well child checkups.',1,8,-1,0),(374,123,'2007-03-29 11:51:00','2007-03-29 12:58:27','Exit route image size handling, installation and testing.',2,9,50,0),(375,120,'2007-04-01 19:01:00','2007-04-01 22:01:00','Create CSV feed report',3,10,53,0),(376,119,'2007-04-02 13:21:00','2007-04-02 14:21:00','Design',1,9,56,0),(377,119,'2007-04-02 14:21:00','2007-04-02 15:21:58','Code\r\nAlter Project table, Project Class and UI',1,9,56,0),(378,119,'2007-04-03 09:48:00','2007-04-03 11:00:00','Business Logic -\r\nInsert Project Pre-Production assignments',1.2,9,56,0),(379,119,'2007-04-03 13:00:00','2007-04-03 16:00:00','Business Logic -\r\nInsert Project Pre-Production assignments',3,9,56,0),(380,119,'2007-04-03 19:30:00','2007-04-03 21:00:00','Pre-Production Calendar',1.5,9,56,0),(381,120,'2007-04-04 15:00:00','2007-04-04 18:00:00','Fix general issues with reporting performance.\r\nRemove 2 connects from connect.jsp common code.\r\nUpdate reports that used those connects to create connects locally.',3,10,53,0),(382,122,'2007-04-04 10:15:00','2007-04-04 11:15:00','Template refinement',1,9,52,0),(383,119,'2007-04-05 08:15:00','2007-04-05 10:15:00','Completion Checks',2,9,56,0),(384,120,'2007-04-05 12:45:00','2007-04-05 13:15:00','Create new \'Support Number\' entries in contact mech type table',0.5,10,53,0),(385,120,'2007-04-05 16:00:00','2007-04-05 19:00:00','Noitification part of CSV',3,10,53,0),(386,120,'2007-04-06 08:00:00','2007-04-06 15:00:00','Noitification part of CSV.\r\nTest and changes',7,10,53,0),(387,120,'2007-04-10 08:00:00','2007-04-10 16:00:00','Pending Notifications Feed Generation',8,10,53,0),(388,97,'2007-04-10 17:00:00','2007-04-10 18:00:00','Oakley Signs Landing Page updates',1,8,38,0),(389,95,'2007-04-11 11:00:00','2007-04-11 15:00:00','New Documents Page',4,9,51,0),(390,95,'2007-04-11 15:15:00','2007-04-11 17:00:00','New Documents Page',1.75,9,51,0),(391,97,'2007-04-12 12:24:00','2007-04-12 12:24:57','From Georgiana: I would like the shipping cost information to pull automatically from the web into the order confirmation that Customer Service gets via email. ',0,8,-1,0),(392,95,'2007-04-12 08:30:00','2007-04-12 09:30:00','Install',1,9,51,0),(393,114,'2007-04-16 12:00:00','2007-04-16 18:00:00','Refinements - \r\nEdit by role.',6,10,57,0),(394,112,'2007-04-18 10:00:00','2007-04-18 11:30:00','IS Meeting\n',1.5,10,57,0),(395,112,'2007-04-18 14:00:00','2007-04-18 17:00:00','Maintenance on Linux Servers, Pick up Sandbox for new OS and software install\n',3,10,57,0),(396,121,'2007-04-18 17:03:00','2007-04-18 17:03:53','Finish Marketing Document',0,18,-1,0),(397,117,'2007-04-20 12:00:00','2007-04-20 16:00:00','Build Production Box,\nInstall RAID controller, build RAID 5 array.\nInstall UBUNTU',4,9,55,0),(398,90,'2007-04-19 09:21:00','2007-04-19 12:21:00','Maintenance to Project View.\nImplement Collapsible Inspection list.',3,9,54,0),(399,65,'2007-04-19 16:30:00','2007-04-19 20:45:00','Modify Off-line Daily to be like a spreadsheet, enter all at once, modify download to return only last of each daily.',4.25,9,54,0),(400,126,'2007-04-17 16:32:00','2007-04-17 18:32:00','Compile and Install',2,8,-1,0),(401,65,'2007-04-21 10:00:00','2007-04-21 15:00:00','Finish up code,  Create Install Application',5,9,54,0),(402,90,'2007-04-20 12:00:00','2007-04-20 16:00:00','Project and Inspection Archival,\nMail support, new Developer Contact report to find developers not getting email.',4,9,54,0),(403,65,'2007-04-24 09:00:00','2007-04-24 12:00:00','Daily Mods,\nFix performance.\nAuto date and project\nView by day',3,9,54,0),(404,65,'2007-04-25 06:30:00','2007-04-25 07:00:00','Work on Rainfall To Do.\n',0.5,9,54,0),(405,112,'2007-04-23 14:10:00','2007-04-23 15:10:00','Replace bad HANO server disk drive',1,10,57,0),(406,112,'2007-04-25 09:30:00','2007-04-25 15:00:00','Help JADA with new reports and maintenance query for work area detail.  Meetings',5.5,10,57,0),(407,65,'2007-04-26 11:00:00','2007-04-26 18:00:00','New Updates, add Last Daily, stop downloading all dailies.  view by day.',7,9,54,0),(408,117,'2007-04-24 15:00:00','2007-04-24 18:00:00','UBUNTU Apt, configuration,\nInstall production environment',3,9,55,0),(409,127,'2007-04-20 10:30:00','2007-04-20 11:00:00','Meeting with Mike, initial updates',0.5,8,-1,0),(410,127,'2007-04-26 08:18:00','2007-04-26 09:18:00','Rebuild Request Page, Create Mail Template',1,8,-1,0),(411,117,'2007-04-27 11:00:00','2007-04-27 16:00:00','Finish install of required services.\nBuild / install latest binaries',5,9,55,0),(412,127,'2007-04-30 15:19:00','2007-04-30 15:19:25','The only other change needed right now to our site is on the splash page – change “total voice and data solutions”  --- to --- VOICE AND DATA COMMUNICATIONS',0,8,-1,0),(413,112,'2007-04-30 11:30:00','2007-04-30 12:30:00','Fix Email',1,10,57,0),(414,112,'2007-04-30 14:00:00','2007-04-30 18:30:00','Database Maintenance Queries for latest changes to database - to have old data show up on changed reports.)',4.5,10,57,0),(415,128,'2007-05-01 08:00:00','2007-05-01 09:00:00','Revenue by Price Bracket',1,9,59,0),(418,112,'2007-05-02 09:30:00','2007-05-02 18:00:00','In Office Support - letter templates - letter feed - UPCS - RR',5,10,57,0),(417,128,'2007-05-01 09:28:00','2007-05-01 10:28:00','Revenue by Hour',1,9,59,0),(419,80,'2007-05-03 09:50:00','2007-05-03 10:50:49','On new production server, backup / restore files.',1,18,13,0),(420,120,'2007-05-03 11:00:00','2007-05-03 12:00:00','Changes to letter feed to get landlord address through dwelling info if not on inspection record.',1,10,57,0),(421,117,'2007-05-07 08:00:00','2007-05-07 08:46:40','Web Configuration, all binaries built, databases setup.',0.75,9,61,0),(422,11,'2007-05-07 09:15:00','2007-05-07 09:45:00','Support on Content Management.\nPhysicians and Practice changes.\nReport Service Changes',0.5,8,-1,0),(423,117,'2007-05-07 09:47:20','2007-05-07 11:47:00','Web Configuration, all binaries built, databases setup.',2,9,61,0),(424,117,'2007-05-08 14:12:47','2007-05-08 15:48:25','Web Directory Permissions Issues,\nImport data',1.75,9,61,0),(425,112,'2007-05-08 16:30:00','2007-05-08 17:30:00','Meeting with Stan',1,9,58,0),(426,112,'2007-05-09 07:45:00','2007-05-09 08:00:00','RR Miami - Merge HA\'s',0.25,9,58,0),(427,132,'2007-05-09 12:00:00','2007-05-09 12:30:00','Fix server down.\nStart daemons',0.5,9,59,0),(428,132,'2007-05-09 12:30:00','2007-05-09 13:00:00','Server down. fix sessions.',0.5,9,59,0),(429,90,'2007-05-10 09:45:00','2007-05-10 10:45:00','Help Matt with Daily Inspection upload.\nAdd user panel link to Developer Contact report.',1,9,54,0),(430,132,'2007-05-10 08:00:00','2007-05-10 09:30:00','New TV Board',1.5,9,59,0),(431,132,'2007-05-10 12:30:00','2007-05-10 18:00:00','New TV Board',5.5,9,59,0),(432,112,'2007-05-11 09:00:00','2007-05-11 12:15:00','Coordinate solutions to UPCS issues.\nWork on RR Miami Dade.\n',3.25,9,58,0),(433,112,'2007-05-11 17:38:00','2007-05-11 17:38:51','Fix 3rd Inconclusive Letter in Section 8',0.25,9,58,0),(446,112,'2007-05-16 07:00:00','2007-05-16 08:15:26','Gary Housing data',1.25,9,58,0),(435,112,'2007-05-11 17:40:34','2007-05-11 17:40:34','Finish Porting Sandbox to UBUNTU including install os latest Task Manager.',0,9,58,0),(436,117,'2007-05-11 17:30:00','2007-05-11 17:45:00','Look over sites, test and fix missing files',0.5,9,61,0),(437,117,'2007-05-12 08:00:00','2007-05-12 12:00:00','Look over sites, test and fix missing files\nMove media from old server,\ncomplile contractor database.',4,9,61,0),(438,117,'2007-05-12 21:46:00','2007-05-12 22:46:51','Switch Servers, make new server production',1,9,61,0),(439,117,'2007-05-14 07:33:00','2007-05-14 08:33:27','Report, re-compile htmldoc.cgi for PDF issues found',1,9,61,0),(440,79,'2007-05-14 08:34:00','2007-05-14 10:34:00','Service Call, Server down.\nReplace Case and CPU fans.',3,9,56,0),(441,112,'2007-05-14 16:23:00','2007-05-14 18:23:00','3rd Reinspect Notification Letter.\nFix (Printing worng type)',2,9,58,0),(442,132,'2007-05-14 18:30:00','2007-05-14 19:00:00','TV Board tweaks',0.5,8,59,0),(443,117,'2007-05-15 06:59:25','2007-05-15 09:14:00','Report, re-compile htmldoc.cgi for PDF issues found\nFix post install issues with spell checking and brochure generation on Visitor Pass.',2.25,8,-1,0),(444,106,'2007-05-15 11:30:00','2007-05-15 13:30:00','Help produce queries for UPCS reports for worcester.',2,9,58,0),(445,112,'2007-05-15 13:41:00','2007-05-15 14:56:57','Server Backup Ring',1.25,9,58,0),(447,112,'2007-05-16 09:15:00','2007-05-16 10:15:00','On Site Support, Section 8 import debugging.\n',1,9,58,0),(448,112,'2007-05-16 10:15:00','2007-05-16 11:00:00','On Site Support, Gary Housing Feed',0.75,9,58,0),(449,112,'2007-05-16 11:15:00','2007-05-16 11:45:00','UPCS Inspection reports, Jada\'s Mods.\n',0.5,9,58,0),(450,112,'2007-05-16 11:45:00','2007-05-16 12:00:00','RR Export - Investigate data not sent, etc\n',0.25,9,58,0),(451,112,'2007-05-16 15:00:00','2007-05-16 18:00:00','Gary Housing Report - Finish and send data\n',3,9,58,0),(452,117,'2007-05-17 06:45:00','2007-05-17 07:15:00','Bring up mail server,\ncopy documents.meat to contractor folder',0.5,8,-1,0),(453,90,'2007-05-17 10:04:00','2007-05-17 12:04:00','Filter out completed projects on download to off line.\nAlso, research camera attach event tray service',2,8,-1,0),(454,65,'2007-05-21 08:06:00','2007-05-21 09:48:27','Make Online Daily like Offline.',1.7,8,-1,0),(455,65,'2007-05-21 13:00:00','2007-05-21 14:30:00','Make Online Daily like Offline.',1.5,8,-1,0),(456,65,'2007-05-21 16:30:00','2007-05-21 18:30:00','Make Online Daily like Offline.',2,8,-1,0),(457,112,'2007-05-22 08:00:00','2007-05-22 09:30:00','Office Meeting',1.5,8,-1,0),(458,117,'2007-05-22 11:00:00','2007-05-22 12:00:00','Backup Procedure - Password-less copy of backup files',1,8,-1,0),(459,106,'2007-05-23 08:00:00','2007-05-23 17:00:00','UPCS Data maintenance for Worcester requirements',9,8,-1,0),(460,65,'2007-05-22 13:00:00','2007-05-22 16:00:00','Daily Maintenance fixes for updates, add link from weekly to daily, add indexes to database to speed up To Do\'s.',3,8,-1,0),(461,132,'2007-05-22 10:00:00','2007-05-22 12:00:00','Support on Pickup and Pay and E-Commerce transaction reporting.',2,8,-1,0),(462,106,'2007-05-22 08:00:00','2007-05-22 16:00:00','UPCS Data maintenance for Worcester requirements',8,8,-1,0),(463,20,'2007-05-25 11:15:00','2007-05-25 12:00:00','Test Build for Mohawk Site',0.75,8,-1,0),(464,117,'2007-05-28 07:26:00','2007-05-28 08:26:00','File system archive without binaries for restore to hot swap backup server.',1,8,-1,0),(465,20,'2007-05-29 07:30:00','2007-05-29 07:31:53','Clean up templates, deploy to production, test',0.0166667,8,-1,0),(466,133,'2007-05-29 10:15:00','2007-05-29 10:30:00','Re-assign reports to for Mark Grantier',0.25,8,-1,0),(467,90,'2007-05-29 10:35:00','2007-05-29 10:35:22','Help with developer viewing inspections',0,8,-1,0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Time` ENABLE KEYS */;
+
+--
+-- Table structure for table `Work`
+--
+
+DROP TABLE IF EXISTS `Work`;
+CREATE TABLE `Work` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Description` text,
+  `Query` bigint(20) default NULL,
+  `User` bigint(20) default NULL,
+  `User_Group` bigint(20) default NULL,
+  `User_Role` bigint(20) default NULL,
+  `URL` text,
+  `Search` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Work`
+--
+
+
+/*!40000 ALTER TABLE `Work` DISABLE KEYS */;
+LOCK TABLES `Work` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Work` ENABLE KEYS */;
+
+--
+-- Table structure for table `role_services`
+--
+
+DROP TABLE IF EXISTS `role_services`;
+CREATE TABLE `role_services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `role_id` bigint(20) default NULL,
+  `service_id` bigint(20) default NULL,
+  `enabled` int(11) default NULL,
+  `xml_params` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role_services`
+--
+
+
+/*!40000 ALTER TABLE `role_services` DISABLE KEYS */;
+LOCK TABLES `role_services` WRITE;
+INSERT INTO `role_services` VALUES (1,1,1,1,''),(2,1,2,1,''),(3,1,3,1,''),(4,1,4,1,''),(5,1,5,1,''),(6,1,6,1,'<Task_Order>edit</Task_Order>\n<Name>edit</Name>\n<Status>edit</Status>\n<Percent_Complete>edit</Percent_Complete>\n<Detail>show</Detail>\n<Time>enter</Time>\n\n'),(7,1,7,1,''),(8,1,8,1,''),(9,1,9,1,''),(10,1,10,1,''),(11,1,11,1,''),(12,1,12,1,''),(13,2,6,0,'<Task_Order>edit</Task_Order>\r\n<Name>edit</Name>\r\n<Status>edit</Status>\r\n<Percent_Complete>edit</Percent_Complete>\r\n<Detail>show</Detail>\r\n');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `role_services` ENABLE KEYS */;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE `roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `name` text,
+  `comment` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+LOCK TABLES `roles` WRITE;
+INSERT INTO `roles` VALUES (1,'Developer','bootstrapped default developer role'),(2,'Executive','for administering the system');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `services`
+--
+
+DROP TABLE IF EXISTS `services`;
+CREATE TABLE `services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `sequence` int(11) default NULL,
+  `tree_depth` int(11) default NULL,
+  `enabled` int(11) default NULL,
+  `cat_name` text,
+  `menu_name` text,
+  `uri` text,
+  `target` text,
+  `prog_enum` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `services`
+--
+
+
+/*!40000 ALTER TABLE `services` DISABLE KEYS */;
+LOCK TABLES `services` WRITE;
+INSERT INTO `services` VALUES (1,1,1,1,'Service Authorization','Services','services_liteUI.meta?init=1','_self',NULL),(2,2,1,1,'Service Authorization','Roles','rolesUI.meta?init=1','_self',NULL),(3,10,1,1,'Project Management','Companies','CompanyUI.meta?init=1','',NULL),(4,11,3,1,'Project Management','Contacts','ContactUI.meta?init=1','',NULL),(5,12,1,1,'Project Management','Projects','ProjectUI.meta?init=1','',NULL),(6,13,3,1,'Project Management','Tasks','TaskUI.meta?init=1','',500),(7,201,1,1,'Reports','Design','ReportUI.meta','',NULL),(8,200,1,1,'Reports','Run','ReportListing.meta','',NULL),(9,202,4,1,'Reports','Tables','Scheme_TableUI.meta','',NULL),(10,203,4,1,'Reports','Fields','Scheme_FieldUI.meta','',NULL),(11,14,1,1,'Project Management','Invoices','InvoiceUI.meta?init=1','',NULL),(12,2,1,1,'Service Authorization','Users','ls_usersUI.meta?init=1','',NULL);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `services` ENABLE KEYS */;
+
+--
+-- Table structure for table `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE `user_roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `user_id` bigint(20) default NULL,
+  `role_id` bigint(20) default NULL,
+  `enabled` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+LOCK TABLES `user_roles` WRITE;
+INSERT INTO `user_roles` VALUES (4,1,1,1),(3,2,1,1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `last` text,
+  `first` text,
+  `login` text,
+  `password` text,
+  `email` text,
+  `phone` text,
+  `mobile` text,
+  `fax` text,
+  `pager` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+LOCK TABLES `users` WRITE;
+INSERT INTO `users` VALUES (1,'McCombs','David','davidmc','freedom7','davidmc@w3sys.com','706 581-4607','706 581-4607',NULL,''),(2,'Developer','George','george','develops','gearge@w3sys.com','','','',NULL);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

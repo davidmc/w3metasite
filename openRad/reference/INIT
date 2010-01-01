@@ -1,0 +1,56 @@
+<NAME>(0.0) // double
+~
+  // ended <NAME>
+-                         
+<NAME>((double*)0L) // double*
+~
+  if( <NAME> ) delete [] <NAME>;
+-                         
+<NAME>(0.0) // float
+~
+  // ended <NAME>
+-                         
+<NAME>(0L) // long
+~
+  // ended <NAME>
+-                         
+<NAME>(0L) // unsigned long
+~
+  // ended <NAME>
+-                         
+<NAME>(0) // int
+~
+  // ended <NAME>
+-                         
+<NAME>(0) // unsigned int
+~
+  // ended <NAME>
+-                         
+<NAME>(0) // short
+~
+  // ended <NAME>
+-                         
+<NAME>(0) // unsigned short
+~
+  // ended <NAME>
+-                         
+<NAME>((char*)0L) // char*
+~
+  if( <NAME> ) delete [] <NAME>;
+-                         
+<NAME>('\0') // char
+~
+  // ended <NAME>
+-                         
+<NAME((unsigned char)'\0') // unsigned char
+~
+  // ended <NAME>
+-                         
+<NAME>('\0') // byte
+~
+  // ended <NAME>
+-                         
+<NAME>((byte*)0L) // byte*
+~
+  if( <NAME> ) delete [] <NAME>;
+

@@ -1,0 +1,69 @@
+<!--@top--><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>Metasite File Resources</title>
+    <style type="text/css">@import "lists.css";</style>   
+    <script src='icomm.js'></script>
+    <script>
+    function deletefile(file)
+    {
+      var fPrompt = "Are you sure you want to delete ";
+      fPrompt += file;
+      fPrompt += "?";
+      var doDelete = confirm(fPrompt);
+      if(doDelete)
+      {
+        var newHref = "filePick.cgi?delete=";
+        newHref += file;
+        document.location.href=newHref;
+      }
+    }
+    </script>
+  </head>
+  <body>
+  <center>
+  <table cellspacing='0' width='100%' height='100%' id='repMain'>
+  <tr>
+    <td id='repBody' valign='top' align='left' height='100%' colspan='2'>
+      <table  id='report'  width='100%'>
+      <caption class="repTitle">
+      &nbsp;<br>
+      __REPORT_TITLE_GOES_HERE
+      <br>&nbsp;
+      </caption>
+      <tr>
+      <td colspan="3">     
+      <form action='filePick.cgi' encType='multipart/form-data' method='post'>
+      <strong>Upload a file to the server:</strong>
+        <input type='file' name='File'> &nbsp; &nbsp; &nbsp;
+        <input type='submit' value='Upload'>
+      </form>
+      <a href="?showall=1000">Show All Files</a> (The default shows last file uploaded.)
+      </td>
+      </tr>
+      <tr id='heading'>
+<!--/@top-->
+<!--@headitem-->
+        <th class='headcell'>__hcell_label</th>
+<!--/@headitem-->
+<!--@rowsep-->
+      </tr>
+      <tr>
+<!--/@rowsep-->
+<!--@oddcell-->
+        <td class='odd_cell'>__cell_data</td>
+<!--/@oddcell-->
+      </tr>
+      <tr>
+<!--@evencell-->
+        <td class='even_cell'>__cell_data</td>
+<!--/@evencell-->
+<!--@bottom-->
+      </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+  </body>
+</html>
+<!--/@bottom-->

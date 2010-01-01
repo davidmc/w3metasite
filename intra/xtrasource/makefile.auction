@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/auction/
+OLOGIN = -DALTSLOGINSOURCE="\"../../auction/www_source/openLogin.h\""
+

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Verisign Checkout - Shipping</title>
+ #BASE#
+</head>
+<body>
+<form  action="#SCRIPTURL#" method="POST">
+<INPUT TYPE="HIDDEN" NAME="SESSIONID" VALUE="#SESSIONID#">
+<INPUT TYPE="HIDDEN" NAME="action" VALUE="collectpayment">
+
+<table width="368" border="0" cellspacing="0" cellpadding="5" align="CENTER">
+<!-- All amounts over $100 will be declined by the simulator.  See Verisign Documentation for details. -->
+
+<!--
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">Amount:</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="27.24" name="AMT" size="28"></td>
+            </tr>
+-->
+
+<INPUT TYPE="HIDDEN" NAME="AMT" VALUE="27.23">
+
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">First Name:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="Sam" name="FNAME"
+              size="28"></td>
+            </tr>
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">Last Name:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="Malone" name="LNAME"
+              size="28"></td>
+            </tr>
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">Address:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="123 Main St"
+              name="STREET" size="28"></td>
+            </tr>
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">City:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="Palo Alto" name="CITY"
+              size="28"></td>
+            </tr>
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">State:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><select name="STATE" size="1">
+                <option value>-- Select from the following -- </option>
+                <option value="AL">AL-Alabama </option>
+                <option value="AK">AK-Alaska </option>
+                <option value="AZ">AZ-Arizona </option>
+                <option value="AR">AR-Arkansas </option>
+                <option value="CA" selected>CA-California </option>
+                <option value="CO">CO-Colorado </option>
+                <option value="CT">CT-Connecticut </option>
+                <option value="DC">DC-Washington D.C. </option>
+                <option value="DE">DE-Delaware </option>
+                <option value="FL">FL-Florida </option>
+                <option value="GA">GA-Georgia </option>
+                <option value="HI">HI-Hawaii </option>
+                <option value="ID">ID-Idaho </option>
+                <option value="IL">IL-Illinois </option>
+                <option value="IN">IN-Indiana </option>
+                <option value="IA">IA-Iowa </option>
+                <option value="KS">KS-Kansas </option>
+                <option value="KY">KY-Kentucky </option>
+                <option value="LA">LA-Louisiana </option>
+                <option value="ME">ME-Maine </option>
+                <option value="MD">MD-Maryland </option>
+                <option value="MA">MA-Massachusetts </option>
+                <option value="MI">MI-Michigan </option>
+                <option value="MN">MN-Minnesota </option>
+                <option value="MS">MS-Mississippi </option>
+                <option value="MO">MO-Missouri </option>
+                <option value="MT">MT-Montana </option>
+                <option value="NE">NE-Nebraska </option>
+                <option value="NV">NV-Nevada </option>
+                <option value="NH">NH-New Hampshire </option>
+                <option value="NJ">NJ-New Jersey </option>
+                <option value="NM">NM-New Mexico </option>
+                <option value="NY">NY-New York </option>
+                <option value="NC">NC-North Carolina </option>
+                <option value="ND">ND-North Dakota </option>
+                <option value="OH">OH-Ohio </option>
+                <option value="OK">OK-Oklahoma </option>
+                <option value="OR">OR-Oregon </option>
+                <option value="PA">PA-Pennsylvania </option>
+                <option value="PR">PR-Puerto Rico </option>
+                <option value="RI">RI-Rhode Island </option>
+                <option value="SC">SC-South Carolina </option>
+                <option value="SD">SD-South Dakota </option>
+                <option value="TN">TN-Tennessee </option>
+                <option value="TX">TX-Texas </option>
+                <option value="UT">UT-Utah </option>
+                <option value="VT">VT-Vermont </option>
+                <option value="VA">VA-Virginia </option>
+                <option value="WA">WA-Washington </option>
+                <option value="WV">WV-West Virginia </option>
+                <option value="WI">WI-Wisconsin </option>
+                <option value="WY">WY-Wyoming </option>
+              </select> </td>
+            </tr>
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">Zip:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="95651" name="ZIP"
+              size="28"></td>
+            </tr>
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">Email Addr:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="Sam.Malone@verisign.com"
+              name="EMAIL" size="28"></td>
+            </tr>
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">Phone Number:&nbsp;</font></td>
+              <td height="30" align="left" width="184"><input type="text" value="555-555-5555"
+              name="PHONENUM" size="28"></td>
+            </tr>
+
+            <tr>
+              <td height="30" align="right" width="184"><font face="Arial" size="2">Tender Type</font></td>          
+										    <td height="30" align="left" width="184">
+														<select name="TENDER">
+														<option value ="credit">Please Select
+														<option value ="credit">Credit Card
+														<option value ="check"> Online Check
+														</select>
+														</td>
+            </tr>
+
+            <tr><td colspan="2" align="CENTER"><input type="submit" value="Submit" name="PaymentNetV2"></td></tr>
+          </table>
+</form>
+</body>
+</html>
+
+
+</body>
+</html>

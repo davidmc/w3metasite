@@ -1,0 +1,5 @@
+#ifndef CONNECTSTRING
+#define CONNECTSTRING "user=http_user dbname=openmail"
+#endif
+
+

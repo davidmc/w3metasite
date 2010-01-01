@@ -1,0 +1,557 @@
+EXECUTING : delete from SysImport_Keys
+EXECUTING : delete from global_content where site_id = 26
+42,"end","Copyright (C) 2007 - MG Distribution Inc. <br />
+"
+EXECUTING : delete from templates where site_id = 26
+112,"Main Show","mainshow.htmp"
+111,"Mail Template","contact.htmp"
+110,"Splash 2","splash2.htmp"
+109,"main page","main.htmp"
+EXECUTING : delete from pages where site_id = 26
+746 name Graffiti
+746,112,"Graffiti","show.meta/Graffiti",""
+745 name Decorative Stain
+745,112,"Decorative Stain","show.meta/DecorativeStain",""
+744 name Tile and Grout
+744,112,"Tile and Grout","show.meta/TileAndGrout",""
+743 name Terazzo
+743,112,"Terazzo","show.meta/Terazzo",""
+742 name Quarry Tile
+742,112,"Quarry Tile","show.meta/QuarryTile",""
+739 name Concrete
+739,112,"Concrete","show.meta/Concrete",""
+740 name Natural Stone
+740,112,"Natural Stone","show.meta/NaturalStone",""
+741 name Porcelain Tile
+741,112,"Porcelain Tile","show.meta/PorcelainTile",""
+736 name Material Safety Data Sheet
+736,109,"Material Safety Data Sheet","pages.meta/MSDS",""
+737 name New Pictures
+737,112,"New Pictures","show.meta",""
+738 name Brick
+738,112,"Brick","show.meta/Brick",""
+734 name Contact Us
+734,111,"Contact Us","contactus.meta/send",""
+735 name Site Map
+735,109,"Site Map","pages.meta/siteMap",""
+733 name Glass Fusion Efflorescence Resistant
+733,109,"Glass Fusion Efflorescence Resistant","pages.meta/efflorescence",""
+731 name Glass Fusion Tests
+731,109,"Glass Fusion Tests","pages.meta/tests",""
+732 name Cleaning Instructions
+732,109,"Cleaning Instructions","pages.meta/Cleaning",""
+730 name Glass Fusion Sealant FAQs
+730,109,"Glass Fusion Sealant FAQs","pages.meta/FAQs",""
+728 name Tile & Grout
+728,109,"Tile & Grout","pages.meta/TileGroutMarket",""
+729 name Bricks & Pavers
+729,109,"Bricks & Pavers","pages.meta/BricksAndPavers",""
+727 name Tile & Ceramic
+727,109,"Tile & Ceramic","pages.meta/TileAndCeramic",""
+726 name Tile & Grout Applications
+726,109,"Tile & Grout Applications","pages.meta/tile",""
+725 name Mold & Polution
+725,109,"Mold & Polution","pages.meta/pollution",""
+724 name Public Schools - Painted Concrete
+724,109,"Public Schools - Painted Concrete","pages.meta/PublicSchools",""
+723 name Concrete Applications
+723,109,"Concrete Applications","pages.meta/concrete",""
+721 name Glass Fusion SR - Anti-Slip
+721,109,"Glass Fusion SR - Anti-Slip","pages.meta/GlassFusionSR",""
+722 name Glass Fusion GR - Anti Graffiti
+722,109,"Glass Fusion GR - Anti Graffiti","pages.meta/GlassFusionGR",""
+720 name Glass Fusion MR - Glass Fusion AS
+720,109,"Glass Fusion MR - Glass Fusion AS","pages.meta/GlassFusionMR",""
+719 name Applications & Benefits
+719,109,"Applications & Benefits","pages.meta/Applications",""
+717 name MG Distribution Inc. Masonry Sealants
+717,110,"MG Distribution Inc. Masonry Sealants","pages.meta",""
+718 name Glass Fusion Solutions
+718,109,"Glass Fusion Solutions","pages.meta/Introduction",""
+EXECUTING : delete from links where site_id = 26
+952,"Graffiti","show.meta/Graffiti",""
+951,"Decorative Stain","show.meta/DecorativeStain",""
+950,"Tile and Grout","show.meta/TileAndGrout",""
+949,"Terazzo","show.meta/Terazzo",""
+948,"Stone Fusion","show.meta/StoneFusion",""
+947,"Quarry Tile","show.meta/QuarryTile",""
+946,"Porcelain Tile","show.meta/PorcelainTile",""
+945,"Natural Stone","show.meta/NaturalStone",""
+944,"Concrete","show.meta/Concrete",""
+943,"Brick","show.meta/Brick",""
+942,"Anti Graffiti","show.meta/AntiGraffiti",""
+940,"Material Safety Data Sheet","pages.meta/MSDS",""
+941,"New Pictures","show.meta",""
+939,"Site Map","pages.meta/siteMap",""
+938,"Abrasion, Hardness, Friction","/resources/40510TestResultsSheets.pdf",""
+937,"Contact Us","contactus.meta/send",""
+936,"Efflorescence","pages.meta/efflorescence",""
+935,"Cleaning","pages.meta/Cleaning",""
+934,"FAQs","pages.meta/FAQs",""
+932,"Tile & Grout Market","pages.meta/TileGroutMarket",""
+933,"Brick","pages.meta/BricksAndPavers",""
+930,"Applications","pages.meta/Applications",""
+931,"Tile & Ceramic","pages.meta/TileAndCeramic",""
+929,"Glass Fusion GR","pages.meta/GlassFusionGR",""
+928,"Glass Fusion SR","pages.meta/GlassFusionSR",""
+927,"Glass Fusion MR","pages.meta/GlassFusionMR",""
+926,"Concrete","pages.meta/concrete",""
+925,"Public Schools","pages.meta/PublicSchools",""
+924,"Mold & Polution","pages.meta/pollution",""
+923,"Tile ","pages.meta/tile",""
+922,"Tests","pages.meta/tests",""
+921,"Introduction","pages.meta/Introduction",""
+920,"Home","pages.meta",""
+EXECUTING : delete from menus where site_id = 26
+104,"Test Menu"
+103,"Empty Lower Top Menu"
+102,"Applications sub-menu"
+101,"Top"
+100,"Left"
+105,"New Pictures"
+EXECUTING : delete from menu_items where site_id = 26
+697,105,950,"ltopmenu_item","$location","_self","$label",9,1
+696,105,949,"ltopmenu_item","$location","_self","$label",8,1
+695,105,947,"ltopmenu_item","$location","_self","$label",6,1
+694,105,946,"ltopmenu_item","$location","_self","$label",5,1
+693,105,945,"ltopmenu_item","$location","_self","$label",4,1
+692,105,944,"ltopmenu_item","$location","_self","$label",3,1
+691,105,943,"ltopmenu_item","$location","_self","$label",2,1
+690,105,952,"ltopmenu_item","$location","_self","$label",10,1
+689,101,941,"topmenu_item","$location","_self","$label",6,1
+688,104,940,"ltopmenu_item","$location","_self","$label",3,1
+687,100,939,"leftmenu_item","$location","_self","$label",21,1
+686,100,937,"leftmenu_item","$location","_self","$label",20,1
+685,100,938,"leftmenu_item","$location","_self","$label",18,2
+684,100,936,"leftmenu_item","$location","_self","$label",17,2
+683,104,938,"ltopmenu_item","$location","_self","$label",2,1
+682,104,936,"ltopmenu_item","$location","_self","$label",1,1
+681,100,935,"leftmenu_item","$location","_self","$label",15,1
+680,101,922,"topmenu_item","$location","_self","$label",5,1
+679,100,922,"leftmenu_item","$location","_self","$label",16,1
+678,101,934,"topmenu_item","$location","_self","$label",4,1
+677,100,934,"leftmenu_item","$location","_self","$label",14,1
+676,102,933,"ltopmenu_item","$location","_self","$label",5,1
+675,100,933,"leftmenu_item","$location","_self","$label",13,2
+674,100,932,"leftmenu_item","$location","_self","$label",12,3
+673,100,931,"leftmenu_item","$location","_self","$label",11,3
+672,102,923,"ltopmenu_item","$location","_self","$label",4,1
+671,100,923,"leftmenu_item","$location","_self","$label",10,2
+670,100,924,"leftmenu_item","$location","_self","$label",9,3
+669,100,925,"leftmenu_item","$location","_self","$label",8,3
+668,102,926,"ltopmenu_item","$location","_self","$label",3,1
+667,102,929,"ltopmenu_item","$location","_self","$label",3,1
+666,100,926,"leftmenu_item","$location","_self","$label",7,2
+665,100,929,"leftmenu_item","$location","_self","$label",6,2
+664,102,928,"ltopmenu_item","$location","_self","$label",2,1
+663,100,928,"leftmenu_item","$location","_self","$label",5,2
+662,102,927,"ltopmenu_item","$location","_self","$label",1,1
+661,100,927,"leftmenu_item","$location","_self","$label",4,2
+660,101,930,"topmenu_item","$location","_self","$label",3,1
+659,100,930,"leftmenu_item","$location","_self","$label",3,1
+658,101,921,"topmenu_item","$location","_self","$label",2,1
+657,100,921,"leftmenu_item","$location","_self","$label",2,1
+656,101,920,"topmenu_item","$location","_self","$label",1,1
+655,100,940,"leftmenu_item","$location","_self","$label",19,2
+EXECUTING : delete from page_menus where site_id = 26
+1279,100,746,2,1
+1278,105,746,1,1
+1277,101,746,0,0
+1276,100,745,2,1
+1275,105,745,1,0
+1274,101,745,0,0
+1273,100,744,2,1
+1272,105,744,1,0
+1271,101,744,0,0
+1270,100,743,2,1
+1269,105,743,1,0
+1268,101,743,0,0
+1267,100,742,2,1
+1266,105,742,1,0
+1265,101,742,0,0
+1264,100,741,2,1
+1263,105,741,1,0
+1262,101,741,0,0
+1261,100,740,2,1
+1260,105,740,1,0
+1259,101,740,0,0
+1258,100,739,2,1
+1257,105,739,1,0
+1256,101,739,0,0
+1255,100,738,2,1
+1254,105,738,1,0
+1253,101,738,0,0
+1252,100,737,2,1
+1251,105,737,1,0
+1250,101,737,0,0
+1249,100,736,2,1
+1248,102,736,1,0
+1247,101,736,0,0
+1246,100,735,2,0
+1245,103,735,1,0
+1244,101,735,0,0
+1243,100,734,3,1
+1242,103,734,1,0
+1241,101,734,0,0
+1240,100,733,2,1
+1239,104,733,1,0
+1238,101,733,0,0
+1237,100,732,2,1
+1236,103,732,1,0
+1235,101,732,0,0
+1234,100,731,2,1
+1233,104,731,1,0
+1232,101,731,0,0
+1231,100,730,2,1
+1230,103,730,1,0
+1229,101,730,0,0
+1228,100,729,2,1
+1227,102,729,1,0
+1226,101,729,0,0
+1225,100,728,2,1
+1224,102,728,1,0
+1223,101,728,0,0
+1222,100,727,2,1
+1221,102,727,1,0
+1220,101,727,0,0
+1219,100,726,2,1
+1218,102,726,1,0
+1217,101,726,0,0
+1216,100,725,2,1
+1215,102,725,1,0
+1214,101,725,0,0
+1213,100,724,2,1
+1212,102,724,1,0
+1211,101,724,0,0
+1210,100,723,2,1
+1209,102,723,1,0
+1208,101,723,0,0
+1207,100,722,2,1
+1206,102,722,1,0
+1205,101,722,0,0
+1204,100,721,2,1
+1203,102,721,1,0
+1202,101,721,0,0
+1201,100,720,2,1
+1200,102,720,1,0
+1199,101,720,0,0
+1198,100,719,2,1
+1197,102,719,1,0
+1196,100,717,2,1
+1195,100,718,3,1
+1194,101,718,1,0
+1193,101,719,0,0
+1192,103,718,2,0
+1191,101,717,0,0
+EXECUTING : delete from paragraphs where site_id = 26
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<a href="http://www.glassfusionsealant.c
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<img src="/images/Hospital%20Ceramic%20G
+<img src="/images/College%20Dorm%20Restr
+<img src="/images/Correctional%20Facilit
+<img src="/images/Ceramic%20Tile%20restr
+<img src="/images/Ceramic%20tile%20Hospi
+<h2>Tile and Grout</h2>
+<img src="/images/Ceramic%20Tile%20bathr
+<h2>Decorative Stain</h2>
+
+<img src="/images/Mason%20Select%20and%2
+<h2>Terazzo</h2>
+<img src="/images/Terazzo%20FL.jpg" alt=
+<img src="/images/MG%20Mech%20P&amp;R%20
+<img src="/images/MG%20Mech%20P&amp;R%20
+<img src="/images/Coral%20Wall%20Mold%20
+<img src="/images/Coral%20Wall%20Mold%20
+<img src="/images/Anti%20Graffiti%20FL%2
+<img src="/images/Anti%20Graffiti%20FL%2
+<img src="/images/Public%20School%20NC%2
+<img src="/images/Public%20school%20NC%2
+<img src="/images/Quarry%20Tile%20YMCA%2
+<img src="/images/Quarry%20Tile%20Locker
+<img src="/images/Quarry%20Tile%20Public
+<img src="/images/Quarry%20Tile%20Grocer
+<img src="/images/Intl%20Airport%20Bathr
+<img src="/images/Court%20House%20Restro
+<h2>Quarry Tile</h2>
+<img src="/images/Quarry%20Tile%20Green%
+<img src="/images/Porcelain%202%20tile%2
+<img src="/images/Porcelain%20Tile%20res
+<img src="/images/Themepark%20Tile%20NC.
+<img src="/images/University%20administr
+<img src="/images/College%20Dorm%20Restr
+<h2>Porcelain Tile</h2>
+<img src="/images/University%20Restroom%
+<img src="/images/Indoor%20Pool%20Deck-%
+<img src="/images/Flamed%20Granite%20Off
+<h2>Natural Stone</h2>
+<img src="/images/Marble%20counter%20FL.
+<img src="/images/Colored%20Concrete%20B
+<img src="/images/Pool%20Deck%20Decorati
+<img src="/images/Colored%20Concrete%20P
+<img src="/images/Colored%20Concrete%20e
+<h2>Concrete</h2>
+<img src="/images/Brick%20Pavers%20retai
+<img src="/images/Brick%20Building%20NC.
+<img src="/images/Pavers%20Grocery%20Sto
+<h2>Brick</h2>
+<h2>Anti Graffiti</h2><img src="/images/
+<h1>New Pictures</h1>These pictures show
+<p>Phone: 770-231-7225<br /><br /></p>
+<img src="/images/Mec_PandR_Graffiti_Fra
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<p>Call: 770-231-7225<br />
+<br /></p>
+<h2>SECTION:&nbsp;&nbsp;&nbsp; 16&nbsp;&
+<h2>SECTION: 15&nbsp;&nbsp; REGULATORY I
+<h2>SECTION: 14&nbsp;&nbsp;&nbsp;&nbsp;&
+<h2>SECTION: 13 &nbsp; DISPOSAL CONSIDER
+<h2>SECTION: 12&nbsp;&nbsp; ECOLOGICAL I
+<h2>SECTION: 11 TOXICOLOGICAL INFORMATIO
+<h2>SECTION: 10 STABILITY AND REACTIVITY
+<h2>SECTION: 9 PHYSICAL AND CHEMICAL PRO
+<h2>SECTION: 8 EXPOSURE CONTROLS/ PERSON
+<h2>SECTION: 6&nbsp; ACCIDENTAL RELEASE 
+<h2>SECTION: 7 HANDLING AND STORAGE</h2>
+<h2>SECTION: 5 FIRE FIGHTING MEASURES</h
+<h2>SECTION: 4 FIRST AID MEASURE</h2>
+
+<h1>Site Layout</h1>
+<br>
+The Layout o
+<h1>Contact Us</h1>
+We would be happy t
+<img src="/images/Efflorescence.jpg"><br
+<h2 style="margin-bottom: 5px;">Tests by
+<p>Call: 770-231-7225<br />
+<br /></p>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p>Call: 770-231-7225<br /></p>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<h4>Mop Bucket &amp; Ringer</h4>
+1. Fil
+<span style="font-weight: bold;">DO NOT 
+<h1>Cleaning Instructions</h1>
+<br>
+<p>Phone:&nbsp; 770-231-7225<br /><br />
+<h1>Test Results</h1>These pages contain
+<h2>Benefits</h2>
+<h1>Anti Slip - SR</h1>
+<h1>Anti Grafitti - GR</h1>
+<p>If you don't have Acrobat;&nbsp; You 
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<font style="color: rgb(204, 153, 51);" 
+<p>Phone: 770-231-7225<br /><br /></p>
+<h1>Questions &amp; Answers</h1><a class
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p>Call: 770-231-7225<br /></p>
+<h4>Schools</h4>
+<img alt="" src="/imag
+<h4>Hotels</h4>
+<img alt="" src="/image
+<h4>Courthouses</h4>
+<img width="470px"
+<h4>Theme Parks</h4>
+<font size="1"><im
+<p>Phone: 770-231-7225<br /><br /></p>
+<h2>Tile &amp; Grout Market</h2>
+
+<h4>Restaurants</h4>
+<img alt="" src="/
+<h4>Country Clubs</h4>
+<img alt="" src=
+<h4>Library</h4>
+<img alt="" src="/imag
+<h4>Parks &amp; Recreation</h4>
+<img al
+<h4>Convention Center</h4>
+<img alt="" 
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<table><tbody><tr><td><span style="font-
+
+Glass Fusion protects against paint, m
+<h2>Ceramic Tile</h2>
+Seals and shines, protecting flat tile f
+<p>Phone: 770-231-7225<br /><br /></p>
+<h1>Introduction</h1>
+<h2>Graffiti Prot
+<table>
+
+<tbody><tr>
+<td><span style=
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p>Phone: 770-231-7225<br /><br /></p>
+<table style="border: none ; margin: 1px
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p>Phone: 770-231-7225<br /><br /></p>
+<p>Call: 770-231-7225</p>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p>Phone: 770-231-7225<br />&nbsp;</p>
+<img alt="Polution Protection" src="/ima
+<img alt="Mold Protection" src="/images/
+<img alt="Florida Public School Exterior
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<br>
+<table><tbody><tr><td width="150">
+<img alt="Elementary School in Florida" 
+<h2>Painted Concrete</h2>
+The integrity
+<h2>Concrete</h2>
+When sealed with Glas
+<p>Phone: 770-231-7225<br /><br /></p>
+<img alt="" style="float: right; margin-
+<h2>Applications</h2>
+<ul>
+  <li>
+Smo
+<h2>Benefits</h2>
+<ul>
+  <li>Simply wi
+Click on image for a close-up view:<br>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p>Phone: 770-231-7225<br /><br /></p>
+<h3>Benefits</h3>
+
+<ul>
+<li>Permanent
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<h3 style="clear:both;">Easy to clean - 
+<a target="close" class='body' href='/im
+<ul>
+  <li>Does not support the
+growth
+<h2>Applications</h2>
+
+<ul>
+<li>Smoot
+<a class="body" target="close" href="/im
+<h1>Anti-Stain AS - Anti Mold MR</h1>
+<p>Phone: 770-231-7225<br /><br /></p>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<h2>BRICK PAVERS</h2>
+Similar to concre
+<h2>PAINTED CONCRETE</h2>
+The integrity
+<h2>CONCRETE</h2>
+When a concrete surfa
+<h2>NATURAL STONE</h2>
+Most natural sto
+<p>Phone: 770-231-7225<br /><br /></p>
+<p>Call: 770-231-7225<br /></p>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<h2>Ceramic Tile</h2>
+Flat tile will be
+<h4>Hospitals</h4>
+<img alt="Hospital T
+<a class="ltopnav" id="ltopmenumenu-2-it
+<h2>SECTION: 3 HAZARD IDENTIFICATION</h2
+<h2>SECTION: 2 COMPOSITION /INFORMATION 
+<h2>SECTION: 1 CHEMICAL IDENTIFICATION</
+<h1>Material Data Safety Sheet (MSDS)<br
+<p>Phone: 770-231-7225<br />&nbsp; </p>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<p>Phone: 770-231-7225<br /></p>
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<table><tbody><tr><td><span style="font-
+<h2>Painted Concrete</h2>
+Protects the integrity of paint so surfa
+Protects even absorbent pavers from oil 
+<table><tbody><tr><td><span style="font-
+<h2>Brick Pavers</h2>
+
+<table><tbody><tr><td><span style="font-
+Seals and protects from mold, mildew and
+<h1>Applications</h1>
+<h2>CERAMIC TILE<
+<h2>Natural Stone</h2>
+
+Protects and enhances natural stone. Dep
+<table><tbody><tr><td><span style="font-
+<h2>Concrete</h2>
+
+Seals and protects from mold, mildew and
+<h2>GROUT</h2>
+Grout is one of the most
+<p></p><h1>Glass Fusion<br>
+</h1><p></p
+<strong><br>
+If you’re tired of repaint
+<h2>Tile &amp; Ceramic Markets</h2>
+
+<h4>Schools</h4>
+<img alt="" src="/imag
+<img src="/images/Mec_PandR_Graffiti_Fra
+<h2>Graffiti</h2>
+<img src="/images/Mec_PandR_Graffiti_Fra
+<p></p><h1>Glass Fusion<br />
+</h1><p><
+<img src="/images/Statesville_Caldwell_P
+<img src="/images/Statesville_Caldwell_P
+<img src="/images/Starbucks_NNJ_4_Terazz
+<img src="/images/Starbucks_NJ_backroom_
+<div>
+<h3>Coefficient of Friction tests
+<img src="/images/C%20latin,%20%208-06%2
+<img src="/images/Decorative%20Stain%205
+<img src="/images/Equity%208-06%20004.jp
+<img src="/images/Equity%20Office%208-06
+<img src="/images/Equity,%20%208-06%2000
+<img src="/images/Glass%20Fusion%202-21-
+<img src="/images/Mark%20FL%204-8-05%200
+<img src="/images/Mark%20FL%204-8-05%200
+<img src="/images/MG%20Photos%201%20036.
+<img alt="" src="/images/MG%20Photos%201
+<img src="/images/MG%20Photos%206-19-06%
+<img src="/images/Mottled%203-16-05%2001
+<img src="/images/SBucks%20Balt%20Back%2
+<img src="/images/Sbucks%20Balt%20Back%2
+<img src="/images/SBucks%20RR%20Tile%20B
+<img src="/images/Slate%20Walkway%202006
+<img src="/images/Starbucks%20Balt%20Aft
+<img src="/images/Starbucks%20Snowden%20
+<img src="/images/MG%209-15-06%20006.jpg
+<img src="/images/Union%20Co%20After%201

@@ -1,0 +1,7 @@
+<CLASS>();
+~<CLASS>();
+
+<CLASS>( <CLASS> & input );
+<CLASS> & operator = ( <CLASS> & input );
+
+

@@ -1,0 +1,81 @@
+Some countries have regulations on the use of cryptographic libraries
+like the ones embedded in TCLink. It may be unlawful to download TCLink
+in these countries.
+
+
+                                 TCLink v3.4.1
+                          C Language Implementation
+                       copyright (C) TrustCommerce 2003
+                         http://www.trustcommerce.com
+                         developer@trustcommerce.com
+
+                              September 5, 2003
+
+I. DESCRIPTION
+
+  TCLink is a thin client library to allow your e-commerce servers to
+connect to the TrustCommerce payment gateway easily and consistently.
+The protocol (which is the same across all platforms and languages) is
+well-documented in the Web Developer's Guide, so please consult it for
+any questions you may have about the protocol syntax itself.
+
+
+II. INSTALL
+
+  Type "./configure; make" to configure and build TCLink.  To install
+globally, become root and type "make install".
+
+
+II. USAGE
+
+  The included test program, tctest.c, shows a very basic transaction
+run through the TCLink API.  A more complex example is contained in
+tcexample.c.  In either case, you should edit the file and enter
+your CustID and password into the defines at the top of the file.
+
+  There are three ways to link against TCLink: a dynmaicly linked
+library, a staticly linked library, or directly compiling it in to your
+application.  tctest.c uses this final method, as it is the simplest.
+By default, all three librarys (.so, .a, and .o) will be built by the
+makefile.
+
+
+III. REQUIREMENTS
+
+  You need OpenSSL to use TCLink.  It can be aquired from
+www.openssl.org; most modern UNIX distributions come with it, or offer
+it as an option package.
+
+  If you are using an older install of AIX, SCO, Solaris, or other
+systems which do not have /dev/urandom for the purpose of generated
+secure random numbers, you may want to use a semi-random file (such as
+your syslog) as a random number source for additional security.  Set
+your the environment variable RANDFILE to point to the file you wish to
+use for your random number source.  ~/.rnd is the default.
+
+  If you wish to use TCLink with C++, you must encase the tclink.h
+include in an extern "C" statement, like so:
+
+extern "C" {
+#include <tclink.h>
+}
+
+
+IV. PLATFORMS
+
+  The included code has been tested on the following platforms:
+
+o Linux on x86
+o Linux on Alpha
+o Linux on PPC
+o Linux on Sparc
+o FreeBSD on x86
+o OpenBSD on x86
+o AIX on PPC
+o Solaris on Sparc
+o Mac OS X on PPC
+
+  It should work on most modern UNIXes.  If you need assistance getting
+it running on your platform, please email developer@trustcommerce.com.
+
+

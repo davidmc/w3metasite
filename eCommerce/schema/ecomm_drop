@@ -1,0 +1,10 @@
+-- drop tables related to ecommerce
+drop TABLE Customer_Payment_Parameter;
+drop TABLE Customer_Payment_Service;
+drop TABLE Order_Status;
+drop TABLE Ordered;
+drop TABLE Ordered_Item;
+drop TABLE Ordered_Item_Option;
+drop TABLE Payment_Service;
+drop TABLE Payment_Type_Parameter;
+drop TABLE ShoppingCart;

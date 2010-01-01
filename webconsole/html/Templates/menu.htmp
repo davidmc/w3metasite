@@ -1,0 +1,108 @@
+<html>
+  <head>
+<!--@headguts-->  
+    <title>Menu</title>
+    <style>
+    body{
+    padding: 0px;
+    margin: 0px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: rgb(2,0,116);
+    background-color: white;
+    overflow: auto;
+    }
+    .top 
+    {
+      font-size: 11pt;
+      font-family: Arial, Helvetica, Verdana, sans-serif;
+      font-weight: bold;
+      color: #348;
+      padding: 5px 0px 1px 8px;
+      margin: 0px 0px 10px 0px;
+      background-color: #fdfdff;      
+    }
+    .collapsed
+    {
+      margin: 0px;
+      margin-left:3px;
+      padding-left: 24px;
+      padding-bottom: 5px;      
+      padding-top: 5px; 
+      font-size: 10pt;
+      background-image: url(pg_images/cobalt_node_point_right.gif);
+      background-position: top left;
+      background-repeat: no-repeat;
+      color: rgb(2,0,100);
+    }
+    .expanded
+    {
+      margin: 0px;
+      margin-left:3px;
+      padding-left: 24px;
+      padding-bottom: 5px;      
+      padding-top: 5px;      
+      font-size: 10pt;     
+      background-image: url(pg_images/cobalt_node_point_down.gif);
+      background-position: top left;
+      background-repeat: no-repeat;
+      color: rgb(2,0,70);
+    }
+    .subitem
+    {      
+      margin: 0px;
+      margin-left: 8px;
+      padding-left: 8px;      
+      font-size: 9pt; 
+      color: #747;
+    }
+    .subitem a { color: #67a; }
+    .listitem
+    {       
+      margin: 0px;
+      margin-left: 12px;
+      padding-left: 8px;
+      font-size: 8pt;
+      border-bottom: dashed 1px #aa8;
+      width: auto;
+      color: rgb(2,0,70);     
+    }
+    a 
+    {
+      color: rgb(2,0,70);
+    }
+    a:hover, .expanded:hover, collapsed:hover
+    {
+      color: rgb(20,150,36);
+    }
+    </style>
+<!--/@headguts-->     
+  </head>
+  <body>
+<!--@heading-->  
+ <div class="top"> 
+  W<sup>3</sup> System Console
+  </div>
+ <!--/@heading--> 
+<!--@collapsed-->  
+  <a href="$location" target="menu">
+  <div class="collapsed">
+  $label
+  </div></a>
+<!--/@collapsed-->    
+<!--@expanded--> 
+  <a href="$location" target="menu"> 
+  <div class="expanded">
+  $label
+  </div></a>
+<!--/@expanded--> 
+  
+<!--@subitem-->    
+    <div class='subitem'><a target="main" href='$location'>$label</a></div>
+<!--/@subitem--> 
+<!--@listitem-->   
+      <div class='listitem'><a target="main" href='$location'>$label</a></div>
+<!--/@listitem-->   
+ 
+  </body>
+</html>

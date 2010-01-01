@@ -1,0 +1,61 @@
+<!--@top-->
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <script src='openDom.js'></script>
+    <script>
+    var myDom = new openDom();
+    var updates = new Array();
+    </script>
+    <script src='forms.js'></script>
+    <script src='formEvents.js'></script>
+    <script src='contentControl.js'></script>
+  </head>
+  <body onLoad='finalize()'>
+  <a name='top'> </a>
+  <h2>_entity_ Editor</h2>
+  <table>
+  <tr><th class='status'><img border='0' src='exit.png' onClick='doExit()'></th></tr>
+  <tr>
+  <td>
+    <form action='__link__' method='post'>
+    <table class='ui'>
+    <!--/@top-->
+    <!--@formitem-->
+    <tr><th>_label_</th><td>_form_item_</td></tr>
+    <!--/@formitem-->
+    <!--@bottom-->
+    <tr><th colspan='2'>_form_buttons_</th></tr>
+    </table>
+    </form>
+  </td></tr>
+  <tr><td>
+    <strong>Result:</strong> &nbsp;  __results__
+  </td></tr>
+
+  </table>
+  </body>
+</html>
+<script>
+function finalize()
+{
+  myDom.setCookie("formaction","s");
+  myDom.setCookie("changes","");
+  __js__
+}
+function doExit()
+{
+  // refresh the opener
+  window.opener.document.forms[0].submit();
+  //window.opener.location.reload(true);
+   
+  //var uri = window.opener.location;
+  //window.opener.location = uri;
+  
+  // go away
+  window.close();
+}
+</script>
+<!--/@bottom-->

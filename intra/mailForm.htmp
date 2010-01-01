@@ -1,0 +1,62 @@
+
+<form action="" method="post" name="form">
+<input name="form_name" value="Customer Request for Information" type="hidden">
+
+<table style="font-size: 8pt;" border="0" cellpadding="5" cellspacing="0">
+ <tbody>
+   <tr>
+    <td align="left" width="98">
+        <b>Name:</b></td>
+    <td width="291"><input id="mi1_Name" name="mi1_Name" size="35" type="text"></td>
+   </tr>
+    <tr>
+     <td align="left" width="98">
+         <b>Email:</b></td>
+
+     <td width="291"><input id="mi2_EMail" name="mi2_EMail" size="35" type="text"></td>
+    </tr>
+    <tr>
+      <td align="left" width="98">
+         <b>Address:</b></td>
+      <td width="291"><input name="mi3_Address" size="35" type="text"></td>
+    </tr>
+    <tr>
+
+      <td align="left" width="98">
+           <b>City/ State/ Zip:</b></td>
+       <td width="291"><input name="mi4_City" size="15" type="text">
+                       <input name="mi5_State" size="3" type="text">
+                       <input name="mi6_Zip" size="11" type="text">
+       </td>
+    </tr>
+    <tr>
+      <td align="left" width="98">
+
+          <b>Phone:</b></td>
+      <td width="291"><input name="mi7_Phone" size="35" type="text"></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="left">
+         <b>Where did you hear about us?</b>
+         <select name="mi8_Heard_about_us_from" size="1" tabindex="41">
+         <option value="" selected="selected">-select from below-</option>
+         <option>Yahoo</option><option>Google</option><option>MSN</option><option>AltaVista</option>
+         <option>All the Web</option><option>Lycos</option><option>Other Search Engine</option><option>Other Web Site</option><option>Contractor</option>
+         <option>Trade Show</option><option>Direct Mail</option><option>A Friend</option></select>
+
+      </td>
+    </tr>
+    <tr>
+      <td align="left" width="98">
+         <b>Questions and/or<br>
+            Comments:</b></td>
+      <td width="291">
+      &lt;textarea rows="5" name="mi9_Comments" cols="30"&gt;&lt;/textarea&gt;
+      </td></tr>
+
+<tr>
+  <td colspan="2" align="center" width="100%">
+     <input value="Submit" type="submit"><input value="Reset" type="reset"></td>
+</tr>
+</tbody></table></form>
+

@@ -1,0 +1,42 @@
+body {
+  text-align: center;
+  color: black;
+  background: #000060;
+  font: normal 8pt georgia;
+  }
+table{
+  border: darkgray solid 1px;  
+  background: #e0e0e0;
+  }
+.top {
+  background: white;
+  color: #000060;
+  font: bold 12pt georgia;
+  padding-left: 14px;
+  vertical-align: center;
+  border-bottom: solid 1px black;
+  }
+.menu {
+  padding: 10px; 
+  background: lightyellow; 
+  color: black; 
+  font: bold 8pt georgia;
+  height: 20px;
+  border-bottom: solid 1px black;  
+  }
+.paragraph {
+  background: white;
+  margin: 5px; 
+  border: solid 1px gray;
+  font: normal 10pt georgia; 
+  padding: 10px;
+  vertical-align: top;
+  }
+a { color: #000060; }
+a:hover { color: #404070; }
+img.icon {
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-left: 4px;
+  }

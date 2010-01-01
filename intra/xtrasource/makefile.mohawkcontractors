@@ -1,0 +1,5 @@
+# Target Folder
+WEBDIR=../../web/mohawk/contractors/
+OLOGIN = -DALTSLOGINSOURCE="\"../../mohawk/source/openLogin.h\""
+
+

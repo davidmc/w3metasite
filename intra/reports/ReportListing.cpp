@@ -1,0 +1,116 @@
+/*
+  ReportListing.cpp
+
+  User Interface Definition and Implementation 
+  for Report.
+  
+  Copyright (c) 2005 by D.K. McCombs.
+  
+  davidmc@w3sys.com
+  
+  W3 Systems Design Inc.  
+  
+*/
+#include <string>  
+//#define OPEN_LOGGING_FILE
+#include "openLogger.h"
+using namespace std;
+// added to resolve compatibility issues where this may be a symbolic link to another project
+#include "compatible.hpp"
+
+#include "connectstring"
+#include "w3intranet.h"
+#include "Reports.hpp"
+// Set static value
+bool Report_Parameters_form::hasParamValues = false;
+/**
+  This constrains the kind of reports that a person can see
+  To the list of comma seprated report ids in the service role
+  xml parameter tag <'view>'
+*/
+void addListCriteria( Report_List & repList )
+{
+  serviceMap::iterator pos = oLogin.Services().find("ReportListing.meta");
+  if( pos != oLogin.Services().end() )
+  {
+    openService & service = pos->second;
+    string::size_type idx = service.xml_param1.find("<view>");
+    if( idx != string::npos ) 
+    {
+      idx += 6; // strlen of <view>
+      string::size_type idx2=service.xml_param1.find("</view>");
+      if( idx2 != string::npos && idx2 > idx )
+      {
+        string reps = service.xml_param1.substr(idx, idx2-idx);
+        repList.addedCriteria = " r.Id in ( " + reps + " ) ";
+      }
+    }
+  }
+}
+bool intraMain(page & pg ,cgiScript & script)
+{
+  Report_List mylist(script);
+  mylist.loadListTemplates("Templates/list.htmp");  
+  addListCriteria(mylist);
+  script << "<h1>Reports: </h1>" << endl;
+  mylist.list_display();
+
+  // dummy form to satisfy client scripts
+  script << "<form id='uiForm' name='uiForm'><input type='hidden' id='xmldirections'></form>" << endl;
+  return true;
+}
+
+// Standard main function
+int main(int argc, char ** argv)
+{  
+  baseUrl = "reportListing.meta";  // this is my compiled name!
+  // because we are checking
+  cgiScript script("text/html",false);
+  bool isSignedOn = check(script);
+  script.closeHeader();
+  
+  /* Replace intranet.meta with anything you please, or not,
+     make sure an associated page entry exists in the metasite database. */
+  script.ScriptName() =
+    ocString( script.ScriptName().c_str()).replace("ReportListing.meta","reports").c_str();  
+    
+  page pg(script);  
+  
+  writelog( "load page" );  
+  if( pg.load() )
+  {    
+    writelog( "instance of page control" );
+    page_control ctrl(pg);     
+    ctrl.addOp ( "servicelist",  new servicelist_functor(pg,script,isSignedOn) );    
+    ctrl.addOp ( "userinterface",  new form_functor(pg,script,isSignedOn) );    
+    writelog( "page control emit" );
+    ctrl.emit();    
+  }
+  else
+  {
+    // try to be a regular cgi
+    if( oLogin.testLoginStatus() )
+    {
+      script.closeHeader();
+      cgiTemplates pgTemplate;    
+      pgTemplate.load("Templates/adminPane.htmp");
+      
+      script << ocString(pgTemplate.getParagraph("top"))
+                      .replaceAll("$heading$","Report");
+  
+      intraMain(pg ,script);
+          
+      ocString end = pgTemplate.getParagraph("bottom");
+      script << end;          
+    }
+    else
+    {
+      script.Redirect("signIn.html"); 
+    }
+  } 
+  return 0;
+}
+
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"

@@ -1,0 +1,29 @@
+
+.odd_cell { font-size: 10pt; background: rgb(255,255,255); text-align: center; }
+.even_cell { font-size: 10pt; background: rgb(235,255,235); text-align: center; }
+#repBody { background: white; color: black; padding: 0px; }
+#repMain { background: white; color: black; padding: 0px; border: solid 1px gray; }
+#report {  background: white }
+.headcell { 
+  background: rgb(235,235,225); 
+  color: rgb(55,55,105); 
+  font-size: 12pt;
+  border-left: 1px solid  rgb(55,55,105);
+  border-top: 1px solid  rgb(155,155,105);
+  border-bottom: 2px solid navy;
+  border-right: 2px solid rgb(255,255,225);;     
+  }
+strong { 
+  background: transparent; 
+  color: rgb(55,55,105); 
+  font-size: 12pt;
+  } 
+td { text-align: left; }  
+a.topitem{ color: gray; font-size: 8pt; }
+a.topitem:hover{ color: rgb(57,117,236); }
+.repTitle{ font-size: 14pt; 
+          font-weight: bolder; 
+          color: rgb(55,55,105); 
+          text-align: left; 
+          padding: 5px; }
+

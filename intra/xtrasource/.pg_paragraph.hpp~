@@ -1,0 +1,402 @@
+/* 
+  Page Paragraph Class and list - pg_paragraph.hpp
+  ----------------------------------------  
+  This class represents 
+  an abstraction of a web pages paragraphs.
+    
+*/
+
+// Sentry
+#ifndef Web_Page_Paragraph_Hpp
+#define Web_Page_Paragraph_Hpp
+
+// includes
+#include "cgiTemplates.h"
+#include "read_base.hpp"
+#include "ocTypes.h"
+#include <vector>
+
+//#define DO_OPEN_LOGGING
+#include "openLogger.h"
+#include "openLogin.h"
+#include "siteLimit.h"
+
+using namespace std;
+typedef long long identifier;
+typedef long long llong;
+
+/*
+  The new paragraph
+  Adding features for approval, author tracking, date entered and date valid
+  'section' tells the page where to place the text.
+  This allows re-use of paragraph template tags.
+*/
+
+class page_paragraph
+{
+protected:
+  // Data members
+  identifier m_id;
+  llong m_site_id;
+  llong m_page_id;
+  int m_place_order;
+  string m_template_tag;
+  string m_replace_tag;
+  string m_name;
+  string m_content;
+
+  // All new stuff
+  llong m_author;
+  time_date m_time_authored;
+  time_date m_time_start;
+  time_date m_time_end;
+  bool m_approved;
+  string m_section;
+  
+public:
+  string editIcon;
+  
+  // constructor
+  page_paragraph():
+    m_id(0LL),
+    m_site_id(0LL),
+    m_page_id(0LL),
+    m_place_order(0),
+    m_template_tag(""),
+    m_replace_tag("$content$"),
+    m_name(""),
+    m_content(""),
+    m_author(0LL),
+    m_time_authored( ),
+    m_time_start( ),
+    m_time_end( ),
+    m_approved(false),
+    m_section("")
+  {
+    ;
+  }
+  // destructor
+  virtual ~page_paragraph(){;}
+  // copy constructor 
+  page_paragraph( const page_paragraph & in):
+    m_id(in.m_id),
+    m_site_id(in.m_site_id),
+    m_page_id(in.m_page_id),
+    m_place_order(in.m_place_order),
+    m_template_tag(in.m_template_tag),
+    m_replace_tag(in.m_replace_tag),
+    m_name(in.m_name),
+    m_content(in.m_content),
+    m_author(in.m_author),
+    m_time_authored(in.m_time_authored),
+    m_time_start(in.m_time_start),
+    m_time_end(in.m_time_end),
+    m_approved(in.m_approved),
+    m_section(in.m_section)
+  {
+    ;
+  }
+  // assignment operator
+  page_paragraph & operator = ( const page_paragraph & in )
+  {
+    m_id = in.m_id;
+    m_site_id = in.m_site_id;
+    m_page_id = in.m_page_id;
+    m_place_order = in.m_place_order;
+    m_template_tag = in.m_template_tag;
+    m_replace_tag = in.m_replace_tag;
+    m_name = in.m_name;
+    m_content = in.m_content;
+    m_author = in.m_author;
+    m_time_authored = in.m_time_authored;
+    m_time_start = in.m_time_start;
+    m_time_end = in.m_time_end;
+    m_approved = in.m_approved;
+    m_section = in.m_section;
+    return *this;
+  }
+
+  void propset( openRS & rs )
+  {
+    id(atoll(rs.getField(0).format().c_str()));
+    site_id(atoll(rs.getField(1).format().c_str()));
+    page_id(atoll(rs.getField(2).format().c_str()));
+    place_order(atol(rs.getField(3).format().c_str()));
+    template_tag(rs.getField(4).format());
+    replace_tag(rs.getField(5).format()); 
+    name(rs.getField(6).format());
+    content(rs.getField(7).format());
+    author(atoll(rs.getField(8).format().c_str()));
+    time_authored(dynamic_cast<dateTimeField&>(rs.getField(9)).get());
+    time_start(dynamic_cast<dateTimeField&>(rs.getField(10)).get());
+    time_end(dynamic_cast<dateTimeField&>(rs.getField(11)).get());
+    approved(rs.getField(12).isNull()||dynamic_cast<longField&>(rs.getField(12)).get()!=0);
+    section(rs.getField(13).format());
+  }
+
+  string userName( void )
+  {
+    string name = "";
+    if( author() > 0 )
+    {
+      openLogin tmpLogin;
+      ocString ID;
+      ID.append(author());
+      if( tmpLogin.getUser(ID) )
+      {
+        name =  tmpLogin.FullName();
+      }
+    }
+    return name;
+  }
+  // new emit based on template control
+  void emit( paragraphMap & paras, ostream & toBrowser, string replace_tag, int count   )
+  {
+    // Find our template in the Template paragraphs 
+    paragraphMap::iterator pos;
+    pos = paras.find(template_tag());
+   
+    if( pos != paras.end() && approved() )
+    {
+      ocString thisId;
+      ocString pageId;
+    
+      thisId.append(m_id);
+      pageId.append(m_page_id); 
+      ocString uniqueId = thisId;
+      /* no longer used - brain now off lsd
+      uniqueId = "paragraph_";
+      uniqueId += m_section + "_";
+      uniqueId.append(place_order());
+      uniqueId = uniqueId.replace("-","_");  // css / html valid id label for - (negative) orders
+      */
+      ocString output = pos->second;
+      ocString temp; 
+      if( isEditMode == false )
+      {
+        // parse all edit links out  <!--@insert_before--> <!--/@insert_before-->
+        temp = output;
+        // Get stuff in front
+        if( temp.find( "<!--@insert_before-->" ) != string::npos )
+          output = temp.parse("<!--@insert_before-->");
+        else
+           output = temp.parse("<!--@edit-->");
+        // throw away all edit tags
+        temp.parse("<!--/@edit-->");
+
+        if( temp.find( "<!--@insert_after-->") != string::npos ) 
+        {
+          output += temp.parse("<!--@insert_after-->");
+          temp.parse("<!--/@insert_after-->");
+        }
+        output += temp.remainder(); 
+      }
+      else if( count > 0 )
+      {
+        temp = output;
+        // Get stuff in front
+        if( temp.find( "<!--@insert_before-->" ) != string::npos )
+        {
+          output = temp.parse("<!--@insert_before-->");
+            // throw away insert before
+          temp.parse("<!--/@insert_before-->");
+          output += temp.remainder();
+        }
+      }
+      toBrowser << 
+        output.replace( replace_tag.c_str(), content() )
+              .replaceAll("$page$",pageId)
+              .replaceAll("$id$",thisId) // for holding the paragraph id
+              .replace( "$id",uniqueId )  // for the dom
+              .replaceAll("$name$",template_tag())
+              .replaceAll("$section$",section())
+              // The rest of the replacements go by the name of the go by the members
+              .replace( "$time_authored$", time_authored().format("%b %d %Y %I:%M %p") )
+              .replace( "$author$",  userName() ); // may use user handle here at some point
+    }
+  }
+
+  // member access operators  
+  // get
+  identifier  id( void ) { return m_id; }
+  // set
+  void id( const identifier  in ) { m_id = in; }
+
+    // get
+  llong  site_id( void ) { return m_site_id; }
+  // set
+  void site_id( const llong  in ) { m_site_id = in; }
+
+    // get
+  llong  page_id( void ) { return m_page_id; }
+  // set
+  void page_id( const llong  in ) { m_page_id = in; }
+  
+    // get
+  int  place_order( void ) { return m_place_order; }
+  // set
+  void place_order( const int  in ) { m_place_order = in; }
+  
+    // get
+  string & template_tag( void ) { return m_template_tag; }
+  // set
+  void template_tag( const string & in ) { m_template_tag = in; }
+  
+    // get
+  string & replace_tag( void ) { return m_replace_tag; }
+  // set
+  void replace_tag( const string & in ) { m_replace_tag = in; }
+  
+    // get
+  string & name( void ) { return m_name; }
+  // set
+  void name( const string & in ) { m_name = in; }
+  
+    // get
+  string & content( void ) { return m_content; }
+  // set
+  void content( const string & in ) { m_content = in; }
+  
+    // get
+  llong  author( void ) { return m_author; }
+  // set
+  void author( const llong  in ) { m_author = in; }
+  
+    // get
+  time_date &  time_authored( void ) { return m_time_authored; }
+  // set
+  void time_authored( const time_date &  in ) { m_time_authored = in; }
+  
+    // get
+  time_date &  time_start( void ) { return m_time_start; }
+  // set
+  void time_start( const time_date &  in ) { m_time_start = in; }
+  
+    // get
+  time_date &  time_end( void ) { return m_time_end; }
+  // set
+  void time_end( const time_date &  in ) { m_time_end = in; }
+  
+    // get
+  bool  approved( void ) { return m_approved; }
+  // set
+  void approved( const bool  in ) { m_approved = in; }
+  
+    // get
+  string & section( void ) { return m_section; }
+  // set
+  void section( const string & in ) { m_section = in; }
+  
+  
+};
+
+
+
+typedef vector<page_paragraph> paragraph_vector;
+
+class page_paragraphs : protected ref_base, public paragraph_vector
+{   
+public:
+  string editIcon;
+  long long pgid;
+  page_paragraphs(openDB & dbIn):ref_base(dbIn),paragraph_vector(),pgid(0)
+  {
+    ;
+  }
+  ~page_paragraphs()
+  {
+    ;
+  }
+  string getSQL( long long pgid )
+  {
+    this->pgid = pgid;
+    // TODO: Add logic for archive, approved,author filtering.
+    ocString sql = "select id,site_id,page_id,place_order,"
+                   "template_tag,replace_tag,name,content,author,time_authored,"
+                   "time_start,time_end,approved,section  "
+                   "from paragraphs where page_id = ";
+    sql.append( pgid );
+    sql += " order by section, place_order";
+    writelog( sql );
+    return sql;
+  }
+
+  bool load( long long pgid, cgiInput & clientArgs )
+  {
+    bool breturn=false;
+    
+    bool bData;
+    string search = clientArgs["paraSrchCrtria"].c_str();
+    if(search.length()>0)
+    {
+      string section = clientArgs["paraSrchSect"].c_str();
+      bData=rs.open(getSQL(pgid,search,section));
+    }
+    else
+    {
+      bData=rs.open(getSQL(pgid));
+    }
+          
+    for( ;bData;bData=rs.next() )
+    {      
+      page_paragraph pp;      
+      pp.propset(rs);      
+      push_back(pp);
+    }    
+    rs.close();
+    return breturn;
+  }
+  
+  // Alternate sql for searching
+  string getSQL( long long pgid, string search, string section )
+  {
+    ocString sql = "select id,site_id,page_id,place_order,"
+                   "template_tag,replace_tag,name,content,author,time_authored,"
+                   "time_start,time_end,approved,section  "
+                   "from paragraphs where ( ( content like '%" + search + "%' ";
+    sql += " or name like '%" + search +  "%' ) ";
+    sql += " and section = '" + section + "' ";
+
+    // exclude the normal content in this section on this page
+    sql += ") or ( section != '" + section + "' and page_id = ";
+    sql.append(pgid);
+    sql += ") order by section, place_order";
+
+    return sql;
+  }
+
+
+
+  void emit( paragraphMap & paras, ostream & toBrowser, 
+             ocString templateTags, string replace_tag, string section = "" )
+  {
+    paragraph_vector::iterator pos;
+    int paragraphCount = 0;
+    for( pos=begin(); pos!=end(); ++pos )
+    {
+      if( section.length() )
+      {
+        if( section == pos->section() && pos->approved() == true )
+        {
+          pos->emit(paras,toBrowser,replace_tag,paragraphCount);
+          paragraphCount++;
+        }
+      }
+    }
+    if( isEditMode && paragraphCount == 0 )
+    {
+      // emit an empty paragraph so they can edit
+      page_paragraph emptyOne;
+      emptyOne.site_id(atoll(currentSite().c_str()));
+      emptyOne.page_id(pgid);
+      emptyOne.section(section);
+      emptyOne.template_tag(templateTags.parse(",")); // get the first in the cs list
+      emptyOne.replace_tag(replace_tag);
+      emptyOne.approved(true);
+      emptyOne.emit(paras,toBrowser,replace_tag,paragraphCount);
+    }
+  }
+ 
+};
+
+#endif

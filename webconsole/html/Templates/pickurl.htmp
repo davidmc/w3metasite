@@ -1,0 +1,62 @@
+<!--@pickformstart--> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+  <head>
+    <title>URL Choices:</title>
+    <style type="text/css">@import "lists.css";</style>   
+    <script src='icomm.js'></script>
+    <SCRIPT type="text/javascript" src="openDom.js"></SCRIPT>
+<SCRIPT type="text/javascript">
+var myDom = new openDom();
+  
+function ugo( )
+{
+  var returl;
+  var retprog = myDom.getElementById("progname").value;
+  var retpage = myDom.getElementById("pagename").value;  
+  if( retprog.length )
+  {
+    returl = retprog;  
+  }
+  if( retpage.length )
+  {
+    if(returl.length) returl += "/";
+    returl += retpage;  
+  }
+  pickTag(returl);
+}  
+</SCRIPT>
+</HEAD>
+<BODY>
+  <div id="left">  
+  <form id="uiForm" target="menu" action="">  
+   <h2 style='margin:3px; color:blue;'>Create URL</h2>
+   <p>
+   <strong>First: pick one of the Meta-Site Programs:</strong><br>
+   (For most common pages; use 
+   <span style="color:darkred">pages.meta</span>.)<br><br>
+   <select name="progname" id="progname">
+<!--/@pickformstart-->  
+<!--@pickoption-->
+   <option value="$value">$label</option>
+<!--/@pickoption-->
+<!--@pickformend--> 
+  </select>  
+  </p>
+  <p>
+  <strong>Next: type a page name</strong><br>
+  (It can be anything, but must be unique...<br>
+  &nbsp;  end with <span style="color:darkred">'.html'</span> if you want, 
+  not necessary though.)<br><br>
+  <input type="text" id="pagename" name="pagename" size="30" maxlength="255">
+  &nbsp; <input type="button" value="OK" onclick="javascript:ugo()"">
+  <input type="hidden" id="xmldirections" name="xmldirections">
+  </p>    
+  </div>
+  </form>
+</BODY>
+</HTML>
+<!--/@pickformend--> 
+   
+

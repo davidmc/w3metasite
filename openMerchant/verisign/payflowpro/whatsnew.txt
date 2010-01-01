@@ -1,0 +1,28 @@
+What's new in version 3.05
+--------------------------
+* improved error handling and reporting
+
+
+What's new in version 3.04
+--------------------------
+* improved timeout handling
+* fixed compatibility with proxy servers
+
+
+What's new in version 3.00
+--------------------------
+* Signio is now Verisign Payment Services
+* New API functions: pfproInit(), pfproCleanup(), pfproCreateContext(), 
+  pfproDestroyContext(), pfproSubmitTransaction() and
+  pfproCompleteTransaction()
+* Old API functions are now deprecated
+* Must set environment variable PFPRO_CERT_PATH to point to directory
+  that contains the file f73e89fd.0 for all clients except Java
+* Must call SetCertPath() member function to set the directory that
+  contains the file f73e89fd.0 for Java client
+
+ 
+  
+Verisign, Inc. 
+http://www.verisign.com
+See contact.txt for additional contact information

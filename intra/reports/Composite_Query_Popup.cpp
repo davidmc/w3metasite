@@ -1,0 +1,275 @@
+/*
+
+  Composite_Query_Popup.cpp
+
+  User Interface Definition 
+    and Implementation for Composite_Query.
+  
+  Copyright (C) 2005 by D.K. McCombs.
+  
+  W3 Systems Design  
+  
+*/
+
+#include <iostream>
+#include <iomanip>
+#include "cgiTemplates.h"
+#include "connectstring"
+#include "forms.h"
+#include "ocTypes.h"
+#include "ocString.h"
+#include "read_write_base.hpp"
+#include "forms_base.hpp"
+#include "list_base.hpp"
+#include "cgiTemplates.h"
+#include "Composite_Query.hpp"
+#include "list_base.hpp"
+#include "sublist_base.hpp"
+#include "openLogin.h" 
+#include "anyData.hpp"
+
+
+using namespace std;
+openLogin oLogin;
+#include "InfoPoints.hpp"
+
+class Scheme_Field_List:  public sublist_base
+{
+public: 
+  ocString Parent_Id;
+  // Constructor
+  Scheme_Field_List(cgiScript&sc):sublist_base(sc){;}  
+  ~Scheme_Field_List(){;}
+  
+  bool list_display( void )
+  {
+    bool breturn = true;
+    
+    string sql =  "select Id, Scheme_Table, Name, Col_Type, Links_To " 
+                  "from Scheme_Field where Scheme_Table = " ;
+    sql +=  Parent_Id;             
+    hotCol=-1;    
+    
+    string heading = "Use|Table|Name|Col_Type|Links_To";    
+    emitHeadings(heading);        
+    getData( sql );   
+    emitData();    
+    emitEnd();
+    return breturn;
+  }
+  void sendField( int iField, ocString & td )
+  {
+    if( iField==0)
+    {
+      ocString el = "<input type=\"checkbox\" name=\"tablechoice\" value=\"";
+      ocString js = "<script type=\"text/javascript\">addField( '";
+      el += rs.getField(0).format();
+      js += rs.getField(0).format();
+      js += "', '";
+      js += rs.getField("Name").format(); 
+      js += "', '";
+      js += rs.getField("Scheme_Table").format();      
+      js += "', '";
+      js += rs.getField("Col_Type").format();      
+      js += "', '";
+      js += rs.getField("Links_To").format();
+      
+      js += "');</script>";
+      webIO << js << endl;
+      el += "\" onClick='chooseField(this)'/>";
+      webIO << td.replace( "$data$", el.c_str() ); 
+    }
+    else
+      sublist_base::sendField( iField, td );
+  }      
+}; 
+
+class Table_Field_List:  public list_base
+{
+public: 
+  // Constructor
+  Table_Field_List(cgiScript&sc):list_base(sc){;}   
+  ~Table_Field_List(){;}
+  
+  bool list_display( void )
+  {
+    bool breturn = true;
+    hotCol=-1;     
+    emitHeadings("Use|Name|Abbr ");
+    getData( "select Id, Name, Abbr from Scheme_Table");   
+    emitData();
+    emitEnd();
+    return breturn;
+  } 
+  void sendField( int iField, ocString & td )
+  {
+    if( iField==0)
+    {
+      ocString el = "<input type=\"checkbox\" name=\"tablechoice\" value=\"";
+      ocString js = "<script type=\"text/javascript\">addTable( '";
+      el += rs.getField(0).format();
+      js += rs.getField(0).format();
+      js += "', '";
+      js += rs.getField(1).format(); 
+      js += "', '";
+      js += rs.getField(2).format();
+      js += "');</script>";
+      webIO << js << endl;
+      el += "\" onClick='chooseTable(this)'/>";
+      webIO << td.replace( "$data$", el.c_str() ); 
+    }
+    else
+      list_base::sendField( iField, td );
+  }
+  void derived_data_event( void )
+  {
+    // load fields for this table  
+    Scheme_Field_List cList(webIO);
+    cList.Parent_Id = rs.getField(0).format(); 
+    cList.loadListTemplates("Templates/spawninglist.htmp"); 
+    webIO << "<tr><td colspan='3' id='" << cList.Parent_Id <<
+             "fields' style='display:none; padding: 2px 2px 2px 25px; text-align: left; background: white; color: gray;'>"
+             "<strong>Fields:</strong><br>" << endl;
+    cList.list_display();      
+    webIO << "</td></tr>" << endl;
+  }     
+}; 
+class Composite_Query_form:  public Composite_Query_Obj, public forms_base
+{
+  hexEncoder hexify;
+public: 
+  Composite_Query_form(cgiScript & script):Composite_Query_Obj(),forms_base(script)
+  {
+    setKey(*this);
+  } 
+  virtual ~Composite_Query_form(){;}
+  
+  void form_id_transfer( void )
+  {
+    llongFXfer( "Id", Id );
+  }
+  void form_data_transfer( void )
+  {
+    stringFXfer( "Name", Name);
+    stringFXfer( "Select_Part", Select_Part);
+    stringFXfer( "From_Part", From_Part);
+    stringFXfer( "Where_Part", Where_Part);
+    stringFXfer( "Group_Part", Group_Part);
+    stringFXfer( "Having_Part", Having_Part);
+    stringFXfer( "Order_Part", Order_Part);
+    boolFXfer( "Is_Workflow", Is_Workflow);
+    Where_Part = hexify.w3hexDecode( Where_Part );
+  } 
+  
+  bool dbf_action( string mode, changeMap & changes )
+  {
+    return db_action( mode, changes );
+  } 
+  
+  // implement pure virtual of form display
+  bool form_display( void )
+  { 
+    bool breturn = true;
+    
+    ocString sql;
+    
+    script << makeTop("Composite_Query_Popup.cgi", "Composite_Query")
+           << formTemplate.getParagraph("advanced_begin");
+    script << makeStaticBox("Id", "Id", Id ,"8");
+    script << makeBoolBox("Is_Workflow", "Is_Workflow", Is_Workflow );      
+    
+    script << formTemplate.getParagraph("advanced_end");
+    script << "<br class='clearall'>" << endl;
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("Name", "Name", Name ,"50");
+
+
+    script << "<div style=\"margin: 5px; padding: 1px;float: right; "
+              "color: #247; border:3px solid #279;\" onClick=\"toggleVis('listed')\">"
+              "Table Guide</div>" << endl;
+    script << "<br class='clearall'>" << endl; 
+    script << "<div id=\"listed\" style=\"display:none\">" << endl;
+    
+    Table_Field_List list(script);
+    list.loadListTemplates("Templates/list.htmp"); 
+    list.list_display();
+    script << "<div style=\"margin: 5px; padding: 1px;float: right; "
+              "color: #247; border:3px solid #279;\" onClick=\"putQuery()\">"
+              "Put Query Elements</div>" << endl;
+    script << "</div><br class='clearall'>" << endl; 
+    
+    script << makeTextArea("Select_Part", "Select_Part", Select_Part ,"6", "100");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextArea("From_Part", "From_Part", From_Part ,"6","100");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextArea("Where_Part", "Where_Part",  hexify.w3HexEncode(Where_Part) ,"6" ,"100");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextArea("Group_Part", "Group_Part", Group_Part,"3" ,"100");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextArea("Having_Part", "Having_Part", Having_Part,"3" ,"100");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextArea("Order_Part", "Order_Part", Order_Part,"3" ,"100");
+    script << "<br class='clearall'>" << endl;
+    if( Id )
+    {
+      script << "<a style='color:#283;text-decoration:underline;' href=\"javascript:jopen('Composite_Query_Test.cgi?Id=" << Id << "',"
+                "'scrollbars,resizable,width=575,height=300','test')\">Test</a>  &nbsp; - &nbsp  " << endl;
+    }
+    script << "<a style='color:#283;text-decoration:underline;'  href=\"javascript:jopen('intranet.meta/reportHelp?view=Composite_Query',"
+              "'scrollbars,resizable,width=575,height=300','Help')\">Help</a>" << endl;
+    
+    script << makeButtons( key() );
+    script << makeBottom( m_result ) << endl;     
+    return breturn;
+  }  
+};
+
+
+int main( int argcount, char ** args )
+{
+  cgiScript script( "text/html", false );
+  Composite_Query_form myFrm(script);
+  
+  // New: need to be able to override where to get the data and what cookie to set for id
+  infoPoints iPoints;
+  if( iPoints.idToken.length() )
+  {
+    oLogin.token = iPoints.idToken;
+  }
+  // end of new     
+  if( oLogin.testLoginStatus() )
+  {
+    script.closeHeader();
+    cgiTemplates pgTemplate;    
+    pgTemplate.load("Templates/childPane.htmp");
+
+    script << ocString(pgTemplate.getParagraph("top"))
+                     .replaceAll("$heading$","Composite_Query")
+                     .replace("<!--Added_Header_Content-->",
+                              "<SCRIPT type=\"text/javascript\" src=\"./scripts/schema.js\"></SCRIPT>\n"
+                              "<SCRIPT type=\"text/javascript\" src=\"./scripts/anyData.js\"></SCRIPT>")
+                     .replace("// More Functions?",
+                               "function hexCall()"
+                               "{\n"
+                               "  document.forms[\"uiForm\"].Where_Part.value=\n"
+                               "    w3HexEncode(document.forms[\"uiForm\"].Where_Part.value);\n"
+                               "  }");
+    myFrm.loadControlTemplates("Templates/childdivform.htmp");
+    myFrm.form_action();  
+    myFrm.form_display();
+
+    ocString end = pgTemplate.getParagraph("bottom");
+    script << end.replace("/*_extra_js_*/",
+                          "document.forms[\"uiForm\"].Where_Part.value="
+                          "w3HexDecode( document.forms[\"uiForm\"].Where_Part.value );");   
+  }                        
+  else
+  {
+    script.Redirect("/"); 
+  } 
+}
+
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"
+

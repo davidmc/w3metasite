@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLPayRequest Timeout="30" >
+ <RequestData>
+  <Vendor>vendor</Vendor>
+  <Partner>partner</Partner>
+  <Transactions>
+   <Transaction>
+    <Authorization>
+     <PayData>
+      <Invoice>
+       <BillTo>
+        <Address>
+         <Street>123 4th street</Street>
+         <City>San Jose</City>
+         <State>CA</State>
+         <Zip>95032</Zip>
+         <Country>USA</Country>
+        </Address>
+       </BillTo>
+       <TotalAmt>1.23</TotalAmt>
+      </Invoice>
+      <Tender>
+       <Card>
+        <CardNum>5105105105105100</CardNum>
+        <ExpDate>200202</ExpDate>
+        <NameOnCard>Joe Smith</NameOnCard>
+       </Card>
+      </Tender>
+     </PayData>
+    </Authorization>
+   </Transaction>
+  </Transactions>
+ </RequestData>
+ <RequestAuth>
+  <UserPass>
+   <User>user</User>
+   <Password>password</Password>
+  </UserPass>
+ </RequestAuth>
+</XMLPayRequest>

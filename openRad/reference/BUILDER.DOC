@@ -1,0 +1,495 @@
+Make Class class builder
+
+
+1.0	Introduction:
+
+	The class builder is an executable file called makeclas.exe that builds from an input class definition file a complete compilable C++ class definition and implementation.  It makes output hpp and cpp files using the input definition file name as the base.  The class built as a result may have the following features:
+
+Inheritance:  
+
+	Inheritance from parent classes is set using the PARENT keyword.  Inheritance may be either multiple or single.
+
+Default Constructor and Destructor.  
+
+
+Copy Constructor and Assignment operator.
+
+
+Access Methods.
+
+
+
+
+2.0	The input file specification:
+
+Example:
+
+
+CLASS Sampler
+
+PRIVATE
+
+int TimedOut( void );
+  
+PUBLIC         
+
+
+DATA
+
+int     portAddress
+int     numPoints
+int     numTriggerPoints
+int     triggerLevel
+int     timeOut
+byte    sampleMethod
+double  interval
+
+
+METHODS 
+
+byte * `Sample( void )       
+
+#include <string.h>
+#include <iostream.h>
+#include "daqtypes.h"
+#include "parallel.h"
+
+
+3.0	Support Files
+
+3.1 The file that defines inititalizer and destructor code is
+called INIT:
+
+<NAME>(0.0) // double
+~
+  // goodbye <NAME>
+-                         
+<NAME>((double*)0L) // double*
+~
+  if( <NAME> ) delete [] <NAME>;
+-                         
+<NAME>(0.0) // float
+~
+  // goodbye <NAME>
+-                         
+<NAME>(0L) // long
+~
+  // goodbye <NAME>
+-                         
+<NAME>(0L) // unsigned long
+~
+  // goodbye <NAME>
+-                         
+<NAME>(0) // int
+~
+  // goodbye <NAME>
+-                         
+<NAME>(0) // unsigned int
+~
+  // goodbye <NAME>
+-                         
+<NAME>(0) // short
+~
+  // goodbye <NAME>
+-                         
+<NAME>(0) // unsigned short
+~
+  // goodbye <NAME>
+-                         
+<NAME>((char*)0L) // char*
+~
+  if( <NAME> ) delete [] <NAME>;
+-                         
+<NAME>('\0') // char
+~
+  // goodbye <NAME>
+-                         
+<NAME((unsigned char)'\0') // unsigned char
+~
+  // goodbye <NAME>
+-                         
+<NAME>('\0') // byte
+~
+  // goodbye <NAME>
+-                         
+<NAME>((byte*)0L) // byte*
+~
+  if( <NAME> ) delete [] <NAME>;
+
+
+3.2 The files that provide constructor, destructor, and
+assignement operations are ASSIGN.HTP and ASSIGN.CTP.
+
+ASSIGN.HTP:
+
+<CLASS>();
+~<CLASS>();
+
+<CLASS>( <CLASS> & input );
+<CLASS> & operator = ( <CLASS> & input );
+
+
+ASSIGN.CTP:
+
+<CLASS>::<CLASS>() 
+<<PARENTS>>
+<<INITIALIZERS>>
+{
+  ;
+}
+
+<CLASS>::~<CLASS>()
+{
+  <<DESTROYERS>>
+}
+
+
+<CLASS>::<CLASS>( <CLASS> & input )
+{
+  <<ASSIGNS>>
+}
+
+<CLASS> & <CLASS>::operator = ( <CLASS> & input )
+{
+  if( this == &input )
+  {
+    <<ASSIGNS>> +2
+  }
+  return *this;
+} 
+
+
+3.3 The files that provide access operations are ACCESS.HTP and
+ACCESS.CTP.
+
+
+ACCESS.HTP:
+
+double <NAME>( void ) const; 
+void set<NAME>( double input );
+set<NAME>( input.<NAME>() );
+-
+const double* <NAME>( void ) const;
+void set<NAME>( const double* input, unsigned long size );
+set<NAME>( input.<NAME>(), input.Size<NAME>() );
+-
+float <NAME>( void ) const;
+void set<NAME>( float input );
+set<NAME>( input.<NAME>() );
+-
+long <NAME>( void ) const;
+void set<NAME>( long input );
+set<NAME>( input.<NAME>() );
+-
+unsigned long <NAME>( void ) const;
+void set<NAME>( unsigned long input );
+set<NAME>( input.<NAME>() );
+-
+int <NAME>( void ) const;
+void set<NAME>( int );
+set<NAME>( input.<NAME>() );
+-
+unsigned int <NAME>( void ) const;
+void set<NAME>( unsigned int input );
+set<NAME>( input.<NAME>() );
+-
+short <NAME>( void ) const;
+void set<NAME>( short input );
+set<NAME>( input.<NAME>() );
+-
+unsigned short <NAME>( void ) const;
+void set<NAME>( unsigned short input );
+set<NAME>( input.<NAME>() );
+-
+const char* <NAME>( void ) const;
+void set<NAME>( const char* input, unsigned long size );
+set<NAME>( input.<NAME>(), input.Size<NAME>() );
+-
+char <NAME>( void ) const;
+void set<NAME>( char input );
+set<NAME>( input.<NAME>() );
+-
+unsigned char <NAME>( void ) const;
+void set<NAME>( unsigned char input );
+set<NAME>( input.<NAME>() );
+-
+byte <NAME>( void ) const;
+void set<NAME>( byte input );
+set<NAME>( input.<NAME>() );
+-
+const byte* <NAME>( void ) const;
+void set<NAME>( const byte * input, unsigned long size );
+set<NAME>( input.<NAME>(), input.Size<NAME>() );
+
+ACCESS.CTP:
+
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+double <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( double input )
+{
+  <LNAME> = input;
+}
+
+ 
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+const double* <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+
+void <CLASS>::set<UNAME>( const double* input, unsigned long size )
+{
+  if( input && size )
+  {
+    if( <LNAME> )
+    {
+      delete [] <LNAME>;
+    }
+    size<UNAME> = size;
+    <LNAME> = new double [size];
+    memcpy( <LNAME>, input, size*sizeof(double) );
+  } 
+} 
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+float <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( float input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+long <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( long input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+unsigned long <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( unsigned long input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+int <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( int input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+unsigned int <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( unsigned int input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+short <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( short input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+unsigned short <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( unsigned short input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+const char* <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>(const char* input, unsigned long size )
+{
+  if( input && size )
+  {
+    if( <LNAME> )
+    {
+      delete [] <LNAME>;
+    }
+    size<UNAME> = size;
+    <LNAME> = new char [size];
+    memcpy( <LNAME>, input, size );
+  } 
+}
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+char <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( char input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+unsigned char <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( unsigned char input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+byte <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( byte input )
+{
+  <LNAME> = input;
+}
+
+
+-
+//
+// Set and Get methods for <CLASS>::<LNAME>
+//
+
+const byte* <CLASS>::<UNAME>( void ) const
+{
+  return <LNAME>;
+} 
+void <CLASS>::set<UNAME>( const byte * input, unsigned long size )
+{
+  if( input && size )
+  {
+    if( <LNAME> )
+    {
+      delete [] <LNAME>;
+    }
+    size<UNAME> = size;
+    <LNAME> = new byte [size];
+    memcpy( <LNAME>, input, size*sizeof(byte) );
+  } 
+} 
+
+3.4	The file used to look up the type of a prospective member is
+TYPE:
+
+double
+-
+double *
+double*
+-
+float
+-
+unsigned long
+-
+long
+-
+int
+-
+unsigned int
+-
+short
+-
+unsigned short
+-
+char *
+char*
+-
+char
+-
+unsigned char
+-
+byte
+-
+byte *
+byte*
+-
+

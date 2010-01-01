@@ -1,0 +1,188 @@
+-- Add tables related to ecommerce
+--
+
+--
+-- Table structure for table 'Customer_Payment_Parameter'
+--
+
+CREATE TABLE Customer_Payment_Parameter (
+  Id bigint(20) NOT NULL auto_increment,
+  Customer_Pmt_Service_Id bigint(20) default NULL,
+  Pmt_Type_Param_Id bigint(20) default NULL,
+  Machine_Name text,
+  Value text,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+--
+-- Table structure for table 'Customer_Payment_Service'
+--
+
+CREATE TABLE Customer_Payment_Service (
+  Id bigint(20) NOT NULL auto_increment,
+  Customer_Id bigint(20) default NULL,
+  Payment_Service_Id bigint(20) default NULL,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table 'Order_Status'
+--
+
+CREATE TABLE Order_Status (
+  Id bigint(20) NOT NULL auto_increment,
+  Name text,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table 'Ordered'
+--
+
+CREATE TABLE Ordered (
+  Id bigint(20) NOT NULL auto_increment,
+  Product_Id bigint(20) default NULL,
+  Customer_Id bigint(20) default NULL,
+  Order_Status_Id bigint(20) default NULL,
+  Product_Total double default NULL,
+  Shipping_Total double default NULL,
+  Tax_Total double default NULL,
+  Order_Total double default NULL,
+  Order_Date datetime default NULL,
+  Ship_Date datetime default NULL,
+  Reconcile_Date datetime default NULL,
+  Transaction_Id text,
+  Shipping_Co bigint(20) default NULL,
+  Tracking_Number text,
+  Notes text,
+  Customer_Pmt_Svc_Id bigint(20) default NULL,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+
+--
+-- Table structure for table 'Ordered_Item'
+--
+
+CREATE TABLE Ordered_Item (
+  Id bigint(20) NOT NULL auto_increment,
+  Product_Id bigint(20) default NULL,
+  Order_Id bigint(20) default NULL,
+  Product_Count int(11) default NULL,
+  Total_Price double default NULL,
+  Shipping double default NULL,
+  Internal_Id text,
+  External_Id text,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+--
+-- Table structure for table 'Ordered_Item_Option'
+--
+
+CREATE TABLE Ordered_Item_Option (
+  Id bigint(20) NOT NULL auto_increment,
+  Ordered_Item_Id bigint(20) default NULL,
+  Name text,
+  Value text,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table 'Ordered_Item_Option'
+--
+
+--
+-- Table structure for table 'Payment_Service'
+--
+
+CREATE TABLE Payment_Service (
+  Id bigint(20) NOT NULL auto_increment,
+  Type bigint(20) NOT NULL default '0',
+  Name text NOT NULL,
+  Label text,
+  Instructions text,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+--
+-- Table structure for table 'Payment_Type_Parameter'
+--
+
+CREATE TABLE Payment_Type_Parameter (
+  Id bigint(20) NOT NULL auto_increment,
+  Service_Type bigint(20) NOT NULL default '0',
+  Value_Location int(11) NOT NULL default '0',
+  Param_Type int(11) NOT NULL default '0',
+  Interface_Type int(11) NOT NULL default '0',
+  Name text NOT NULL,
+  Machine_Name text,
+  Value text,
+  Instructions text,
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+--
+-- Table structure for table 'ShoppingCart'
+--
+
+CREATE TABLE ShoppingCart (
+  Id bigint(20) NOT NULL auto_increment,
+  XML text NOT NULL,
+  Last_Access datetime NOT NULL default '0000-00-00 00:00:00',
+  Checked_Out tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (Id)
+) TYPE=MyISAM;
+
+-- --------------------------------------------------------------------
+-- Default Data
+
+--
+-- Data for table 'Order_Status'
+--
+
+INSERT INTO Order_Status VALUES (1,'Ordered');
+INSERT INTO Order_Status VALUES (2,'In Accounting');
+
+--
+-- Data for table 'Payment_Service'
+--
+
+INSERT INTO Payment_Service VALUES (1,1,'Master Card','Master Card','Please fill out the form below to set up MasterCard payments.');
+INSERT INTO Payment_Service VALUES (2,1,'Visa','Visa','Please fill out the form below to set up Visa payments');
+
+--
+-- Data for table 'Payment_Type_Parameter'
+--
+
+INSERT INTO Payment_Type_Parameter VALUES (1,1,1,1,0,'action','action','sale','Pay action');
+INSERT INTO Payment_Type_Parameter VALUES (3,1,1,4,0,'action','action','credit','Credit after sale (or preauth/postauth pair)');
+INSERT INTO Payment_Type_Parameter VALUES (4,1,1,1,0,'Payment Media','media','cc','For all credit card and debit card transactions');
+INSERT INTO Payment_Type_Parameter VALUES (5,1,1,1,0,'Test','demo','y','This is used to test the system - remove when live');
+INSERT INTO Payment_Type_Parameter VALUES (6,1,2,1,1,'Name','name','','Please Enter your name as it appears on the card');
+INSERT INTO Payment_Type_Parameter VALUES (7,1,2,1,2,'Credit Card Number','cc','','Please enter your card number');
+INSERT INTO Payment_Type_Parameter VALUES (8,1,2,1,3,'Expiration Date','exp','','Please enter the expiration date in the form \'MMYY\' example: \'1006\' for October 2006');
+INSERT INTO Payment_Type_Parameter VALUES (9,1,3,1,0,'Order ID','ticket','','Refers back to the unique internal id of the order');
+INSERT INTO Payment_Type_Parameter VALUES (10,1,5,1,0,'Amount','amount','','Amount of purchase');
+INSERT INTO Payment_Type_Parameter VALUES (12,1,4,4,0,'Transaction ID','transid','','Transaction ID from sale to be reversed');
+INSERT INTO Payment_Type_Parameter VALUES (13,1,2,1,4,'Credit Verification No.','cvv','','Enter the credit verification number on the back of your card.');
+INSERT INTO Payment_Type_Parameter VALUES (15,1,1,1,0,'Address Verification','avs','y','Address Verification Required');
+INSERT INTO Payment_Type_Parameter VALUES (16,1,2,1,5,'Address','address1','','Enter your street address');
+INSERT INTO Payment_Type_Parameter VALUES (18,1,2,1,5,'City','city','','Enter the City');
+INSERT INTO Payment_Type_Parameter VALUES (19,1,2,1,5,'State','state','','Enter the state');
+INSERT INTO Payment_Type_Parameter VALUES (20,1,2,1,5,'Zip','zip','','Enter your Zip Code');
+
+-- if you plan on doing pre, post auth...
+insert into Payment_Type_Parameter
+  ( Service_Type,Value_Location,Param_Type,Interface_Type,Name,Machine_Name,Value,Instructions )
+values
+  ( 1,1,2,0,'action','action','preauth','Pre-authorization action' );
+
+insert into Payment_Type_Parameter
+  ( Service_Type,Value_Location,Param_Type,Interface_Type,Name,Machine_Name,Value,Instructions )
+values
+  ( 1,1,3,0,'action','action','postauth','Post-authorization action' );
+
+

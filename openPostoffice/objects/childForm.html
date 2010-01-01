@@ -1,0 +1,78 @@
+<!--@top-->
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>
+    body{ background:azure; color: black; font: bold 14pt arial;}
+    table.ui{ background: floralwhite; padding: 5pt; border: 1pt solid black;  }
+    table.status{ padding: 5pt; }
+    .static{ background: floralwhite; color: darkgray; }
+    .ctrl { width: 220px; text-align: right; }
+    a { color: #500050; text-decoration: none; }
+    a:hover { color: #005050; text-decoration: none; }
+    h2{ color: darkcyan; }
+    th{ border: 1pt solid purple; text-align: right; }
+    th.status{ text-align: left; border: none;}
+    td{ text-align: left; font: 12pt arial; vertical-align: top; }
+    </style>
+    <script src='openDom.js'></script>
+    <script>
+    var myDom = new openDom();
+    var updates = new Array();
+    </script>
+    <script src='forms.js'></script>
+    <script src='formEvents.js'></script>
+  </head>
+  <body onLoad='finalize()'>
+  <a name='top'> </a>
+  <h2>_entity_ Editor</h2>
+  <table>
+  <tr>
+
+  <td>
+    <form action='__link__' method='post'>
+    <table class='ui'>
+    <!--/@top-->
+    <!--@formitem-->
+    <tr><th>_label_</th><td>_form_item_</td></tr>
+    <!--/@formitem-->
+    <!--@bottom-->
+    <tr><th colspan='2'>_form_buttons_</th></tr>
+    </table>
+    </form>
+  </td>
+    <td>
+    <table class='status'>
+      <tr><th class='status'>Instructions:</th>
+      <tr><td>
+        Edit the data to the left.<br>
+        Hit the Edit, Update or Delete buttons to commit edits.
+      </td></tr>
+      <tr><th class='status'>Result:</th></tr>
+      <tr><td>
+        __results__
+      </td></tr> 
+     <tr><th class='status'><img border='0' src='exit.png' onClick='doExit()'></th></tr>
+    </table>
+  </tr>
+  </table>
+  </body>
+</html>
+<script>
+function finalize()
+{
+  myDom.setCookie("formaction","s");
+  myDom.setCookie("changes","");
+  __js__
+}
+function doExit()
+{
+  // refresh the opener
+  var uri = window.opener.location;
+  window.opener.location = uri;
+  // go away
+  window.close();
+}
+</script>
+<!--/@bottom-->

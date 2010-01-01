@@ -1,0 +1,402 @@
+/* METASITE IMPORT */
+
+#include <fstream>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+
+#include "ocString.h"
+#include "ocFileSys.h"
+#include "connectstring"
+#include "openDB.hpp"
+
+#define DO_OPEN_LOGGING
+#include "openLogger.h"
+#include "ocImportParser.h"
+
+#include "read_write_base.hpp"   
+
+#include "SysImportFixup.h"
+#include "link.hpp"
+#include "../../intra/xtrasource/global_content_obj.hpp"
+#include "../../intra/xtrasource/templates.hpp"
+#define SUPPRESS_LINK_CREATION
+#include "../../intra/xtrasource/page_obj.hpp"
+#include "link.hpp"
+#include "../../intra/xtrasource/menu.hpp"
+#include "../../intra/xtrasource/menu_item.hpp"
+#include "page_menus.hpp"
+#include "../../intra/xtrasource/paragraphs.hpp"
+
+
+using namespace std;
+
+void clearTable( string table, long long site_id = 0)
+{
+  openDbFactory DbMaker(PROVIDER, CONNECTSTRING);
+  openDB & db = DbMaker.db();
+  openCmdFactory cmdFact( db );
+  openCMD & cmd = cmdFact.cmd();
+  ocString sql = "delete from ";
+  sql += table;
+  if( site_id )
+  {
+    sql += " where site_id = ";
+    sql.append( site_id );
+  }
+  cout << "EXECUTING : " << sql << endl;
+  cmd.execute(sql);
+}
+
+void cleanSysImport( void )
+{
+  clearTable("SysImport_Keys");
+}
+
+void importGlobalContent( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "Global.csv" ) )
+  {
+    clearTable("global_content", site_id );
+    ocFileCols & cols = prsr.getCols();
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(3);
+
+    while(prsr.parseLine(false))
+    {
+      global_content_Obj bobj;
+      bobj.site_id = site_id;
+      bobj.name= cols[1].value;
+      bobj.content = ocString(cols[2].value).replaceAll("\"\"","\"");      
+      if( bobj.db_insert() )
+      {
+        cout << prsr.getLineTokens() << endl;
+      }
+    }
+  }
+}
+
+void importTemplates( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "Templates.csv" ) )
+  {
+    clearTable("templates", site_id );
+    ocFileCols & cols = prsr.getCols();
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(3);
+
+    while(prsr.parseLine(false))
+    {
+      Template bobj;
+      bobj.site_id = site_id;
+      bobj.name= cols[1].value;
+      bobj.path = cols[2].value;
+      if( bobj.db_insert() )
+      {
+        SysImport_Keys keyFix;
+        keyFix.Table_Name = "templates";
+        keyFix.Imported_Id = atoll(cols[0].value.c_str());
+        keyFix.Current_Id = bobj.key();
+        if(keyFix.insert())
+        {
+          cout << prsr.getLineTokens() << endl;
+        }
+      }
+    }
+  }
+}
+
+void importPages( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "Page.csv" ) )
+  {
+    
+    clearTable("pages", site_id );
+    
+    ocFileCols & cols = prsr.getCols();
+
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(5);
+    while(prsr.parseLine(false))
+    {
+      cout << cols[0].value << " name "  << cols[2].value << endl;
+      page bobj;
+      SysImport_Keys keyGet;
+      if( keyGet.get("templates",atoll(cols[1].value.c_str()) ) )
+      {
+        bobj.site_id = site_id;
+        bobj.template_id = keyGet.Current_Id;
+        bobj.name = cols[2].value;
+        bobj.url = cols[3].value;
+        bobj.meta_description = ocString(cols[4].value).replaceAll("\"\"","\"");
+        if( bobj.db_insert() )
+        {
+          SysImport_Keys keyFix;
+          keyFix.Table_Name = "page";
+          keyFix.Imported_Id = atoll(cols[0].value.c_str());
+          keyFix.Current_Id = bobj.key();
+          if(keyFix.insert())
+          {
+             cout << prsr.getLineTokens() << endl;
+          }
+        }
+      }
+      else
+      {
+        cout << " Error: " << keyGet.last_result() << endl;
+      }
+    }
+  }
+}
+
+void importLinks( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "Link.csv" ) )
+  {
+    clearTable("links", site_id );
+    ocFileCols & cols = prsr.getCols();
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(4);
+
+    while(prsr.parseLine(false))
+    {
+      links_Obj bobj;
+      bobj.site_id = site_id;
+      bobj.name= cols[1].value;
+      bobj.url = cols[2].value;
+      bobj.target = cols[3].value;
+      if( bobj.db_insert() )
+      {
+        SysImport_Keys keyFix;
+        keyFix.Table_Name = "links";
+        keyFix.Imported_Id = atoll(cols[0].value.c_str());
+        keyFix.Current_Id = bobj.key();
+        if(keyFix.insert())
+        {
+          cout << prsr.getLineTokens() << endl;
+        }
+      }
+      else
+      {
+        cout << bobj.last_result() << endl;
+      }
+    }
+  }
+}
+
+void importMenus( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "Menu.csv" ) )
+  {
+    clearTable("menus", site_id );
+    ocFileCols & cols = prsr.getCols();
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(5);
+
+    while(prsr.parseLine(false))
+    {
+      menu bobj;
+      bobj.site_id = site_id;
+      bobj.name= cols[1].value;
+      bobj.reference_template= cols[2].value;
+      bobj.template_open_tag= cols[3].value;
+      bobj.template_close_tag= cols[4].value;
+      if( bobj.db_insert() )
+      {
+        SysImport_Keys keyFix;
+        keyFix.Table_Name = "menus";
+        keyFix.Imported_Id = atoll(cols[0].value.c_str());
+        keyFix.Current_Id = bobj.key();
+        if(keyFix.insert())
+        {
+          cout << prsr.getLineTokens() << endl;
+        }
+      }
+      else
+      {
+        cout << bobj.last_result() << endl;
+      }
+    }
+  }
+}
+
+void importMenuItems( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "MenuItem.csv" ) )
+  {
+    clearTable("menu_items", site_id );
+    ocFileCols & cols = prsr.getCols();
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(9);
+
+    while(prsr.parseLine(false))
+    {    
+      SysImport_Keys keyGet, linkKeyGet;
+      if( !keyGet.get("menus",atoll(cols[1].value.c_str()) ) )
+        continue;
+      if( !linkKeyGet.get("links",atoll(cols[2].value.c_str()) ) )        
+        continue;
+      menu_item bobj;
+      bobj.site_id = site_id;
+      
+      bobj.menu_id = keyGet.Current_Id;
+      bobj.link_id = linkKeyGet.Current_Id;
+      bobj.template_tag= cols[3].value;
+      bobj.locate_tag= cols[4].value;
+      bobj.target_tag= cols[5].value;
+      bobj.label_tag= cols[6].value;
+      bobj.place_order= atol(cols[7].value.c_str());
+      bobj.place_level= atol(cols[8].value.c_str());
+      
+      if( bobj.db_insert() )
+      {
+        cout << prsr.getLineTokens() << endl;        
+      }
+      else
+      {
+        cout << bobj.last_result() << endl;
+      }
+    }
+  }
+}
+
+void importPageMenus( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "PageMenu.csv" ) )
+  {
+    clearTable("page_menus", site_id );
+    ocFileCols & cols = prsr.getCols();
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(5);
+
+    while(prsr.parseLine(false))
+    {    
+      SysImport_Keys keyGet, menuGet;
+      if( !keyGet.get("page",atoll(cols[2].value.c_str()) ) )
+        continue;
+      if( !menuGet.get("menus",atoll(cols[1].value.c_str()) ) )
+        continue;
+        
+      page_menus_Obj bobj;      
+      bobj.site_id = site_id;      
+      bobj.menu_id = menuGet.Current_Id;
+      bobj.page_id = keyGet.Current_Id;      
+      bobj.place_order = atol(cols[3].value.c_str());
+      bobj.collapsible= atol(cols[4].value.c_str())>0;      
+      if( bobj.db_insert() )
+      {
+        cout << prsr.getLineTokens() << endl;        
+      }
+      else
+      {
+        cout << bobj.last_result() << endl;
+      }
+    }
+  }
+}
+void importParagraphs( long long site_id )
+{
+  ocFileParser prsr;
+  if( prsr.openFile( "Paragraph.csv" ) )
+  {
+    clearTable("paragraphs", site_id );
+    ocFileCols & cols = prsr.getCols();
+    // set parser for a csv file
+    prsr.setDelim(",").setCheckQuote(true);
+    // OJO! get this right!
+    prsr.setColCount(9);
+
+    while(prsr.parseLine(false))
+    {
+      cout << cols[7].value << endl << "******--********" << endl;
+      
+      SysImport_Keys keyGet;
+      if( keyGet.get("page",atoll(cols[1].value.c_str()) ) )
+      {
+        paragraphs_Obj bobj;
+        bobj.site_id = site_id;
+        bobj.page_id = keyGet.Current_Id;
+        bobj.place_order= atol(cols[2].value.c_str());
+        bobj.template_tag= cols[3].value;
+        bobj.replace_tag= cols[4].value;
+        bobj.name= ocString(cols[5].value).replaceAll("\"\"","\"");
+        bobj.content= ocString(cols[6].value).replaceAll("\"\"","\"");
+        bobj.section= ocString(cols[7].value).replaceAll("\"\"","\"");
+        bobj.edit_type = atoll(cols[8].value.c_str());
+        if(  bobj.section.length() == 0 ) bobj.section = "content";
+        if( bobj.db_insert() )
+        {
+          cout << bobj.content.substr(0,40) << endl;
+        }
+        else
+        {
+          cout << bobj.last_result() << endl;
+        }
+      }
+    }
+  }
+}
+
+
+int main( int argc, char** argv )
+{
+  /* Explain in string comment */
+  string explain = 
+      "Must have one argument: The id for the site "
+      "set up on THIS system. \n"
+      "Make sure such a site exists first!\n";
+  /* End explain */
+  if( argc > 1 )
+  {
+    // Check site key
+    long long site_id = atoll(argv[1]);
+    if( site_id )
+    {
+      cleanSysImport();
+      // import globals, fixup site_id
+      importGlobalContent( site_id );
+      // import templates
+      importTemplates( site_id );
+      // import pages
+      importPages( site_id );
+      // import links
+      importLinks( site_id );
+      // import menus
+      importMenus( site_id );
+      // import menu_items
+      importMenuItems( site_id );
+      // import page_menus
+      importPageMenus( site_id );
+      // import paragraphs
+      importParagraphs( site_id );
+    }
+  }
+  else
+  {
+    cout << explain << endl;
+  }
+  return 0;
+}
+
+#include "read_write_base.cpp"

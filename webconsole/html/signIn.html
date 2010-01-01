@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style type=text/css media=screen>@import url(main.css );</style>
+    <script type="text/javascript" src='openDom.js'></script>
+    <script type="text/javascript">
+    function detoken()
+    {
+      var myDom = new openDom();
+      myDom.parseCookies();
+      if( myDom.hasCookie( "token" ) )
+      {      
+        var tok = myDom.parsedCookies["token"];      
+        if( tok && tok.length > 0 )
+        {
+          myDom.setCookie( "token", "", "Thu, 01-Jan-1970 00:00:00 GMT", "/" );
+          parent.menu.location.href = parent.menu.location.href;      
+        }
+      }
+    }
+    </script>    
+  </head>
+  <body onLoad='detoken()'>
+  <h4>Please Sign In</h4> 
+  <p>Please enter your login and password in order to sign in.</p>
+  <form action='sysadmin.cgi'>  
+  <table class='ui'>
+    <tr><td class=ctrl>
+      Login <td class=ctrl><input type='text' name='login' id='login' size='12' maxlength='12'>
+    </td>
+    <tr><td class=ctrl>
+      Password<td class=ctrl> <input type='password' name='password' id='password' size='12' maxlength='12'>
+    </td>
+    <tr><td class=ctrl> &nbsp;<td class=ctrl>
+      <input type='submit'>
+    </td>
+  </table>
+  </form>
+  </body>
+</html>
+

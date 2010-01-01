@@ -1,0 +1,672 @@
+-- MySQL dump 10.9
+--
+-- Host: localhost    Database: w3sys
+-- ------------------------------------------------------
+-- Server version	4.1.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Appointment`
+--
+
+DROP TABLE IF EXISTS `Appointment`;
+CREATE TABLE `Appointment` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Company` bigint(20) default NULL,
+  `Contact` bigint(20) default NULL,
+  `Location` text,
+  `Title` text,
+  `Description` text,
+  `Starts` datetime default NULL,
+  `Stops` datetime default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Appointment`
+--
+
+
+/*!40000 ALTER TABLE `Appointment` DISABLE KEYS */;
+LOCK TABLES `Appointment` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Appointment` ENABLE KEYS */;
+
+--
+-- Table structure for table `Company`
+--
+
+DROP TABLE IF EXISTS `Company`;
+CREATE TABLE `Company` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Key_Contact` bigint(20) default NULL,
+  `Address1` text,
+  `Address2` text,
+  `City` text,
+  `State` text,
+  `Zip` text,
+  `Country` text,
+  `Notes` text,
+  `Last_Contacted` datetime default NULL,
+  `Status` bigint(20) default NULL,
+  `Open_PO` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Company`
+--
+
+
+/*!40000 ALTER TABLE `Company` DISABLE KEYS */;
+LOCK TABLES `Company` WRITE;
+INSERT INTO `Company` VALUES (1,'McCright and Associates',27,'200 High Street','PO Box 6038','Chattanooga','TN','37401','USA','','2007-02-09 11:00:00',12,'');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Company` ENABLE KEYS */;
+
+--
+-- Table structure for table `Composite_Query`
+--
+
+DROP TABLE IF EXISTS `Composite_Query`;
+CREATE TABLE `Composite_Query` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Site_Id` bigint(20) default NULL,
+  `Name` text,
+  `Select_Part` text,
+  `From_Part` text,
+  `Where_Part` text,
+  `Group_Part` text,
+  `Having_Part` text,
+  `Order_Part` text,
+  `Is_Workflow` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Composite_Query`
+--
+
+
+/*!40000 ALTER TABLE `Composite_Query` DISABLE KEYS */;
+LOCK TABLES `Composite_Query` WRITE;
+INSERT INTO `Composite_Query` VALUES (1,0,'Invoice','concat( proj.Id, \'-\', \r\n        date_format( current_date(), \'%d-%m-%y\' ) ), date_format(current_date(), \'%m/%d/%y\'),\r\nconcat( cntc.First, \' \', cntc.Last ), \r\ncmp.Name, \r\nconcat(cmp.Address1 , \' \',  cmp.Address2) , \r\ncmp.City , \r\ncmp.State ,cmp.Zip ,\r\nproj.Rate,   \r\nproj.Name,\r\ncntc.Phone , \r\ndate_format(proj.Actual_Start,\'%m/%d/%y\'),\r\nproj.Id','Company as cmp\r\nleft join Contact as cntc on cntc.Id=cmp.Key_Contact\r\nleft join Project as proj on proj.Company=cmp.Id \r\n','proj.Id = {{project}}','','','',0),(4,0,'Invoice Items','date_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Status = 8\nand tsk.Project = {{12}}','','','tm.Start, tsk.Name, tm.Description',0),(5,0,'Outstanding Invoice Items','proj.Name,\r\ndate_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Status < 10','','','tm.Start',0),(6,0,'Test Form','concat( proj.Id, \'-\', \r\n        date_format( current_date(), \'%d-%m-%y\' ) ) as invoice_no, date_format(current_date(), \'%m/%d/%y\') as invoice_date,\r\nconcat( cntc.First, \' \', cntc.Last ) as contact, \r\ncmp.Name as company, \r\nconcat(cmp.Address1 , \' \',  cmp.Address2) as address, \r\ncmp.City as city, \r\ncmp.State as state, cmp.Zip as zip,\r\nproj.Rate as rate,   \r\nproj.Name as project,\r\ncntc.Phone as phone, \r\ndate_format(proj.Actual_Start,\'%m/%d/%y\') as start_date,\r\nproj.Id','Company as cmp\r\ninner join Contact as cntc on cntc.Id=cmp.Key_Contact\r\ninner join Project as proj on proj.Company=cmp.Id \r\n','proj.Id = {{project}}','','','',0),(7,0,'Invoice Records','concat( inv.Id, \'-\', \r\n        date_format( inv.Invoice_Date, \'%d-%m-%y\' ) ), date_format(inv.Invoice_Date, \'%m/%d/%y\'),\r\nconcat( cntc.First, \' \', cntc.Last ), \r\ncmp.Name, \r\nconcat(cmp.Address1 , \' \',  cmp.Address2) , \r\ncmp.City , \r\ncmp.State ,cmp.Zip ,\r\nproj.Rate,   \r\nproj.Name,\r\ncntc.Phone , \r\ndate_format(proj.Actual_Start,\'%m/%d/%y\'),\r\ninv.Id','Invoice as inv\r\ninner join Project as proj on proj.Id = inv.Project\r\nleft join Company as cmp on proj.Company=cmp.Id \r\nleft join Contact as cntc on cntc.Id=cmp.Key_Contact\r\n\r\n','inv.Id = {{invoice}}','','','',0),(8,0,'New Invoice Items','date_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Invoice = {{12}}','','','tm.Start, tsk.Name, tm.Description',0),(9,0,'Due Invoice Items','cmp.Name, proj.Name,\r\ndate_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Company as cmp \r\ninner join Project as proj on proj.Company = cmp.Id\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\ninner join Invoice as inv on inv.Id = tm.Invoice\r\n','inv.Status = 9\n','','','cmp.Name, proj.Name,\r\ntm.Start, tsk.Name, tm.Description',0),(10,0,'Estimate','proj.Name as \'Project\',  \r\ntsk.Name as \'Task\', \r\nconcat( \'<pre>\',tsk.Description, \'</pre>\') as \'Work\', \r\ntsk.Estimated_Time as \'Estimated Hours\',\r\nproj.Rate*tsk.Estimated_Time as \'Estimated Cost\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Status as sts on tsk.Status = sts.Id\r\n','sts.Name=\'Estimate\'','','','',0),(11,0,'Status','*','Status','','','','',0),(12,0,'Paid Invoice Items','proj.Name,\r\ndate_format(tm.Start, \'%m/%d/%y\') as \'Date\',\r\ntm.Hours as \'Hours/Units\', \r\ntsk.Name as \'Task\', \r\ntm.Description as \'Description\' ,\r\nproj.Rate*tm.Hours as \'Amount\'','Project as proj\r\ninner join Task as tsk on tsk.Project=proj.Id\r\ninner join Time as tm on tm.Task=tsk.Id\r\n\r\n\r\n','tm.Status = 10','','','proj.Name, tm.Start, tsk.Name',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Composite_Query` ENABLE KEYS */;
+
+--
+-- Table structure for table `Contact`
+--
+
+DROP TABLE IF EXISTS `Contact`;
+CREATE TABLE `Contact` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `First` text,
+  `Last` text,
+  `Prefix` text,
+  `Phone` text,
+  `Mobile` text,
+  `Email` text,
+  `Fax` text,
+  `Home_Phone` text,
+  `Company` bigint(20) default NULL,
+  `Password` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Contact`
+--
+
+
+/*!40000 ALTER TABLE `Contact` DISABLE KEYS */;
+LOCK TABLES `Contact` WRITE;
+INSERT INTO `Contact` VALUES (1,'Huy','LeQuan','','423.267.1300','423.321.2257','hlequan@mccright.com','','',1,'');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Contact` ENABLE KEYS */;
+
+--
+-- Table structure for table `Invoice`
+--
+
+DROP TABLE IF EXISTS `Invoice`;
+CREATE TABLE `Invoice` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Company` bigint(20) default NULL,
+  `Project` bigint(20) default NULL,
+  `Contact` bigint(20) default NULL,
+  `Notes` text,
+  `Invoice_Date` date default NULL,
+  `Invoice_Time` time default NULL,
+  `Status` bigint(20) default NULL,
+  `Paid_Date` date default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+
+--
+-- Table structure for table `Messages`
+--
+
+DROP TABLE IF EXISTS `Messages`;
+CREATE TABLE `Messages` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Subject` text,
+  `From_Id` bigint(20) default NULL,
+  `To_Id` bigint(20) default NULL,
+  `Importance` int(11) default NULL,
+  `Content` text,
+  `From_String` text,
+  `To_String` text,
+  `Company` bigint(20) default NULL,
+  `Project` bigint(20) default NULL,
+  `Task` bigint(20) default NULL,
+  `Author` bigint(20) default NULL,
+  `Created` datetime default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+--
+-- Table structure for table `Notes`
+--
+
+DROP TABLE IF EXISTS `Notes`;
+CREATE TABLE `Notes` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Company` bigint(20) default NULL,
+  `Project` bigint(20) default NULL,
+  `Task` bigint(20) default NULL,
+  `Author` bigint(20) default NULL,
+  `Created` datetime default NULL,
+  `Status` bigint(20) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Notes`
+--
+
+
+/*!40000 ALTER TABLE `Notes` DISABLE KEYS */;
+LOCK TABLES `Notes` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Notes` ENABLE KEYS */;
+
+--
+-- Table structure for table `Project`
+--
+
+DROP TABLE IF EXISTS `Project`;
+CREATE TABLE `Project` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Company` bigint(20) default NULL,
+  `Estimated_Start` datetime default NULL,
+  `Actual_Start` datetime default NULL,
+  `Estimated_Time` int(11) default NULL,
+  `Actual_Time` int(11) default NULL,
+  `Phase` int(11) default NULL,
+  `Parent_Project` bigint(20) default NULL,
+  `Notes` text,
+  `Status` bigint(20) default NULL,
+  `Rate` double default NULL,
+  `PO` text,
+  `Estimate` double default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Project`
+--
+
+
+/*!40000 ALTER TABLE `Project` DISABLE KEYS */;
+LOCK TABLES `Project` WRITE;
+INSERT INTO `Project` VALUES (1,'McCright Systems Support Contract',1,'2007-02-09 11:03:00','2007-02-09 11:03:00',0,0,0,-1,'',1,60,'',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Project` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report`
+--
+
+DROP TABLE IF EXISTS `Report`;
+CREATE TABLE `Report` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Site_Id` bigint(20) default NULL,
+  `Template_Id` bigint(20) default NULL,
+  `Query_Id` bigint(20) default NULL,
+  `Composite_Query` bigint(20) default NULL,
+  `Name` text,
+  `Media_Type` bigint(20) default NULL,
+  `Sum_Columns` text,
+  `Average_Columns` text,
+  `Category` text,
+  `Show_In_List` int(11) default NULL,
+  `Formatting_Modulus` int(11) default NULL,
+  `Items_Per_Page` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report`
+--
+
+
+/*!40000 ALTER TABLE `Report` DISABLE KEYS */;
+LOCK TABLES `Report` WRITE;
+INSERT INTO `Report` VALUES (9,0,2,0,11,'Status',-1,NULL,NULL,'Status',1,0,0),(8,0,3,0,10,'Estimate',-1,NULL,NULL,'Info',1,0,0),(3,0,3,0,5,'Outstanding Time and Money',-1,NULL,NULL,'Info',1,0,0),(4,0,5,0,6,'Test Form',1,NULL,NULL,'New Invoice',1,0,0),(5,0,1,0,7,'New Invoices',2,NULL,NULL,'Invoice',1,0,0),(6,0,4,0,8,'New Invoice Items',-1,NULL,NULL,'Invoice',0,0,0),(7,0,3,0,9,'Info',-1,NULL,NULL,'Invoice',1,0,0),(10,0,3,0,12,'Time and Money Paid',-1,NULL,NULL,'Info',1,0,0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Conditioning`
+--
+
+DROP TABLE IF EXISTS `Report_Conditioning`;
+CREATE TABLE `Report_Conditioning` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Report_Id` bigint(20) default NULL,
+  `Col` int(11) default NULL,
+  `Sort_Pos` int(11) default NULL,
+  `Col_Handler` text,
+  `Direction` text,
+  `Format` text,
+  `Tuple_Section` text,
+  `spawnedReport` bigint(20) default NULL,
+  `spawnedTuplePretext` text,
+  `spawnedTuplePosttext` text,
+  `spawningEvent` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Conditioning`
+--
+
+
+/*!40000 ALTER TABLE `Report_Conditioning` DISABLE KEYS */;
+LOCK TABLES `Report_Conditioning` WRITE;
+INSERT INTO `Report_Conditioning` VALUES (1,1,0,0,'NONE','NONE','STRING','section0',1,'','',0),(2,1,1,0,'NONE','NONE','STRING','section1',1,'','',0),(3,1,2,0,'NONE','NONE','STRING','section2',1,'','',0),(4,1,3,0,'NONE','NONE','STRING','section3',1,'','',0),(5,1,4,0,'NONE','NONE','STRING','section4',1,'','',0),(6,1,5,0,'NONE','NONE','STRING','section5',1,'','',0),(7,1,6,0,'NONE','NONE','STRING','section6',1,'','',0),(8,1,7,0,'NONE','NONE','STRING','section7',1,'','',0),(9,1,8,0,'NONE','NONE','CURRENCY','section8',1,'','',0),(10,1,9,0,'NONE','NONE','STRING','section9',1,'','',0),(11,1,10,0,'NONE','NONE','STRING','section10',1,'','',0),(12,1,11,0,'NONE','NONE','STRING','section11',1,'','',2),(13,2,1,0,'SUM','NONE','DECIMAL','',1,'','',0),(14,2,4,0,'SUM','NONE','CURRENCY','',1,'','',0),(15,1,12,0,'SPAWN','NONE','STRING','section12',2,'','',2),(16,3,5,0,'SUM','NONE','CURRENCY','',1,'','',0),(18,5,0,0,'NONE','NONE','STRING','section0',1,'','',0),(19,5,1,0,'NONE','NONE','STRING','section1',1,'','',0),(20,5,2,0,'NONE','NONE','STRING','section2',1,'','',0),(21,5,3,0,'NONE','NONE','STRING','section3',1,'','',0),(22,5,4,0,'NONE','NONE','STRING','section4',1,'','',0),(23,5,5,0,'NONE','NONE','STRING','section5',1,'','',0),(24,5,6,0,'NONE','NONE','STRING','section6',1,'','',0),(25,5,7,0,'NONE','NONE','STRING','section7',1,'','',0),(26,5,8,0,'NONE','NONE','STRING','section8',1,'','',0),(27,5,9,0,'NONE','NONE','STRING','section9',1,'','',0),(28,5,10,0,'NONE','NONE','STRING','section10',1,'','',0),(29,5,11,0,'NONE','NONE','STRING','section11',1,'','',0),(30,5,12,0,'SPAWN','NONE','STRING','section12',6,'','',2),(31,6,1,0,'SUM','NONE','DECIMAL','',1,'','',0),(32,6,4,0,'SUM','NONE','CURRENCY','',1,'','',0),(33,7,0,0,'GROUP','NONE','STRING','',7,'','',0),(36,8,0,0,'GROUP','NONE','STRING','',8,'','',0),(35,7,6,0,'SUM','NONE','CURRENCY','',7,'','',0),(37,8,3,0,'SUM','NONE','DECIMAL','',8,'','',0),(38,8,4,0,'SUM','NONE','CURRENCY','',8,'','',0),(39,10,0,0,'GROUP','NONE','STRING','',8,'','',0),(40,10,5,0,'SUM','NONE','CURRENCY','',8,'','',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Conditioning` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Parameters`
+--
+
+DROP TABLE IF EXISTS `Report_Parameters`;
+CREATE TABLE `Report_Parameters` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Report_Id` bigint(20) default NULL,
+  `Display_Label` text,
+  `Data_Element` text,
+  `Tag_Name` text,
+  `Choices_Query` text,
+  `Parameter_Type` text,
+  `List_Order` int(11) default NULL,
+  `Pre_Content` text,
+  `Post_Content` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Parameters`
+--
+
+
+/*!40000 ALTER TABLE `Report_Parameters` DISABLE KEYS */;
+LOCK TABLES `Report_Parameters` WRITE;
+INSERT INTO `Report_Parameters` VALUES (1,1,'Project?','Project','{{project}}','select Id, Name from Project\r\n','SELECT',NULL,NULL,NULL),(2,4,'Project?','Project','{{project}}','select Id, Name from Project','SELECT',NULL,NULL,NULL),(3,5,'Invoice?','Invoice','{{invoice}}','select iv.Id, concat( p.Name, \'-\', Invoice_Date )from Invoice iv inner join Project p on p.Id = iv.Project ','SELECT',NULL,NULL,NULL);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Parameters` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Templates`
+--
+
+DROP TABLE IF EXISTS `Report_Templates`;
+CREATE TABLE `Report_Templates` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Site_Id` bigint(20) default NULL,
+  `Name` text,
+  `Path` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Templates`
+--
+
+
+/*!40000 ALTER TABLE `Report_Templates` DISABLE KEYS */;
+LOCK TABLES `Report_Templates` WRITE;
+INSERT INTO `Report_Templates` VALUES (1,0,'Invoice','InvoiceTemplate.html'),(2,0,'Generic','Generic.htmp'),(3,0,'Advanced','reportlist.htmp'),(4,0,'Spawned','reportspawned.htmp'),(5,0,'Form Test','test.ftmp');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Templates` ENABLE KEYS */;
+
+--
+-- Table structure for table `Report_Type`
+--
+
+DROP TABLE IF EXISTS `Report_Type`;
+CREATE TABLE `Report_Type` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `File_Extension` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Report_Type`
+--
+
+
+/*!40000 ALTER TABLE `Report_Type` DISABLE KEYS */;
+LOCK TABLES `Report_Type` WRITE;
+INSERT INTO `Report_Type` VALUES (1,'text/html',''),(2,'application/pdf','pdf'),(3,'application/vnd.ms-excel','');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Report_Type` ENABLE KEYS */;
+
+--
+-- Table structure for table `Scheme_Field`
+--
+
+DROP TABLE IF EXISTS `Scheme_Field`;
+CREATE TABLE `Scheme_Field` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Scheme_Table` bigint(20) default NULL,
+  `Name` text,
+  `Col_Type` text,
+  `Links_To` bigint(20) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Scheme_Field`
+--
+
+
+/*!40000 ALTER TABLE `Scheme_Field` DISABLE KEYS */;
+LOCK TABLES `Scheme_Field` WRITE;
+INSERT INTO `Scheme_Field` VALUES (1,1,'Id','bigint(20)',0),(2,1,'Company','bigint(20)',9),(3,1,'Contact','bigint(20)',32),(4,1,'Location','text',0),(5,1,'Title','text',0),(6,1,'Description','text',0),(7,1,'Starts','datetime',0),(8,1,'Stops','datetime',0),(9,2,'Id','bigint(20)',0),(10,2,'Name','text',0),(11,2,'Key_Contact','bigint(20)',32),(12,2,'Address1','text',0),(13,2,'Address2','text',0),(14,2,'City','text',0),(15,2,'State','text',0),(16,2,'Zip','text',0),(17,2,'Country','text',0),(18,2,'Notes','text',0),(19,2,'Last_Contacted','datetime',0),(20,2,'Status','bigint(20)',0),(21,2,'Open_PO','text',0),(22,3,'Id','bigint(20)',0),(23,3,'Site_Id','bigint(20)',0),(24,3,'Name','text',0),(25,3,'Select_Part','text',0),(26,3,'From_Part','text',0),(27,3,'Where_Part','text',0),(28,3,'Group_Part','text',0),(29,3,'Having_Part','text',0),(30,3,'Order_Part','text',0),(31,3,'Is_Workflow','int(11)',0),(32,4,'Id','bigint(20)',0),(33,4,'First','text',0),(34,4,'Last','text',0),(35,4,'Prefix','text',0),(36,4,'Phone','text',0),(37,4,'Mobile','text',0),(38,4,'Email','text',0),(39,4,'Fax','text',0),(40,4,'Home_Phone','text',0),(41,4,'Company','bigint(20)',9),(42,4,'Password','text',0),(43,5,'Id','bigint(20)',0),(44,5,'Company','bigint(20)',9),(45,5,'Project','bigint(20)',50),(46,5,'Task','bigint(20)',116),(47,5,'Author','bigint(20)',166),(48,5,'Created','datetime',0),(49,5,'Status','bigint(20)',111),(50,6,'Id','bigint(20)',0),(51,6,'Name','text',0),(52,6,'Company','bigint(20)',9),(53,6,'Estimated_Start','datetime',0),(54,6,'Actual_Start','datetime',0),(55,6,'Estimated_Time','int(11)',0),(56,6,'Actual_Time','int(11)',0),(57,6,'Phase','int(11)',0),(58,6,'Parent_Project','bigint(20)',50),(59,6,'Notes','text',0),(60,6,'Status','bigint(20)',111),(61,6,'Rate','double',0),(62,6,'PO','text',0),(63,6,'Estimate','double',0),(64,7,'Id','bigint(20)',0),(65,7,'Site_Id','bigint(20)',0),(66,7,'Template_Id','bigint(20)',0),(67,7,'Query_Id','bigint(20)',0),(68,7,'Composite_Query','bigint(20)',0),(69,7,'Name','text',0),(70,7,'Media_Type','bigint(20)',0),(71,7,'Sum_Columns','text',0),(72,7,'Average_Columns','text',0),(73,7,'Category','text',0),(74,7,'Show_In_List','int(11)',0),(75,7,'Formatting_Modulus','int(11)',0),(76,7,'Items_Per_Page','int(11)',0),(77,8,'Id','bigint(20)',0),(78,8,'Report_Id','bigint(20)',0),(79,8,'Col','int(11)',0),(80,8,'Sort_Pos','int(11)',0),(81,8,'Col_Handler','text',0),(82,8,'Direction','text',0),(83,8,'Format','text',0),(84,8,'Tuple_Section','text',0),(85,8,'spawnedReport','bigint(20)',0),(86,8,'spawnedTuplePretext','text',0),(87,8,'spawnedTuplePosttext','text',0),(88,8,'spawningEvent','int(11)',0),(89,9,'Id','bigint(20)',0),(90,9,'Report_Id','bigint(20)',0),(91,9,'Display_Label','text',0),(92,9,'Data_Element','text',0),(93,9,'Tag_Name','text',0),(94,9,'Choices_Query','text',0),(95,9,'Parameter_Type','text',0),(96,10,'Id','bigint(20)',0),(97,10,'Site_Id','bigint(20)',0),(98,10,'Name','text',0),(99,10,'Path','text',0),(100,11,'Id','bigint(20)',0),(101,11,'Name','text',0),(102,11,'File_Extension','text',0),(103,12,'Id','bigint(20)',0),(104,12,'Scheme_Table','bigint(20)',0),(105,12,'Name','text',0),(106,12,'Col_Type','text',0),(107,12,'Links_To','bigint(20)',0),(108,13,'Id','bigint(20)',0),(109,13,'Name','text',0),(110,13,'Abbr','text',0),(111,14,'Id','bigint(20)',0),(112,14,'Name','text',0),(113,14,'Class','text',0),(114,14,'Sequence','int(11)',0),(115,14,'Prog_Enum','int(11)',0),(116,15,'Id','bigint(20)',0),(117,15,'Project','bigint(20)',50),(118,15,'Name','text',0),(119,15,'Description','text',0),(120,15,'Start','datetime',0),(121,15,'Task_Order','int(11)',0),(122,15,'Hierarchy','int(11)',0),(123,15,'Status','bigint(20)',0),(124,15,'Percent_Complete','int(11)',0),(125,15,'Parent_Task','bigint(20)',0),(126,15,'Estimate','double',0),(127,15,'Estimated_Time','double',0),(128,15,'Actual_Time','double',0),(129,16,'Id','bigint(20)',0),(130,16,'Task','bigint(20)',116),(131,16,'Start','datetime',0),(132,16,'Stop','datetime',0),(133,16,'Description','text',0),(134,16,'Hours','double',0),(135,16,'Status','bigint(20)',0),(136,16,'Invoice','bigint(20)',0),(137,17,'Id','bigint(20)',0),(138,17,'Name','text',0),(139,17,'Description','text',0),(140,17,'Query','bigint(20)',0),(141,17,'User','bigint(20)',0),(142,17,'User_Group','bigint(20)',0),(143,17,'User_Role','bigint(20)',0),(144,17,'URL','text',0),(145,17,'Search','text',0),(146,18,'id','bigint(20)',0),(147,18,'role_id','bigint(20)',0),(148,18,'service_id','bigint(20)',0),(149,18,'enabled','int(11)',0),(150,18,'xml_params','text',0),(151,19,'id','bigint(20)',0),(152,19,'name','text',0),(153,19,'comment','text',0),(154,20,'id','bigint(20)',0),(155,20,'sequence','int(11)',0),(156,20,'tree_depth','int(11)',0),(157,20,'enabled','int(11)',0),(158,20,'cat_name','text',0),(159,20,'menu_name','text',0),(160,20,'uri','text',0),(161,20,'target','text',0),(162,21,'id','bigint(20)',0),(163,21,'user_id','bigint(20)',0),(164,21,'role_id','bigint(20)',0),(165,21,'enabled','int(11)',0),(166,22,'id','bigint(20)',0),(167,22,'last','text',0),(168,22,'first','text',0),(169,22,'login','text',0),(170,22,'password','text',0),(171,22,'email','text',0),(172,22,'phone','text',0),(173,22,'mobile','text',0),(174,22,'fax','text',0),(175,22,'pager','text',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Scheme_Field` ENABLE KEYS */;
+
+--
+-- Table structure for table `Scheme_Table`
+--
+
+DROP TABLE IF EXISTS `Scheme_Table`;
+CREATE TABLE `Scheme_Table` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Abbr` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Scheme_Table`
+--
+
+
+/*!40000 ALTER TABLE `Scheme_Table` DISABLE KEYS */;
+LOCK TABLES `Scheme_Table` WRITE;
+INSERT INTO `Scheme_Table` VALUES (1,'Appointment','appt'),(2,'Company','cmp'),(3,'Composite_Query',''),(4,'Contact','cntc'),(5,'Notes','note'),(6,'Project','proj'),(7,'Report',''),(8,'Report_Conditioning',''),(9,'Report_Parameters',''),(10,'Report_Templates',''),(11,'Report_Type',''),(12,'Scheme_Field',''),(13,'Scheme_Table',''),(14,'Status','sts'),(15,'Task','tsk'),(16,'Time','tm'),(17,'Work',''),(18,'role_services',''),(19,'roles',''),(20,'services',''),(21,'user_roles',''),(22,'users','');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Scheme_Table` ENABLE KEYS */;
+
+--
+-- Table structure for table `Status`
+--
+
+DROP TABLE IF EXISTS `Status`;
+CREATE TABLE `Status` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Class` text,
+  `Sequence` int(11) default NULL,
+  `Prog_Enum` int(11) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Status`
+--
+
+
+/*!40000 ALTER TABLE `Status` DISABLE KEYS */;
+LOCK TABLES `Status` WRITE;
+INSERT INTO `Status` VALUES (1,'Awaiting Approval','Project',0,0),(2,'High Level Design','Project',1,0),(3,'Planned','Task',1,10),(4,'In Progress','Task',2,20),(5,'Complete','Task',2,30),(6,'Developing','Project',3,0),(7,'Invoiced','Task',3,40),(8,'Pre Invoice','Time',0,0),(9,'Invoiced','Time',1,0),(10,'Paid','Time',2,0),(11,'Prospect','Company',0,0),(12,'Active','Company',1,0),(13,'Paid','Task',5,50),(14,'Estimate','Task',0,0),(15,'Former','Company',0,0),(16,'Complete','Project',2000,0),(17,'No Charge','Task',6,60),(18,'No Charge','Time',3,0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Status` ENABLE KEYS */;
+
+--
+-- Table structure for table `Task`
+--
+
+DROP TABLE IF EXISTS `Task`;
+CREATE TABLE `Task` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Project` bigint(20) default NULL,
+  `Name` text,
+  `Description` text,
+  `Start` datetime default NULL,
+  `Task_Order` int(11) default NULL,
+  `Hierarchy` int(11) default NULL,
+  `Status` bigint(20) default NULL,
+  `Percent_Complete` int(11) default NULL,
+  `Parent_Task` bigint(20) default NULL,
+  `Estimate` double default NULL,
+  `Estimated_Time` double default NULL,
+  `Actual_Time` double default NULL,
+  `Requestor` bigint(20) default NULL,
+  `Requested` date default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Task`
+--
+
+
+
+--
+-- Table structure for table `Time`
+--
+
+DROP TABLE IF EXISTS `Time`;
+CREATE TABLE `Time` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Task` bigint(20) default NULL,
+  `Start` datetime default NULL,
+  `Stop` datetime default NULL,
+  `Description` text,
+  `Hours` double default NULL,
+  `Status` bigint(20) default NULL,
+  `Invoice` bigint(20) default NULL,
+  `Performed_By` bigint(20) default NULL,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+;
+
+--
+-- Table structure for table `Work`
+--
+
+DROP TABLE IF EXISTS `Work`;
+CREATE TABLE `Work` (
+  `Id` bigint(20) NOT NULL auto_increment,
+  `Name` text,
+  `Description` text,
+  `Query` bigint(20) default NULL,
+  `User` bigint(20) default NULL,
+  `User_Group` bigint(20) default NULL,
+  `User_Role` bigint(20) default NULL,
+  `URL` text,
+  `Search` text,
+  PRIMARY KEY  (`Id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Work`
+--
+
+
+/*!40000 ALTER TABLE `Work` DISABLE KEYS */;
+LOCK TABLES `Work` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `Work` ENABLE KEYS */;
+
+--
+-- Table structure for table `role_services`
+--
+
+DROP TABLE IF EXISTS `role_services`;
+CREATE TABLE `role_services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `role_id` bigint(20) default NULL,
+  `service_id` bigint(20) default NULL,
+  `enabled` int(11) default NULL,
+  `xml_params` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role_services`
+--
+
+
+/*!40000 ALTER TABLE `role_services` DISABLE KEYS */;
+LOCK TABLES `role_services` WRITE;
+INSERT INTO `role_services` VALUES (1,1,1,1,''),(2,1,2,1,''),(3,1,3,1,''),(4,1,4,1,''),(5,1,5,1,''),(6,1,6,1,''),(7,1,7,1,''),(8,1,8,1,''),(9,1,9,1,''),(10,1,10,1,''),(11,1,11,1,''),(12,1,12,1,'');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `role_services` ENABLE KEYS */;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE `roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `name` text,
+  `comment` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+LOCK TABLES `roles` WRITE;
+INSERT INTO `roles` VALUES (1,'developer','bootstrapped default developer role'),(2,'Executive','for administering the system');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `services`
+--
+
+DROP TABLE IF EXISTS `services`;
+CREATE TABLE `services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `sequence` int(11) default NULL,
+  `tree_depth` int(11) default NULL,
+  `enabled` int(11) default NULL,
+  `cat_name` text,
+  `menu_name` text,
+  `uri` text,
+  `target` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `services`
+--
+
+
+/*!40000 ALTER TABLE `services` DISABLE KEYS */;
+LOCK TABLES `services` WRITE;
+INSERT INTO `services` VALUES (1,1,1,1,'Service Authorization','Services','services_liteUI.meta?init=1','_self'),(2,2,1,1,'Service Authorization','Roles','rolesUI.meta?init=1','_self'),(3,10,1,1,'Project Management','Companies','CompanyUI.meta?init=1',''),(4,11,3,1,'Project Management','Contacts','ContactUI.meta?init=1',''),(5,12,1,1,'Project Management','Projects','ProjectUI.meta?init=1',''),(6,13,3,1,'Project Management','Tasks','TaskUI.meta?init=1',''),(7,201,1,1,'Reports','Design','ReportUI.meta',''),(8,200,1,1,'Reports','Run','ReportListing.meta',''),(9,202,4,1,'Reports','Tables','Scheme_TableUI.meta',''),(10,203,4,1,'Reports','Fields','Scheme_FieldUI.meta',''),(11,14,1,1,'Project Management','Invoices','InvoiceUI.meta?init=1',''),(12,2,1,1,'Service Authorization','Users','ls_usersUI.meta?init=1','');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `services` ENABLE KEYS */;
+
+--
+-- Table structure for table `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE `user_roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `user_id` bigint(20) default NULL,
+  `role_id` bigint(20) default NULL,
+  `enabled` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+LOCK TABLES `user_roles` WRITE;
+INSERT INTO `user_roles` VALUES (1,1,1,1),(2,1,2,1),(3,2,1,1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `last` text,
+  `first` text,
+  `login` text,
+  `password` text,
+  `email` text,
+  `phone` text,
+  `mobile` text,
+  `fax` text,
+  `pager` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+LOCK TABLES `users` WRITE;
+INSERT INTO `users` VALUES (1,'McCombs','David','davidmc','freedom7','davidmc@w3sys.com','706 581-4607','706 581-4607',NULL,''),(2,'Developer','George','george','develops','gearge@w3sys.com','','','',NULL);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

@@ -1,0 +1,108 @@
+<!-- This is for making lists view with symmetric nav controls top and bottom -->
+<!--@list_begin-->
+<script type="text/javascript">
+function navigationSet( dsetCount, recCount, curPage, totalPages )
+{
+  var topUiDSetCount = myDom.getElementById("topUiDSetCount");
+  if( topUiDSetCount ) topUiDSetCount.innerHTML = dsetCount;
+  var btmUiDSetCount = myDom.getElementById("btmUiDSetCount");
+  if( btmUiDSetCount ) btmUiDSetCount.innerHTML = dsetCount; 
+  var btmUiRecCount =  myDom.getElementById("btmUiRecCount");
+  if( btmUiRecCount ) btmUiRecCount.innerHTML = recCount;
+  var topUiRecCount =  myDom.getElementById("topUiRecCount");  
+  if( topUiRecCount ) topUiRecCount.innerHTML = recCount;
+  var topPg = myDom.getElementById("topPg");
+  if( topPg ) topPg.value =  curPage;
+  var btmPg = myDom.getElementById("btmPg");
+  if( btmPg ) btmPg.value =  curPage;
+  
+  var topTotalPg = myDom.getElementById("topTotalPg");
+  if( topTotalPg ) topTotalPg.innerHTML = totalPages;
+    
+  var btmTotalPg = myDom.getElementById("btmTotalPg");
+  if( btmTotalPg ) btmTotalPg.innerHTML = totalPages;
+
+}
+</script>
+<form action='' name='uiListPosition' id='topUiListPosition'>
+<div class="navctrl"> 
+<a style='text-decoration: none;' id="topUiListPrev" href="?navigate=prev">&lt; previous</a> 
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+Page
+<input type='text' size='5' name='Pg' id='topPg' value='*'> of <span id="topTotalPg">*</span>
+&nbsp
+<input type='submit' value='get'> &nbsp
+Showing <span id="topUiDSetCount">*</span> of <span id="topUiRecCount">*</span> entries.
+
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+<a style='text-decoration: none;' href="?navigate=next">next &gt;</a>
+</div>
+</form>
+
+<table class='ui_list'>
+<!--/@list_begin-->
+<!--@tr--><tr>
+<!--/@tr-->
+<!--@th--><td class='listheader'>$data$</td><!--/@th-->
+<!--@td--><td class='listdata'>$data$</td><!--/@td-->
+<!--@ltd--><td class='lightlistdata'>$data$</td><!--/@ltd-->
+<!--@end_tr--></tr>
+<!--/@end_tr-->
+<!--@list_end-->
+</table>
+<div class="navctrl">
+<a style='text-decoration: none;' id="btmUiListPrev" href="?navigate=prev">&lt; previous</a> 
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+<a style='text-decoration: none;' href="?navigate=next">next &gt;</a>
+</div>
+<script type="text/javascript">
+myDom.setCookie( 'lPg','$lpg');
+</script>
+<!--/@list_end-->
+
+<!--@hotcolumn-->
+<a target="_self" href='$prog$?Id=$key$'>$col$</a>
+<!--/@hotcolumn-->
+
+<!--@list_filter-->
+<div id="list_filter"><form method='get' action='$location' 
+name='uiListCriteria' id='uiListCriteria'>$label:
+<input type='text' size='20' name='filter' id='filter' value="$value"> 
+&nbsp;
+<input type='submit' class='searchbutton' value='Search'>
+&nbsp;
+<a href='$location?init=1'>Show All</a>
+</form>
+</div>
+<!--/@list_filter-->
+
+<!--@multi_filter_start-->
+<div id="list_filter"><form method='get' action='$location' 
+name='uiListCriteria' id='uiListCriteria'>
+<!--/@multi_filter_start-->
+<!--@multi_filter_item-->
+$label:
+<input type='text' size='10' maxlength="40" name='filter' id='filter' value="$value"> 
+&nbsp;
+<!--/@multi_filter_item-->
+<!--@multi_filter_end-->
+<input type='submit' class='searchbutton' value='Search'>
+&nbsp;
+<a href='$location?init=1'>Show All</a>
+</form>
+</div>
+<!--/@multi_filter_end-->
+
+<!--@list_new-->
+<tr><td colspan='$cols' style='text-align:right'>
+<a href="$location">New Item</a>
+</td></tr>
+<!--/@list_new-->
+
+<!--@list_nav-->
+<script>
+navigationSet( '$dsetCount', '$recCount', '$Page', '$total$' );
+</script>
+<!--/@list_nav-->
+
+

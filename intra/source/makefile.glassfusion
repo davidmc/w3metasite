@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/mgdist/intra/
+OLOGIN = -DALTSLOGINSOURCE="\"../../mgdist/source/openLogin.h\"" 
+

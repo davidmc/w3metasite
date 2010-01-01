@@ -1,0 +1,858 @@
+FEDEX GLOBAL DEVELOPER TOOLKIT LICENSE AGREEMENT
+
+SET OUT BELOW ARE THE TERMS AND CONDITIONS UNDER WHICH YOU ARE PERMITTED TO USE AND DISTRIBUTE 
+THE FEDEX GLOBAL DEVELOPER TOOLKIT AND ALL MATERIALS RELATED THERETO PROVIDED BY FEDEX 
+(hereinafter collectively "Toolkit").  PLEASE READ THIS INFORMATION CAREFULLY.  IF YOU AGREE 
+TO BE BOUND BY THESE TERMS AND CONDITIONS, YOU MUST ACKNOWLEDGE YOUR AGREEMENT BELOW ON BEHALF 
+OF YOURSELF AND THE ENTITY, IF ANY, WITH WHOM YOU ARE EMPLOYED OR REPRESENT.  ONCE 
+ACKNOWLEDGED, THIS DOCUMENT WILL CONSTITUTE A LEGAL AGREEMENT BETWEEN FEDEX CORPORATE SERVICES 
+("FEDEX") AND YOU AND SUCH ENTITY (collectively referred to as "You" or "Your" hereinafter) 
+GOVERNING ALL USE OF TOOLKIT.  YOU WARRANT THAT YOUR ACKNOWLEDGMENT OF THIS AGREEMENT 
+EVIDENCES YOUR INTENTION TO LEGALLY BIND YOU AND SUCH ACKNOWLEDGMENT IS INTENDED AS A SYMBOL 
+OF YOUR SIGNATURE.  PLEASE PRINT A COPY OF THIS AGREEMENT ("AGREEMENT") AND RETAIN IT WITH 
+YOUR FILES FOR FUTURE REFERENCE.
+
+1.  Grant.  
+        (a)  Subject to the terms and conditions of this Agreement, FedEx grants You a 
+non-exclusive, non-transferable, royalty-free license, to download, use as provided in this 
+Agreement, and distribute, as instructed by FedEx from time to time, Toolkit in the United 
+States, along with any modifications and upgrades thereof (hereinafter collectively 
+"Toolkit"), and any related manuals, documents, or other items (hereinafter collectively the 
+"Materials"), provided with Toolkit and by FedEx from time to time, all at your cost and 
+expense and at Your sole risk. 
+
+        (b)  Subject to and under the terms of this Agreement, You may include Toolkit and 
+select Materials in software packages (hereinafter "Package") and distribute Toolkit and 
+select Materials solely within Your Package, on a royalty-free basis (at least as to Toolkit), 
+to Your customers (hereinafter "End-Users") solely in a manner which enables the End-Users to 
+incorporate and use FedEx Ship Manager API, as provided in Toolkit, edEx may from time to time provide to You a marketing kit or other information 
+regarding Toolkit which will include only those Marketing Materials You may use to market and 
+distribute Toolkit within Your Package to End-Users.  You agree to follow all instructions 
+regarding the use of any such Marketing Materials and use only the Marketing Materials and 
+statements provided by FedEx to market Toolkit within Your Package and no other materials or 
+statements.  
+
+        (b)  FedEx may, but is not obligated to, make public statements or comments in any and 
+all media about Your inclusion and distribution of Toolkit in Your Package.
+
+3.  Intellectual Property Rights.  
+        (a) You acknowledge that FedEx holds and retains, other than as provided in this 
+Agreement, all worldwide rights, title and interests, including without limitation, copyright 
+and patent rights, in and to Toolkit and in any Materials and Marketing Materials and any 
+other information provided by FedEx regarding ToolKit.  You will print on Your Package an 
+appropriate copyright notice, as approved by FedEx, notifying End-User's of FedEx's rights in 
+and to Toolkit.  You acknowledge that FedEx is not selling or otherwise transferring title in 
+Toolkit to You.  
+
+        (b)  You may not copy, modify, adapt or reproduce Toolkit other than to exercise the 
+rights granted under this Agreement.  You may not decompile, reverse engineer or disassemble 
+Toolkit.  
+
+        (c)  You may not transfer or transmit, in whole or in part, Toolkit to any third party 
+other than as provided in this Agreement.  
+
+        (d)  FedEx grants You a limited, nonexclusive, royalty-free, non-transferable license 
+to use with or in Your Package containing Toolkit the FedEx word and logo trademarks and 
+service marks (hereinafter collectively the "Marks"), and information about FedEx and Toolkit, 
+solely as provided and authorized by FedEx in the Marketing Materials and from time to time.  
+You may not use the Marks or information about FedEx or Toolkit for any other purpose.  You 
+may not alter in any way any Marks, including without limitation, distorting, animating or 
+changing the color, font or proportions of any Marks, or combine them with any other name, 
+mark or logo. 
+
+        (e)  You acknowledge that FedEx holds and retains all worldwide rights, title and 
+interests in and to the Marks, and that all use of the Marks by You shall inure to the benefit 
+of FedEx.  You further acknowledge and agree that You will not claim, whether in whole or in 
+part, any rights in the Marks, and will do nothing to impair or claim, in any way, FedEx’s 
+rights in the Marks.  
+
+        (f)  You may not use the Marks in any manner that is likely to cause confusion, 
+mistake, or deception regarding whether FedEx sponsors or endorses Your Package.  You may not 
+use the Marks to advertise, sell, market or otherwise distribute any products or services, 
+other than to market and distribute Your Package containing Toolkit pursuant to the provisions 
+of this Agreement and the instructions provided by FedEx from time to time.
+
+4.  Use.  You agree to follow the instructions provided from time to time by FedEx and with 
+Toolkit, for the incorporation and functioning of Toolkit, and all upgrades, modifications and 
+releases thereof, in Your Package, and their distribution in Your Package.  
+
+5.  Development and Certification .   
+        (a)  Prior to distributing Toolkit in Your Package to any End-User, You must obtain, 
+at Your expense, from FedEx or FedEx's designee, certification of Your incorporation of 
+Toolkit, and all upgrades and modifications thereof, in Your Package, and Your marketing and 
+promotional materials, pursuant to the instructions and specifications provided by FedEx with 
+Toolkit and from time to time.  In the event You desire to obtain certification of a new 
+release of Your Package, either independently from or in conjunction with, an upgrade or 
+modification of Toolkit by FedEx, the same certification procedure applies as in the original 
+certification, at Your expense.
+
+        (b)  FedEx retains the right to require You to submit to FedEx, or its designee, for 
+review and approval screen shots of all screens in Your Package that use Toolkit, the Marks or 
+any information about Toolkit or FedEx, and any functional aspects thereof.  You agree to make 
+any changes required by FedEx.  You agree to use only those screens approved by FedEx.
+
+        (c)  You will not incorporate Toolkit, the Marks or the Marketing Materials in Your 
+Package in such a way that, in FedEx’s judgment, damages FedEx’s goodwill.  In the event 
+FedEx, in its sole judgment, believes that Your Package violates this provision, FedEx 
+reserves the right, to terminate this Agreement, or to notify You and You agree to cause the 
+Package to comply with this provision or delete Toolkit, the Marketing Materials and the Marks 
+from Your Package. 
+
+        (d)  You will not incorporate in Your Package an automated comparison feature which 
+compares FedEx rates and services with those of other carriers.
+
+6.  Customer Support.  
+        (a)  You will provide to End-Users during the term of this Agreement, at Your expense, 
+competent and professional technical support and maintenance for the functioning of Toolkit 
+within Your Package relative to issues arising out of the method and means by which You 
+incorporate Toolkit within Your Package and Toolkit's functioning within Your Package.  You 
+will direct to FedEx (at the locations and telephone numbers provided by FedEx) all End-User 
+questions regarding FedEx services or questions regarding Toolkit unrelated to Your 
+incorporation of Toolkit in Your Package.
+
+        (b)  You will immediately advise FedEx of any complaints, malfunctioning or defects in 
+Toolkit which You learn about by any means.
+
+7.  Termination.  
+        (a)  You or FedEx may unilaterally terminate this Agreement and the use and 
+distribution of Toolkit, the Materials, the Marketing Materials and the Marks at any time and 
+for any reason.  
+
+        (b)  Your failure to make any changes or upgrades in Toolkit, or follow all 
+instructions, as required by FedEx for the use, distribution and marketing of Toolkit, the 
+Marks, and the Marketing Materials shall also provide a basis for terminating this Agreement 
+upon notice from FedEx. 
+
+        (c)  Upon termination for any reason, You will:
+
+                (i)     cease all use and distribution of all Your promotional materials for 
+Toolkit; 
+
+                (ii)    cease all use and distribution of Toolkit, the Marks, Materials and 
+Marketing Materials;  
+
+                (iii)   remove Toolkit, the Marks, Materials and Marketing Materials from Your 
+Package; and, 
+
+                (iv)    return Toolkit and any Materials, Marketing Materials and other items 
+provided to You by FedEx and all copies thereof.  
+
+        (d)  Upon termination, FedEx may:  
+
+                (i)     notify the End-Users;
+
+                (ii)    publicly announce that Your Package is no longer certified by FedEx 
+and no longer supports FedEx functionality; and 
+
+                (iii)   offer to End-Users alternative methods to enable them to receive FedEx 
+services or use Toolkit through other means. 
+
+8.  Disclaimer of Warranty.  You expressly acknowledge and agree that Toolkit, the Materials, 
+the Marketing Materials and the Marks are provided for Your use and distribution free of 
+charge and at your sole risk.  FedEx warrants that Toolkit will be free from defect for thirty 
+(30) days from the day You receive it which constitutes FedEx's sole and exclusive warranty.  
+FEDEX EXPRESSLY DISCLAIMS AND EXCLUDES ALL OTHER WARRANTIES FOR ALL OTHER TIMES, WHETHER 
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY 
+AND FITNESS FOR A PARTICULAR PURPOSE.  FEDEX DOES NOT WARRANT THAT TOOLKIT, THE MATERIALS, OR 
+THE MARKETING MATERIALS WILL MEET ALL OF YOUR REQUIREMENTS OR THAT TOOLKIT'S OPERATIONS WILL 
+BE UNINTERRUPTED OR ERROR FREE, OR THAT ANY DEFECT WITHIN TOOLKIT, THE MATERIALS OR MARKETING 
+MATERIALS WILL BE CORRECTED.  FURTHERMORE, FEDEX DOES NOT WARRANT NOR MAKE ANY REPRESENTATION 
+REGARDING THE RESULTS OF YOUR USE OF TOOLKIT, THE MARKS, THE MATERIALS OR THE MARKETING 
+MATERIALS IN TERMS OF CAPABILITY, CORRECTNESS, ACCURACY, RELIABILITY OR OTHERWISE.  NO ORAL OR 
+WRITTEN INFORMATION, REPRESENTATION OR ADVICE GIVEN BY FEDEX OR AN AUTHORIZED REPRESENTATIVE 
+OF FEDEX SHALL CREATE A WARRANTY.
+
+9.  Remedies.  In the event of a breach of the express warranty provided in Section 8 above, 
+FedEx will replace Toolkit with another copy of Toolkit, or, if not practical, supply You with 
+another of FedEx's proprietary automated shipping products, if available; provided that you 
+return the defective copy of Toolkit to, or notify, FedEx within thirty (30) days of the date 
+of the end of the express warranty period.  You acknowledge that this Section 9 sets forth 
+Your SOLE AND EXCLUSIVE remedy and FedEx's SOLE AND EXCLUSIVE liability, for breach of 
+warranty or any other duty.
+
+10.  Limitation of Liability.  YOU ACKNOWLEDGE THAT FEDEX IS PROVIDING TOOLKIT, THE MATERIALS, 
+THE MARKS AND MARKETING MATERIALS FREE OF CHARGE.  UNDER NO CIRCUMSTANCES, INCLUDING BUT NOT 
+LIMITED TO NEGLIGENCE, SHALL FEDEX BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+CONSEQUENTIAL OR OTHER DAMAGES IN TORT, CONTRACT, PRODUCT LIABILITY OR UNDER ANY OTHER THEORY 
+OF LAW RESULTING FROM THE INSTALLATION OR REMOVAL OF TOOLKIT, OR YOUR USE, OR INABILITY TO 
+USE, TOOLKIT, THE MARKS, THE MATERIALS OR THE MARKETING MATERIALS, INCLUDING, WITHOUT 
+LIMITATION, DAMAGES RESULTING FROM LOSS OF USE, PROFITS, DATA, OR BUSINESS, AND DAMAGE TO YOUR 
+INTERNAL COMPUTER SYSTEMS EVEN IF FEDEX, OR AN AUTHORIZED REPRESENTATIVE OF FEDEX, HAS BEEN 
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  THIS EXCLUSION OF DAMAGES IS EFFECTIVE EVEN IF 
+THE EXCLUSIVE REMEDY STATED IN SECTION 9 ABOVE FAILS OF ITS ESSENTIAL PURPOSE.
+
+11.  Indemnification.  
+        (a)  You will, at Your sole cost and expense, defend, indemnify and hold harmless, 
+FedEx, its subsidiaries, parent corporation and their respective officers, directors, 
+employees, agents, successors and assigns from and against any and all claims, demands, suits, 
+damages, costs, expenses, losses, suits, fines, and judgments, including reasonable attorneys 
+fees, (collectively hereinafter "Claims") arising out of: 
+
+                (i)     Your use or distribution of Your Package, Toolkit, the Materials, the 
+Marketing Materials, the Marks, and any promotional materials for Your Package; 
+
+                (ii)    the End Users' use of or inability to use Toolkit in Your Package; 
+and,
+
+                (iii)   any Claim that Your Package, in whole or in part, infringes or 
+misappropriates any trademark, patent, copyright or other intellectual property right of 
+another person or entity.
+
+        (b)  You will advise FedEx of any Claims and keep FedEx informed of their status on a 
+regular basis.  FedEx may intervene and assume the defense of any Claims, at its expense and 
+in its sole discretion.  You will not settle any Claims against FedEx, or that affect Toolkit 
+in any manner, without the prior written consent of FedEx.  
+
+12. Confidentiality.  Except as expressly authorized in this Agreement, You will maintain the 
+confidentiality of Toolkit and all information concerning Toolkit, including without 
+limitation the Materials and Marketing Materials, provided by FedEx and will not distribute or 
+disclose any of them to any third party without the written consent or instruction of FedEx.  
+You will make no public announcements regarding this Agreement or the inclusion of Toolkit in 
+Your Package without the prior written consent of FedEx.
+
+13.  Controlling Law and Severability.  This Agreement shall be governed by and construed in 
+accordance with the laws of the United States and the State of Tennessee, excluding its 
+conflict of laws provision.  If for any reason a court of competent jurisdiction finds any 
+provision of this Agreement, or a portion thereof, to be unenforceable, that provision shall 
+be enforced to the maximum extent permissible so as to effect the intent of the parties and 
+the remainder of this Agreement shall remain in full force and effect.  Any cause of action 
+with respect to Toolkit must be instituted within one year after the claim or cause of action 
+has risen or be barred and must be brought in a court of competent jurisdiction within Western 
+Tennessee.  
+
+14.  Notices.   Any notice required or permitted to be given relating to the functioning of 
+Toolkit shall be given in writing as addressed below by mail, electronic mail, facsimile, or 
+via FedEx service.
+
+        If to FedEx:
+        email: __________________________________________
+        street address: ____________________________________
+        ________________________________________________
+        ________________________________________________
+
+        If to You: To the name and address listed in the registration process or FedEx may 
+provide notice by general posting to the various FedEx web sites.  Any such notice shall be 
+effective and deemed received when posted.
+
+15.  Relationship of Parties.  You and FedEx are independent contractors acting for their own 
+account, and neither party or its employees or agents  are authorized to make any 
+representations or commitments on the other party’s behalf unless previously authorized by 
+such party in writing.  Neither party is responsible to any End Users for the quality of 
+services or products provided directly to End-Users by the other party or warranties or claims 
+relating to such products.  FedEx reserves the right to enter into relationships or agreements 
+with other third parties regarding the subject matter of this Agreement, including, but not 
+limited to products competitive with Your Packages.
+
+16.  Waiver.  If FedEx fails to give notice or enforce any right under this Agreement, such 
+failure shall not constitute a waiver of the same, unless reduced to writing and signed by 
+FedEx.  The waiver of any provision shall not constitute a waiver of the same or any other 
+provision in the future.
+
+17.  Export.  By agreeing to this Agreement, and downloading Toolkit, You acknowledge and 
+agree that You (i) assume all responsibility for compliance with, and are in compliance with 
+all laws and regulations of the United States regarding export, reexport and import of Toolkit 
+and the Materials and Marketing Materials and any related or underlying information, 
+technology, process, product or service and (ii) will not export or reexport Toolkit  or the 
+Materials or Marketing Materials from the United States.  You further acknowledge that You are 
+not a national of Cuba, Iran, Iraq, Libya, North Korea, Sudan or Syria or a Denied Party 
+listed on the U.S. Denied Persons List or a Special Designated National on the U.S. Treasury 
+Department’s list of Specially Designated Nationals or equivalent legislation in Canada.  You 
+further acknowledge that Toolkit will not be used for the design or development of nuclear, 
+chemical, biological, weapons or missile technology.
+
+18.  Restricted Rights. Pursuant to 48 C.F.R. 12.212 or 48 C.F.R. 227.7202, as applicable, 
+Toolkit and any related materials and documentation are Commercial Items as defined under 48 
+C.F.R. 2.101 and are licensed to U. S. Government end users only as Commercial Items and only 
+with the rights granted to all other end users as provided in this Agreement.
+
+19.  Assignment.  You may not assign this Agreement or Your rights or obligations hereunder 
+without the prior written consent of FedEx.
+
+20. Complete Agreement.  This Agreement constitutes the entire agreement between You and FedEx 
+with respect to Toolkit, the Marks, Marketing Materials and Materials provided to You by FedEx 
+and supersedes any prior or contemporaneous understandings, representations, statements or 
+agreements, written or oral, regarding Toolkit.  No amendment to or modification of this 
+Agreement will be binding on FedEx without FedEx's written consent.  The provisions of 
+Sections 7, 8, 9, 10, 11, 12, 13, 17, and 18 will survive the termination of this Agreement.  
+FedEx may modify this Agreement at any time for any reason.
+
+        I acknowledge my agreement to this Agreement as set out above on behalf of myself and 
+the entity, if any, with whom I am employed or represent, and acknowledge that I am the same 
+person identified on the registration screen and that the information provided on the 
+registration screen is true and accurate.
+
+                                                _______ YES
+                                                _______ NO 
+
+        If acknowledged, You will be asked to complete the registration screen which follows 
+this screen.
+
+
+
+
+
+
+
+FEDEX API END-USER LICENSE AGREEMENT
+
+        SET OUT BELOW ARE THE TERMS AND CONDITIONS UNDER WHICH YOU ARE PERMITTED TO USE FEDEX API.  PLEASE READ THIS INFORMATION CAREFULLY.  IF YOU AGREE TO BE BOUND BY THESE TERMS AND CONDITIONS, YOU MUST ACKNOWLEDGE YOUR AGREEMENT BELOW ON BEHALF OF YOURSELF AND THE ENTITY, IF ANY, WITH WHOM YOU ARE EMPLOYED OR REPRESENT.  ONCE ACKNOWLEDGED, THIS DOCUMENT WILL CONSTITUTE A LEGAL AGREEMENT BETWEEN FEDEX CORPORATE SERVICES ("FEDEX") AND YOU AND SUCH ENTITY (collectively referred to as "You" or "Your" hereinafter) GOVERNING ALL USE OF API.  YOU WARRANT THAT YOUR ACKNOWLEDGMENT OF THIS AGREEMENT EVIDENCES YOUR INTENTION TO LEGALLY BIND YOU AND SUCH ACKNOWLEDGMENT IS INTENDED AS A SYMBOL OF YOUR SIGNATURE.  PLEASE PRINT A COPY OF THIS LICENSE AND RETAIN IT WITH YOUR FILES FOR FUTURE REFERENCE.
+
+        Section 1.  Acknowledgment. You acknowledge that for the purposes of this Agreement "FedEx" shall mean and include FedEx Corporate Services and any and all of its affiliate companies including FedEx Express and FedEx Ground.  You further acknowledge that this Agreement to use API is between You and FedEx Corporate Services.  You further acknowledge that the contract of carriage for shipments made by You using API and originating in the United States is between You and the FedEx company to which You tender the package within the United States.   You further acknowledge that for those shipments processed by You using API and originating outside of the United States, the contract of carriage for Your shipment (and not the terms governing use of API) is with the FedEx subsidiary, branch, affiliate or independent contractor who originally accepts the shipment from You.  If Your shipment originates in Canada, Your contract of carriage is with Federal Express Canada Ltd., its principals, subsidiaries, branches, and affiliates, and their respective agents and independent contractors.
+
+        Section 2.  Grant.  (a)  FedEx grants You a personal, non-exclusive, non-transferable, royalty-free license to install and use API within the United States, along with any modifications and upgrades thereof (hereinafter collectively "API"), and any related manuals, documents, or other items (hereinafter collectively the "Materials"), provided by FedEx or with API, solely  for the purpose of connecting  with FedEx servers to label, rate, route, record, ship, track and invoice shipments tendered to FedEx by You using API, and for no other purpose.  
+
+(b)  For purposes of this Agreement, the term API shall include all software, sample codes, screens, templates, designs, files, instructions, specifications, and other Materials provided to You in connection with API.  
+
+(c)  If You are required to make any programming changes in Your internal hardware and software systems to enable You to use API, or any modification or upgrade thereof, such changes shall be at Your sole cost and expense and at Your sole risk.  Your failure to make any changes or upgrades may result in You being unable to continue using API.  FedEx may modify, upgrade and terminate the use of API at any time for any reason.
+
+        Section 3.  Intellectual Property Rights.  (a) You acknowledge that FedEx holds and retains, other than as provided in this Agreement, all worldwide rights, title and interests, including without limitation, copyright and patent rights, in and to API, and the Materials.  You acknowledge that FedEx is not selling or otherwise transferring title in API or the Materials to You.  
+
+(b)  You may not copy )other than as necessary to install or create a back-up copy), modify, adapt, or reproduce, translate, decompile, reverse engineer or disassemble API or the Materials.  
+
+(c)  You may not transfer or transmit, in whole or in part, API or the Materials to any third party without FedEx's written approval.  
+
+        Section 4.  Use.  You agree to follow the instructions provided from time to time with  API, and in any Materials which may be provided with API, for the installation and use of API, and FedEx services.  FedEx may, from time to time and at its option, download directly to Your computer, by whatever means available, modifications and upgrades to API.  Use of API to prepare shipments by or for the benefit of third party shippers is expressly prohibited.
+
+        Section 5.  Termination.  (a)  This Agreement is effective until terminated by either You or FedEx.  This Agreement will terminate independently without notice if You fail to comply with any provision of this Agreement or any instructions regarding API or the Marks.  
+
+(b)  Upon termination for any reason, You must cease all use of API.  
+
+(c)  FedEx reserves the right to unilaterally terminate this Agreement and the use of API.
+
+        Section 6.  Payment.  You agree to remit payment for all invoices generated through the use of API in accordance with the terms and conditions contained in the applicable FedEx Service Guide ("Service Guide") under which the shipment is accepted by FedEx and to reference the invoice number when payment is remitted.  You are responsible for payment of all charges generated through the use of API under Your account number and registration number.
+
+        Section 7.  Invoice Adjustments and Refunds.  (a)  If the use of API in any way results in the generation of an inaccurate invoice for any shipping transaction, FedEx will bill You for, and You agree to pay to FedEx within fifteen (15) days of the invoice date, any additional amount applicable to the transaction or as otherwise provided in the applicable Service Guide under which the shipment is accepted by FedEx.
+
+        (b) You may bill shipping charges only to valid FedEx account numbers, either bill sender, bill recipient or bill third party.  
+
+        (c) Shipments tendered with incorrect routing, labeling, commitment date, service designation or other errors through no fault of FedEx will not be eligible for any applicable refunds under FedEx's money-back guarantee policies.  Refunds requested by You with respect to any shipment must be made in accordance with the applicable Service Guide under which the shipment is accepted by FedEx, its subsidiary, branch or independent contractor.  You will not be entitled to any refund or credit under FedEx's money-back guarantees if FedEx determines that the claim resulted from improper use or installation of API, or any modifications or upgrades thereof, or is due to the use of the Internet.  FedEx, in its sole discretion, may suspend or terminate its money-back guarantees for any reason.
+
+        Section 8.  Disclaimer of Warranty.  You expressly acknowledge and agree that API and the Materials are provided to You by an independent distributor and that Your use of API and the Materials is at Your sole risk.  AS API IS BEING PROVIDED TO YOU VIA AN INDEPENDENT DISTRIBUTOR, FEDEX EXPRESSLY DISCLAIMS AND EXCLUDES ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  FEDEX DOES NOT WARRANT THAT API OR THE MATERIALS WILL MEET ALL OR ANY OF YOUR REQUIREMENTS OR THAT THEIR OPERATIONS WILL BE UNINTERRUPTED OR ERROR FREE, OR THAT ANY DEFECT WITHIN API OR THE MATERIALS WILL BE CORRECTED.  FURTHERMORE, FEDEX DOES NOT WARRANT NOR MAKE ANY REPRESENTATION REGARDING THE RESULTS OF YOUR USE OF API OR THE MATERIALS IN TERMS OF CAPABILITY, CORRECTNESS, ACCURACY, RELIABILITY OR OTHERWISE.  NO ORAL OR WRITTEN INFORMATION, REPRESENTATION OR ADVICE GIVEN BY FEDEX OR AN AUTHORIZED REPRESENTATIVE OF FEDEX SHALL CREATE A WARRANTY IN API.
+
+        Section 9.  Remedies.  You agree to look to Your contractor, consultant or programmer for any and all remedies for damages of any nature arising out of Your installation and use of API and You acknowledge and agree that it is Your sole responsibility to arrange with Your contractor, consultant or programmer for the availability for any and all remedies arising out of Your receipt, installation and use of API from such contractor, consultant or programmer.
+
+        Section 10.  Limitation of Liability.  YOU ACKNOWLEDGE THAT FEDEX IS NOT RECEIVING ANY COMPENSATION FOR YOUR RECEIPT, INSTALLATION AND USE OF API AND THAT THERE ARE OTHER FEDEX AUTOMATION SOLUTIONS AVAILABLE DIRECTLY FROM FEDEX OTHER THAN API.  UNDER NO CIRCUMSTANCES, INCLUDING BUT NOT LIMITED TO NEGLIGENCE, SHALL FEDEX, ITS PARENT CORPORATION, OR ANY OF ITS SUBSIDIARIES, EMPLOYEES, OFFICERS, DIRECTORS, AGENTS, SUBSIDIARIES, OR BRANCHES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR OTHER DAMAGES IN TORT, CONTRACT, PRODUCT LIABILITY OR UNDER ANY OTHER THEORY OF LAW RESULTING FROM THE INSTALLATION OR REMOVAL OF API OR THE MATERIALS, OR YOUR USE, OR INABILITY TO USE, API OR THE MATERIALS, INCLUDING, WITHOUT LIMITATION, DAMAGES RESULTING FROM LOSS OF USE, PROFITS, DATA, OR BUSINESS, AND DAMAGE TO YOUR INTERNAL COMPUTER SYSTEMS EVEN IF FEDEX, OR AN AUTHORIZED REPRESENTATIVE OF FEDEX, HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  THIS EXCLUSION OF DAMAGES IS EFFECTIVE EVEN IF THE EXCLUSIVE REMEDY STATED IN SECTION 9 ABOVE FAILS OF ITS ESSENTIAL PURPOSE.  
+
+        Section 11.  Indemnification.  You will, at Your sole cost and expense, defend, indemnify and hold harmless, FedEx, its parent corporation, its subsidiaries and branches and their respective officers, directors, employees, agents, successors and assigns from all claims, demands, suits, damages, costs, expenses, suits, fines and judgements, including reasonable attorneys fees, (collectively hereinafter "Claims") arising out of Your installation, use and removal of API and the Materials.  FedEx may intervene and assume its defense in any such claims, at its expense and in its sole discretion.  You will not settle any such action involving FedEx or API without the prior written consent of FedEx.  
+
+        Section 12.  Controlling Law and Severability.  This Agreement shall be governed by and construed in accordance with the laws of the United States and the State of Tennessee, excluding its conflict of laws provision.  If for any reason a court of competent jurisdiction finds any provision of this Agreement, or a portion thereof, to be nt, the transportation agreement, tariff, Service Guide, Standard Conditions of Carriage, or this Agreement will control, in that order of priority.  No one is authorized to alter or modify the terms of our agreement regarding a Shipment.  The Air Waybill shall be binding on FedEx and You when the Shipment is accepted; FedEx may mark the Air Waybill with an employee number as its signature, or its printed name shall be sufficient to constitute FedEx's signature of the Air Waybill.  If a Shipment originates outside the United States, the contract of carriage is with the FedEx subsidiary, branch, or independent contractor who originally accepts the Shipment.  
+
+(e) In the event You use the Equipment to process Shipments tendered to FedEx for delivery to locations outside the United States or country of Shipment origin, You will, at Your sole expense, assure that the terms and conditions of international carriage supplied by FedEx from time to time (which may be amended or modified from time to time at FedEx's sole discretion) are placed on the Air Waybill or Label for all such international Shipments in a manner acceptable to FedEx.  You will defend, indemnify and hold harmless FedEx, its officers, directors, employees and agents from and against any and all losses, damages, claims and other items of cost and expense arising out of Your failure to apply the international carriage terms to the Air Waybill for such international Shipments, including without limitation claims from the recipient of any Shipment, and Your failure to follow FedEx's instructions in regard to the placement of the terms on the Air Waybills for such international Shipments.  
+
+(f) Printed Signature.  You acknowledge that if the Equipment is used to process Shipments to locations outside the United States or country of Shipment origin, You must and will enter, to print in lieu of a manual signature on the international Air Waybills, Pick-up Records, Labels or Manifests, as applicable, the name of the person completing the Air Waybills, Labels, Manifests or Pick-Up Records for all Shipments tendered by You to FedEx using the Equipment.  You further acknowledge that such printed name shall be sufficient to constitute Your signature, and Your acceptance of FedEx's terms and conditions of carriage contained in the applicable transportation agreement, Service Guide, Standard Conditions, tariff, Air Waybill, or transportation agreement under which the Shipment is accepted by FedEx, or its independent contractor. 
+
+(g)  Warranty.  You warrant that each article in each Shipment will be properly described on the Air Waybill and on any export documents, is acceptable for transport by FedEx, and that the Shipment will be properly marked, addressed and packed to ensure safe transportation with ordinary care in handling.  You are responsible for all charges, including transportation charges and all duties, customs assessments, governmental penalties and fines, taxes and FedEx legal costs related to Your Shipments. 
+
+ (h)  Air Carriage Notice.  If the carriage of Your Shipment by air involves an ultimate destination or stop in a country other than the country of departure, the Warsaw Convention, and any of its subsequent amendments and protocols, (collectively "Warsaw Convention") may be applicable and govern and in most cases limit FedEx's liability for loss, delay of or damage to Your Shipment.  In certain countries, the Warsaw Convention limits FedEx's liability to U.S. $9.07 per pound (U.S. $20.38 per kilogram or equivalent local currency), unless a higher value for carriage is declared as described below and You pay any applicable supplementary charges.  In Canada, the Warsaw Convention may limit liability to the Canadian dollar equivalent of 250 French Francs of 65.5 milligrams gold of millesimal fineness 900 per kilogram, unless a higher value of carriage is declared as described below and You pay any applicable supplementary charges.  The interpretation and operation of the Warsaw Convention's liability limits may vary in each country.  There are no specific stopping places which are agreed to and FedEx reserves the right to route Shipments in any way FedEx deems appropriate. 
+
+(i)  Road Transport Notice.  Shipments transported solely by road, be there an explicit agreement to do so or not, into, or from a country which is a party to the Convention on the Contract for the International Carriage of Goods by Road (the "CMR") are subject to the terms and conditions of the CMR, notwithstanding any other provisions referred to or in the Air Waybill to the contrary, except that the higher limitations of liability as set forth in the Air Waybill conditions shall remain applicable as opposed to those set forth in the CMR.  
+
+(j)  Limitation of Liability.  If not governed by the Warsaw Convention, the CMR, or other international treaties, laws, government regulations, orders or requirements, FedEx's maximum liability for loss, delay of or damage to Your Shipments is limited to the greater of the amount of U.S. $100 per Shipment or U.S. $9.07 per pound (U.S. $20.38 per kilo) (or equivalent local currency for the country of origin), (or in Canada, the amount of actual damages or CDN $100 per Shipment, whichever is less), unless You declare, in advance, a higher value for carriage as described below and pays any applicable supplementary charges.  If You declare a higher value, You must pay an additional charge for each additional US$100 (or the equivalent in local currency) (or in Canada CAN$100) of declared value for carriage.  Please call FedEx or refer to the applicable FedEx rate sheets in effect at the time of Shipment for an explanation on the additional charge.  If You declare a higher value for carriage and pays the additional charge, FedEx's maximum liability will be the lesser of the declared value for carriage or Your actual damages.  FedEx does not provide cargo liability or all-risk insurance. For packages tendered for FedEx Ground services please reference the applicable service guide
+
+(k)  Declared Value Limits.  The highest declared value FedEx allows for a FedEx Letter/FedEx Envelope and FedEx Pak Shipment is US$100 or US$9.07 per pound (US$20.38 per kilo)(or the equivalent in local currency), whichever is greater.  In Canada, the maximum declared value allowed for customs and carriage per Air Waybill for each FedEx Letter and FedEx Pak is CAN$100.  For other Shipments, in particular Shipments of extraordinary value, including, but not limited to jewelry, artwork, antiques, precious metals, and furs and fur clothing, the declared value of carriage is limited and depends on the contents and the destination of the Shipment.  Please check the applicable Service Guide, contract of carriage, transportation agreement, tariff, or Standard Conditions for an explanation of the declared value limits.  If You send more than one Package using a single Air Waybill, the declared value for carriage of each Package will be determined by dividing the total declared value for carriage by the number of Packages in the Shipment. For packages tendered for FedEx Ground services please reference the applicable service guide. 
+
+(l)  Liabilities Not Assumed.  IN ANY EVENT, SUBJECT TO THE SERVICE CONDITIONS ON THE AIR WAYBILL, AND IN THE APPLICABLE SERVICE GUIDE, TRANSPORTATION AGREEMENT, STANDARD CONDITIONS, TARIFF OR CONTRACT OF CARRIAGE, FedEx WON'T BE LIABLE FOR ANY DAMAGES, WHETHER DIRECT, INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL, IN EXCESS OF THE DECLARED VALUE US$100 OR US$9.07 PER LB. (US$20.38 PER KILO) (OR THE EQUIVALENT IN LOCAL CURRENCY) WHICHEVER IS GREATER (OR IN CANADA IN EXCESS OF THE DECLARED VALUE FOR CARRIAGE) (INCLUDING BUT NOT LIMITED TO LOSS OF INCOME OR PROFITS) WHETHER OR NOT FedEx HAD ANY KNOWLEDGE THAT SUCH DAMAGES MIGHT BE INCURRED.  FedEx won't be liable for Your acts or omissions, including but not limited to incorrect declaration of cargo, improper or insufficient packing, securing, marking or addressing of a Shipment, or for the acts or omissions of the recipient or anyone else with an interest in a Shipment.  Also, FedEx won't be liable if You or the recipient violate any of the terms of our Agreement.  FedEx won't be liable for loss, damage, delay, shortage, misdelivery, nondelivery, misinformation or failure to provide information (1) in connection with Shipments of cash, currency, or other prohibited items; or, (2) caused by events FedEx cannot control, including but not limited to acts of God, perils of the air, weather conditions, mechanical delays, acts of public enemies, war, strikes by any entity, civil commotions, or acts or omissions of public authorities (including customs and health officials) with actual or apparent authority.  
+
+(m)  No Warranty.  FedEx makes no warranties, express or implied.  
+
+(n)  Claims for Loss, Damage or Delay.  ALL CLAIMS MUST BE MADE IN WRITING AND WITHIN STRICT TIME LIMITS.  SEE THE APPLICABLE TARIFF, SERVICE GUIDE, OR STANDARD CONDITIONS OF CARRIAGE FOR DETAILS.  The Warsaw Convention provides that written claims for damage must be received within fourteen (14) days from the date of receipt and within twenty-one (21) days in the event of delay.  FedEx may have expanded the claims periods in certain countries and the periods may differ from country to country.  Moreover, the interpretation and operation of the Warsaw Convention’s claims provisions may vary in each country.  Contact the FedEx representative in the country of origin to determine the claims period for Your Shipment.  In the event of nondelivery or misdelivery, misinformation, or failure to provide information, FedEx must receive written notice of the claim within ninety (90) days after FedEx accepts the Shipment.  The right to damages regarding a Shipment against FedEx shall be extinguished unless an action is brought within two (2) years from the date of delivery of the Shipment or from the date on which the Shipment should have been delivered.  Within ninety (90) days after notification to FedEx of the claim, it must be documented by sending FedEx all relevant information about it.  FedEx is not obligated to act on any claim until all transportation charges have been paid;  the claim amount may not be deducted from those transportation charges.  If the recipient accepts the Shipment without noting any damage on the delivery record, FedEx will assume the Shipment was delivered in good condition.  In order for FedEx to consider a claim for damage, the contents, original shipping carton and packing must be made available to FedEx for inspection.  
+
+(o)  Right To Inspect.  Your Shipments may, at FedEx's option, or at the request of governmental authorities, be opened and inspected by FedEx or such authorities at any time.  
+
+(p)  Responsibility For Payment.  Even if You give FedEx different payment instructions, You will always be primarily responsible for all charges, including transportation charges, and all duties, custom assessments, governmental penalties and fines, taxes, and FedEx's attorney fees and legal costs, related to Shipments tendered under this Agreement.  You also will be responsible for any costs FedEx may incur in returning Your Shipments to You or warehousing them pending disposition.  
+
+(q)  Customs Clearance.  You hereby appoint FedEx, or its independent contractor as applicable, as Your agent solely for performance of customs clearance and certifies FedEx as the nominal consignee for the purpose of designating a customs broker to perform customs clearance.  In some instances, local authorities may require additional documentation confirming FedEx's appointment.  It is Your responsibility to provide proper documentation and confirmation, where required.  You are responsible for and warrant Your compliance with all applicable laws, rules and regulations, including but not limited to customs laws, import and export laws and government regulations of any country to, from, through or over which Your Shipments may be carried.  You agree to furnish such information and complete and attach to the Shipments such documents as are necessary to comply with such laws, rules and regulations.  FedEx assumes no liability to You or any other person for any loss or expense due to Your failure to comply with this provision.  You are also responsible  for all charges, including transportation charges, and all duties, customs assessments, governmental penalties and fines, taxes, and FedEx lawyer's fees and legal costs, related to any Shipment.  
+
+(r)  Letter of Instruction.  If You do not complete all the documents required for carriage or if the documents submitted are not appropriate for the services or destination requested, You hereby instruct FedEx, or its independent contractor, as applicable, where permitted by law to complete, correct or replace the documents for You at Your expense.  However, FedEx is not obligated to do so.  If a substitute form of air waybill is needed to complete delivery of Your Shipment and FedEx completes that document, the terms of this Agreement will continue to govern.  FedEx is not liable to You or any other person for FedEx's actions on Your behalf under this provision.  
+
+(s)  Items Not Acceptable for Transportation.  FedEx does not accept transportation of money (including, but not limited to, coins (except collectible) or negotiable instruments equivalent to cash such as endorsed stocks and bonds.)  FedEx excludes all liability for Shipments of such items accepted by mistake.  Other items may be accepted for carriage only to limited destinations or under restricted conditions.  FedEx reserves the right to reject Packages based upon these limitations or for reasons of safety or security.  
+
+(t)  Export Control.  You authorize FedEx, and its independent contractors, as applicable, to act as forwarding agent for You for export and customs purposes.  You hereby certify that all statements and information contained on all Air Waybills, SEDs and accompanying documentation relating to exportation are true and correct.  You further certify that all Commercial Invoice information submitted via the Equipment is true and correct.  You expressly authorize FedEx and its independent contractors, as applicable, to forward all information of any nature regarding Shipments to any and all governmental or regulatory agencies which request or require such information.  Furthermore, You understand that civil and criminal penalties, including forfeiture and sale, may be imposed for making false or fraudulent statements or for the violation of any country laws on exportation, including but not limited to, for Shipments originating in the U.S., 13 U.S.C. §305; 22 U.S.C. §401; 18 U.S.C. §1001; and 50 U.S.C. App. 2410, and for Shipments originating in Canada, the Export and Import Permits Act, R.S.C. E-17.  Consult the laws in the country of origin for similar restrictions.  You acknowledge that no Shipments tendered by You from the United States using the Equipment will be sent to any entity listed on the Department of Commerce's Denied Parties List 15 C.F.R. Part 764, Supp. 2, or the list of Special Designated Nationals as published by the Office of Foreign Assets Control of the U.S. Department of the Treasury and that You are neither a denied party or a specially designated national.  Consult the laws of the origin country of Your Shipment for similar provisions.  
+
+(u)  Shipper's Export Declaration. From the U.S., a completed hard copy of a Shipper's Export Declaration (SED) or an electronic transmission of SED data or an SED exemption legend (including AES legend) is required if a shipment meets any of the following criteria: (1) a single commodity with a Customs value over USD $2500 with the exception of shipments going to Canada (unless shipped on a Commerce Export License); (2) Shipments between the United States and Puerto Rico, and from the United States and Puerto Rico to the U.S. Virgin Islands and to foreign countries with a Customs value over USD $2500; (3) all shipments  (regardless of value) to the following proscribed countries: Cuba, Iran, Iraq, Libya, North Korea, Sudan and Syria  with the exception of personal, inter-office or business correspondence; and, (5) all shipments from U.S. Possessions to foreign countries with a Customs value over USD $2500 with the exception of shipments going to Canada (unless shipped on a Commerce Export License).Note: SEDs are not required for shipments from or to the following U.S. possessions: American Samoa, Baker Island, Guam, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Navassa Island, Northern Mariana Islands, Palmyra Atoll or Wake Island.  At this time, FedEx does not service the following countries: Cuba, Iran, Iraq, North Korea, Libya and Sudan.  Consult the laws in the country of origin of your shipment for SED or similar requirements.
+
+(v)  Air Waybill Format and Design.  Pursuant to the terms and conditions of this Agreement, FedEx agrees to permit You to generate on Your equipment FedEx Air Waybills for Your sole use, subject at all times to the prior written approval of FedEx of the format, content and layout of such Air Waybill.  You agree to immediately discontinue producing such Air Waybills at any time upon request by FedEx.  
+
+(w)  Mandatory Law.  Insofar as any provision contained or referred to in the Air Waybill may be contrary to any applicable international treaties, laws, governmental regulations, orders or requirements, such provision shall remain in effect as part of our agreement to the extent that it is not overridden.  The invalidity or unenforceability of any provision shall not affect any other provision contained or referred to in the Air Waybill. 
+
+(x)  Unless otherwise indicated, the shipper’s address indicated on the face of the Air Waybill is the place of execution and the place of departure and the recipient’s address listed on the face of the Air Waybill is the place of destination. Unless otherwise indicated on the face of the Air Waybill, Label, Manifest, or Pick-up Record, the first carrier of all Shipments is FedEx Express (i.e., Federal Express Corporation), P.O. Box 727, Memphis, TN 38194. In the event another carrier is listed on any such document, that carrier is the first carrier of the Shipment. The address for FedEx Ground is P.O. Box 108, Coraopolis, PA 15230.-
+
+        Section 14.  Notices.  Any notice required or permitted to be given relating to the functioning of API shall be given in writing as addressed below by mail, electronic mail, facsimile, or via FedEx service.
+
+        If to FedEx:
+        email: __________________________________________
+        street address: ____________________________________
+        ________________________________________________
+        ________________________________________________
+
+        If to Licensee: To the name and address listed in the registration process or FedEx may provide notice by general posting to the various FedEx web sites.  Any such notice shall be effective and deemed received when posted.
+
+        Section 15.  Waiver.  If FedEx fails to give notice or enforce any right under this Agreement, such failure shall not constitute a waiver of the same, unless reduced to writing and signed by FedEx.  The waiver of any provision shall not constitute a waiver of the same or any other provision in the future.
+
+        Section 16. Export.  By agreeing to this Agreement, and using API, You acknowledge and agree that You (i) assume all responsibility for compliance with, and are in compliance with all laws and regulations of the United States regarding export and import, of API and the Materials and any related or underlying information, technology, process, product or service and (ii) will not export API or the Materials from the United States.  You further acknowledge that You are not a national of Cuba, Iran, Iraq, Libya, North Korea, Sudan or Syria or a Denied Party listed on the U.S. Denied Persons List or a Special Designated National on the U.S. Treasury Department’s list of Specially Designated Nationals.  You further acknowledge that API will not be used for the design or development of nuclear, chemical, biological, weapons or missile technology.
+
+        Section 17.  Restricted Rights. Pursuant to 48 C.F.R. 12.212 or 48 C.F.R. 227.7202, as applicable, API and any related materials and 
+
+
+
+
+FEDEX GLOBAL DEVELOPER TOOLKIT LICENSE AGREEMENT
+
+SET OUT BELOW ARE THE TERMS AND CONDITIONS UNDER WHICH YOU ARE PERMITTED TO USE AND 
+DISTRIBUTE THE FEDEX GLOBAL DEVELOPER TOOLKIT AND ALL MATERIALS RELATED THERETO PROVIDED 
+BY FEDEX (hereinafter collectively "Toolkit").  PLEASE READ THIS INFORMATION CAREFULLY.  
+IF YOU AGREE TO BE BOUND BY THESE TERMS AND CONDITIONS, YOU MUST ACKNOWLEDGE YOUR AGREEMENT 
+BELOW ON BEHALF OF YOURSELF AND THE ENTITY, IF ANY, WITH WHOM YOU ARE EMPLOYED OR 
+REPRESENT.  ONCE ACKNOWLEDGED, THIS DOCUMENT WILL CONSTITUTE A LEGAL AGREEMENT BETWEEN 
+FEDEX CORPORATE SERVICES, INC. ("FEDEX") AND YOU AND SUCH ENTITY (collectively referred to 
+as "You" or "Your" hereinafter) GOVERNING ALL USE OF TOOLKIT.  YOU WARRANT THAT YOUR 
+ACKNOWLEDGMENT OF THIS AGREEMENT EVIDENCES YOUR INTENTION TO LEGALLY BIND YOU AND SUCH 
+ACKNOWLEDGMENT IS INTENDED AS A SYMBOL OF YOUR SIGNATURE.  PLEASE PRINT A COPY OF THIS 
+AGREEMENT ("AGREEMENT") AND RETAIN IT WITH YOUR FILES FOR FUTURE REFERENCE.
+
+1.  Grant.  
+        (a)  Subject to the terms and conditions of this Agreement, FedEx grants You a 
+non-exclusive, non-transferable, royalty-free license, to download, use as provided in this 
+Agreement, and distribute, as instructed by FedEx from time to time, Toolkit in the United 
+States, along with any modifications and upgrades thereof (collectively "Toolkit"), and any 
+related manuals, documents, or other items (hereinafter collectively the "Materials"), 
+provided with Toolkit and by FedEx from time to time, all at Your cost and expense and at 
+Your sole risk.  For purposes of this Agreement, "Toolkit" shall mean all items provided by 
+FedEx from time to time in connection with Toolkit.  
+
+        (b)  Subject to and under the terms of this Agreement, You may include Toolkit and 
+select Materials in a software application (hereinafter "Application") and distribute 
+Toolkit and select Materials solely within the Application, on a royalty-free basis (at 
+least as to Toolkit), solely to the end user ("End-User") identified on the registration 
+screen for Toolkit, solely in a manner and for the purpose of enabling the End-User to use 
+the FedEx Ship Manager API application as directed by FedEx.  
+
+        (c)  You may not include or distribute Toolkit or the Materials in any add-ons, 
+plug-ins, products or applications which are stand alone, or primarily, multi-carrier 
+shipping applications, providing for, without limitation, rating, labeling, routing, 
+manifesting and processing of shipments through one or more carriers or couriers, other 
+than FedEx.  
+
+        (d)  You may not distribute Toolkit or the Materials in any form to carriers, 
+couriers or other entities involved in the pickup, consolidation, transportation, delivery 
+or logistical movement of documents, packages or freight.
+
+        (e)  You may not distribute Toolkit to any third party for the purpose of such 
+third party incorporating Toolkit in an individual or separate multi-carrier system.  For 
+purposes of the Agreement, "multi-carrier system" shall mean any system which is a stand 
+alone, or primarily, a shipping application, system or software program providing for, 
+without limitation, rating, labeling, routing manifesting, processing or the logistical 
+movement of shipment via one or more carriers, in addition to FedEx.  You may not 
+distribute Toolkit apart from the Application.
+
+        (f)  You shall include in the Application materials containing Toolkit:  
+
+                (i)  the FedEx Ship Manager API End-User agreement provided by FedEx which 
+                must be executed and delivered to FedEx by the End-User prior to the 
+                End-User installing Toolkit; and,
+
+                (ii) the marketing and instructional materials ("Marketing Materials") 
+                concerning Toolkit approved by FedEx for distribution to the End-User.  
+
+        (g)  Your failure to make any changes or upgrades as required by FedEx from time to 
+time in Toolkit may result in You being unable to continue using or distributing Toolkit to 
+the End-User.  FedEx may modify, upgrade or terminate Your use and distribution of Toolkit 
+at any time for any reason. 
+
+        (h)  If Your Application contains any functionality other than Toolkit, You are 
+responsible for the preparation and execution of any other end-user agreement for the use 
+of such additional functionality.
+
+2.  Intellectual Property Rights.  
+        (a)  You acknowledge that FedEx holds and retains, other than as provided in this 
+Agreement, all worldwide right, title and interest, including without limitation, copyright 
+and patent rights, in and to Toolkit, the Materials, and in any Marketing Materials and 
+other information provided by FedEx regarding ToolKit.  You will print on the Application 
+an appropriate copyright notice, as approved by FedEx.  You acknowledge that FedEx is not 
+selling or otherwise transferring title in Toolkit to You.  
+
+        (b)  You may not copy, modify, adapt or reproduce Toolkit other than to exercise 
+the rights granted under this Agreement.  You may not decompile, reverse engineer or 
+disassemble Toolkit.  
+
+        (c)  You may not transfer or transmit, in whole or in part, Toolkit to any third 
+party other than as provided in this Agreement.  
+
+        (d)  FedEx grants You a limited, nonexclusive, royalty-free, non-transferable 
+license to use with or in the Application containing Toolkit the FedEx word and logo 
+trademarks and service marks (collectively the "Marks"), and information about FedEx and 
+Toolkit, solely as provided and authorized by FedEx in the Marketing Materials and from 
+time to time.  You may not use the Marks or information about FedEx or Toolkit for any 
+other purpose.  You may not alter in any way any Marks, including without limitation, 
+distorting, animating or changing the color, font or proportions of any Marks, or combine 
+them with any other name, mark or logo. 
+
+        (e)  You acknowledge that FedEx holds and retains all worldwide rights, title and 
+interests in and to the Marks, and that all use of the Marks by You shall inure to the 
+benefit of FedEx.  You further acknowledge and agree that You will not claim, whether in 
+whole or in part, any rights in the Marks, and will do nothing to impair or claim, in any 
+way, FedEx’s rights in the Marks.  
+
+        (f)  You may not use the Marks in any manner that is likely to cause confusion, 
+mistake, or deception regarding whether FedEx sponsors or endorses the Application.  You 
+may not use the Marks to advertise, sell, market or otherwise distribute any products or 
+services.
+
+4.  Use.  You agree to follow the instructions provided from time to time by FedEx and 
+with Toolkit, for the incorporation and functioning of Toolkit, and all upgrades, 
+modifications and releases thereof, in the Application, and their distribution in the 
+Application.  
+ 
+5.  Development and Certification.   
+        (a)  Prior to distributing Toolkit to the End-User, You must obtain, at Your or 
+the End-User's expense, from FedEx or FedEx's designee, certification of the Application, 
+and all upgrades and modifications thereof, pursuant to the instructions and 
+specifications provided by FedEx with Toolkit and from time to time.  In the event You 
+desire to obtain certification of a new release of the Application, either independently 
+from or in conjunction with, an upgrade or modification of Toolkit by FedEx, the same 
+certification procedure applies as in the original certification, at Your or the 
+End-User's expense.
+
+        (b)  FedEx retains the right to require You to submit to FedEx, or its designee, 
+for review and approval, screen shots of all screens in the Application that use Toolkit, 
+the Marks or any information about Toolkit or FedEx, and any functional aspects thereof.  
+You agree to make any changes required by FedEx.  You agree to use only those screens 
+approved by FedEx.
+
+        (c)  You will not incorporate Toolkit in the Application in such a way that, in 
+FedEx’s judgment, damages FedEx’s goodwill.  In the event FedEx, in its sole judgment, 
+believes that the Application violates this provision, FedEx reserves the right, to 
+terminate this Agreement, or to notify You and You agree to cause the Application to 
+comply with this provision or delete Toolkit from the Application.  
+
+        (d)  You will not incorporate in the Application an automated comparison feature 
+which compares FedEx rates and services with those of other carriers.
+
+6.  Customer Support.  
+        (a)  You will provide to the End-User during the term of this Agreement, at Your 
+expense, competent and professional technical support and maintenance for the 
+functioning of Toolkit within the Application relative to issues arising out of the 
+method and means by which You incorporate Toolkit within the Application.  You will 
+direct to FedEx (at the locations and telephone numbers provided by FedEx) all End-User 
+questions regarding FedEx services or questions regarding Toolkit unrelated to Your 
+incorporation of Toolkit in the Application.
+
+        (b)  You will immediately advise FedEx of any complaints, malfunctioning or 
+defects in Toolkit which You learn about by any means.
+
+7.  Termination.  
+        (a)  You or FedEx may unilaterally terminate this Agreement and the use and 
+distribution of Toolkit, the Materials, the Marketing Materials and the Marks at any 
+time and for any reason.  
+
+        (b)  Your failure to make any changes or upgrades in Toolkit, or follow all 
+instructions, as required by FedEx for the use and distribution of Toolkit, shall also 
+provide a basis for terminating this Agreement upon notice from FedEx. 
+
+        (c)  Upon termination for any reason, You will:
+
+                (i)     cease all use and distribution of Toolkit, the Marketing 
+                Materials, Materials and Marks;  
+
+                (ii)    at FedEx's option, remove Toolkit and any Marketing Materials, 
+                Materials and the Marks from the Application being used by the End-User 
+                if instructed to do so by FedEx; and 
+
+                (iii)   at FedEx's option, return Toolkit and any Materials, Marketing 
+                Materials and other items provided to You by FedEx and all copies 
+                thereof.  
+
+        (d)  Upon termination, FedEx may:  
+
+                (i)     notify the End-User and terminate the End-User's agreement with 
+                FedEx; and,
+
+                (ii)    offer to the End-User alternative methods to enable them to 
+                receive FedEx services or use Toolkit through another vendor. 
+
+8. Disclaimer of Warranty.  You expressly acknowledge and agree that Toolkit, the 
+Marketing Materials, the Materials and the Marks are provided for Your use and 
+distribution free of charge and at your sole risk.  FedEx warrants that Toolkit will be 
+free from defect for thirty (30) days from the day You receive it which constitutes 
+FedEx's sole and exclusive warranty.  FEDEX EXPRESSLY DISCLAIMS AND EXCLUDES ALL OTHER 
+WARRANTIES FOR ALL OTHER TIMES, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  
+FEDEX DOES NOT WARRANT THAT TOOLKIT, THE MATERIALS OR THE MARKETING MATERIALS WILL MEET 
+ALL OF YOUR REQUIREMENTS OR THAT TOOLKIT'S OPERATIONS WILL BE UNINTERRUPTED OR ERROR 
+FREE, OR THAT ANY DEFECT WITHIN TOOLKIT, THE MATERIALS OR THE MARKETING MATERIALS WILL 
+BE CORRECTED.  FURTHERMORE, FEDEX DOES NOT WARRANT NOR MAKE ANY REPRESENTATION REGARDING 
+THE RESULTS OF YOUR USE OF TOOLKIT, THE MATERIALS OR THE MARKETING MATERIALS IN TERMS OF 
+CAPABILITY, CORRECTNESS, ACCURACY, RELIABILITY OR OTHERWISE.  NO ORAL OR WRITTEN 
+INFORMATION, REPRESENTATION OR ADVICE GIVEN BY FEDEX OR AN AUTHORIZED REPRESENTATIVE OF 
+FEDEX SHALL CREATE A WARRANTY.
+
+9.  Remedies.  In the event of a breach of the express warranty provided in Section 8 
+above, FedEx will replace Toolkit with another copy or, if not practical, supply You 
+with another of FedEx's proprietary automated shipping products, if available; provided 
+that you return the defective copy to, or notify, FedEx within thirty (30) days of the 
+date of the end of the express warranty period.  You acknowledge that this Section 9 
+sets forth Your SOLE AND EXCLUSIVE remedy and FedEx's SOLE AND EXCLUSIVE liability, for 
+breach of warranty or any other duty.
+
+10.  Limitation of Liability.  YOU ACKNOWLEDGE THAT FEDEX IS PROVIDING TOOLKIT, THE 
+MATERIALS, THE MARKS AND THE MARKETING MATERIALS FREE OF CHARGE.  UNDER NO CIRCUMSTANCES, 
+INCLUDING BUT NOT LIMITED TO NEGLIGENCE, SHALL FEDEX BE LIABLE FOR ANY DIRECT, INDIRECT, 
+INCIDENTAL, SPECIAL, CONSEQUENTIAL OR OTHER DAMAGES IN TORT, CONTRACT, PRODUCT LIABILITY 
+OR UNDER ANY OTHER THEORY OF LAW RESULTING FROM THE INSTALLATION OR REMOVAL OF TOOLKIT, 
+OR YOUR USE, OR INABILITY TO USE, TOOLKIT, THE MATERIALS, THE MARKS OR THE MARKETING 
+MATERIALS, INCLUDING, WITHOUT LIMITATION, DAMAGES RESULTING FROM LOSS OF USE, PROFITS, 
+DATA, OR BUSINESS, AND DAMAGE TO YOUR INTERNAL COMPUTER SYSTEMS EVEN IF FEDEX, OR AN 
+AUTHORIZED REPRESENTATIVE OF FEDEX, HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  
+THIS EXCLUSION OF DAMAGES IS EFFECTIVE EVEN IF THE EXCLUSIVE REMEDY STATED IN SECTION 9 
+ABOVE FAILS OF ITS ESSENTIAL PURPOSE.
+
+11.  Indemnification.  
+        (a)  You will, at Your sole cost and expense, defend, indemnify and hold harmless, 
+FedEx, its subsidiaries, parent corporation and their respective officers, directors, 
+employees, agents, successors and assigns from and against any and all claims, demands, 
+suits, damages, costs, expenses, losses, suits, fines, and judgments, including reasonable 
+attorneys fees, (collectively hereinafter "Claims") arising out of: 
+
+                (i)     Your use or distribution of Toolkit, the Materials, the Marketing 
+                Materials, the Marks and Your Application; 
+
+                (ii)    the End User's use of any portion of Your Application including 
+                Toolkit; and,
+
+                (iii)   any Claim that the Application, in whole or in part, infringes or 
+                misappropriates any trademark, patent, copyright or other intellectual 
+                property right of another person or entity.
+
+        (b)  You will advise FedEx of any Claim and keep FedEx informed of its status on a 
+        regular basis.  FedEx may intervene and assume the defense of a Claim, at its 
+        expense and in its sole discretion.  You will not settle any Claim against FedEx, 
+        or that affects Toolkit in any manner, without the prior written consent of FedEx.  
+
+12. Confidentiality.  Except as expressly authorized in this Agreement, You will maintain 
+the confidentiality of this Agreement, Toolkit and all information concerning Toolkit, 
+including without limitation, the Materials and the Marketing Materials, provided by FedEx 
+and will not distribute or disclose any of them to any third party without the written 
+consent or instruction of FedEx.  You will make no public announcements regarding this 
+Agreement or the inclusion of Toolkit in the Application without the prior written consent 
+of FedEx.
+
+13.  Controlling Law and Severability.  This Agreement shall be governed by and construed 
+in accordance with the laws of the United States and the State of Tennessee, excluding 
+its conflict of laws provision.  If for any reason a court of competent jurisdiction finds 
+any provision of this Agreement, or a portion thereof, to be unenforceable, that provision 
+shall be enforced to the maximum extent permissible so as to effect the intent of the 
+parties and the remainder of this Agreement shall remain in full force and effect.  Any 
+cause of action with respect to Toolkit must be instituted within one year after the claim 
+or cause of action has risen or be barred and must be brought in a court of competent 
+jurisdiction within Western Tennessee.  
+
+14.  Notices.   Any notice required or permitted to be given relating to the functioning 
+of Toolkit shall be given in writing as addressed below by mail, electronic mail, 
+facsimile, or via FedEx service.
+
+        If to FedEx:
+        email: __________________________________________
+        street address: ____________________________________
+        ________________________________________________
+        ________________________________________________
+
+        If to You: To the name and address listed in the registration process or FedEx may 
+provide notice by general posting to the various FedEx web sites.  Any such notice shall 
+be effective and deemed received when posted.
+
+15.  Relationship of Parties.  You and FedEx are independent contractors acting for their 
+own account, and neither party or its employees, or agents  are authorized to make any 
+representations or commitments on the other party’s behalf unless previously authorized 
+by such party in writing.  Neither party is responsible to any end user for the quality 
+of services or products provided directly by the other party or warranties or claims 
+relating to such products.  FedEx reserves the right to enter into relationships or 
+agreements with other third parties regarding the subject matter of this Agreement, 
+including, but not limited to products competitive with the Application.
+
+16.  Waiver.  If FedEx fails to give notice or enforce any right under this Agreement, 
+such failure shall not constitute a waiver of the same, unless reduced to writing and 
+signed by FedEx.  The waiver of any provision shall not constitute a waiver of the same 
+or any other provision in the future.
+
+17.  Export.  By agreeing to this Agreement, and downloading Toolkit, You acknowledge and 
+agree that You (i) assume all responsibility for compliance with, and are in compliance 
+with all laws and regulations of the United States, Canada and any other applicable 
+country regarding export, reexport and import of Toolkit and the Materials and any related 
+or underlying information, technology, process, product or service and (ii) will not 
+export or reexport Toolkit or the Materials  from the United States or Canada.  You 
+further acknowledge that You are not a national of Cuba, Iran, Iraq, Libya, North Korea, 
+Sudan or Syria or a Denied Party listed on the U.S. Denied Persons List or a Special 
+Designated National on the U.S. Treasury Department’s list of Specially Designated 
+Nationals or equivalent legislation in Canada.  You further acknowledge that Toolkit will 
+not be used for the design or development of nuclear, chemical, biological, weapons or 
+missile technology.
+
+18.  Restricted Rights.  Pursuant to 48 C.F.R. 12.212 or 48 C.F.R. 227.7202, as 
+applicable, Toolkit and any related materials and documentation are Commercial Items as 
+defined in 48 C.F.R. 2.101 and are licensed to U. S. Government end users only as 
+Commercial Items and only with the rights granted to all other end users as provided in 
+this Agreement. 
+
+19.  Assignment.  You may not assign this Agreement or Your rights or obligations 
+hereunder without the prior written consent of FedEx.
+
+20. Complete Agreement.  This Agreement constitutes the entire agreement between You and 
+FedEx with respect to Toolkit, the Marks and all Materials provided to You by FedEx and 
+supersedes any prior or contemporaneous understandings, representations, statements or 
+agreements, written or oral, regarding Toolkit.  The terms governing Your shipments are 
+contained in the applicable Service Guide, Standard Conditions, or contract of carriage 
+under which the shipment is accepted by FedEx, its subsidiary, branch or independent 
+contractor.   No amendment to or modification of this Agreement will be binding on FedEx 
+without FedEx's written consent.  The provisions of Sections 6, 7, 8, 9, 10, 11, 12, 13, 
+15, 17, and 18 will survive the termination of this Agreement.  FedEx may modify this 
+Agreement at any time for any reason.
+
+        I acknowledge my agreement to this Agreement as set out above on behalf of myself 
+and the entity, if any, with whom I am employed or represent, that I am the developer 
+listed in the registration screen and have been retained by the End-User listed on the 
+registration screen to provide the End-User with Toolkit as provided in this Agreement.
+
+                                                _______ YES
+                                                _______ NO 
+
+        If acknowledged, You will be asked to complete the registration screen which 
+follows this screen.
+
+
+
+
+
+FEDEX API END-USER LICENSE AGREEMENT
+
+SET OUT BELOW ARE THE TERMS AND CONDITIONS UNDER WHICH YOU ARE PERMITTED TO USE FEDEX API.  PLEASE READ THIS INFORMATION CAREFULLY.  IF YOU AGREE TO BE BOUND BY THESE TERMS AND CONDITIONS, YOU MUST ACKNOWLEDGE YOUR AGREEMENT BELOW ON BEHALF OF YOURSELF AND THE ENTITY, IF ANY, WITH WHOM YOU ARE EMPLOYED OR REPRESENT.  ONCE ACKNOWLEDGED, THIS DOCUMENT WILL CONSTITUTE A LEGAL AGREEMENT BETWEEN FEDEX CORPORATE SERVICES ("FEDEX") AND YOU AND SUCH ENTITY (collectively referred to as "You" or "Your" hereinafter) GOVERNING ALL USE OF API.  YOU WARRANT THAT YOUR ACKNOWLEDGMENT OF THIS AGREEMENT EVIDENCES YOUR INTENTION TO LEGALLY BIND YOU AND SUCH ACKNOWLEDGMENT IS INTENDED AS A SYMBOL OF YOUR SIGNATURE.  PLEASE PRINT A COPY OF THIS LICENSE AND RETAIN IT WITH YOUR FILES FOR FUTURE REFERENCE.
+
+        Section 1.  Acknowledgment. You acknowledge that for the purposes of this Agreement "FedEx" shall mean and include FedEx Corporate Services and any and all of its affiliate companies including FedEx Express and FedEx Ground.  You further acknowledge that this Agreement to use API is between You and FedEx Corporate Services.  You further acknowledge that the contract of carriage for shipments made by You using API and originating in the United States is between You and the FedEx company to which You tender the package within the United States.  You further acknowledge that for those shipments processed by You using API and originating outside of the United States, the contract of carriage for Your shipment (and not the terms governing use of API) is with the FedEx subsidiary, branch, affiliate or independent contractor who originally accepts the shipment from You.  If Your shipment originates in Canada, Your contract of carriage is with Federal Express Canada Ltd., its principals, subsidiaries, branches, and affiliates, and their respective agents and independent contractors.
+
+        Section 2.  Grant.  (a)  FedEx grants You a personal, non-exclusive, non-transferable, royalty-free license to install and use API only in those countries and locations designated by FedEx, along with any modifications and upgrades thereof (collectively "API"), and any related manuals, documents, or other items (hereinafter collectively the "Materials"), provided by or on behalf of FedEx, solely to prepare and use interfaces and screens (hereinafter collectively referred to as the "Interfaces") on Your internal computer systems for the purpose of connecting with FedEx servers to label, rate, route, record, ship, track and invoice shipments tendered to FedEx by You using API, and for no other purpose.  
+
+(b)  For purposes of this Agreement, the term API shall include all software, sample codes, screens, templates, designs, files, instructions, specifications, and other Materials provided to You in connection with API.  
+
+(c)  If You are required to make any programming changes in Your internal hardware and software systems to enable You to install use or remover API, or any modification or upgrade thereof, such changes shall be at Your sole cost and expense and at Your sole risk.  Your failure to make any changes or upgrades as required by FedEx may result in You being unable to continue using API.  FedEx may modify, upgrade and terminate the use of API at any time for any reason. 
+
+        Section 3.  Intellectual Property Rights.  (a) You acknowledge that FedEx holds and retains, other than as provided in this Agreement, all worldwide rights, title and interests, including without limitation, copyright and patent rights, in and to API, and the Materials.  You acknowledge that FedEx is not selling or otherwise transferring title in API or the Materials to You.  
+
+(b)  You may not copy, modify, adapt or reproduce API or the Materials other than to create the Interfaces solely in the form and in the manner permitted by this Agreement.  You may not translate, decompile, reverse engineer or disassemble API or the Materials in any event.  
+
+(c)  You may not transfer or transmit, in whole or in part, API, the Materials or any of Your Interfaces which contain information about FedEx or FedEx trademarks and service marks as defined below, to any third party without FedEx's written approval.  
+
+        (d)  FedEx grants You a limited, personal, nonexclusive, royalty-free, non-transferable  license to use the FedEx word and logo trademarks and service marks ( hereinafter collectively the "Marks") as provided by FedEx in API solely on the Interfaces authorized under Section 2, above, provided that You comply with all provisions of this Agreement regarding the manner in which the Marks may be used.  You may not use the Marks for any other purpose.  You may not alter in any way any Mark, including without limitation, distorting, animating or changing the color, font or proportions of any Mark, or combining it with any other name, mark or logo. 
+
+        (e)  You acknowledge that FedEx holds and retains all worldwide rights, title and interest in and to the Marks, and that all use of the Marks by You shall inure to the benefit of FedEx.  You further acknowledge and agree that You will not claim, whether in whole or in part, any rights in the Marks, and will do nothing to impair, in any way, the Marks or FedEx’s rights in the Marks.  You may not use the Marks in any manner that is likely to cause confusion, mistake, or deception regarding whether FedEx sponsors or endorses Your Interfaces or whether the Interfaces are affiliated, associated, or connected with FedEx.  You may not use the Marks to advertise, sell, market or otherwise distribute any products or services.
+
+        (f)  FedEx retains the right to require You to submit to FedEx for review and approval screen shots of all Interfaces created by You which uses API or the Marks.  You agree to make any changes in the Interfaces or Marks as required by FedEx.  You agree to use only those Interfaces which FedEx may have approved pursuant to this provision.
+
+        (g)  All Interfaces created by You shall include only accurate references to FedEx and FedEx services.  The Interfaces may not be created and the Marks may not be used in such a way that, in FedEx’s judgment, damage FedEx’s goodwill.  In the event FedEx, in its sole judgment, believes that any of Your Interfaces violate this provision, FedEx reserves the right, to terminate this Agreement, or to notify You and You agree to cause the Interfaces to comply with this provision.
+
+        Section 4.  Use.  (a)  You agree to follow the instructions provided from time to time with  API, and in any Materials which may be provided with API, for the installation and use of API, the Marks, and FedEx services.  FedEx may, from time to time and at its option, download directly to Your computer, by whatever means available, modifications and upgrades to API.  Use of API to prepare shipments by or for the benefit of third party shippers is expressly prohibited.
+
+(b) You acknowledge that You will not use API or any Interfaces that adversely affect the functionality of the FedEx servers.
+
+        Section 5.  Termination.  (a)  This Agreement is effective until terminated by either You or FedEx.  This Agreement will terminate independently without notice if You fail to comply with any provision of this Agreement or any instructions regarding API, the Materials or the Marks.  
+
+(b)  Upon termination for any reason, You must cease all use of API, the Materials and the Marks and return to FedEx all API, all documentation and Materials provided to You in connection with API and all copies thereof.  
+
+(c)  FedEx reserves the right to unilaterally terminate this Agreement and the use of API, the Materials and the Marks at any time and for any reason.
+
+        Section 6.  Payment.  You agree to remit payment for all invoices generated through the use of API in accordance with the terms and conditions contained in the applicable FedEx Service Guide ("Service Guide"), Standard Conditions, tariff, or contract of carriage under which the shipment is accepted by FedEx, its subsidiary, branch or independent contractor, and to reference the invoice number when payment is remitted.  You are responsible for payment of all charges generated through the use of API under Your account number and registration number.
+
+        Section 7.  Invoice Adjustments and Refunds.  (a)  If the use of API in any way results in the generation of an inaccurate invoice for any shipping transaction, FedEx will bill You for, and You agree to pay to FedEx within fifteen (15) days of the invoice date, any additional amount applicable to the transaction or as otherwise provided in the applicable Service Guide, Standard Conditions, tariff, or contract of carriage under which the shipment is accepted by FedEx, its subsidiary, branch or independent contractor.
+
+        (b) You may bill shipping charges only to valid FedEx account numbers, either bill sender, bill recipient or bill third party.  
+
+        (c) Shipments tendered with incorrect routing, labeling, commitment date, service designation or other errors through no fault of FedEx will not be eligible for any applicable refunds under FedEx's money-back guarantee policies.  Refunds requested by You with respect to any shipment must be made in accordance with the applicable Service Guide, Standard Conditions, tariff, or contract of carriage under which the shipment is accepted by FedEx, its subsidiary, branch or independent contractor.  You will not be entitled to any refund or credit under FedEx's money-back guarantees if FedEx determines that the claim resulted from improper use or installation of API, or any modifications or upgrades thereof, or is due to the use of the Internet.  FedEx, in its sole discretion, may suspend or terminate its money-back guarantees for any reason.
+
+        Section 8.  Disclaimer of Warranty.  You expressly acknowledge and agree that API and the Materials are being provided to You via Your independent contractor, consultant or programmer for Your use free of charge and that Your use of API, the Marks and the Materials is at Your sole risk .  AS API IS BEING PROVIDED TO YOU VIA AN INDEPENDENT CONTRACTOR, PROGRAMMER OR CONSULTANT, FEDEX EXPRESSLY DISCLAIMS AND DAMAGE TO YOUR INTERNAL COMPUTER SYSTEMS EVEN IF FEDEX, OR AN AUTHORIZED REPRESENTATIVE OF FEDEX, HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  THIS EXCLUSION OF DAMAGES IS EFFECTIVE EVEN IF THE EXCLUSIVE REMEDY STATED IN SECTION 9 ABOVE FAILS OF ITS ESSENTIAL PURPOSE.  
+
+        Section 11.  Indemnification.  You will, at Your sole cost and expense, defend, indemnify and hold harmless, FedEx, its parent corporation, subsidiaries and branches and their respective officers, directors, employees, agents, successors and assigns from all claims, demands, suits, damages, costs, expenses, suits, fines and judgements, including reasonable attorneys fees, hereinafter collectively "Claims") arising out of Your installation, use and removal of API, the Materials, the Marks and all Interfaces created by You.  FedEx may intervene and assume its defense in any such claims, at its expense and in its sole discretion.  You will not settle any such action involving FedEx or API without the prior written consent of FedEx.      
+
+        Section 12.  Controlling Law and Severability.  This Agreement shall be governed by and construed in accordance with the laws of the United States and the State of Tennessee, excluding its conflict of laws provision.  If for any reason a court of competent jurisdiction finds any provision of this Agreement, or a portion thereof, to be unenforceable, that provision shall be enforced to the maximum extent permissible so as to effect the intent of the parties and the remainder of this Agreement shall remain in full force and effect.  Any cause of action with respect to API must be instituted within one year after the claim or cause of action has risen or be barred and must be brought in a court of competent jurisdiction within Western Tennessee.  The terms of carriage for Your shipments shall be governed by the applicable Service Guide, Standard Conditions, or contract of carriage under which the shipment is accepted by FedEx, its subsidiary, branch or independent contractor.
+
+        Section 13. Terms of Carriage.  (a) Solely for purposes of this Section 13, the term "FedEx" shall mean FedEx, its affiliates, subsidiaries and branches, unless otherwise noted. 
+
+(b) You agree that domestic and international carriage by FedEx of any Shipments tendered to FedEx pursuant to this Agreement shall be in accordance with the terms, conditions and limitations of  liability set out in the remainder of this Section 13. 
+
+`       (c) For purposes of the remaining provisions of this Section 13, "Package" means any container or envelope that is accepted by FedEx for delivery under this Agreement. .  "Shipment" means all Packages which are tendered to and accepted by FedEx on a single Air Waybill, label, manifest or pick-up record, as applicable ("Air Waybill", "Label", "Manifest" or "Pick Up Record"). 
+
+(d)  By giving FedEx a Shipment, You agree, regardless of whether You sign the front of any Air Waybill applicable to a Shipment, for Yourself or as an agent for and on behalf of any other person having an interest in the Shipment, to all terms on the NONNEGOTIABLE Air Waybill produced by API and as appropriate any FedEx transportation agreement between You and FedEx covering such Shipment and in any applicable tariff, Service Guide or Standard Conditions of Carriage, copies of which are available upon request, and which are incorporated into this Agreement by reference.  If there is a conflict between the Air Waybill and any such document then in effect or this Agreement, the transportation agreement, tariff, Service Guide, Standard Conditions of Carriage, or this Agreement will control, in that order of priority.  No one is authorized to alter or modify the terms of our agreement regarding a Shipment.  The Air Waybill shall be binding on FedEx and You when the Shipment is accepted; FedEx may mark the Air Waybill with an employee number as its signature, or its printed name shall be sufficient to constitute FedEx's signature of the Air Waybill.  If a Shipment originates outside the United States, the contract of carriage is with the FedEx subsidiary, branch, or independent contractor who originally accepts the Shipment.  
+
+(e) In the event You use the Equipment to process Shipments tendered to FedEx for delivery to locations outside the United States or country of Shipment origin, You will, at Your sole expense, assure that the terms and conditions of international carriage supplied by FedEx from time to time (which may be amended or modified from time to time at FedEx's sole discretion) are placed on the Air Waybill or Label for all such international Shipments in a manner acceptable to FedEx.  You will defend, indemnify and hold harmless FedEx, its officers, directors, employees and agents from and against any and all losses, damages, claims and other items of cost and expense arising out of Your failure to apply the international carriage terms to the Air Waybill for such international Shipments, including without limitation claims from the recipient of any Shipment, and Your failure to follow FedEx's instructions in regard to the placement of the terms on the Air Waybills for such international Shipments.  
+
+(f) Printed Signature.  You acknowledge that if the Equipment is used to process Shipments to locations outside the United States or country of Shipment origin, You must and will enter, to print in lieu of a manual signature on the international Air Waybills, Pick-up Records, Labels or Manifests, as applicable, the name of the person completing the Air Waybills, Labels, Manifests or Pick-Up Records for all Shipments tendered by You to FedEx using the Equipment.  You further acknowledge that such printed name shall be sufficient to constitute Your signature, and Your acceptance of FedEx's terms and conditions of carriage contained in the applicable transportation agreement, Service Guide, Standard Conditions, tariff, Air Waybill, or transportation agreement under which the Shipment is accepted by FedEx, or its independent contractor. 
+
+(g)  Warranty.  You warrant that each article in each Shipment will be properly described on the Air Waybill and on any export documents, is acceptable for transport by FedEx, and that the Shipment will be properly marked, addressed and packed to ensure safe transportation with ordinary care in handling.  You are responsible for all charges, including transportation charges and all duties, customs assessments, governmental penalties and fines, taxes and FedEx legal costs related to Your Shipments. 
+
+ (h)  Air Carriage Notice.  If the carriage of Your Shipment by air involves an ultimate destination or stop in a country other than the country of departure, the Warsaw Convention, and any of its subsequent amendments and protocols, (collectively "Warsaw Convention") may be applicable and govern and in most cases limit FedEx's liability for loss, delay of or damage to Your Shipment.  In certain countries, the Warsaw Convention limits FedEx's liability to U.S. $9.07 per pound (U.S. $20.38 per kilogram or equivalent local currency), unless a higher value for carriage is declared as described below and You pay any applicable supplementary charges.  In Canada, the Warsaw Convention may limit liability to the Canadian dollar equivalent of 250 French Francs of 65.5 milligrams gold of millesimal fineness 900 per kilogram, unless a higher value of carriage is declared as described below and You pay any applicable supplementary charges.  The interpretation and operation of the Warsaw Convention's liability limits may vary in each country.  There are no specific stopping places which are agreed to and FedEx reserves the right to route Shipments in any way FedEx deems appropriate. 
+
+(i)  Road Transport Notice.  Shipments transported solely by road, be there an explicit agreement to do so or not, into, or from a country which is a party to the Convention on the Contract for the International Carriage of Goods by Road (the "CMR") are subject to the terms and conditions of the CMR, notwithstanding any other provisions referred to or in the Air Waybill to the contrary, except that the higher limitations of liability as set forth in the Air Waybill conditions shall remain applicable as opposed to those set forth in the CMR.  
+
+(j)  Limitation of Liability.  If not governed by the Warsaw Convention, the CMR, or other international treaties, laws, government regulations, orders or requirements, FedEx's maximum liability for loss, delay of or damage to Your Shipments is limited to the greater of the amount of U.S. $100 per Shipment or U.S. $9.07 per pound (U.S. $20.38 per kilo) (or equivalent local currency for the country of origin), (or in Canada, the amount of actual damages or CDN $100 per Shipment, whichever is less), unless You declare, in advance, a higher value for carriage as described below and pays any applicable supplementary charges.  If You declare a higher value, You must pay an additional charge for each additional US$100 (or the equivalent in local currency) (or in Canada CAN$100) of declared value for carriage.  Please call FedEx or refer to the applicable FedEx rate sheets in effect at the time of Shipment for an explanation on the additional charge.  If You declare a higher value for carriage and pays the additional charge, FedEx's maximum liability will be the lesser of the declared value for carriage or Your actual damages.  FedEx does not provide cargo liability or all-risk insurance. For packages tendered for FedEx Ground services please reference the applicable service guide
+
+(k)  Declared Value Limits.  The highest declared value FedEx allows for a FedEx Letter/FedEx Envelope and FedEx Pak Shipment is US$100 or US$9.07 per pound (US$20.38 per kilo)(or the equivalent in local currency), whichever is greater.  In Canada, the maximum declared value allowed for customs and carriage per Air Waybill for each FedEx Letter and FedEx Pak is CAN$100.  For other Shipments, in particular Shipments of extraordinary value, including, but not limited to jewelry, artwork, antiques, precious metals, and furs and fur clothing, the declared value of carriage is limited and depends on the contents and the destination of the Shipment.  Please check the applicable Service Guide, contract of carriage, transportation agreement, tariff, or Standard Conditions for an explanation of the declared value limits.  If You send more than one Package using a single Air Waybill, the declared value for carriage of each Package will be determined by dividing the total declared value for carriage by the number of Packages in the Shipment. For packages tendered for FedEx Ground services please reference the applicable service guide. 
+
+(l)  Liabilities Not Assumed.  IN ANY EVENT, SUBJECT TO THE SERVICE CONDITIONS ON THE AIR WAYBILL, AND IN THE APPLICABLE SERVICE GUIDE, TRANSPORTATION AGREEMENT, STANDARD CONDITIONS, TARIFF OR CONTRACT OF CARRIAGE, FedEx WON'T BE LIABLE FOR ANY DAMAGES, WHETHER DIRECT, INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL, IN EXCESS OF THE DECLARED VALUE US$100 OR US$9.07 PER LB. (US$20.38 PER KILO) (OR THE EQUIVALENT IN LOCAL CURRENCY) WHICHEVER IS GREATER (OR IN CANADA IN EXCESS OF THE DECLARED VALUE FOR CARRIAGE) (INCLUDING BUT NOT LIMITED TO LOSS OF INCOME OR PROFITS) WHETHER OR NOT FedEx HAD ANY KNOWLEDGE THAT SUCH DAMAGES MIGHT BE INCURRED.  FedEx won't be liable for Your acts or omissions, including but not limited to incorrect declaration of cargo, improper or insufficient packing, securing, marking or addressing of a Shipment, or for the acts or omissions of the recipient or anyone else with an interest in a Shipment.  Also, FedEx won't be liable if You or the recipient violate any of the terms of our Agreement.  FedEx won't be liable for loss, damage, delay, shortage, misdelivery, nondelivery, misinformation or failure to provide information (1) in connection with Shipments of cash, currency, or other prohibited items; or, (2) caused by events FedEx cannot control, including but not limited to acts of God, perils of the air, weather conditions, mechanical delays, acts of public enemies, war, strikes by any entity, civil commotions, or acts or omissions of public authorities (including customs and health officials) with actual or apparent authority.  
+
+(m)  No Warranty.  FedEx makes no warranties, express or implied.  
+
+(n)  Claims for Loss, Damage or Delay.  ALL CLAIMS MUST BE MADE IN WRITING AND WITHIN STRICT TIME LIMITS.  SEE THE APPLICABLE TARIFF, SERVICE GUIDE, OR STANDARD CONDITIONS OF CARRIAGE FOR DETAILS.  The Warsaw Convention provides that written claims for damage must be received within fourteen (14) days from the date of receipt and within twenty-one (21) days in the event of delay.  FedEx may have expanded the claims periods in certain countries and the periods may differ from country to country.  Moreover, the interpretation and operation of the Warsaw Convention’s claims provisions may vary in each country.  Contact the FedEx representative in the country of origin to determine the claims period for Your Shipment.  In the event of nondelivery or misdelivery, misinformation, or failure to provide information, FedEx must receive written notice of the claim within ninety (90) days after FedEx accepts the Shipment.  The right to damages regarding a Shipment against FedEx shall be extinguished unless an action is brought within two (2) years from the date of delivery of the Shipment or from the date on which the Shipment should have been delivered.  Within ninety (90) days after notification to FedEx of the claim, it must be documented by sending FedEx all relevant information about it.  FedEx is not obligated to act on any claim until all transportation charges have been paid;  the claim amount may not be deducted from those transportation charges.  If the recipient accepts the Shipment without noting any damage on the delivery record, FedEx will assume the Shipment was delivered in good condition.  In order for FedEx to consider a claim for damage, the contents, original shipping carton and packing must be made available to FedEx for inspection.  
+
+(o)  Right To Inspect.  Your Shipments may, at FedEx's option, or at the request of governmental authorities, be opened and inspected by FedEx or such authorities at any time.  
+
+(p)  Responsibility For Payment.  Even if You give FedEx different payment instructions, You will always be primarily responsible for all charges, including transportation charges, and all duties, custom assessments, governmental penalties and fines, taxes, and FedEx's attorney fees and legal costs, related to Shipments tendered under this Agreement.  You also will be responsible for any costs FedEx may incur in returning Your Shipments to You or warehousing them pending disposition.  
+
+(q)  Customs Clearance.  You hereby appoint FedEx, or its independent contractor as applicable, as Your agent solely for performance of customs clearance and certifies FedEx as the nominal consignee for the purpose of designating a customs broker to perform customs clearance.  In some instances, local authorities may require additional documentation confirming FedEx's appointment.  It is Your responsibility to provide proper documentation and confirmation, where required.  You are responsible for and warrant Your compliance with all applicable laws, rules and regulations, including but not limited to customs laws, import and export laws and government regulations of any country to, from, through or over which Your Shipments may be carried.  You agree to furnish such information and complete and attach to the Shipments such documents as are necessary to comply with such laws, rules and regulations.  FedEx assumes no liability to You or any other person for any loss or expense due to Your failure to comply with this provision.  You are also responsible  for all charges, including transportation charges, and all duties, customs assessments, governmental penalties and fines, taxes, and FedEx lawyer's fees and legal costs, related to any Shipment.  
+
+(r)  Letter of Instruction.  If You do not complete all the documents required for carriage or if the documents submitted are not appropriate for the services or destination requested, You hereby instruct FedEx, or its independent contractor, as applicable, where permitted by law to complete, correct or replace the documents for You at Your expense.  However, FedEx is not obligated to do so.  If a substitute form of air waybill is needed to complete delivery of Your Shipment and FedEx completes that document, the terms of this Agreement will continue to govern.  FedEx is not liable to You or any other person for FedEx's actions on Your behalf under this provision.  
+
+(s)  Items Not Acceptable for Transportation.  FedEx does not accept transportation of money (including, but not limited to, coins (except collectible) or negotiable instruments equivalent to cash such as endorsed stocks and bonds.)  FedEx excludes all liability for Shipments of such items accepted by mistake.  Other items may be accepted for carriage only to limited destinations or under restricted conditions.  FedEx reserves the right to reject Packages based upon these limitations or for reasons of safety or security.  
+
+(t)  Export Control.  You authorize FedEx, and its independent contractors, as applicable, to act as forwarding agent for You for export and customs purposes.  You hereby certify that all statements and information contained on all Air Waybills, SEDs and accompanying documentation relating to exportation are true and correct.  You further certify that all Commercial Invoice information submitted via the Equipment is true and correct.  You expressly authorize FedEx and its independent contractors, as applicable, to forward all information of any nature regarding Shipments to any and all governmental or regulatory agencies which request or require such information.  Furthermore, You understand that civil and criminal penalties, including forfeiture and sale, may be imposed for making false or fraudulent statements or for the violation of any country laws on exportation, including but not limited to, for Shipments originating in the U.S., 13 U.S.C. §305; 22 U.S.C. §401; 18 U.S.C. §1001; and 50 U.S.C. App. 2410, and for Shipments originating in Canada, the Export and Import Permits Act, R.S.C. E-17.  Consult the laws in the country of origin for similar restrictions.  You acknowledge that no Shipments tendered by You from the United States using the Equipment will be sent to any entity listed on the Department of Commerce's Denied Parties List 15 C.F.R. Part 764, Supp. 2, or the list of Special Designated Nationals as published by the Office of Foreign Assets Control of the U.S. Department of the Treasury and that You are neither a denied party or a specially designated national.  Consult the laws of the origin country of Your Shipment for similar provisions.  
+
+(u)  Shipper's Export Declaration. From the U.S., a completed hard copy of a Shipper's Export Declaration (SED) or an electronic transmission of SED data or an SED exemption legend (including AES legend) is required if a shipment meets any of the following criteria: (1) a single commodity with a Customs value over USD $2500 with the exception of shipments going to Canada (unless shipped on a Commerce Export License); (2) Shipments between the United States and Puerto Rico, and from the United States and Puerto Rico to the U.S. Virgin Islands and to foreign countries with a Customs value over USD $2500; (3) all shipments  (regardless of value) to the following proscribed countries: Cuba, Iran, Iraq, Libya, North Korea, Sudan and Syria  with the exception of personal, inter-office or business correspondence; and, (5) all shipments from U.S. Possessions to foreign countries with a Customs value over USD $2500 with the exception of shipments going to Canada (unless shipped on a Commerce Export License).Note: SEDs are not required for shipments from or to the following U.S. possessions: American Samoa, Baker Island, Guam, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Navassa Island, Northern Mariana Islands, Palmyra Atoll or Wake Island.  At this time, FedEx does not service the following countries: Cuba, Iran, Iraq, North Korea, Libya and Sudan.  Consult the laws in the country of origin of your shipment for SED or similar requirements.
+
+(v)  Air Waybill Format and Design.  Pursuant to the terms and conditions of this Agreement, FedEx agrees to permit You to generate on Your equipment FedEx Air Waybills for Your sole use, subject at all times to the prior written approval of FedEx of the format, content and layout of such Air Waybill.  You agree to immediately discontinue producing such Air Waybills at any time upon request by FedEx.  
+
+(w)  Mandatory Law.  Insofar as any provision contained or referred to in the Air Waybill may be contrary to any applicable international treaties, laws, governmental regulations, orders or requirements, such provision shall remain in effect as part of our agreement to the extent that it is not overridden.  The invalidity or unenforceability of any provision shall not affect any other provision contained or referred to in the Air Waybill. 
+
+(x)  Unless otherwise indicated, the shipper’s address indicated on the face of the Air Waybill is the place of execution and the place of departure and the recipient’s address listed on the face of the Air Waybill is the place of destination. Unless otherwise indicated on the face of the Air Waybill, Label, Manifest, or Pick-up Record, the first carrier of all Shipments is FedEx Express (i.e., Federal Express Corporation), P.O. Box 727, Memphis, TN 38194. In the event another carrier is listed on any such document, that carrier is the first carrier of the Shipment. The address for FedEx Ground is P.O. Box 108, Coraopolis, PA 15230.-
+
+        Section 14.  Notices.  Any notice required or permitted to be given relating to the functioning of API shall be given in writing as addressed below by mail, electronic mail, facsimile, or via FedEx service.
+
+        If to FedEx:
+        email: __________________________________________
+        street address: ____________________________________
+        ________________________________________________
+        ________________________________________________
+
+        If to Licensee: To the name and address listed in the registration process or FedEx may provide notice by general posting to the various FedEx web sites.  Any such notice shall be effective and deemed received when posted.
+
+        Section 15.  Waiver.  If FedEx fails to give notice or enforce any right under this Agreement, such failure shall not constitute a waiver of the same, unless reduced to writing and signed by FedEx.  The waiver of any provision shall not constitute a waiver of the same or any other provision in the future.
+
+        Section 16. Export.  By agreeing to this Agreement, and downloading API, You acknowledge and agree that You (i) assume all responsibility for compliance with, and are in compliance with all laws and regulations of the United States or the country in which You received API regarding export, reexport and import of API and the Materials and any related or underlying information, technology, process, product or service and (ii) will not export or reexport API or the Materials.  You further acknowledge that You are not a national of Cuba, Iran, Iraq, Libya, North Korea, Sudan or Syria or a Denied Party listed on the U.S. Denied Persons List or a Special Designated National on the U.S. Treasury Department’s list of Specially Designated Nationals or equivalent legislation in the country of download.  You further acknowledge that API will not be used for the design or development of nuclear, chemical, biological, weapons or missile technology.
+
+        Section 17.  Restricted Rights. Pursuant to 48 C.F.R. 12.212 or 48 C.F.R. 227.7202, as applicable, API and any related materials and documentation are Commercial Items as defined 48 C.F.R. 2.101 and are licensed to U. S Government end users only as Commercial Items and only with the rights granted to all other end users as provided in this Agreement.
+
+        Section 18. Complete Agreement.  This Agreement constitutes the entire agreement between You and FedEx with respect to API, the Marks and all Materials provided to You by FedEx and supersedes any prior or contemporaneous understandings, representations, statements or agreements, written or oral, regarding API.  The terms governing Your shipments are contained in the applicable Service Guide, Standard Conditions, tariff or contract of carriage under which the shipment is accepted by FedEx, its subsidiary, branch or independent contractor.   No amendment to or modification of this Agreement will be binding on FedEx without FedEx's written consent.  The provisions of Sections 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, and 17 will survive the termination of this Agreement.  FedEx may modify this Agreement at any time for any reason.
+
+        This Agreement is pre-signed and no changes, additions, or modifications to the Agreement will be binding on FedEx without its written consent and notation on the Agreement.
+
+        The Parties acknowledge their agreement to this Agreement as set out above for the purposes stated.
+
+
+FEDEX                                                   _____________________________
+                                                                Company Name
+
+_________________________________                       _____________________________
+Print Name                                                      Print Name
+
+_________________________________                       ______________________________
+Signature                                                       Signature                                                                                                                                                                                               ______________________________
+                                                        Date
+
+
+
+

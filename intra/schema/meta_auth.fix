@@ -1,0 +1,156 @@
+-- MySQL dump 10.9
+--
+-- Host: localhost    Database: metasite
+-- ------------------------------------------------------
+-- Server version	4.1.20
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Session`
+--
+
+
+--
+-- Table structure for table `role_services`
+--
+
+DROP TABLE IF EXISTS `role_services`;
+CREATE TABLE `role_services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `role_id` bigint(20) NOT NULL default '0',
+  `service_id` bigint(20) NOT NULL default '0',
+  `enabled` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role_services`
+--
+
+
+/*!40000 ALTER TABLE `role_services` DISABLE KEYS */;
+LOCK TABLES `role_services` WRITE;
+INSERT INTO `role_services` VALUES (383,3,32,1),(484,1,41,1),(483,1,39,1),(482,1,38,1),(481,1,37,1),(480,1,36,1),(479,1,35,1),(478,1,32,1),(477,1,31,1),(382,3,31,1),(185,2,15,1),(184,2,14,1),(183,2,11,1),(476,1,34,1),(182,2,12,1),(181,2,2,1),(475,1,30,1),(381,3,30,1),(380,3,29,1),(379,3,28,1),(378,3,25,1),(377,3,24,1),(376,3,23,1),(474,1,29,1),(473,1,28,1),(472,1,27,1),(471,1,26,1),(470,1,25,1),(469,1,24,1),(468,1,23,1),(467,1,22,1),(375,3,22,1),(374,3,21,1),(373,3,20,1),(466,1,21,1),(465,1,20,1),(464,1,19,1),(372,3,19,1),(463,1,18,1),(462,1,33,1),(461,1,15,1),(460,1,14,1),(459,1,17,1),(371,3,18,1),(370,3,17,1),(369,3,11,1),(458,1,11,1),(457,1,12,1),(456,1,5,1),(455,1,9,1),(385,5,34,1),(454,1,3,1),(384,3,38,1),(386,5,39,1),(453,1,2,1),(452,1,1,1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `role_services` ENABLE KEYS */;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE `roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `name` varchar(24) NOT NULL default '',
+  `comment` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+LOCK TABLES `roles` WRITE;
+INSERT INTO `roles` VALUES (1,'Administrator','Main administrator for security and all else'),(2,'Site Manager',''),(3,'Rainbow Editor','Editor for rainbow custom logo mats system'),(5,'Rainbow Accounting','This for those who keep track of orders.');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `services`
+--
+
+DROP TABLE IF EXISTS `services`;
+CREATE TABLE `services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `sequence` int(11) NOT NULL default '0',
+  `tree_depth` smallint(6) NOT NULL default '0',
+  `enabled` int(11) NOT NULL default '0',
+  `name` varchar(32) NOT NULL default '',
+  `menu_name` varchar(32) NOT NULL default '',
+  `uri` varchar(64) NOT NULL default '',
+  `local_uri` int(11) NOT NULL default '0',
+  `secure` int(11) NOT NULL default '0',
+  `xml_params` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `services`
+--
+
+
+/*!40000 ALTER TABLE `services` DISABLE KEYS */;
+LOCK TABLES `services` WRITE;
+INSERT INTO `services` VALUES (1,1,1,1,'Manage services','Manage Services','services_ui.cgi',1,0,'<actor>administrator</actor>'),(2,2,1,1,'Manage users','Manage Users','users_ui.cgi',1,0,'<actor>administrator</actor>'),(3,3,1,1,'Manage groups','Manage Groups','groups_ui.cgi',1,0,'<actor>administrator</actor>'),(9,6,1,1,'Manage Group Sites','Manage Group Sites','group_sites_ui.cgi',1,0,'<actor>administrator</actor>'),(5,5,1,1,'Manage roles','Manage Roles','roles_ui.cgi',1,0,'<actor>administrator</actor>'),(12,12,2,1,'Meta-Site Templates','Templates','template_ui.cgi',1,1,'<actor>site author</actor>'),(11,11,2,1,'Meta-Site Sites','Sites','site_ui.cgi',1,1,'<actor>site author</actor>'),(17,100,2,1,'Rainbow Catalog','Category','Category_ui.cgi',1,0,'<actor>rainbow</actor>'),(14,14,2,1,'Meta-Site Menus','Menus','menu_ui.cgi',1,1,'<actor>site author</actor>'),(15,15,2,1,'Meta-Site Pages','Pages','page_ui.cgi',1,1,'<actor>site author</actor>'),(33,6,2,0,'Logomat Colors','Colors','Color_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(18,101,2,1,'Rainbow Products','Products','Product_ui.cgi',1,0,'<actor>rainbow</actor>'),(19,102,2,1,'Rainbow Colors','Colors','Color_ui.cgi',1,0,'<actor>rainbow</actor>'),(20,103,2,1,'Rainbow Sizes','Sizes','Size_ui.cgi',1,0,'<actor>rainbow</actor>'),(21,104,2,1,'Rainbow Fonts','Fonts','Font_ui.cgi',1,0,'<actor>rainbow</actor>'),(22,15,2,1,'Rainbow Order Status','Order Status','Order_Status_ui.cgi',1,0,'<actor>rainbow</actor>'),(23,19,2,1,'Rainbow Orders','Orders','Ordered_ui.cgi',1,0,'<actor>rainbow</actor>'),(24,69,2,0,'Rainbow Payment Services','Payment Services','Payment_Service_ui.cgi',1,0,'<actor>rainbow</actor>'),(25,70,2,0,'Rainbow Payment Parameters','Payment Service Parameters','Payment_Type_Parameter_ui.cgi',1,0,'<actor>rainbow</actor>'),(26,10000,2,1,'BCO Manufacturer','Manufacturer','manufacturer_ui.cgi',1,0,'<actor>bco</actor>'),(27,11000,2,1,'BCO Squares','Squares','squares_ui.cgi',1,0,'<actor>bco</actor>'),(28,1,2,0,'Logomat  Product Line','Product Line','Product_Line_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(29,2,2,0,'Logomat  Product','Product','Product_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(30,3,2,0,'Logomat Catagories','Catagories','Category_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(34,5000,2,1,'Logomat Orders','Orders','Ordered_ui.cgi',1,0,'<actor>ecommerce</actor>'),(31,4,2,0,'Logomat Sizes','Sizes','Size_Price_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(32,5,2,0,'Logomat Units','Units','Unit_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(35,5001,2,1,'ECommerce Payment Services','Payment Services','Payment_Service_ui.cgi',1,0,'<actor>ecommerce</actor>'),(36,5002,2,1,'ECommerce Payment Parameters','Service Parameters','Payment_Type_Parameter_ui.cgi',1,0,'<actor>ecommerce</actor>'),(37,7,2,1,'Logomats Fonts','Fonts','Font_ui.cgi',1,0,'<actor>logomats</actor>'),(38,0,2,0,'Logomat Manufacturers','Manufacturers','Manufacturer_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(39,5005,2,1,'Trust Commerce','Trust Commerce Payment Vault','https://vault.trustcommerce.com/login.php',1,0,'<actor>ecommerce</actor>'),(40,102,2,1,'Rainbow Promotions','Promotions','Promotion_ui.cgi',1,0,'<actor>rainbow</actor>'),(41,2,2,1,'Logomat  Promotion','Promotion','Promotion_ui.cgi?init=1',1,0,'<actor>logomats</actor>'),(42,10030,2,1,'Pay Drop Marketer','Marketer','marketer_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(43,10010,2,1,'Pay Drop Categories','Categories','category_ui.cgi?init=1',0,0,'<actor>paydrop administrator</actor>'),(44,10040,2,1,'Pay Drop Store','Store','store_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(45,10020,2,1,'Pay Drop Subcategories','Subcategories','subcategory_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(46,10060,2,1,'Pay Drop Members','Members','member_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(47,10070,2,1,'Pay Drop Coupons','Coupons','coupon_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(48,10080,2,1,'Pay Drop Purchase Import','Purchase Import','member_purchase.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(49,10100,2,1,'Pay Drop Check Generation','Rebate Checks','member_check.cgi',1,0,'<actor>paydrop administrator</actor>'),(50,10110,2,1,'Pay Drop Newsletter','Newsletter','newsletter_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(51,10120,2,1,'Pay Drop Configuration','Configuration','config_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(52,10130,2,1,'Pay Drop Organizations','Organizations','organization_ui.cgi?init=1',1,0,'<actor>paydrop administrator</actor>'),(53,25,2,0,'Reports','Reports','Reports.cgi',0,0,'');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `services` ENABLE KEYS */;
+
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE `user_roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `user_id` bigint(20) NOT NULL default '0',
+  `role_id` bigint(20) NOT NULL default '0',
+  `enabled` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+LOCK TABLES `user_roles` WRITE;
+INSERT INTO `user_roles` VALUES (58,1,2,1),(25,2,1,1),(18,3,2,1),(19,4,2,1),(21,7,2,1),(20,6,2,1),(9,7,2,1),(87,8,2,1),(57,1,3,1),(50,9,2,1),(42,5,2,1),(78,12,5,1),(89,11,2,1),(77,12,2,1),(76,12,3,1),(45,13,3,1),(46,13,4,1),(54,15,2,1),(59,1,1,1),(60,1,4,1),(83,10,2,1),(82,10,3,1),(80,17,2,1),(79,17,3,1),(81,17,5,1),(84,10,5,1),(86,18,2,1),(88,19,2,1),(97,20,3,1),(96,20,2,1),(95,20,1,1),(98,21,1,1),(99,21,2,1),(100,21,3,1),(101,22,2,1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `group_id` bigint(20) NOT NULL default '0',
+  `first` varchar(24) NOT NULL default '',
+  `last` varchar(24) NOT NULL default '',
+  `login` varchar(36) NOT NULL default '',
+  `password` varchar(12) NOT NULL default '',
+  `phone_number` varchar(16) NOT NULL default '',
+  `email` varchar(64) NOT NULL default '',
+  `preferences` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+LOCK TABLES `users` WRITE;
+INSERT INTO `users` VALUES (1,1,'David','McCombs','davidmc','freedom7','706-673-4606','davidmc@w3sys.com',''),(20,1,'Rita','','rita','design1','','',NULL),(21,1,'Danny','Pilzer','dan','design1','','',NULL),(22,4,'Charles','Brogdon','cbrogdon','whc1','','',''),(23,1,'Jason','Lockert','jlockert','msn1990','','',''),(24,9,'Tom','McNiff','tommcniff','glassFuses7','','',NULL);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

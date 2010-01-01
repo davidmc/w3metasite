@@ -1,0 +1,17 @@
+
+#head {
+  color: rgb(200,225,125);
+  background: rgb(25,50,0);
+  }
+#topnav {
+  color: yellow;
+  background: rgb(0,25,0);
+  }
+#nav {
+  color: rgb(200,225,125);
+  background: rgb(25,50,0);
+  }
+#body {
+  color: black;
+  background: rgb(125,125,150);
+  }

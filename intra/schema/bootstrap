@@ -1,0 +1,5 @@
+insert into services 
+( sequence,tree_depth,enabled,cat_name,menu_name,uri,local_uri,secure,xml_params )
+values
+( 1,1,1,'Service Authorization','Services','servicesUI.meta',1,1,'')
+

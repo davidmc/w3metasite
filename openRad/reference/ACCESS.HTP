@@ -1,0 +1,55 @@
+double <NAME>( void ) const; 
+void set<NAME>( double input );
+set<NAME>( input.<NAME>() );
+-
+const double* <NAME>( void ) const;
+void set<NAME>( const double* input, unsigned long size );
+set<NAME>( input.<NAME>(), input.Size<NAME>() );
+-
+float <NAME>( void ) const;
+void set<NAME>( float input );
+set<NAME>( input.<NAME>() );
+-
+long <NAME>( void ) const;
+void set<NAME>( long input );
+set<NAME>( input.<NAME>() );
+-
+unsigned long <NAME>( void ) const;
+void set<NAME>( unsigned long input );
+set<NAME>( input.<NAME>() );
+-
+int <NAME>( void ) const;
+void set<NAME>( int );
+set<NAME>( input.<NAME>() );
+-
+unsigned int <NAME>( void ) const;
+void set<NAME>( unsigned int input );
+set<NAME>( input.<NAME>() );
+-
+short <NAME>( void ) const;
+void set<NAME>( short input );
+set<NAME>( input.<NAME>() );
+-
+unsigned short <NAME>( void ) const;
+void set<NAME>( unsigned short input );
+set<NAME>( input.<NAME>() );
+-
+const char* <NAME>( void ) const;
+void set<NAME>( const char* input, unsigned long size );
+set<NAME>( input.<NAME>(), input.Size<NAME>() );
+-
+char <NAME>( void ) const;
+void set<NAME>( char input );
+set<NAME>( input.<NAME>() );
+-
+unsigned char <NAME>( void ) const;
+void set<NAME>( unsigned char input );
+set<NAME>( input.<NAME>() );
+-
+byte <NAME>( void ) const;
+void set<NAME>( byte input );
+set<NAME>( input.<NAME>() );
+-
+const byte* <NAME>( void ) const;
+void set<NAME>( const byte * input, unsigned long size );
+set<NAME>( input.<NAME>(), input.Size<NAME>() );

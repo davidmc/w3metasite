@@ -1,0 +1,5 @@
+<script type="text/javascript">function parseFunction() { viewMedia(); parsePlayer(); setPlay();}</script>
+<label style="font-size:8pt">File: <input style="font-size:8pt" type='text' name='mediaFile' id='mediaFile' onchange="setPlay()"><a href="javaScript:placeFile('mediaFile','media')">Pick</a></label>
+<label style="font-size:8pt">Width: <input style="font-size:8pt"type='text' size="4" name='mediaWidth' id='mediaWidth' onchange="setPlay()"></label>
+<label style="font-size:8pt">Height: <input style="font-size:8pt" type='text' size="4" name='mediaHeight' id='mediaHeight' onchange="setPlay()"></label>
+

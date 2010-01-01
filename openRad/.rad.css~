@@ -1,0 +1,38 @@
+ 
+body {
+  background: black; 
+  color:black; 
+  font: bold italic 12pt helvetica; 
+  letter-spacing: 2pt;
+  padding: 0px;
+  margin: 0px;
+  }
+h1 {
+  color: #769;
+  margin: 0px;
+  padding: 0px; padding-left: 4px; 
+  }  
+h3 {
+  color: yellow; background: black; 
+  padding: 2px; padding-left: 12px; 
+  margin: 0px;
+  }
+p {
+  margin: 2px; 
+  margin-left:16px;
+  }    
+.ui { 
+  background: white; 
+  padding: 12pt; 
+  border: 1pt solid black;
+  margin: 0px; 
+  margin-left:2px;
+  margin-right:2px;
+  }
+.push { 
+  border-top: white 1px solid; 
+  border-left: white 1px solid; 
+  border-right: darkgray 1px solid; 
+  border-bottom: darkgray 1px solid; 
+  float: right;
+  }

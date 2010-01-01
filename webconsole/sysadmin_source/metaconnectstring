@@ -1,0 +1,12 @@
+#ifndef CONNECTSTRINGFILE
+#define CONNECTSTRINGFILE
+
+#include "connectstring.h"
+const char * CONNECTSTRING = getConnectstring("metaConn");
+#define PROVIDER MySQL
+
+#endif
+
+
+
+

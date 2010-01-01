@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <style type='text/css'>@import url(adminchart.css );</style>
+    <script type='text/javascript'> 
+        var exp = new RegExp( "^Microsoft","i" );  
+        if( exp.test(navigator.appName) )
+        {
+          document.write("<style type='text/css'>");
+          document.write("@import url(msfixup.css );"); 
+          document.write("</style>");  
+        }            
+    </script>   
+    <title>Usage Charts</title>
+    <meta content="">
+  </head>
+  <body>   
+  <h3>Your Site Statistics</h3>
+  <div id="chart">  
+    <div id="labels">
+      <div class="label"><a href="adminLogs.cgi?show=Daily Visitors">by Daily Visitors (served)</a></div>
+      <div class="label"><a href="adminLogs.cgi?show=Monthly Visitors">by Monthly Visitors (served)</a></div>
+      <div class="label"><a href="adminLogs.cgi?show=Daily Pages">by Daily Pages (served)</a></div>
+      <div class="label"><a href="adminLogs.cgi?show=Monthly Pages">by Monthly Pages (served)</a></div>
+            
+      <div class="label"><a href="adminLogs.cgi?show=Page">by Page</a></div>
+      <div class="label"><a href="adminLogs.cgi?show=Referrer">by Referrer</a></div>
+      <div class="label"><a href="adminLogs.cgi?show=Request Status">by Request Status</a></div>
+      <div class="label"><a href="adminLogs.cgi?show=Browser">by Browser</a></div>
+    </div>    
+  </div>  
+  </body>
+</html>
+

@@ -1,0 +1,2 @@
+# /usr/bin/sh
+mysqldump   --user='paydrop_admin' --password='pd10191969' w3sys

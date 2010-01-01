@@ -1,0 +1,19 @@
+CLASS CalibatedParameters
+
+PRIVATE
+
+  
+PUBLIC         
+
+
+DATA
+
+double openCircuitSourceNegative
+double openCircuitSourcePositive
+double negativeSourceResistance
+double positiveSourceResistance
+double zeroSystemOffset
+
+
+#include <string.h>
+#include <iostream>

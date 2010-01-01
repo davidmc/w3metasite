@@ -1,0 +1,205 @@
+/*
+  ChargeUI.cpp
+
+  User Interface Definition and Implementation 
+  for Charge.
+
+  Copyright (c) 2008 by D.K. McCombs.
+  davidmc@w3sys.com
+  W3 Systems Design Inc.
+
+*/
+
+#include <string>
+//#define OPEN_LOGGING_FILE
+#include "openLogger.h"
+using namespace std;
+
+
+#include "w3intranet.h"
+#include "Charge.hpp"
+
+class Charge_List:  public list_base
+{
+public: 
+  // Constructor
+  Charge_List(cgiScript&sc,Session_Obj & session):list_base(sc,session,"Charge"){;}   
+  ~Charge_List(){;}
+  
+  bool list_display( void )
+  {
+    bool breturn = true;
+
+    hotCol=-2;    
+    editLink = listTemplate.getParagraph("hotcolumn");
+    editLink = editLink.replace("$prog$","ChargeUI.meta");
+    // TODO:  Make sure you set the filter by name
+    emitFilter( "ChargeUI.meta",
+                "<strong>Charges · Search by Company</strong>" );
+    string heading =
+      "<a class='sortcol' href='ChargeUI.meta?sort=g.Id'>Id</a>|"
+      "<a class='sortcol' href='ChargeUI.meta?sort=c.Name'>Company</a>|"
+      "<a class='sortcol' href='ChargeUI.meta?sort=p.Name'>Project</a>|"
+      "<a class='sortcol' href='ChargeUI.meta?sort=g.Name'>Name</a>|"
+      "<a class='sortcol' href='ChargeUI.meta?sort=g.Description'>Description</a>|"
+      "<a class='sortcol' href='ChargeUI.meta?sort=g.Invoice'>Invoice</a>|"
+      "<a class='sortcol' href='ChargeUI.meta?sort=g.MyCost'>MyCost</a>|"
+      "<a class='sortcol' href='ChargeUI.meta?sort=g.Charge'>Charge</a>"
+                    ;
+    emitHeadings(heading);
+    getFilteredData(
+                     "g.Id, "
+                     "c.Name, "
+                     "p.Name, "
+                     "g.Name, " 
+                     "g.Description, "
+                     "g.Invoice, "
+                     "g.MyCost, " 
+                     "g.Charge " 
+                     ,"Charge g left join Company c on c.Id = g.Company left join Project p on p.Id = g.Project ",
+                     "c.Name like '$filter$%'" );
+    emitData();
+    emitNavigation("ChargeUI.meta");
+    emitEnd();
+    return breturn;
+  }      
+}; 
+
+class Charge_form:  public Charge_Obj, public forms_base
+{
+public: 
+  Charge_form(cgiScript & script):Charge_Obj(),forms_base(script){setKey(*this);} 
+  virtual ~Charge_form(){;}
+  
+  void form_id_transfer( void )
+  {
+    llongFXfer( "Id", Id );
+  }
+  void form_data_transfer( void )
+  {
+    stringFXfer( "Name", Name);
+    stringFXfer( "Description", Description);
+    llongFXfer( "Company", Company);
+    llongFXfer( "Project", Project);
+    llongFXfer( "Invoice", Invoice);
+    moneyFXfer( "MyCost", MyCost);
+    moneyFXfer( "Charge", Charge);
+ 
+  } 
+  
+  bool dbf_action( string mode, changeMap & changes )
+  {
+    return db_action( mode, changes );
+  } 
+  
+  // implement pure virtual of form display
+  bool form_display( void )
+  {
+    bool breturn = true;
+    ocString sql = "select Id, Name from Company"; // for combo boxes
+     
+    script << makeTop("ChargeUI.meta", "Charge")
+           << formTemplate.getParagraph("advanced_begin");
+    script << makeStaticBox("Id", "Id", Id ,"8");
+    script << formTemplate.getParagraph("advanced_end");
+    
+    script << "<br class='clearall'>" << endl;
+    script << makeComboBox("Company", "Company", Company ,sql,"Please Choose");
+    
+    script << "<br class='clearall'>" << endl;
+    sql = "select p.Id, c.Name, p.Name from Project p inner join Company c on c.Id = p.Company ";
+    if( Company > 0 )
+    {
+      sql += " where p.Company = ";
+      sql.append(Company);
+    }
+    script << makeComboBox("Project", "Project", Project ,sql,"Please Choose");
+    
+    script << "<br class='clearall'>" << endl;
+    script << makeTextBox("Name", "Name", Name ,"125","35");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextArea("Description", "Description", Description ,"5","80");
+
+    sql = "select i.Id, i.Invoice_Date,  c.Name, p.Name from Invoice i "
+          "left join Project p on p.Id = i.Project left join Company c on c.Id = p.Company ";
+    if( Company > 0 )
+    {
+      sql += " where i.Company = ";
+      sql.append(Company);
+      if( Project > 0 )
+      {
+        sql += " and i.Project = ";
+        sql.append(Project);
+      }
+    }
+    
+
+    script << "<br class='clearall'>" << endl; 
+    script << makeComboBox("Invoice", "Invoice", Invoice ,sql,"Please Choose");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("MyCost", "MyCost", MyCost ,"16","16");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("Charge", "Charge", Charge ,"16","16");
+    script << "<br class='clearall'>" << endl; 
+  
+    script << makeButtons( key() );        
+    script << makeBottom( m_result ) << endl; 
+    return breturn;
+  }
+};
+
+bool intraMain(page & pg ,cgiScript & script)
+{
+
+  Charge_form myFrm(script); 
+  Charge_List mylist(script,oLogin.Session());  
+
+  myFrm.loadControlTemplates("Templates/divform.htmp");
+  myFrm.form_action();  
+  myFrm.form_display();
+
+  mylist.loadListTemplates("Templates/navlist.htmp");  
+  mylist.list_display();
+ 
+  return true;
+}
+
+// Standard main function
+int main(int argc, char ** argv)
+{  
+  baseUrl = "ChargeUI.meta";  // this is my compiled name!
+  // because we are checking
+  cgiScript script("text/html",false);
+  bool isSignedOn = check(script);
+  script.closeHeader();
+  
+  /* TODO: Optionally replace intranet.meta with anything you please, or not,
+     make sure an associated page entry exists in the metasite database. 
+  script.ScriptName() =
+    ocString( script.ScriptName().c_str()).replace("ChargeUI.meta","intranet.meta").c_str();  
+  */  
+  page pg(script);  
+  
+  writelog( "load page" );  
+  if( pg.load() )
+  {    
+    writelog( "instance of page control" );
+    page_control ctrl(pg);     
+    ctrl.addOp ( "servicelist",  new servicelist_functor(pg,script,isSignedOn) );    
+    ctrl.addOp ( "userinterface",  new form_functor(pg,script,isSignedOn) );    
+    writelog( "page control emit" );
+    ctrl.emit();    
+  }
+  else
+  {
+    script << "<html><head><title>Page Unavailable</title></head>" << endl
+           << "<body><h1>Sorry</h1>" << endl
+           << "<p>The page you requested is not available</p></body></html>";
+  } 
+  return 0;
+}
+
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"
+

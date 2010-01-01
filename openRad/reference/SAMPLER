@@ -1,0 +1,28 @@
+CLASS Sampler
+
+PRIVATE
+
+  
+PUBLIC         
+
+
+DATA
+
+int     portAddress
+int     numPoints
+int     numTriggerPoints
+int     triggerLevel
+int     timeOut
+byte    sampleMethod
+double  interval
+
+
+METHODS 
+
+byte * `Sample( void )       
+
+
+#include <string.h>
+#include <iostream.h>
+#include "daqtypes.h"
+#include "parallel.h"

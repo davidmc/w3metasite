@@ -1,0 +1,182 @@
+/*
+
+  Scheme_TableUI.cpp
+  User Interface Definition and Implementation
+  for Scheme_Table.
+  Copyright (c) 2005 by D.K. McCombs.
+  davidmc@w3sys.com
+  W3 Systems Design Inc.
+
+*/
+
+#include <string>
+//#define OPEN_LOGGING_FILE
+#include "openLogger.h"
+using namespace std;
+
+// one global
+string baseUrl;
+#include "connectstring"
+
+#include "w3intranet.h"
+#include "Scheme_Table.hpp"
+
+class Scheme_Table_List:  public list_base
+{
+public: 
+  // Constructor
+  Scheme_Table_List(cgiScript&sc,Session_Obj & session):list_base(sc,session){;}   
+  ~Scheme_Table_List(){;}
+  
+  bool list_display( void )
+  {
+    bool breturn = true;
+
+    hotCol=-2;    
+    editLink = listTemplate.getParagraph("hotcolumn");
+    editLink = editLink.replace("$prog$","Scheme_TableUI.meta");
+    // TODO:  Make sure you set the filter by name
+    emitFilter( "Scheme_TableUI.meta",
+                "    <B>FILTER (by Name)</B>" );  
+    string heading =
+                     "<a class='sortcol' href='Scheme_TableUI.meta?sort=t.Id'>Id</a>|"                     
+                     "<a class='sortcol' href='Scheme_TableUI.meta?sort=t.Name'>Name</a>|"                     
+                     "<a class='sortcol' href='Scheme_TableUI.meta?sort=t.Abbr'>Abbr</a>"                     
+                    ;
+    emitHeadings(heading);
+    getFilteredData(
+                     "t.Id, " 
+                     "t.Name, " 
+                     "t.Abbr " 
+                     ,"Scheme_Table t", 
+                     // TODO: Make sure you set the filter by field                    
+                     "t.Name like '$filter$%'" );   
+    emitData();
+    emitNavigation("Scheme_TableUI.meta");         
+    emitEnd();
+    return breturn;
+  }      
+}; 
+
+class Scheme_Table_form:  public Scheme_Table_Obj, public forms_base
+{
+public: 
+  Scheme_Table_form(cgiScript & script):Scheme_Table_Obj(),forms_base(script){setKey(*this);} 
+  virtual ~Scheme_Table_form(){;}
+  
+  void form_id_transfer( void )
+  {
+    llongFXfer( "Id", Id );
+  }
+  void form_data_transfer( void )
+  {
+    stringFXfer( "Name", Name);
+    stringFXfer( "Abbr", Abbr);
+ 
+  } 
+  
+  bool dbf_action( string mode, changeMap & changes )
+  {
+    return db_action( mode, changes );
+  } 
+  
+  // implement pure virtual of form display
+  bool form_display( void )
+  {
+    bool breturn = true;
+    ocString sql; // for combo boxes
+
+    script << makeTop("Scheme_TableUI.meta", "Schema Table")
+           << formTemplate.getParagraph("advanced_begin");
+    script << makeStaticBox("Id", "Id", Id ,"8");
+    script << "<br class='clearall'>" << endl;
+    script << formTemplate.getParagraph("advanced_end");
+    
+    script << makeTextBox("Name", "Name", Name ,"125","35");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("Abbr", "Abbr", Abbr ,"125","35");
+    script << "<br class='clearall'>" << endl; 
+    script << "<a href=\"javascript:jopen('Scheme_Table_Popup.cgi',"
+           << "'scrollbars,resizable,width=500,height=300','_blank')\">Import Schema</a>"; 
+    script << "<br class='clearall'>" << endl;         
+    script << makeButtons( key() );
+              
+    script << makeBottom( m_result ) << endl; 
+    return breturn;
+  }
+};
+
+bool intraMain(page & pg ,cgiScript & script)
+{
+
+  Scheme_Table_form myFrm(script); 
+  Scheme_Table_List mylist(script,oLogin.Session()); 
+  
+  myFrm.loadControlTemplates("Templates/divform.htmp");  
+  myFrm.form_action();  
+  myFrm.form_display();
+
+  mylist.loadListTemplates("Templates/navlist.htmp");  
+  mylist.list_display();
+ 
+  return true;
+}
+
+// Standard main function
+int main(int argc, char ** argv)
+{  
+  baseUrl = "Scheme_TableUI.meta";  // this is my compiled name!
+  // because we are checking
+  cgiScript script("text/html",false);
+  bool isSignedOn = check(script);
+  script.closeHeader();
+  
+  /* Replace intranet.meta with anything you please, or not,
+     make sure an associated page entry exists in the metasite database. */
+  script.ScriptName() =
+    ocString( script.ScriptName().c_str()).replace("Scheme_TableUI.meta","reports").c_str();  
+    
+  page pg(script);  
+  
+  writelog( "load page" );  
+  if( pg.load() )
+  {    
+    writelog( "instance of page control" );
+    page_control ctrl(pg);     
+    ctrl.addOp ( "servicelist",  new servicelist_functor(pg,script,isSignedOn) );    
+    ctrl.addOp ( "userinterface",  new form_functor(pg,script,isSignedOn) );    
+    writelog( "page control emit" );
+    ctrl.emit();    
+  }
+  else
+  {
+  
+    // try to be a regular cgi
+    if( oLogin.testLoginStatus() )
+    {
+      script.closeHeader();
+      cgiTemplates pgTemplate;    
+      pgTemplate.load("Templates/adminPane.htmp");
+      
+      script << ocString(pgTemplate.getParagraph("top"))
+                      .replaceAll("$heading$","Report");
+  
+      intraMain(pg ,script);
+          
+      ocString end = pgTemplate.getParagraph("bottom");
+      script << end;          
+    }
+    else
+    {
+      script.Redirect("signIn.html"); 
+    }
+
+
+  } 
+  return 0;
+}
+
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"
+

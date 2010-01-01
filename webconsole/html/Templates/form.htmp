@@ -1,0 +1,49 @@
+
+<!-- for template paragraph form_begin, replace $action$ and $name$ -->
+<!--@form_begin-->
+<form action='$action$' id='uiForm' name='uiForm' method='post'>
+  <table class='ui'>
+  <tr><td colspan='2'><strong>$name$</strong></td></tr>
+<!--/@form_begin-->
+
+<!--@childform_begin-->
+<form action='$action$' id='uiForm' name='uiForm' method='post'>
+  <table class='ui'>
+  <tr><td colspan='2'><td colspan='2'><strong>$name$</strong><img border='0' src='exit.png' onClick='doExit()'></td></tr>
+<!--/@childform_begin-->
+
+<!-- for template paragraph control_group, replace $label$ and $control$ -->
+<!--@control_group-->    
+    <tr><td>$label$</td><td>$control$</td></tr>
+<!--/@control_group--> 
+  
+<!--@wide_group-->    
+    <tr><td colspan='2'>$label$</td></tr>
+    <tr><td colspan='2'>$control$</td></tr>
+<!--/@wide_group-->  
+
+<!--@image_group-->    
+    <tr><td>$label$</td><td>$control$ &nbsp <a href="javaScript:placeImage('$id$')">Pick</a></td></tr>
+<!--/@image_group--> 
+
+<!--@file_group-->    
+    <tr><td>$label$</td><td>$control$ &nbsp <a href="javaScript:placeFile('$id$')">Pick</a></td></tr>
+<!--/@file_group--> 
+
+<!--@meta_group--> 
+    <tr><td>$label$</td><td>$control$ &nbsp <a href="javascript:jcontrol('$id$','metatagPick.cgi')">pick</a>
+<!--/@meta_group--> 
+
+                      
+<!-- for template paragraph button_group, replace  $buttons$ -->
+<!--@button_group-->
+    <tr><td colspan='2'>$buttons$</td></tr>
+<!--/@button_group-->
+
+<!-- for paragraph form_end, replace $status$ -->
+<!--@form_end-->
+     <tr><td colspan='2' style='text-align:right;'> &nbsp; Status: $status$</td></tr> 
+  </table>
+  <input type='hidden' name='xmldirections' id='xmldirections'>
+</form>
+<!--/@form_end--> 

@@ -1,0 +1,1 @@
+<logfile name='common' path='/var/log/httpd/access_log' seekpos='63624'/><accept>^/$</accept><accept>^/testing/$</accept><accept>.cgi</accept><accept>.meta</accept><accept>.htm</accept><reject>sys/</reject><reject>boardstate</reject><reject>isCompleteSvc</reject>

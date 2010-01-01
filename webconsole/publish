@@ -1,0 +1,19 @@
+
+cp ./html/*.css ../web/console/
+cp ./html/*.js ../web/console/
+cp ./html/*.html ../web/console/
+cp ./html/Templates/* ../web/console/Templates
+cp ./html/pg_images/* ../web/console/pg_images
+
+# specific things from openClientCode for the rich editor
+cp ../openClientCode/openDom.js ../web/console/
+cp ../openClientCode/eDom.js ../web/console/
+cp ../openClientCode/htmlFormEvents.js ../web/console/
+cp ../openClientCode/contentControl.js ../web/console/
+cp ../openClientCode/liveEdit/richEdit.css ../web/console/
+cp ../openClientCode/liveEdit/FullyRichEditor.html ../web/console/Templates/
+cp ../openClientCode/liveEdit/*.gif ../web/console/
+cp ../openClientCode/liveEdit/editblank.html ../web/console/
+cp ../openClientCode/liveEdit/colors.html ../web/console/
+
+

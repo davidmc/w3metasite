@@ -1,0 +1,16 @@
+select l.name, l.url, mi.id as menu_item_id, mi.place_order, 
+mi.place_level  from links l inner join menu_items mi on mi.link_id = l.id 
+and mi.menu_id = 2 and l.url = 'pages.meta/search.html';
+
+select max(mi.place_order),  mi.place_level  from links l  
+inner join menu_items mi on mi.link_id = l.id  where mi.menu_id = 2
+and mi.place_order <= 2
+group by mi.place_level  
+order by mi.place_order;
+
+select l.id as link_id, l.name, l.url, l.target, mi.id as menu_item_id,  
+mi.template_tag,mi.locate_tag,mi.target_tag,mi.label_tag, mi.place_order, 
+mi.place_level  from links l  inner join menu_items mi on mi.link_id = l.id 
+where mi.menu_id = 2
+order by mi.place_order;
+

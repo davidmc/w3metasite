@@ -1,0 +1,43 @@
+<!--@top--><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>$TITLE_GOES_HERE</title>
+    <style type="text/css">@import "lists.css";</style>   
+    <script src='icomm.js'></script>
+  </head>
+  <body>
+  <center>
+  <table cellpadding='1' cellspacing='1' width='100%' height='100%' id='repMain'>
+  <tr>
+    <td id='repBody' valign='top' align='left' height='100%' colspan='2'>
+      <table  id='report'  width='100%'>
+      <caption class="repTitle">
+      &nbsp;<br>
+      $TITLE_GOES_HERE
+      </caption>
+      <tr id='heading'>
+<!--/@top-->
+<!--@headitem-->
+        <th class='headcell'>__hcell_label</th>
+<!--/@headitem-->
+<!--@rowsep-->
+      </tr>
+      <tr>
+<!--/@rowsep-->
+<!--@oddcell-->
+        <td class='odd_cell'>$cell_data</td>
+<!--/@oddcell-->
+      </tr>
+      <tr>
+<!--@evencell-->
+        <td class='even_cell'>$cell_data</td>
+<!--/@evencell-->
+<!--@bottom-->
+      </tr>
+      </table>
+    </td>
+  </tr>
+  </table>
+  </body>
+</html>
+<!--/@bottom-->

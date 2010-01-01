@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="color pick javascript program">
+    <style>
+    body {     
+      background:white; 
+    }
+    h4 {
+      margin: 5px;
+      color: darkblue;
+    }
+    #bar {
+      margin: 0px 5px 5px 5px;
+      border: 1px solid darkblue;           
+      height: 10px; 
+      }
+    #fill {
+      background: red;
+      width: 1%;            
+      text-align: left;
+      height: 10px;
+    } 
+    #txt {
+      margin : 0px 5px 5px 5px;
+      color: darkblue;
+      text-align: right;
+    }       
+    </style>
+    <script src="openDom.js"></script> 
+    <script>
+    var myDom = new openDom();
+    var interval=100;
+    var intervalID;
+    var estimate=200;
+    var current=1;
+    var increment;    
+    var startPage;
+    var doClose = false;
+    function initPage()
+    {
+      estimate=window.opener.getEstimate();      
+      startPage=window.opener.document.location.href;      
+      intervalID = setInterval( "checkStatus()", interval );
+    }    
+    
+    function checkStatus()
+    {
+      var curPage;
+      var complete = false;      
+      try {
+        curPage = window.opener.document.location.href;
+        estimate=window.opener.getEstimate();
+      }
+      catch(e) {
+        curPage = "blank";
+      }
+      if( current >= estimate )
+      {
+        complete=true;
+      }  
+      else if( curPage != startPage ) 
+      {
+          current = estimate;
+      }
+      else  
+      {
+          increment = estimate-current;
+          if( increment > 0 ) increment /= 250;
+          current += increment;
+      }
+      percentage = estimate > 0?(current * 100) / estimate:100;
+      var widthStr = percentage.toString();
+      widthStr += "%";
+      myDom.getElementById("fill").style.width=widthStr;
+      myDom.getElementById("val").innerHTML=Math.round(percentage).toString();
+      if( doClose )
+      {
+        clearInterval(intervalID); 
+        window.close();
+      }       
+      if( complete )
+      {
+        doClose=true;
+      }           
+    }     
+    </script>
+  </head>
+  <body onLoad="initPage()">
+  <h4>Upload Status:</h4>
+  <div id='bar'>  
+    <div id='fill'></div>
+  </div>
+  <div id="txt"> 
+  <span id='val'>X</span> Percent
+  </div>
+  </body>
+</html>

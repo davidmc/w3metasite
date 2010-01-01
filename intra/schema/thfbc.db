@@ -1,0 +1,155 @@
+-- MySQL dump 10.9
+--
+-- Host: localhost    Database: thfbc
+-- ------------------------------------------------------
+-- Server version	4.1.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `role_services`
+--
+
+DROP TABLE IF EXISTS `role_services`;
+CREATE TABLE `role_services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `role_id` bigint(20) default NULL,
+  `service_id` bigint(20) default NULL,
+  `enabled` int(11) default NULL,
+  `xml_params` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role_services`
+--
+
+
+/*!40000 ALTER TABLE `role_services` DISABLE KEYS */;
+LOCK TABLES `role_services` WRITE;
+INSERT INTO `role_services` VALUES (1,1,1,1,''),(2,1,2,1,''),(3,1,3,1,'');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `role_services` ENABLE KEYS */;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE `roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `name` text,
+  `comment` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+LOCK TABLES `roles` WRITE;
+INSERT INTO `roles` VALUES (1,'developer','Bootstrapped default developer role');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `services`
+--
+
+DROP TABLE IF EXISTS `services`;
+CREATE TABLE `services` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `sequence` int(11) default NULL,
+  `tree_depth` int(11) default NULL,
+  `enabled` int(11) default NULL,
+  `cat_name` text,
+  `menu_name` text,
+  `uri` text,
+  `target` text,
+  `prog_enum` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `services`
+--
+
+
+/*!40000 ALTER TABLE `services` DISABLE KEYS */;
+LOCK TABLES `services` WRITE;
+INSERT INTO `services` VALUES (1,1,1,1,'Service Authorization','Services','services_liteUI.meta?init=1','_self',0),(2,2,1,1,'Service Authorization','Roles','rolesUI.meta?init=1','_self',0),(3,2,1,1,'Service Authorization','Users','ls_usersUI.meta?init=1','_self',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `services` ENABLE KEYS */;
+
+--
+-- Table structure for table `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+CREATE TABLE `user_roles` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `user_id` bigint(20) default NULL,
+  `role_id` bigint(20) default NULL,
+  `enabled` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+LOCK TABLES `user_roles` WRITE;
+INSERT INTO `user_roles` VALUES (1,1,1,1),(2,1,2,1),(3,2,1,1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL auto_increment,
+  `last` text,
+  `first` text,
+  `login` text,
+  `password` text,
+  `email` text,
+  `phone` text,
+  `mobile` text,
+  `fax` text,
+  `pager` text,
+  `xml_preferences` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+LOCK TABLES `users` WRITE;
+INSERT INTO `users` VALUES (1,'McCombs','David','davidmc','freedom7','davidmc@w3sys.com','706 581-4607','706 581-4607',NULL,'',''),(2,'Griffen','Tyson','tysong','tysong1','','','','',NULL,NULL);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

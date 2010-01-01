@@ -1,0 +1,13 @@
+Hello,
+
+This is a test.
+
+We are verifying the functionality of the new W3 Systems Design SMTP mail software.
+This is a replacement for our original software that 'forked' a sendmail process.
+The sendmail process worked fine, but did not give us the kind of capability we needed to verify mailboxes and assure 'real time' that mail was sent.
+
+If you get this mail, please reply to davidmc@w3sys.com
+
+Thanks! David McCombs.
+
+

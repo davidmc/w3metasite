@@ -1,0 +1,440 @@
+/*
+
+  Show Control:
+  =============
+  control tags
+  
+  detail
+  ------
+      attr:
+      -----
+      item := the template section
+      mutex := whether or not presentation is mutually exclusive with arg s
+      replace_tag := the replacement tag
+  
+  replacements made
+      $Id" with the order of the paragraph, used to set argument 's'
+      replace_tag with the paragraphs first image.
+      $label with the paragraphs name
+      
+  slide
+  -----
+      attr:
+      -----
+      items
+      replace_tag
+      mutex
+      
+  replacements made:
+
+*/
+#include "page_control.hpp"
+#include "Edit_Links.hpp"
+ 
+// Only holds valid slide paragraphs.
+typedef vector<int> slide_selector;
+
+class show_page : public page 
+{
+ slide_selector slides;
+ string slide_section;
+ int count;
+ 
+public:
+
+  bool isImageSlidesOnly;
+  
+  show_page(cgiScript & in):page(in),count(0),isImageSlidesOnly(false)
+  {
+    ;
+  }
+  virtual ~show_page()
+  {
+    ;
+  }
+  
+  // Invoke after page load but before emit
+  bool loadSlides( )
+  {
+    bool bret = true;
+    
+    page_paragraphs & pg_paras = get_page_paragraphs();
+    for( page_paragraphs::size_type szt=0; szt < pg_paragraphs.size(); ++szt )
+    {
+      page_paragraph & para = pg_paragraphs.at(szt);
+      ocString test =  para.section().c_str();
+
+      if( test.regExMatch("^slide") )
+      {
+        //DBG    cout << " pushing " << szt << " " << para.name() << "<br>" << endl;
+        slides.push_back(szt);
+      }
+    }    
+    return bret;
+  }
+  
+  // special purpose functions for slideshows 
+  virtual bool emitDetail(  string section, string replaceTag , string templateTag )
+  {
+    bool bRet = true;
+    paragraphMap & paras  = pg_template.getParagraphs();
+    int slideNo = 0;
+    string qryString = script.QueryString().c_str();
+    cgiInput & args = script.ClientArguments();
+    if( args.count("s") )
+    {
+      slideNo = atoi( args["s"].c_str() );
+    }
+    paras_emitDetail(get_page_paragraphs(),paras,section,replaceTag,slideNo,templateTag);
+    return bRet;
+  }
+  void paras_emitDetail( page_paragraphs & pg_paragraphs, // the DB's stored paragraphs
+                         paragraphMap & paras, // the .html template's set of paragraphs
+                         string section, // the paragraph retrieval key(s)
+                         string replace_tag, // from client arg 's'
+                         int slideNo, string templateTag )
+  {
+    
+    if( section.length() )
+    { // slide_selector slides
+      for( slide_selector::size_type szt=0; szt < slides.size(); ++szt )
+      {
+        page_paragraph & para = pg_paragraphs.at(slides.at(szt));
+
+          if( section == para.section()  && szt==slideNo )
+          {
+            para_emitDetail(para, paras, replace_tag, slideNo,szt,slides.size(),templateTag);
+          }
+
+      }
+    }
+   
+  }
+  void para_emitDetail( page_paragraph & para, 
+                        paragraphMap & paras, 
+                        const string & replace_tag,
+                        int selSlide, 
+                        int sztPos, 
+                        int arrySize,
+                        string templateTag )
+  {
+    paragraphMap::iterator pos = paras.find(templateTag);
+    int iLast = arrySize?arrySize-1:0;
+    int iPrev = selSlide?sztPos-1:iLast;
+    int iNext = arrySize?(sztPos+1)%arrySize:0;
+    ocString First, Previous, Next, Last;
+    First.append(0);
+    Previous.append(iPrev);
+    Next.append(iNext);
+    Last.append(iLast);
+    
+    if( pos != paras.end() )
+    {      
+      ocString output = pos->second;
+      
+      script <<  
+        output.replace( replace_tag.c_str(),
+                        para.content().c_str() )
+              .replaceAll("$Idf", First.c_str())
+              .replaceAll("$Idp", Previous.c_str())
+              .replaceAll("$Idn", Next.c_str())
+              .replaceAll("$Idl", Last.c_str())
+              ;
+
+       // DBG  script << "<p>Signed on? " <<  isSignedOn << "</p>" << endl;
+    }    
+  }
+  virtual bool emitSlides( string template_tag,string replaceTag, string section )
+  {
+    bool bRet = true;
+    slide_section = section;
+    paragraphMap & paras  = pg_template.getParagraphs();
+    int slideNo = 0;
+    cgiInput & args = script.ClientArguments();    
+    if( args.count("s") )
+    {
+      slideNo = atoi( args["s"].c_str());
+    }
+    paras_emitSlides(get_page_paragraphs(),paras,template_tag,replaceTag,slideNo);
+    return bRet;                  
+  }
+  void paras_emitSlides( page_paragraphs & pg_paragraphs, 
+                        paragraphMap & paras,
+                        string template_tag,
+                        string replace_tag,
+                        int SlideNo )
+  { // slide_selector slides
+    slide_selector::size_type szt=0;
+    for( ; szt < slides.size(); ++szt )
+    {
+      //  DBG  script << "<p>Slide " <<  szt << " " << template_tag << " " << replace_tag << " " << SlideNo << "</p>" << endl;
+      page_paragraph & para = pg_paragraphs.at(slides.at(szt));
+      para_emitSlide(para,paras,template_tag,replace_tag,SlideNo,szt);
+      count++;
+    }
+    if( isEditMode && count == 0 )
+    {
+      // emit an empty paragraph so they can edit
+      
+      page_paragraph emptyOne;
+      emptyOne.site_id(m_site_id);
+      emptyOne.page_id(m_id);
+      emptyOne.section(slide_section);
+      emptyOne.template_tag(template_tag);
+      emptyOne.replace_tag(replace_tag);
+      emptyOne.approved(true);
+      para_emitSlide(emptyOne,paras,template_tag,replace_tag,SlideNo,szt);
+    }       
+  }
+  void para_emitSlide( page_paragraph & para, 
+                        paragraphMap & paras,
+                        string template_tag,
+                        const string replace_tag, 
+                        int SlideNo, 
+                        int sztPos )
+  {
+
+    bool isSelected = SlideNo==sztPos;
+
+    // DBG    cout <<  para.section() << " = " <<  slide_section << "?" << endl;
+    if( slide_section.length() && para.section() == slide_section )
+    {
+      paragraphMap::iterator pos = paras.find( template_tag ); // going to name the items tag same as the paragraph tag
+      if( pos != paras.end() )
+      {
+        slideEmission(para,replace_tag,SlideNo,sztPos,pos->second,isSelected);
+      }
+    }
+  }
+  void slideEmission( page_paragraph &para,
+                      const string replace_tag, 
+                      int SlideNo, 
+                      int sztPos,
+                      ocString output, bool isSelected )
+  {
+    ocString parseContent = para.content();
+    string selectIndicator;
+    bool foundImage = false;
+    ocString uniqueId;
+    ocString image = "";
+    if( isSelected )
+    {
+      selectIndicator = "Selected_Slide";
+    }
+    // find an image tag
+    if( parseContent.find("<img") != string::npos ) parseContent.parse("<img");
+    else parseContent.parse("<IMG");
+    if( !parseContent.endOfParse() ) // found one!
+    {
+      foundImage = true;
+      image = "<img src='";
+      string::size_type pos = parseContent.find("src");
+      if( pos == string::npos ) pos = parseContent.find("SRC");
+      if( pos != string::npos )
+      {
+         ocString src = parseContent.substr(pos);
+                                  // 01234
+         if( src.at(4) == '\"' )  // src='
+         {
+           src.parse("\""); // throw away SRC=
+           image += src.parse("\"");
+         }
+         else if( src.at(4) =='\'' )
+         {
+           src.parse("'"); // throw away SRC=
+           image += src.parse("'");
+         }
+      }
+      image +="' ";
+      
+      if( image.find("small_images") == string::npos &&
+          image.find("images") != string::npos )
+      {
+        image = image.replace("images","small_images");
+      }
+      
+      image += " alt='";
+      image += para.name();
+      image += "' />";
+    }
+
+    if( foundImage || isImageSlidesOnly == false )
+    {
+      uniqueId.append(sztPos);
+  
+      // edit mode stuff
+      ocString temp;
+      if( isEditMode == false )
+      {
+        // parse all edit links out  <!--@insert_before--> <!--/@insert_before-->
+        temp = output;
+        // Get stuff in front
+        if( temp.find( "<!--@insert_before-->" ) != string::npos )
+          output = temp.parse("<!--@insert_before-->");
+        else
+            output = temp.parse("<!--@edit-->");
+        // throw away all edit tags
+        temp.parse("<!--/@edit-->");
+        output += temp.parse("<!--@insert_after-->");
+        temp.parse("<!--/@insert_after-->");
+        output += temp.remainder();
+      }
+      else if( count > 0 )
+      {
+        temp = output;
+        // Get stuff in front
+        if( temp.find( "<!--@insert_before-->" ) != string::npos )
+        {
+          output = temp.parse("<!--@insert_before-->");
+          // throw away insert before
+          temp.parse("<!--/@insert_before-->");
+          output += temp.remainder();
+        }
+      }
+      ocString pageId, thisId;
+      thisId.append(para.id());
+      if(  script.QueryString().length() )
+      {
+         thisId += "&";
+         thisId += script.QueryString().c_str();
+      }
+      pageId.append(para.page_id());
+  
+      script << 
+        output.replaceAll("$page$",pageId)
+              .replaceAll("$id$",thisId)
+              .replace( "$id",selectIndicator.length()?selectIndicator:uniqueId )
+              .replaceAll( "$slideno$",uniqueId )
+              .replaceAll("$name$",para.template_tag())
+              .replaceAll("$section$",para.section())
+              .replaceAll( replace_tag.c_str(),image.c_str() )
+              .replaceAll( "$label", para.name().c_str() );
+    }
+  }
+
+
+  // end special purpose functions  
+  
+};
+
+
+// global method
+bool isMutex( xmlNode & node )
+{
+  // does the node have a mutex attribute?
+  node_attr::iterator x = node.attr.find("mutex");
+  // if it's there, I dont care about the value, return true...
+  return (x!=node.attr.end());
+}
+
+class detail_functor: public base_functor
+{
+  cgiScript & script;
+public:
+  
+  detail_functor(page & ipg,cgiScript & script):base_functor(ipg),script(script){;}
+  
+  virtual ~detail_functor(){;}
+  
+  show_page & showpg(void) { return dynamic_cast<show_page &>(this->pg); }
+  
+  bool shouldShow(xmlNode & node )
+  {
+    bool ret=true; // assume we should
+    if( isMutex(node) )  // either show detail or slides but not both
+    {
+      if( script.ClientArguments().count("s") == 0 )
+        ret=false; // since we're mutually exclusive, and we have a detail, dont show
+    }
+    return ret;
+  }
+  
+  virtual  bool operator()( xmlNode & node )
+  {
+    bool bRet = false;
+    
+    if( shouldShow( node ) )
+    {
+      string template_tag, replace_tag, section;
+      replace_tag="$content$"; // default
+      node_attr::iterator x = node.attr.find("section");
+      if( x!=node.attr.end() )
+      {
+        section=x->second;
+        x = node.attr.find("items"); // only one here
+        if( x!=node.attr.end() )  template_tag = x->second;
+        
+        x = node.attr.find("replace_tag"); // preferred
+        if( x==node.attr.end() ) x = node.attr.find("replace-tag"); // user didn't look at spec closely
+        if( x!=node.attr.end() ) replace_tag=x->second;
+        bRet = showpg().emitDetail(  section, replace_tag, template_tag);
+      }
+      else
+      {
+        script << "no content items to show" << endl;
+      }
+    }
+    return bRet;    
+  }
+};
+
+
+class slides_functor: public base_functor
+{
+  cgiScript & script;
+public:
+  slides_functor(page & ipg,cgiScript & script):base_functor(ipg),script(script){;}
+  virtual ~slides_functor(){;}
+  
+  show_page & showpg(void) { return dynamic_cast<show_page &>(this->pg); }
+  
+  bool shouldShow(xmlNode & node )
+  {
+    bool ret=true; // assume we should
+    if( isMutex(node) )
+    {
+      if( script.ClientArguments().count("s") )
+        ret=false; // since we're mutually exclusive, and we have a detail, don't show
+    }
+    return ret;
+  }
+  
+  virtual  bool operator()( xmlNode & node )
+  {
+    bool bRet = false;
+    
+    if( shouldShow( node ) )
+    {
+      string items;
+      string section;
+      string  isImageSlidesOnly;
+      string replace_tag="$content$"; // default
+      node_attr::iterator x = node.attr.find("replace_tag");  // preferred
+      if( x==node.attr.end() ) x = node.attr.find("replace-tag"); // didn't look at spec closely
+      if( x!=node.attr.end())replace_tag=x->second;
+
+      x = node.attr.find("section");
+      if( x!=node.attr.end() )  section = x->second;
+      
+      
+      x = node.attr.find("items");
+      if( x!=node.attr.end()) items=x->second;
+      x = node.attr.find("isImageSlidesOnly");
+      if( x!=node.attr.end()) isImageSlidesOnly=x->second;
+      if(  isImageSlidesOnly == "true" )
+      {
+        showpg().isImageSlidesOnly=true;
+      }
+
+      if( isEditMode )
+      {
+        editLinksInit();
+        fixEditLinks( items,  pg);
+      }
+      
+      bRet = showpg().emitSlides( items,replace_tag,section );
+
+    }
+    return bRet;    
+  }
+};

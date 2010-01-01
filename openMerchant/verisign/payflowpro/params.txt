@@ -1,0 +1,25 @@
+The following are sample parameters that can be used in any of the examples.
+Please refer to the documentation associated with each example to learn how to
+use these parameters.
+
+<user>:             a registered user or your registered vendor ID
+<vendor>:           your registered vendor ID
+<partner>:          the partner with whom you registered your vendor ID
+<password>:         the password for your registered vendor ID
+<hostAddress>:      "test-payflow.verisign.com" for testing or
+                    "payflow.verisign.com" for live transactions
+<hostPort>:         "443"
+<parmList>:         "TRXTYPE=S&TENDER=C&PWD=analyze&USER=user&VENDOR=vendor&PARTNER=partner&ACCT=5105105105100&EXPDATE=1299&AMT=1.23&COMMENT1=123456789&COMMENT2=Good Customer&STREET=5199 JOHNSON&ZIP=94588"
+<timeOut>:          "30" (optional)
+<proxyAddress>:     [address of your proxy server] (optional)
+<proxyPort>:        [port number of your proxy server] (optional)
+<proxyLogon>:       [login name of your proxy server] (optional)
+<proxyPassword>:    [password for the login name] (optional)
+<debugMode>:        "1" to turn on debug mode (optional, COM client)
+
+
+CONTACT
+-------
+Verisign, Inc. 
+http://www.verisign.com
+See contact.txt for additional contact information

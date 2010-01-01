@@ -1,0 +1,9 @@
+div.slide {
+  text-align: center;
+  position: absolute;
+  top: 200;
+  left: 210;
+  visibility: hidden; 
+  filter:alpha(opacity=0);
+  -moz-opacity: 0;             
+  } 

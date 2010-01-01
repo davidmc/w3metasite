@@ -1,0 +1,120 @@
+  body{ background: white; color: darkblue; }
+  .buttons {
+    color: navy;
+    font-size: 2;
+    background: #ccc;
+    border: 1px solid #ccc;
+    margin: 1;
+    float:left;
+  }
+  .raise  {
+    border-top: 1px solid buttonhighlight;
+    border-left: 1px solid buttonhighlight;
+    border-bottom: 1px solid buttonshadow;
+    border-right: 1px solid buttonshadow;
+    background: #ccc;
+    margin:1;
+    float:left;
+  }
+  .press {
+    border-top: 1px solid buttonshadow;
+    border-left: 1px solid buttonshadow;
+    border-bottom: 1px solid buttonhighlight;
+    border-right: 1px solid buttonhighlight;
+    background: #ccc;
+    margin:1;
+    float:left;
+  }
+  #tabbar 
+  {
+    margin: 0;
+    padding: 0;
+    padding-top: 2px;
+    padding-right: 2px;
+    height: 20px;
+    background: rgb(192,192,192);
+    border: none;
+    text-align: right;
+    vertical-align: bottom;
+  } 
+  .tabs {
+    border: none;
+    margin: 0;
+    float: right; 
+    vertical-align: bottom;
+    background: rgb(192,192,192);     
+  }   
+  #toolbar 
+  {
+    margin: 0;
+    padding: 0;
+    height: 25px;
+    background: #ccc;
+    color: darkblue;
+    border-top: 1px solid buttonhighlight;
+    border-left: 1px solid buttonhighlight;
+    border-bottom: 1px solid buttonshadow;
+    border-right: 1px solid buttonshadow;
+    text-align:right;
+    font-size: 10pt;
+  }
+  #srctoolbar
+  {
+    margin: 0;
+    padding: 0;    
+    height: 75px;
+    background: #ccc;
+    color: darkblue;
+    border-top: 1px solid buttonhighlight;
+    border-left: 1px solid buttonhighlight;
+    border-bottom: 1px solid buttonshadow;
+    border-right: 1px solid buttonshadow;
+    text-align:left;
+    font-size: 8pt;
+    display: none;
+  }
+  div.srcLabel  
+  {
+    float: left;
+    width:120px;
+    font-size: 8pt;
+    color: white;
+    background: darkgray;
+    padding: 1pt; 
+    margin:1px;
+    margin-right: 2px;
+    text-align: right;
+    border-bottom: black solid 1px;
+    border-right: black solid 1px;
+  }
+  #richeditor, #toolbar
+  {
+    text-align: center;
+    margin-left:0px;
+    margin-right:0px;
+    width: 700px;
+  }
+
+  #richEditContainer 
+  {     
+    width: 706px;
+    border: 2px solid black;
+    background: #ccc;   
+  }
+  #plainEditor
+  {   
+    font-size: 9pt;
+    display: none;
+    width: 700px;
+    background: #f8f8ff;
+    border: 1px solid darkblue;
+  }
+  #richeditor
+  {     
+    display: block;
+    height: 400px;
+    width: 700px;
+    border: 1px solid black;
+    background: white;
+    color: black;
+  }  

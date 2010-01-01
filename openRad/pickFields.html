@@ -1,0 +1,26 @@
+<!--@top-->
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>@import "rad.css";</style>
+  </head>
+  <body>
+  <h1>R~A~D</h1>
+  <h3>Step 3 of 4</h3>
+  <p>Please select the member fields to generate code for:</p>
+  <div class='ui'>
+  <form action='pickTemplate.cgi' method="post">
+    <input type="hidden" name="file" value="_file_">
+    Class: <input type="text" readonly name="class" value="_class_">  <br>
+<!--/@top-->
+<!--@fields-->    
+    <input type='checkbox' checked name='field' value='_field_'> &nbsp; _field_<br>
+<!--/@fields-->
+<!--@bottom-->
+    <input type='image' src='go_right.png' class="push">
+  </form>
+  </div>  
+  </body>
+</html>
+<!--/@bottom-->

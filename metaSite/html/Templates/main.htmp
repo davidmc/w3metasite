@@ -1,0 +1,115 @@
+<!--@top--><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+  <TITLE>Quality Connections - Total Voice and Data Solutions</TITLE>
+  <meta name="description"
+        content="$meta_description$">
+  <link rel="stylesheet" type="text/css" href="../main.css">
+</HEAD>
+<BODY>
+<center>
+<table class='mainframe' cellspacing='0' cellpadding='0'>
+  <tr>
+    <td class="heading" colspan="2">
+       <img class="logo" src="../images/QCIBoxLogo.gif">      
+       <!--/@top--><!--@menu1_start-->           
+       <div class='top-menu'><!--/@menu1_start--><!--@menu1_item-->
+         <a id="$id" class="tmenu" href="$location">$label</a> &nbsp; <!--/@menu1_item--><!--@menu1_end-->
+       </div> 
+    </td>
+  </tr><!--/@menu1_end--><!--@menu2_start-->  
+  <tr>
+    <td class='menu'><!--/@menu2_start--><!--@menu2_item-->
+      <a id="$id" href="$location">$label</a><br>     
+      &nbsp;<br><!--/@menu2_item--><!--@menu2_indented_item-->
+      <a id="$id" class="indented" href="$location">$label</a><br>
+      &nbsp;<br><!--/@menu2_indented_item-->      
+      <a href="#">Products</a><br>
+      &nbsp;<br>
+      <a href="#">Services</a><br>
+      &nbsp;<br><!--@menu2_end--> 
+    </td>  
+    <td class='body'><!--/@menu2_end--><!--@First Paragraph-->
+      <div class="info" id="$id">$content</div><!--/@First Paragraph-->
+      <!--@Next Paragraph-->
+      <img src="../images/hr.gif">
+      <div class="info" id="$id">$content</div><!--/@Next Paragraph--><!--@end-->      
+    </td>
+  </tr>
+  <tr>
+    <td colspan='2' id="foot">$content$</td>
+  </tr>  
+</table>
+<a class="design" 
+   target="designer"
+   href="http://www.w3sys.com">
+Design by W<sup>3</sup>Sys.com
+</a>
+</center>
+</BODY>
+</HTML>
+<!--/@end-->
+<!--@edits-->
+<center>
+<div id="toolbar">
+<img onclick="wrapSelection('content','<p class=\'header\'>','</p>');"
+     src="images/heading.gif"
+     title="click to make the selected text into a header">
+<br>
+<img onclick="wrapSelection('content','<p>\n','\n</p>');"
+     src="images/para.gif"
+     title="click to make the selected text into a paragraph">
+<img onclick="wrapSelection('content','<strong>','</strong>');"
+     src="images/bold.gif"
+     title="click to make the selected text bold">
+<img onclick="wrapSelection('content','<em>','</em>');"
+     src="images/italic.gif"
+     title="click to make the selected text italicized">
+<br>
+<img onclick="wrapSelectionWithLink('content','class=\'body\'');"
+     src="images/link.gif"
+     align="middle"
+     title="click to make the selected text a link">
+<img onclick="placeImage('content','align=right');"
+     src="images/img.gif"
+     align="middle"
+     title="click to add an image after the selection">
+</div>
+</center>
+<!--/@edits-->
+<!-- 
+
+  The help section is a standard metapage section that 
+  provides help about this templates makeup.
+  
+-->
+<!--@help-->
+<h3>Layout of this page</h3>
+This page has a moderate layout:<br>
+It has:<ul>
+<li>A top section</li>
+<li>A top menu with a single type of menu item</li>
+<li>A side menu with two types of menu items, (base and indented)</li>
+<li>One content section with two styles of content. 
+The First paragraph, and the next paragraph (with a horizontal rule.)</li>
+<li>An end section</li></ul>
+<p>
+Thats ALL!
+</P>
+<!--/@help-->
+
+<!-- 
+  The control section is a standard metapage section that 
+  provides XML information to the metapage framework about this templates makeup.
+  Current legal layout types: top,menu,content,middle,end
+  (note that XML is case sensitive.)  
+-->
+<!--@control-->
+<xml>
+<top name="top">
+<menu open="menu1_start" close="menu1_end" items="menu1_item"/>
+<menu open="menu2_start" close="menu2_end" items="menu2_item,menu2_indented_item"/>
+<content items="First Paragraph,Next Paragraph" replace-tag="$content"/>
+<end name="end"/>
+</xml>
+<!--/@control-->

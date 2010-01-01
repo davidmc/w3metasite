@@ -1,0 +1,44 @@
+PLIBDIR=/usr/lib/
+INCLUDEDIR=/usr/local/pgsql/include/
+
+LIBDIR=/usr/lib/
+OBJDIR=$(HOME)/development/objects/
+INCLDIR=$(HOME)/development/include/
+FORMDIR=$(HOME)/development/openForms/
+METASRCDIR=$(HOME)/development/metaSite/source/
+ODD=$(HOME)/development/include/
+LDDIR=./
+
+# used by webconsole makefiles
+METADIR=$(HOME)/development/webconsole/metasite_source/
+SADMIN=$(HOME)/development/webconsole/sysadmin_source/
+OTD=$(HOME)/development/include/
+OMD=$(HOME)/development/openMailer/
+OPD=./
+DATAOBJ=$(HOME)/development/objects/pgSQL/
+
+#CC=g++ -s
+CC=g++  -g 
+
+DATALIB=$(DATAOBJ)openDBPG.o $(OBJDIR)openFields.o $(DATAOBJ)openDB.o $(OBJDIR)fmtTime.o
+CGILIB=$(OBJDIR)Astring.o $(OBJDIR)cgiClass.o $(OBJDIR)cgiCookie.o
+DATAINC=-I$(INCLUDEDIR) -I$(INCLDIR) -DDEFINE_OPENDBPG
+CGIINC=-I$(INCLDIR) -I$(FORMDIR) -I. 
+MTAINC=-I$(METASRCDIR)
+
+PLIB=-L$(PLIBDIR) -lpq
+# for the .so libs
+shared_compile_opts=-fpic
+shared_link_opts=-shared -lc
+
+
+IMPL_DEFS=-DJUST_PG_FIELD_INTERFACES
+
+
+
+
+
+
+
+
+

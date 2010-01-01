@@ -1,0 +1,82 @@
+<html>
+  <head>
+<!--@headguts-->  
+    <title>Menu</title>
+    <style>
+    body{
+    padding: 5px;
+    margin: 0px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: rgb(2,0,116);
+    background-color: white;
+    background-image: url(pg_images/border.png);
+    background-position: top right;
+    background-repeat: repeat-y;
+    }
+    .collapsed
+    {
+      margin: 5px;
+      padding-left: 24px;
+      padding-top: 3px;
+      height: 20px;
+      font-weight: 600;
+      background-image: url(pg_images/cobalt_node_point_right.gif);
+      background-position: top left;
+      background-repeat: no-repeat;
+    }
+    .expanded
+    {
+      margin: 5px;
+      padding-left: 24px;
+      padding-top: 3px;
+      height: 20px;
+      font-weight: 600;     
+      background-image: url(pg_images/cobalt_node_point_down.gif);
+      background-position: top left;
+      background-repeat: no-repeat;
+    }
+    .subitem
+    {   
+
+      height: 15px;
+      margin: 0px;
+      margin-left: 5px;
+      padding-left: 8px;
+      font-weight: 600;    
+    }
+    .listitem
+    {      
+      height: 15px;
+      margin: 0px;
+      margin-left: 15px;
+      padding-left: 8px;
+      font-weight: 100;
+      border-bottom: dashed 1px #888800;
+      width: auto;     
+    }
+    </style>
+<!--/@headguts-->     
+  </head>
+  <body>
+<!--@collapsed-->  
+  <a href="$location" target="menu">
+  <div class="collapsed">
+  $label
+  </div></a>
+<!--/@collapsed-->    
+<!--@expanded--> 
+  <a href="$location" target="main"> 
+  <div class="expanded">
+  $label
+  </div>
+<!--/@expanded--> 
+<!--@subitem-->    
+    <div class='subitem'>$content</div>
+<!--/@subitem--> 
+<!--@listitem-->   
+      <div class='listitem'>$content</div>
+<!--/@listitem-->   
+ 
+  </body>
+</html>

@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#####################################################################################################THE PURPOSE OF THIS SCRIPT IS TO INVOKE THE ATOM STARTUP AND SHUTDOWN SCRIPTS, DEPENDING ON
+#THE ARGUMENTS PASSED TO IT -- VJN
+###################################################################################################
+
+ATOM_INSTALL_DIR=.
+ATOM_BIN=.
+ATOM_CFG=.
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../lib;
+export LD_LIBRARY_PATH
+
+case "$1" in
+
+'start')
+		cd ${ATOM_BIN}
+                AtomStartUp 
+		;;
+
+'stop')
+		cd ${ATOM_BIN}
+                AtomShutDown  
+		;;
+
+'status')
+		cd ${ATOM_BIN}
+                case `uname -s` in
+                LINUX|Linux|linux)
+                ps -eaf --columns=200 | grep DATOM=1 | grep -v grep | awk 'BEGIN {OCR = 0} { if(length($3) == 1  && ($3 == 1) ) {OCR++} } END {print OCR, "Instance(s) of ATOM running in this System " }'
+                ;;
+                SunOS|SunOs|Sunos|sunos)
+                ps -eaf |  grep DATOM=1 | grep -v grep | awk 'END {print NR, "Instance(s) of ATOM running in this System " }'
+		;;
+                *)
+                echo "Cannot determine the OS"
+                ;;
+                esac
+                ;;
+*)
+		echo "Usage : $0 { start | stop | status }"
+		;;
+
+esac

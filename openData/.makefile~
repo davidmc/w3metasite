@@ -1,0 +1,111 @@
+include ../build.mak
+
+TOOLINCDIR=$(INCLDIR)
+
+#odbc commented out for current builds, as I am using native API whenever possible
+#ODBCL=-L/opt/odbc/lib/ -lodbc -lodbcinst
+
+#define targets
+OBJ_MYSQL_TGT=../objects/mySQL/
+OBJ_PGSQL_TGT=../objects/pgSQL/
+OBJ_TGT=$(OBJDIR)
+INCL_TGT=$(INCLDIR)
+
+# Database environment variable link definitions
+MY_LN_DEFS=-DDEFINE_OPENMYDB
+PG_LN__DEFS=-DDEFINE_OPENDBPG
+
+# Examine opendb.hpp for details
+
+LIBDIR=/usr/lib/
+# debug withCC=g++ -g 
+CC=g++ -s 
+
+all: $(OBJ_TGT)openFields.o $(OBJ_MYSQL_TGT)openDB.o $(OBJ_PGSQL_TGT)openDB.o $(OBJ_PGSQL_TGT)openDBPG.o \
+$(OBJ_TGT)fmtTime.o  $(OBJ_MYSQL_TGT)openMyDB.o $(INCL_TGT)openDB.h $(INCL_TGT)openFields.h \
+$(INCL_TGT)fmtTime.h $(INCL_TGT)openDBPG.h $(INCL_TGT)openMyDB.h $(INCL_TGT)pgTypeOids.h \
+$(INCL_TGT)mySqlTypeMap.h $(INCL_TGT)odbcTypeMaps.h $(INCL_TGT)openDB.hpp encodeConnect \
+encodeGateway $(INCL_TGT)connectstring.h   testharness
+
+clean:
+	rm $(OBJ_TGT)openFields.o $(OBJ_MYSQL_TGT)openDB.o $(OBJ_PGSQL_TGT)openDB.o $(OBJ_PGSQL_TGT)openDBPG.o \
+  $(OBJ_TGT)fmtTime.o  $(OBJ_MYSQL_TGT)openMyDB.o $(INCL_TGT)openDB.h \
+  $(INCL_TGT)openFields.h $(INCL_TGT)fmtTime.h $(INCL_TGT)openDBPG.h $(INCL_TGT)openMyDB.h \
+  $(INCL_TGT)pgTypeOids.h $(INCL_TGT)mySqlTypeMap.h \
+  $(INCL_TGT)openDB.hpp $(INCL_TGT)connectstring.h
+
+
+
+#make test harness
+testharness:  $(OBJ_TGT)openFields.o $(OBJ_MYSQL_TGT)openDB.o  testharness.o   $(OBJ_TGT)fmtTime.o  makefile $(OBJ_PGSQL_TGT)openDBPG.o $(OBJ_MYSQL_TGT)openMyDB.o
+	$(CC) -o  testharness  $(OBJ_TGT)fmtTime.o  $(OBJ_TGT)openFields.o $(OBJ_TGT)ocString.o  $(OBJ_MYSQL_TGT)openDB.o  testharness.o  $(OBJ_PGSQL_TGT)openDBPG.o $(OBJ_MYSQL_TGT)openMyDB.o $(PLIB) $(MLIB)
+
+encodeConnect: encodeConnect.cpp
+	$(CC) -o encodeConnect  encodeConnect.cpp -I$(INCL_TGT)
+  
+encodeGateway: encodeGateway.cpp
+	$(CC) -o encodeGateway  encodeGateway.cpp -I$(INCL_TGT)
+	  
+
+# make object files
+
+$(OBJ_TGT)openFields.o: openFields.h openFields.cpp makefile
+	$(CC)-o $(OBJ_TGT)openFields.o -c -I$(TOOLINCDIR)  openFields.cpp
+
+$(OBJ_MYSQL_TGT)openDB.o: openDB.h openDB.hpp openDB.cpp makefile
+	$(CC) -o $(OBJ_MYSQL_TGT)openDB.o -c -I$(INCLUDEDIR) -I$(MYINCLUDE) $(MY_LN_DEFS) openDB.cpp 
+
+$(OBJ_PGSQL_TGT)openDB.o: openDB.h openDB.hpp openDB.cpp makefile
+	$(CC) -c -o $(OBJ_PGSQL_TGT)openDB.o -I$(INCLUDEDIR) -I$(PINCLUDEDIR) $(PG_LN__DEFS) openDB.cpp 
+
+$(OBJ_PGSQL_TGT)openDBPG.o: openDBPG.cpp openDBPG.h makefile
+	$(CC) -c -o $(OBJ_PGSQL_TGT)openDBPG.o -I$(INCLUDEDIR)  -I$(PINCLUDEDIR) openDBPG.cpp
+
+$(OBJ_TGT)openODBC.o: openODBC.cpp openODBC.h $(TOOLINCDIR)ocString.h makefile odbcTypeMaps.h
+	$(CC) -c -o $(OBJ_TGT)openODBC.o -I$(INCLUDEDIR) -I$(TOOLINCDIR) openODBC.cpp
+
+$(OBJ_MYSQL_TGT)openMyDB.o: openMyDB.cpp openMyDB.h $(TOOLINCDIR)ocString.h makefile mySqlTypeMap.h
+	$(CC) -o $(OBJ_MYSQL_TGT)openMyDB.o -c -I$(MYINCLUDE) -I$(TOOLINCDIR) openMyDB.cpp
+
+$(OBJ_TGT)fmtTime.o: fmtTime.cpp fmtTime.h makefile
+	$(CC) -c -o $(OBJ_TGT)fmtTime.o fmtTime.cpp
+
+testharness.o: testharness.cpp makefile
+	$(CC) -c -o testharness.o -I$(MYINCLUDE) -I$(TOOLINCDIR) testharness.cpp
+
+	
+# copy include files to common include directory
+
+$(INCL_TGT)openDB.hpp: openDB.hpp
+	cp openDB.hpp $(INCL_TGT)
+  
+$(INCL_TGT)openDB.h: openDB.h
+	cp openDB.h $(INCL_TGT)
+
+$(INCL_TGT)openFields.h: openFields.h
+	cp openFields.h $(INCL_TGT)
+
+$(INCL_TGT)fmtTime.h: fmtTime.h
+	cp fmtTime.h $(INCL_TGT)
+
+$(INCL_TGT)openDBPG.h: openDBPG.h
+	cp openDBPG.h $(INCL_TGT)
+
+$(INCL_TGT)openMyDB.h:  openMyDB.h
+	cp openMyDB.h $(INCL_TGT)
+
+$(INCL_TGT)openODBC.h: openODBC.h
+	cp openODBC.h $(INCL_TGT)
+
+$(INCL_TGT)pgTypeOids.h: pgTypeOids.h
+	cp pgTypeOids.h $(INCL_TGT)
+
+$(INCL_TGT)mySqlTypeMap.h: mySqlTypeMap.h
+	cp mySqlTypeMap.h $(INCL_TGT)
+
+$(INCL_TGT)odbcTypeMaps.h: odbcTypeMaps.h
+	cp odbcTypeMaps.h $(INCL_TGT)
+
+$(INCL_TGT)connectstring.h: connectstring.h
+	cp connectstring.h $(INCL_TGT)
+  

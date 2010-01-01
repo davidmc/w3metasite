@@ -1,0 +1,64 @@
+<!--@part1--><html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>
+    body { background: gray; color: darkred; }
+    #images, #composer{ background: white; color: navy; }
+    </style>
+  </head>
+  <body>
+  <h1>Test Harness For Templates & Multipart Forms</h1>
+  <hr>
+<!--/@part1-->
+<!--@image-->
+<div id='images'>
+<h4>Image Uploaded</h4>
+The following image was uploaded from the multipart form:
+<img src='%file' align='right'>
+</div>
+<!--/@image-->
+<!--@part2-->
+<h2>Form</h2>
+<form action='testharness.cgi' encType='multipart/form-data' method='post'>
+<table id='composer'>
+  <tr>
+    <th>Name:</th>
+    <td><input name='Name' size='50' value='Name Goes Here' maxlength='80'></td>
+  </tr>
+  <tr>
+    <th>Image File to Upload:</th>
+    <td><input type='file' name='File'></td>   </tr>
+  <tr>
+  <tr><th>Bogus Select Data</th>
+      <td>
+        <select name="SubcategoryName" size="5" multiple="multiple">
+        <option value=""></option>
+        <option value="76">Air Fares</option>
+        <option value="11">Apparel</option>
+        <option value="36">Arts &amp; Crafts</option>
+        <option value="22">As Seen On TV</option>
+        <option value="43">Auctions</option>
+        <option value="3">Baby Accessories</option>
+        <option value="52">Beverage</option>
+        <option value="8">Books</option>
+        </select>
+      </td>
+  </tr>    
+  <tr>
+    <td class='buttons' colspan='2'><input type='submit' value='Send'><input type='reset' value='Reset'>
+    </td>
+  </tr>
+  <tr>
+    <td class='area' colspan='2'>
+    <textarea cols='80' rows='20' name='area'>%area</textarea>
+    </td>
+  </tr>
+</table>
+</form>
+<h2>Debug Info</h2>
+  <hr>
+<!--/@part2--><!--@part3-->
+  </body>
+</html>
+<!--/@part3-->

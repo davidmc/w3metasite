@@ -1,0 +1,2 @@
+# /usr/bin/sh
+mysql   --user='meta_admin' --password='metasite7' --database='metasite'

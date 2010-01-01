@@ -1,0 +1,32 @@
+<!--@top-->
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>@import "rad.css";</style>
+  </head>
+  <body>
+  <h1>R~A~D</h1>
+  <h3>Step 4 of 4</h3>
+  <p>Please select the template to use:</p>
+  <div class='ui'>
+  <form action='pickTemplate.cgi' method="post">
+    <input type="hidden" name="file" value="_file_">
+    <input type="hidden" name="class" value="_class_">
+    <input type="hidden" name="field" value="_fields_">        
+    <select name='template'>
+<!--/@top-->
+<!--@templates-->
+    <option value='_template_'>_template_</option>
+<!--/@templates-->
+<!--@bottom-->
+    </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type='image' src='go_right.png' class="push">
+    <h4>RESULT:</h4>
+    <textarea cols="80" rows="30" name="result" id="result">_CODE_</textarea>    
+  </form>
+  <a href="pickClassFile.cgi">Start Over</a>&nbsp;&nbsp;
+  </div>
+  </body>
+</html>
+<!--/@bottom-->

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Verisign Checkout - Credit Payment</title>
+#BASE#
+</head>
+
+<body>
+<form  action="#SCRIPTURL#" method="POST">
+<INPUT TYPE="HIDDEN" NAME="SESSIONID" VALUE="#SESSIONID#">
+<INPUT TYPE="HIDDEN" NAME="action" VALUE="processcredit">
+
+<!-- BEGIN NESTED CONTENTS TABLE -->    
+     <table border="0" width="400" cellpadding="0" align="center" height="204">
+      <tr>
+        <td bgcolor="#B1D8D8"><strong><font face="Arial" size="4">Credit Card Test Transaction</font></strong></td>
+      </tr>
+      <tr>
+        <td bgcolor="#EFEFEF" valign="top" align="center"><font face="Arial" size="2">
+            <div align="center"><center>
+            <table  border="0" width="100%" height="30">
+            <tr>
+              <td width="126" height="30"></font><font face="verdana,tahoma,helvetica" size="2">Card
+              Number:</font><font face="Arial" size="2"></td>
+              <td width="326" height="30"><input type="text" value="5105105105105100" name="ACCT"
+              size="21"></td>
+            </tr>
+            <tr>
+              <td width="126" height="30"></font><font face="verdana,tahoma,helvetica" size="2">Card
+              Expiration:</font><font face="Arial" size="2"></td>
+              <td width="326" height="30"><small><select name="exp_mm" size="1" tabindex="41">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select> / <select name="exp_yyyy" size="1" tabindex="43">
+                <option value="99">1999</option>
+                <option value="00">2000</option>
+                <option value="01" selected>2001</option>
+                <option value="02">2002</option>
+                <option value="03">2003</option>
+                <option value="04">2004</option>
+                <option value="05">2005</option>
+                <option value="06">2006</option>
+                <option value="07">2007</option>
+                <option value="08">2008</option>
+                <option value="09">2009</option>
+                <option value="10">2010</option>
+              </select></small></td>
+            </tr>
+            <tr>
+              <td width="126" height="30"></font><font face="verdana,tahoma,helvetica" size="2">Amount:</font><font
+              face="Arial" size="2"></td>
+              <td width="326" height="30"></font><font face="verdana,tahoma,helvetica" size="2">#AMT#</font><font
+              face="Arial" size="2"></td>
+            </tr>
+          </table>          
+          <input type="submit" value="Process Transaction" name="PaymentNetV2">
+										</center></div></font>
+        </td>
+      </tr>
+<!-- END NESTED CONTENTS TABLE -->
+    </table>
+
+
+</form>
+</body>
+</html>

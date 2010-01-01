@@ -1,0 +1,10 @@
+#ifndef PROVIDER
+#include "connectstring.h"
+const char * CONNECTSTRING = getConnectstring();
+#define PROVIDER MySQL
+#endif
+
+
+
+
+

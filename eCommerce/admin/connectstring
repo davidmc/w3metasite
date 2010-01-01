@@ -1,0 +1,12 @@
+#ifdef CONNECTSTRING
+#undef CONNECTSTRING
+#endif
+#include "connectstring.h"
+const char * CONNECTSTRING = getConnectstring();
+//#define CONNECTSTRING "host=localhost;uid=http_user;pwd=mydeal99;db=rainbow" OLD
+//#define CONNECTSTRING "host=localhost;uid=http_user;pwd=mydeal99;db=logomats" NEW
+#define PROVIDER MySQL
+
+
+
+

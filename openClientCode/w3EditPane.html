@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>W3 Edit Pane - Mozilla and IE Content Editor</title>
+<!--@richsetup-->
+<style type="text/css">
+@import "w3Edit.css";
+</style>
+<script language="JavaScript" src="openDom.js"></script>
+<script language="JavaScript" src="anyData.js"></script>
+<script language="JavaScript" src="eDom2.js"></script>
+ <script language="JavaScript" src="htmlSourceControl.js"></script>
+</head>
+<!--/@richsetup-->
+
+<body onload="richEditSetup()">
+<form id="frmTest" name="frmTest">
+
+<!--@control-->
+<div id="richEditContainer">
+  <div id="viewpick">
+  <div id="tabbar">    
+    <img class="tabs" alt="Source View" src="eGraphic/sourceview.png" onclick="sourceView()">
+    <img class="tabs" alt="Web View" src="eGraphic/webview.png" onclick="richView()">
+  </div>
+  <div id="toolbar"> 
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+         onclick="undo();" 
+         src="eGraphic/undo.gif" title="undo">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+         onclick="redo();" 
+         src="eGraphic/redo.gif" title="redo">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="makeBold();" 
+        src="eGraphic/bold.gif" title="click to make your text selection bold.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="makeItalic();" 
+        src="eGraphic/italic.gif" title="click to make your text selection italicized.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="underline();" 
+        src="eGraphic/underline.gif"   align="middle" title="click to underline selection.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="makeLink();" 
+        src="eGraphic/link.gif" align="middle" title="click to add a link to the selected text.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="getResource();" 
+        src="eGraphic/resources.gif"  align="middle" title="click to link a resource.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="image('images/');" 
+        src="eGraphic/image.gif"  align="middle" title="click to place an image.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="image('small_images/');" 
+        src="eGraphic/imagebutton.gif"  align="middle" title="click to place a thumbnail sized image.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="unorderedlist();" 
+        src="eGraphic/insertunorderedlist.gif"  align="middle" title="click to make an unordered list.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="orderedlist();" 
+        src="eGraphic/insertorderedlist.gif"  align="middle" title="click to make an ordered list.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="justifyleft();" 
+        src="eGraphic/justifyleft.gif"  align="middle" title="click to left justify selection.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="justifycenter();" 
+        src="eGraphic/justifycenter.gif"  align="middle" title="click to center selection.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="justifyright();" 
+        src="eGraphic/justifyright.gif"  align="middle" title="click to right justify selection.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="outdent();" 
+        src="eGraphic/outdent.gif"  align="middle" title="click to outdent selection.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="indent();" 
+        src="eGraphic/indent.gif"  align="middle" title="click to indent selection.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="forecolorSel();" 
+        src="eGraphic/textcolor.gif"  align="middle" title="click to change selection forecolor.">
+    <img class="buttons" onmouseover="mouseover(this);" onmouseout="mouseout(this);" 
+        onmousedown="mousedown(this);" onmouseup="mouseup(this);" 
+        onclick="backcolorSel();" 
+        src="eGraphic/bgcolor.gif"  align="middle" title="click to change selection backcolor.">
+    <select unselectable="on" id="formatblock" onchange="fmtblock(this)">
+    <option value="0">Format:</option>
+    <option value="&lt;div&gt;">Normal</option><option value="&lt;p&gt;">Paragraph</option>
+    <option value="&lt;h1&gt;">Heading 1 </option><option value="&lt;h2&gt;">Heading 2 </option>
+    <option value="&lt;h3&gt;">Heading 3 </option><option value="&lt;h4&gt;">Heading 4 </option>
+    <option value="&lt;h5&gt;">Heading 5 </option><option value="&lt;h6&gt;">Heading 6 </option>
+    <option value="&lt;address&gt;">Address </option><option value="&lt;pre&gt;">Formatted </option>
+    </select>    
+   <select unselectable="on" id="fontsize" onchange="fntsize(this);"> 
+   <option value="0">Font Size:</option>   
+   <option value="1"> 1 </option><option value="2">2 </option>
+   <option value="3">3 </option><option value="4">4 </option>
+   <option value="5">5 </option><option value="6">6 </option>
+   <option value="7">7</option>    
+   </select>        
+  </div> 
+  <iframe id='richEditor'  src='editblank.html'> - NO IFRAME ABILITY! - </iframe>
+  <div id="srctoolbar">
+  <div class="srcLabel">Formatting:</div>
+  <a href="javascript:wrapSelection('<h1>','</h1>')">
+  &lt;h1&gt;</a>
+  &nbsp;|&nbsp; 
+  <a href="javascript:wrapSelection('<h2>','</h2>');">
+  &lt;h2&gt;</a>
+  &nbsp;|&nbsp; 
+  <a href="javascript:wrapSelection('<h3>','</h3>')">
+  &lt;h3&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<h4>','</h4>')">
+  &lt;h4&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<p>','</p>')">
+  &lt;p&gt;</a> 
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<pre>','</pre>')">
+  &lt;pre&gt;</a> 
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<strong>','</strong>')">
+  &lt;strong&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<em>','</em>')">
+  &lt;em&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<u>','</u>')">
+  &lt;u&gt;</a>
+  <br clear="all"><div class="srcLabel">Links &amp; Images:</div>
+  <a href="javascript:wrapSelectionWithLink('class=\'body\'')">
+  &lt;a&gt;</a>
+  &nbsp;|&nbsp;   
+  <a href="javascript:placeImage('','images/')">
+  &lt;img&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:placeImage('align=right','images/')">
+  --&gt; &lt;img&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:placeImage('align=left','images/')">
+  &lt;img&gt; &lt;--</a>
+  &nbsp;|&nbsp;  
+  <a href="javascript:placeImage('','small_images/')">
+  &lt;thumb&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:placeImage('align=right','small_images/')">
+  --&gt; &lt;thumb&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:placeImage('align=left','small_images/')">
+  &lt;thumb&gt; &lt;--</a>
+  <br clear="all"><div class="srcLabel">Lists &amp; Tables:</div>
+  <a href="javascript:wrapSelection('<ul>\n','\n</ul>')">
+  &lt;ul&gt;</a>
+  &nbsp;|&nbsp;  
+  <a href="javascript:wrapSelection('<ol>\n','\n</ol>')">
+  &lt;ol&gt;</a>
+   &nbsp;|&nbsp; 
+  <a href="javascript:wrapSelection('<li>','</li>')">
+  &lt;li&gt;</a>
+  &nbsp;|&nbsp;  
+  <a href="javascript:wrapSelection('<dl>\n','\n</dl>')">
+  &lt;dl&gt;</a>
+   &nbsp;|&nbsp; 
+  <a href="javascript:wrapSelection('<dt>','</dt>')">
+  &lt;dt&gt;</a>
+  &nbsp;|&nbsp;
+    <a href="javascript:wrapSelection('<dd>','</dd>')">
+  &lt;dd&gt;</a>
+  &nbsp;|&nbsp;  
+  <a href="javascript:wrapSelection('<table>','</table>')">
+  &lt;table&gt;</a> 
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<tr>','</tr>')">
+  &lt;tr&gt;</a>
+  &nbsp;|&nbsp;
+  <a href="javascript:wrapSelection('<td>','</td>')">
+  &lt;td&gt;</a> 
+  &nbsp;|&nbsp;  
+  <a href="javascript:wrapSelection('<div class=dyn>','</div>')">
+  &lt;div&gt;</a>  
+  </div>
+  <textarea id="plainEditor" name="$name" rows="20" cols="80">$content</textarea>   
+</div>
+<!--/@control-->
+
+</form>
+</body>
+</html>
+
+<script language="JavaScript" type="text/javascript">
+// for testing - this won't be defined on a live active form page.
+  function ctrlChanged(txtarea) {;}
+</script>

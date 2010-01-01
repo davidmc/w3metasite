@@ -1,0 +1,61 @@
+/*
+  AspellWrapperClass.hpp
+  DEFINITION FILE
+
+  C++ STL compatible wrapper class for aspell api.
+    http://aspell.net
+  Version 0.1
+
+  We need a single library:       libaspell.so
+  We need a single include file:  aspell.h
+
+  David McCombs davidmc@w3sys.com
+  This code is free use and extend as you see fit.
+    http://www.w3sys.com
+
+*/
+
+#ifndef   ASPELLWRAPPERCLASS_HPP
+#define   ASPELLWRAPPERCLASS_HPP
+
+#include "aspell.h"
+#include <string>
+#include <vector>
+
+using namespace std;
+
+typedef vector<string> alternatives;
+
+class AspellWrapper 
+{
+private:
+  AspellConfig * config;
+  AspellSpeller * speller;
+public: 
+  string error;
+  alternatives suggestions;
+
+public:
+  /* will probably never care about jargon
+  */
+  AspellWrapper( string lang, string size="", 
+                 string encoding="", 
+                 string jargon="",
+                 string prime_dictionary="",
+                 string personal_dictionary=""
+                 string technical_dictionary=""
+               );
+  ~AspellWrapper()
+
+  // check a single word - new functionality will cause it to use the standard dictionary, plus personal and technical.
+  bool checkWord( string word );
+  // suggest alternative for a word
+  alternatives & suggestWords( string word );
+
+  // new features
+  bool addToPersonalDictionary( string word );
+  bool addToTechDictionary( string word );
+
+};
+
+#endif

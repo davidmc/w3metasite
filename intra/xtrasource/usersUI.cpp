@@ -1,0 +1,235 @@
+/*
+  usersUI.cpp
+
+  User Interface Definition and Implementation 
+  for users.
+  
+  Copyright (c) 2005 by D.K. McCombs.
+  
+  davidmc@w3sys.com
+  
+  W3 Systems Design Inc.  
+  
+*/
+#include <string>
+//#define OPEN_LOGGING_FILE
+#include "openLogger.h"
+using namespace std;
+#include "users.hpp"
+
+#include "w3intranet.h"
+
+class users_List:  public list_base
+{
+public: 
+  // Constructor
+  users_List(cgiScript&sc,Session_Obj & session):list_base(sc,session){;}   
+  ~users_List(){;}
+  
+  bool list_display( void )
+  {
+    bool breturn = true;
+
+    hotCol=-2;    
+    editLink = listTemplate.getParagraph("hotcolumn");
+    editLink = editLink.replace("$prog$","usersUI.meta");
+    emitFilter( "usersUI.meta",
+                "    <B>FILTER (by Last Name)</B>" );
+    string heading =
+                     "<a class='sortcol' href='usersUI.meta?sort=id'>id</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=group_id'>group_id</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=first'>first</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=last'>last</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=login'>login</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=password'>password</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=phone_number'>phone_number</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=email'>email</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=preferences'>preferences</a>|"                     
+                     "<a class='sortcol' href='usersUI.meta?sort=metasite_user_id'>metasite_user_id</a>"                     
+                    ;
+    emitHeadings(heading);
+    getFilteredData(
+                     "id, " 
+                     "group_id, " 
+                     "first, " 
+                     "last, " 
+                     "login, " 
+                     "password, " 
+                     "phone_number, " 
+                     "email, " 
+                     "preferences, " 
+                     "metasite_user_id " 
+                     ,"users",                     
+                     "last like '$filter$%'" );
+    emitData();
+    emitNavigation("usersUI.meta");         
+    emitEnd();
+    return breturn;
+  }      
+}; 
+
+class users_form:  public users_Obj, public forms_base
+{
+public: 
+  users_form(cgiScript & script):users_Obj(),forms_base(script){setKey(*this);} 
+  virtual ~users_form(){;}
+  
+  void form_id_transfer( void )
+  {
+    llongFXfer( "id", id );
+  }
+  void form_data_transfer( void )
+  {
+    llongFXfer( "group_id", group_id);
+    stringFXfer( "first", first);
+    stringFXfer( "last", last);
+    stringFXfer( "login", login);
+    stringFXfer( "password", password);
+    stringFXfer( "phone_number", phone_number);
+    stringFXfer( "email", email);
+    stringFXfer( "preferences", preferences);
+    llongFXfer( "metasite_user_id", metasite_user_id);
+    if( group_id != 0 ) stringFXfer( "role_id",  user_roles); 
+  } 
+  bool isupplemental( void )
+  {
+    return setRoles();
+  }
+  
+  // event fired after update
+  bool usupplemental( changeMap & changes )
+  { 
+    bool bRet = deleteRoles();
+    if(bRet)  bRet = setRoles();
+    return bRet; 
+  }
+  
+  // event fired after delete
+  bool dsupplemental( void )
+  { 
+    return deleteRoles(); 
+  }
+  // event fired after gettring data
+  bool ssupplemental( void )
+  {
+    return retrieveRoles();
+  } 
+    
+  bool dbf_action( string mode, changeMap & changes )
+  {
+    return db_action( mode, changes );
+  } 
+  
+  // implement pure virtual of form display
+  bool form_display( void )
+  {
+    bool breturn = true;
+    ocString sql; // for combo boxes
+    
+    script << makeTop("usersUI.meta", "users")
+           << formTemplate.getParagraph("advanced_begin");
+    script << makeStaticBox("id", "id", id ,"8");
+    script << "<br class='clearall'>" << endl;
+    script << formTemplate.getParagraph("advanced_end");
+    sql = "select id, name from groups";
+    if( !oLogin.SiteAdmin() )
+    {
+      sql += " where id = ";
+      sql += oLogin.GroupId();
+    }
+    sql += " order by name";    
+    script << makeComboBox("group_id", "group_id", group_id ,sql);
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("first", "first", first ,"25");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("last", "last", last ,"25");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("login", "login", login ,"25");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("password", "password", password ,"25");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("phone_number", "phone_number", phone_number ,"25");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("email", "email", email ,"25");
+    script << "<br class='clearall'>" << endl; 
+    script << makeTextBox("preferences", "preferences", preferences ,"25");
+    script << "<br class='clearall'>" << endl; 
+    if( oLogin.SiteAdmin() )
+    {    
+      sql = "select id, concat( first, ' ', last) as name from users ";
+      script << makeComboBox("metasite_user_id", "metasite_user_id", metasite_user_id ,sql);    
+      script << "<br class='clearall'>" << endl; 
+    }
+    if( group_id != 0 )
+    {
+      ocString select = "select r.id, r.name from roles r inner join group_roles gr on "
+                        "r.id = gr.role_id where gr.group_id = ";
+      select.append(group_id);               
+
+      script 
+           << makeComboBox("Roles","role_id",user_roles,
+                           select.c_str(), 
+                           "", " multiple='multiple' size='6'" );     
+      script << "<br class='clearall'>" << endl;  
+    }      
+    script << makeButtons( key() );        
+    script << makeBottom( m_result ) << endl; 
+    return breturn;
+  }
+};
+
+bool intraMain(page & pg ,cgiScript & script)
+{
+
+  users_form myFrm(script); 
+  users_List mylist(script,oLogin.Session());  
+
+  myFrm.loadControlTemplates("Templates/divform.htmp");  
+  myFrm.form_action();  
+  myFrm.form_display();
+
+  mylist.loadListTemplates("Templates/navlist.htmp");  
+  mylist.list_display();
+
+  return true;
+}
+
+// Standard main function
+int main(int argc, char ** argv)
+{  
+  baseUrl = "usersUI.meta";  // this is my compiled name!
+  // because we are checking
+  cgiScript script("text/html",false);
+  isSignedOn = check(script);
+  script.closeHeader();
+  
+  /* Replace intranet.meta with anything you please, or not,
+     make sure an associated page entry exists in the metasite database. */
+  script.ScriptName() =
+    ocString( script.ScriptName().c_str()).replace("usersUI.meta","services").c_str();  
+    
+  page pg(script);  
+  
+  writelog( "load page" );  
+  if( pg.load() )
+  {    
+    writelog( "instance of page control" );
+    page_control ctrl(pg);     
+    ctrl.addOp ( "servicelist",  new servicelist_functor(pg,script,isSignedOn) );    
+    ctrl.addOp ( "userinterface",  new form_functor(pg,script,isSignedOn) );    
+    writelog( "page control emit" );
+    ctrl.emit();    
+  }
+  else
+  {
+    script << "<html><head><title>Page Unavailable</title></head>" << endl
+           << "<body><h1>Sorry</h1>" << endl
+           << "<p>The page you requested is not available</p></body></html>";
+  } 
+  return 0;
+}
+
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"
+

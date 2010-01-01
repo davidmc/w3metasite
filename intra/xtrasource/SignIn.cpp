@@ -1,0 +1,180 @@
+/*
+  SignIn.cpp
+
+  User Interface Definition and Implementation
+  Copyright (C) 2005 by D.K. McCombs.
+  W3 Systems Design
+
+  REQUIRES TEMPLATE:  Templates/signinform.htmp
+
+*/
+
+#include <iostream>
+#include <iomanip>
+#include "cgiTemplates.h"
+#include "connectstring"
+#include "forms.h"
+#include "ocTypes.h"
+#include "ocString.h"
+#include "read_write_base.hpp"
+#include "forms_base.hpp"
+#include "cgiTemplates.h"
+#include "openLogin.h"
+ 
+bool isSignedOn;
+openLogin oLogin;
+
+using namespace std;
+bool check(cgiScript & script)
+{
+  bool isSignedOn = false;
+  Session_Obj & sess = oLogin.Session();
+  if ( (script.ClientArguments().count("login")==1) &&
+       (script.ClientArguments().count("password")==1) )
+  {
+
+    aString & asLogin = script.ClientArguments()["login"];
+    aString & asPassword = script.ClientArguments()["password"];
+    // DBG    cerr << "\r\n\r\nCHECK: " <<  asLogin  << " . " <<   asPassword  << "<br>" << endl;
+    isSignedOn = oLogin.checkUser( asLogin.str(), asPassword.str() );
+  }
+  else
+  {
+    //DBG    cout << "\r\n\r\nTEST LOGIN: <br>" << endl;
+    // attempt to get cookie
+    if ( oLogin.testLoginStatus() )
+    {
+      if( script.ClientArguments().count("signoff") )
+      {
+        cgiCookie cookie;
+        cookie.setTimeout( 1, 1, 1970, 0, 0 );
+        cookie.setPath("/");
+        cookie.set( "intraToken", "" );
+        sess.SetData( "editMode", "false" );
+        sess.Synch();
+        isSignedOn = false;
+      }
+      else
+      {
+        isSignedOn = true;
+      }
+    }
+  }
+  if( isSignedOn && script.ClientArguments().count("editMode")==1  )
+  {
+    string Data =  script.ClientArguments()["editMode"].c_str();
+    
+    // at this time we need to check if the user has the service
+    sess.SetData( "editMode", Data );
+    sess.Synch();
+  }
+  return isSignedOn;
+} 
+
+class SignIn_form:  public forms_base
+{
+  bool top_made;
+public:   
+  string vLogin;
+  string vPassword;
+  llong m_key;
+
+  SignIn_form(cgiScript & script):forms_base(script),top_made(false),m_key(0){setKey(*this);}
+  virtual ~SignIn_form(){;}
+
+  // to satify forms base expectation of key set/get methods (from read write base normally.)
+  void key( llong keyIn ) { m_key = keyIn; }
+  llong key( void ) { return m_key; }
+  
+  void form_id_transfer( void )
+  {
+  }
+  void form_data_transfer( void )
+  {
+    stringFXfer( "password", vPassword);
+    stringFXfer( "login", vLogin);
+  }
+
+  bool dbf_action( string mode, changeMap & changes )
+  {
+    mode="i";
+    return true; // db_action( mode, changes );
+  } 
+
+  // implement pure virtual of form display
+  bool form_display( void )
+  {
+    bool breturn = true;
+    script << makeTop("javascript:checkSignOn()", "User Login");
+    // script << makeHiddenBox("Id", Id );
+    script << makeTextBox("Login:", "login", vLogin ,"20");
+    script << "<br>&nbsp;<br class='clearall'>" << endl;
+    script << makePasswordBox("Password:", "password", vPassword ,"12");
+    script << "<br class='clearall'>" << endl;
+
+    /*
+      <!--@control_group--><div class="ctrlgroup">   
+    <div class='label'>$label$</div><div class='control'>$control$ <!--eogc--></div><!--eogc--></div>
+<!--/@control_group--> 
+
+    */
+    ocString btnGroup = formTemplate.getParagraph("control_group");
+    script << btnGroup.replace("$label$","&nbsp;")
+                      .replace("$control$","<input type='submit' value='Sign In' onClick='javascript:doMyLogin()'></div>");
+    script << "<br>&nbsp;<br class='clearall' />" << endl;    
+    top_made = true;
+    return breturn;
+  }
+
+};
+
+bool authMain(cgiScript & script)
+{
+  SignIn_form myFrm(script);
+  string errorline;
+  cgiInput & inputArgs = script.ClientArguments();
+
+  // Xfer form to member vars
+  myFrm.form_data_transfer();
+
+  myFrm.loadControlTemplates("Templates/signinform.htmp");
+  myFrm.form_display();
+
+  if(  myFrm.vLogin.length() == 0 ) errorline += "Please input your Login and Password.";
+  else if(  myFrm.vPassword.length() == 0 ) errorline += "Please input your Password.";
+  else if(  oLogin.getLastError().length() )
+  {
+    errorline += "Bad login or password:<br>";
+    // errorline += oLogin.getLastError();
+  }
+  script << myFrm.makeBottom( errorline ) << endl;
+
+return true;
+}
+
+
+
+// Standard main function
+int main(int argc, char ** argv)
+{
+  cgiScript script( "text/html", false );
+  isSignedOn = check(script);
+
+  script.closeHeader();
+  if(  isSignedOn == false )
+  {
+    authMain(script);
+  }
+  else
+  {
+    script << "<status>good</status><token>" << endl;
+  }
+  return 0;
+}
+
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"
+
+
+

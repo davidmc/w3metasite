@@ -1,0 +1,134 @@
+ /*
+  Composite_Query_Test.cpp
+
+  User Interface Definition and Implementation 
+  for Composite_Query.
+  
+  Copyright (C) 2006 by D.K. McCombs.
+  W3 Systems Design  
+  
+*/
+
+#include <iostream>
+#include <iomanip>
+#include "cgiTemplates.h"
+#include "connectstring"
+#include "forms.h"
+#include "ocTypes.h"
+#include "ocString.h"
+#include "read_write_base.hpp"
+#include "forms_base.hpp"
+#include "cgiTemplates.h"
+#include "Composite_Query.hpp"
+#include "openLogin.h" 
+
+using namespace std;
+openLogin oLogin;
+
+#include "InfoPoints.hpp"
+
+class Composite_Query_form:  public Composite_Query_Obj, public forms_base
+{
+public: 
+  Composite_Query_form(cgiScript & script):Composite_Query_Obj(),forms_base(script)
+  {
+    setKey(*this);
+  } 
+  virtual ~Composite_Query_form(){;}
+  
+  void form_id_transfer( void )
+  {
+    llongFXfer( "Id", Id );
+  }
+  void form_data_transfer( void )
+  {
+  }
+
+
+  bool dbf_action( string mode, changeMap & changes )
+  {
+    if( mode == "s" ) // we want to get the query
+    {
+      return db_action( mode, changes );
+    }
+    return false;
+  } 
+
+  // implement pure virtual of form display
+  bool form_display( void )
+  { 
+    bool breturn = true;    
+
+    string result;
+    script << ocString(makeTop("Composite_Query_Popup.cgi", "Query Test")).replace("doExit()","window.close()");
+    script << "These results are valid only for an updated composite query. Be sure to hit update or insert before calling test. " << endl;
+
+
+    if( Id )
+    {
+      ocString sql = asSQL(false);
+      script <<  makeTextArea( "Query", "sql", sql, "8", "80" );
+      if( rs.open(sql) )
+      {
+        int i;
+        int count = 0;
+        for( i=0; i<rs.getFieldCount();i++)
+        {
+          result += rs.getField(i).getName() + "\t";
+        }
+        result += "\n===============================================\n";
+        do{
+          count++;
+          for( i=0; i<rs.getFieldCount();i++)
+          {
+            result += rs.getField(i).format() + "\t";
+          }
+          result += "\n-----------------------------------------------\n";
+          result += db.errorString();
+
+        } while( rs.isOpen() && rs.next() && count < 10 );
+        rs.close();
+      }
+      else
+      {
+        result += "QUERY FAILED:\n";
+        result += db.errorString();
+      }
+      script <<  makeTextArea( "Result", "result", result, "8", "80" );
+    }
+    script << makeBottom( m_result ) << endl;     
+    return breturn;
+  }  
+};
+
+
+int main( int argcount, char ** args )
+{
+  cgiScript script( "text/html", false );
+  Composite_Query_form myFrm(script); 
+   
+  if( oLogin.testLoginStatus() )
+  {
+    script.closeHeader();
+    cgiTemplates pgTemplate;    
+    pgTemplate.load("Templates/childPane.htmp");
+    
+    script << ocString(pgTemplate.getParagraph("top"))
+                     .replaceAll("$heading$","Composite_Query");
+
+    myFrm.loadControlTemplates("Templates/childdivform.htmp");  
+    myFrm.form_action();  
+    myFrm.form_display();
+        
+    ocString end = pgTemplate.getParagraph("bottom");
+    script << end;          
+  }
+  else
+  {
+    script.Redirect("/"); 
+  } 
+}
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"
+

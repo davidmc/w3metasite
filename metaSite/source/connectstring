@@ -1,0 +1,11 @@
+#ifndef PROVIDER
+#include "connectstring.h"
+// The un-encoded connectsring is: "host=localhost;uid=http_user;pwd=mydeal99;db=metasite"
+const char * CONNECTSTRING = getConnectstring();
+#define PROVIDER MySQL
+#endif
+
+
+
+
+

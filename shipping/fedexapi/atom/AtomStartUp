@@ -1,0 +1,80 @@
+#!/bin/sh
+
+
+#####################################################################################################THE PURPOSE OF THIS SCRIPT IS TO STARTUP ATOM. 
+#SINCE IT IS USELESS TO HAVE MORE THAN ONE INSTANCE OF ATOM RUNNING, LISTENING ON THE SAME
+#PORT, WE FOREWARN THE USER IF IN CASE WE FIND ANOTHER INSTANCE AND GIVE HIM THE OPTION
+#TO QUIT WITH OUT STARTING ATOM. 
+# -- VJN
+####################################################################################################
+
+
+###################################################################################################
+# A FUNCTION TO START ATOM
+###################################################################################################
+
+
+StartAtom() 
+{
+       echo "Leave blank to use the default JVM, or type the absolute path of the JVM"
+       echo "you wish to use. Ex. usr/java1.4/bin"
+       echo "_______________________________________________________"
+       read jvmpath
+       # INVOKE ATOM
+       #if [ -d $jvmpath ]
+       if [ $jvmpath ]
+       then
+       	  if [ -d $jvmpath ]
+       	  then
+       	     echo $jvmpath
+             $jvmpath/java -DATOM=1 -mx132M -classpath .:./Atom.jar:./Validate.jar:./certj.jar:./jsafeObf.jar:./sslj.jar com.fedex.api.Atom &
+          else
+       	     echo $jvmpath
+             echo "There is an error in the path you have typed for the location of the JVM."
+             echo "Try again later after making sure you have the right path."
+             echo "ATOM NOT STARTED !!!!!!!"
+          fi
+        else
+             echo "Using \c"
+             which java
+             java -DATOM=1 -mx132M -classpath .:./Atom.jar:./Validate.jar:./certj.jar:./jsafeObf.jar:./sslj.jar Main.Atom &
+       fi
+}
+
+###################################################################################################
+# THE ACTUAL START UP SCRIPT 
+###################################################################################################
+case `uname -s` in
+LINUX|Linux|linux)
+process_id=`ps -eaf --columns=200 |grep 'DATOM=1'|grep -v grep | awk '{print $2;}'`
+;;
+SunOS|SunOs|Sunos|sunos)
+process_id=`ps -eaf |grep 'DATOM=1'|grep -v grep | awk '{print $2;}'`
+;;
+*) echo "Cannot determine the OS"
+exit 0
+;;
+esac
+if [ -n "${process_id}" ] 
+then
+   echo "AN INSTANCE OF ATOM IS ALREADY RUNNING IN THIS SYSTEM !"
+   echo "____________________________________________________________"
+   echo "If you want to start another instance of ATOM, please note that"
+   echo "you need to configure the new instance to listen to a totally different port."
+   echo "Please note that running multiple instances of ATOM listening on the same port"
+   echo "is a waste of system resources and more over, serves no purpose !!!!!!!!"
+   echo "____________________________________________________________"
+   echo "To Continue and start ATOM  ----------- press y"
+   echo "To Exit                     ----------- press n" 
+   echo "____________________________________________________________"
+   read response
+   if [  \( "$response" = y \)  ]
+   then
+      StartAtom
+   else
+       echo "ATOM NOT STARTED !!!!!!!"
+       exit 0
+   fi
+else
+     StartAtom
+fi

@@ -1,0 +1,55 @@
+<!--@top-->
+<html>
+<head>
+    <style>
+body {
+font-family: Arial, Gill, Helvetica, sans-serif ;
+font-size: 10pt;
+color: darkred;
+}
+table{
+border-collapse: collapse;
+border-top: 1pt solid navy;
+border-left: 1pt solid navy;
+}
+th {
+padding: 3pt;
+border-bottom: 1pt solid navy;
+border-right: 1pt solid navy;
+}
+td {
+padding: 3pt;
+border-bottom: 1pt solid navy;
+border-right: 1pt solid navy;
+color: black;
+}
+
+</style>
+</head>
+<body>
+    <h1>$name$</h1>
+    <table>
+        <!--/@top-->
+        <!--@row-->
+        <tbody>
+            <tr>
+                <!--/@row-->
+                <!--@data_cell-->
+                <td>
+                    $data$ 
+                </td>
+                <!--/@data_cell-->
+                <!--@heading-->
+                <th>
+                    $data$ 
+                </th>
+                <!--/@heading-->
+                <!--@end_row-->
+            </tr>
+            <!--/@end_row-->
+            <!--@end-->
+        </tbody>
+    </table>
+    <!--/@end-->
+</body>
+</html>

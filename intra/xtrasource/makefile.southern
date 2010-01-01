@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/southern/intra/
+OLOGIN = -DALTSLOGINSOURCE="\"../../southern/source/openLogin.h\""
+

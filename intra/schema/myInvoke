@@ -1,0 +1,2 @@
+# /usr/bin/sh
+mysql   --user='paydrop_admin' --password='pd10191969' --database='metasite'

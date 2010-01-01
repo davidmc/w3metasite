@@ -1,0 +1,124 @@
+
+Path: /usr/lib/ImageMagick-6.2.2/config/type-ghostscript.xml
+
+Name                             Family                  Style   Stretch  Weight
+--------------------------------------------------------------------------------
+AvantGarde-Book                  AvantGarde              Normal  Normal    400
+AvantGarde-BookOblique           AvantGarde              Oblique Normal    400
+AvantGarde-Demi                  AvantGarde              Normal  Normal    600
+AvantGarde-DemiOblique           AvantGarde              Oblique Normal    600
+Bookman-Demi                     Bookman                 Normal  Normal    600
+Bookman-DemiItalic               Bookman                 Italic  Normal    600
+Bookman-Light                    Bookman                 Normal  Normal    300
+Bookman-LightItalic              Bookman                 Italic  Normal    300
+Courier                          Courier                 Normal  Normal    400
+Courier-Bold                     Courier                 Normal  Normal    700
+Courier-BoldOblique              Courier                 Oblique Normal    700
+Courier-Oblique                  Courier                 Oblique Normal    400
+Helvetica                        Helvetica               Normal  Normal    400
+Helvetica-Bold                   Helvetica               Normal  Normal    700
+Helvetica-BoldOblique            Helvetica               Italic  Normal    700
+Helvetica-Narrow                 Helvetica Narrow        Normal  Condensed 400
+Helvetica-Narrow-Bold            Helvetica Narrow        Normal  Condensed 700
+Helvetica-Narrow-BoldOblique     Helvetica Narrow        Oblique Condensed 700
+Helvetica-Narrow-Oblique         Helvetica Narrow        Oblique Condensed 400
+Helvetica-Oblique                Helvetica               Italic  Normal    400
+NewCenturySchlbk-Bold            NewCenturySchlbk        Normal  Normal    700
+NewCenturySchlbk-BoldItalic      NewCenturySchlbk        Italic  Normal    700
+NewCenturySchlbk-Italic          NewCenturySchlbk        Italic  Normal    400
+NewCenturySchlbk-Roman           NewCenturySchlbk        Normal  Normal    400
+Palatino-Bold                    Palatino                Normal  Normal    700
+Palatino-BoldItalic              Palatino                Italic  Normal    700
+Palatino-Italic                  Palatino                Italic  Normal    400
+Palatino-Roman                   Palatino                Normal  Normal    400
+Symbol                           Symbol                  Normal  Normal    400
+Times-Bold                       Times                   Normal  Normal    700
+Times-BoldItalic                 Times                   Italic  Normal    700
+Times-Italic                     Times                   Italic  Normal    400
+Times-Roman                      Times                   Normal  Normal    400
+
+Path: /usr/lib/ImageMagick-6.2.2/config/type-windows.xml
+
+Name                             Family                  Style   Stretch  Weight
+--------------------------------------------------------------------------------
+Arial                            Arial                   Normal  Normal    400
+Arial-Black                      Arial                   Normal  Normal    900
+Arial-Bold                       Arial                   Normal  Normal    700
+Arial-Bold-Italic                Arial                   Italic  Normal    700
+Arial-Italic                     Arial                   Italic  Normal    400
+Arial-Narrow                     Arial Narrow            Normal  Condensed 400
+Arial-Narrow-Bold                Arial Narrow            Normal  Condensed 700
+Arial-Narrow-Bold-Italic         Arial Narrow            Italic  Condensed 700
+Arial-Narrow-Italic              Arial Narrow            Italic  Condensed 400
+Arial-Narrow-Special-G1          Arial Narrow Special G1 Normal  Condensed 400
+Arial-Narrow-Special-G1-Bold     Arial Narrow Special G1 Normal  Condensed 700
+Arial-Narrow-Special-G1-Italic   Arial Narrow Special G1 Italic  Condensed 400
+Arial-Narrow-Special-G2          Arial Narrow Special G2 Normal  Condensed 400
+Arial-Narrow-Special-G2-Bold     Arial Narrow Special G2 (null)  Normal    700
+Arial-Narrow-Special-G2-Italic   Arial Narrow Special G2 Italic  Condensed 400
+Arial-Rounded-MT-Bold            Arial Rounded MT        Normal  Normal    700
+Arial-Special-G1                 Arial Special G1        Normal  Normal    400
+Arial-Special-G1-Bold            Arial Special G1        Normal  Normal    700
+Arial-Special-G1-Bold-Italic     Arial Special G1        Italic  Normal    700
+Arial-Special-G1-Italic          Arial Special G1        Italic  Normal    400
+Arial-Special-G2                 Arial Special G2        Normal  Normal    400
+Arial-Special-G2-Bold            Arial Special G2        Normal  Normal    700
+Arial-Special-G2-Bold-Italic     Arial Special G2        Italic  Normal    700
+Arial-Special-G2-Italic          Arial Special G2        Italic  Normal    400
+Bookman-Old-Style                Bookman Old Style       Normal  Normal    400
+Bookman-Old-Style-Bold           Bookman Old Style       Normal  Normal    700
+Bookman-Old-Style-Bold-Italic    Bookman Old Style       Italic  Normal    400
+Bookman-Old-Style-Italic         Bookman Old Style       Italic  Normal    400
+Century-Schoolbook               Century Schoolbook      Normal  Normal    400
+Century-Schoolbook-Bold          Century Schoolbook      Normal  Normal    700
+Century-Schoolbook-Bold-Italic   Century Schoolbook      Italic  Normal    700
+Century-Schoolbook-Italic        Century Schoolbook      Italic  Normal    400
+Comic-Sans-MS                    Comic Sans MS           Normal  Normal    400
+Comic-Sans-MS-Bold               Comic Sans MS           Normal  Normal    700
+Courier-New                      Courier New             Normal  Normal    400
+Courier-New-Bold                 Courier New             Normal  Normal    700
+Courier-New-Bold-Italic          Courier New             Italic  Normal    700
+Courier-New-Italic               Courier New             Italic  Normal    400
+Garamond                         Garamond                Normal  Normal    400
+Garamond-Bold                    Garamond                Normal  Normal    700
+Garamond-Italic                  Garamond                Italic  Normal    400
+Gill-Sans-MT-Ext-Condensed-Bold  Gill Sans MT            Normal  ExtraCondensed 700
+Impact                           Impact                  Normal  Normal    400
+Lucida-Blackletter               Lucida Blackletter      Normal  Normal    400
+Lucida-Bright                    Lucida Bright           Normal  Normal    400
+Lucida-Bright-Demibold           Lucida Bright           Normal  Normal    600
+Lucida-Bright-Demibold-Italic    Lucida Bright           Italic  Normal    600
+Lucida-Bright-Italic             Lucida Bright           Italic  Normal    400
+Lucida-Caligraphy-Italic         Lucida Caligraphy       Italic  Normal    400
+Lucida-Console,	Lucida-Console   Regular                 (null)  Normal    400
+Lucida-Fax-Demibold              Lucida Fax              Normal  Normal    600
+Lucida-Fax-Demibold-Italic       Lucida Fax              Italic  Normal    600
+Lucida-Fax-Italic                Lucida Fax              Italic  Normal    400
+Lucida-Fax-Regular               Lucida Fax              Normal  Normal    400
+Lucida-Handwriting-Italic        Lucida Handwriting      Italic  Normal    400
+Lucida-Sans-Demibold-Italic      Lucida Sans             Italic  Normal    600
+Lucida-Sans-Demibold-Roman       Lucida Sans Demibold    Normal  Normal    400
+Lucida-Sans-Regular              Lucida Sans             Normal  Normal    400
+Lucida-Sans-Typewriter-Bold      Lucida Sans Typewriter  Normal  Normal    700
+Lucida-Sans-Typewriter-Bold-Obli Lucida Sans Typewriter  Normal  Normal    700
+Lucida-Sans-Typewriter-Oblique   Lucida Sans Typewriter  Normal  Normal    700
+Lucida-Sans-Typewriter-Regular   Lucida Sans Typewriter  Normal  Normal    400
+Modern                           Modern                  Normal  Normal    400
+Monotype-Corsiva                 Monotype Corsiva        Normal  Normal    400
+MS-Sans-Serif                    MS Sans Serif           Normal  Normal    400
+MS-Serif                         MS Serif                Normal  Normal    400
+Small-Fonts                      Small Fonts             Normal  Normal    400
+Tahoma                           Tahoma                  Normal  Normal    400
+Tahoma-Bold                      Tahoma                  Normal  Normal    700
+Times-New-Roman                  Times New Roman         Normal  Normal    400
+Times-New-Roman-Bold             Times New Roman         Normal  Normal    700
+Times-New-Roman-Bold-Italic      Times New Roman         Italic  Normal    700
+Times-New-Roman-Italic           Times New Roman         Italic  Normal    400
+Times-New-Roman-MT-Extra-Bold    Times New Roman MT      Normal  Normal    800
+Verdana                          Verdana                 Normal  Normal    400
+Verdana-Bold                     Verdana                 Normal  Normal    700
+Verdana-Bold-Italic              Verdana                 Italic  Normal    700
+Verdana-Italic                   Verdana                 Italic  Normal    400
+Wingdings                        Wingdings               Normal  Normal    400
+Wingdings-2                      Wingdings 2             Normal  Normal    400
+Wingdings-3                      Wingdings 3             Normal  Normal    400

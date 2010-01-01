@@ -1,0 +1,79 @@
+<!--@top-->
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="adminchart.css"/>
+    <script type="text/javascript" src="openDom.js"></script>
+    <script type="text/javascript"> 
+      var oDom = new openDom();
+      var exp = new RegExp( "^Microsoft","i" );
+      if( exp.test(navigator.appName) )
+      {
+        document.write("<style type='text/css'>");
+        document.write("@import url(msfixup.css );");
+        document.write("</style>");
+      }
+      function alternateOverflow( dv )
+      {
+        if( dv.style.overflow == "auto" )
+          dv.style.overflow="hidden";
+        else
+          dv.style.overflow="auto";
+      }
+    </script>   
+    <title>Usage Charts</title>
+    <meta content="">
+  </head>
+  <body>
+<!--/@top-->
+
+<!--@charttitle-->
+  <h3>Site Statistics by <a href="index.html">$title</a></h3>
+  <div id="chart">
+  <table>
+<!--/@charttitle-->
+
+<!--@label-->
+        <tr><td class="labelcell" onClick="alternateOverflow(this)"><div class="label"> $label </div></td>
+<!--/@label-->
+
+<!--@chartdata-->
+        </td><td class="datacell">
+<!--/@chartdata-->
+
+<!--@reddata-->   
+        <div class='data'><div class="red" style="width: $num$px;">.</div> &nbsp; $num$</div>
+<!--/@reddata-->
+
+<!--@greendata-->
+        <div class='data'><div class="green" style="width: $num$px;">.</div> &nbsp; $num$</div>
+<!--/@greendata-->
+
+<!--@bluedata-->   
+        <div class='data'><div class="blue" style="width: $num$px;">.</div> &nbsp; $num$</div>
+<!--/@bluedata-->
+
+<!--@nextdata-->
+        </td></tr>
+<!--/@nextdata-->
+
+<!--@scale-->
+        </td></tr><tr><td class="scale">
+        <div class="rightidx">0&nbsp;</div></td><td class="scale">
+<!--/@scale-->
+
+<!--@tickmark-->    
+        <div class="idx" style="width: $num$px;">$num$&nbsp;</div>
+<!--/@tickmark--> 
+
+<!--@ticklabel-->
+   </td></tr><tr><th colspan='2'>
+     $label
+   </th></tr></table>
+<!--/@ticklabel-->
+
+<!--@end-->
+  </body>
+</html>
+<!--/@end-->
+
+

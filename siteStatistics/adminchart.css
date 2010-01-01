@@ -1,0 +1,100 @@
+h3 {
+  text-decoration: underline;
+  }
+#chart { 
+  margin: 0px; 
+  padding: 0px;
+  width: 100%;
+  margin: 0px 5px 0px 5px;
+  } 
+#labels { 
+  float: left; 
+  width: 244px;  
+  padding-right: 5px;
+  background: white; 
+  text-align: right; 
+  color: black;                
+  border-bottom: 1px solid black; 
+  padding-top: 10px; 
+  padding-bottom: 5px;
+  margin: 0px;
+  overflow: hidden;
+  } 
+.label { 
+  background: white; 
+  /*height: 15px; */
+  margin: 0px; 
+  margin-top: 5px; 
+  padding: 0px; 
+  text-align: right;
+  font-size: 8pt; 
+  overflow: hidden;
+  }           
+#container { 
+  float: left; 
+  width: 450px;  
+  background: white; 
+  border-left: 1px solid black; 
+  border-bottom: 1px solid black; 
+  padding-top: 10px; 
+  padding-bottom: 5px;
+  font-size: 8pt;
+  margin: 0px;
+  }
+.data {
+  height: 15px;
+  font-size: 8pt;
+  padding: 0px; 
+  margin: 0px;
+  margin-top: 5px;
+  vertical-align: center;     
+  }  
+.blue, .green, .red {
+  font-size: 8pt;
+  float: left;
+  margin: 0px; 
+  padding: 0px; 
+  }  
+.blue {
+  background: darkblue;
+  color: darkblue;
+  }  
+.green{
+  background: green;
+  color: green; 
+  }
+.red{
+  background: darkred;
+  color: darkred; 
+  } 
+.idx, .rightidx { 
+  float: left; 
+  background: #fff;
+  border-right: 1px solid black;
+  text-align: right;
+  padding: 0px;
+  margin: 0px;
+  font-size: 8pt;
+}
+.rightidx {
+  float: right;
+}
+table {
+border-collapse: collapse;
+width: auto;
+}
+td { 
+  background: white; 
+  color: navy;
+  font-size: 8pt; 
+  }
+td.datacell {
+  border-left: 1px solid black;
+}
+td.labelcell {
+  padding: 2px 5px 2px 2px;
+  overflow: hidden;
+}
+td.scale {
+  border-top: 1px solid black;
+}

@@ -1,0 +1,175 @@
+<Information contained herein is subject to the terms of the FedEx Ship Manager API 
+license agreement>
+
+FedEx Ship Manager API
+
+
+*************************************************************************************
+SOFTWARE REQUIREMENTS
+*************************************************************************************
+JAVA 1.2.X
+SOLARIS 2.6 (OR GREATER)
+
+**************************************************************************************
+PRODUCT OVERVIEW:
+**************************************************************************************
+This Package contains the FedExAPI in two flavors --
+
+The FedExAPI C Library which could be used by customers who use C/C++ as their 
+development environment for integrating the FedExAPI into their Applications. 
+NOTE: The C/C++ libraries were compiled using the gnu 2.95.2 compiler.
+
+The FedExAPI Jar which could be used by customers who use Java as their development 
+environment for integrating the FedExAPI into their Applications. 
+
+************************************************************************************** 
+INSTALLING THE FEDEXAPI
+**************************************************************************************
+1. After you have copied the fxapilin.tar to your favourite directory, untar it by 
+   typing the command, <tar xvf fxapilin.tar>.
+
+2. After a successful installation, the subdirectory fedexapi will be created which in 
+   turn would consist of the following files and subdirectories: 
+   README
+   AGREEMENT
+   VERSION
+   atom
+   help
+   include
+   java/bin
+   java/Javadocs
+   labels
+   lib
+   webetest
+
+************************************************************************************** 
+THE DIFFERENT PIECES AFTER INSTALLATION
+**************************************************************************************
+After a successful install you should have all the following pieces. Against each item
+there is a description of what it is.
+
+Let "mydir" denote the directory where you have installed the FedExAPI.
+
+LOCATION                 NAME OF THE FILE(S)                    DESCRIPTION
+
+mydir/fedexapi           README                                 Self Explantory
+mydir/fedexapi           AGREEMENT                              Self Explantory
+mydir/fedexapi           VERSION                                Self Explantory
+
+mydir/fedexapi/atom      AtomShutDown, AtomStartUp, Aatom       All the Scripts needed
+                         Atom.jar, Encode.jar, Validate.jar     to start up and shut 
+                         certj.jar, jsafeObf.jar, sslj.jar      down Atom; the jar 
+			 pw.fil                                 files needed for Atom 
+			                                        to run.
+                         config.ini                             The config file needed 
+			                                        to configure atom.
+
+mydir/fedexapi/help      FedExAPIClient.pdf			used to desribe the 
+			 FedExLblexts.pdf			functionality of the
+			 FedExTagTransParser.pdf		APIClient, the ctsparser
+			 					(for parsing fedex common 
+                                                                transactions) and 
+                                                                lblexts (for manipulating
+                                                                labels) libs.
+                         FedExAPIErrors.pdf                     Lists all API error 
+								codes.
+			                                        
+mydir/fedexapi/include   FedExAPI.h, FDXParser.h,               The include files 
+                         lblexts.h                              for the FedExAPI,
+								FDX Paser, and lblexts
+			                                        libraries.  
+
+mydir/fedexapi/labels    candomlabel.html			HTML templates used by
+			 candompng.html				Lblexts library to 
+			 canintlabel.html			produce plain paper and
+			 canintlpng.html			SPOD labels.
+			 domlabel.html
+			 intlabel.html
+			 intlpng.html
+			 returninstructions.html
+			 spodpng.html
+			 usdompng.html
+
+mydir/fedexapi/lib       libfedexapi_r.so, libfedexapi_r.a,     The threaded fedexapi,
+                         libctsparser_r.so, libctsparser_r.a,   FDXParser, cstp, and 
+			                                        lblexts libraries
+			 liblblexts_r.so, liblblexts_r.a,       (static and shared)
+                         libcstp.a, libexpat.a			and expat libexpat.a
+                                                                libraries (static). 
+								NOTE: expat library is
+								not need unless you 
+								are using the lblexts 
+								library.
+                       
+mydir/fedexapi/webetest  webetest.c, Makefile                   Source file needed to 
+			                                        build the sample 
+								application.
+                         readme.txt                             Description of the 
+			                                        sample program.
+                         client.ini                             The file that the 
+			                                        fedexapi library 
+								functions look at,
+                                                                to log information.
+                         trans.in                               A sample transaction
+                                                                input file.
+
+(PLEASE NOTE THAT THE java SUBDIRECTORY MENTIONED BELOW IS RELEVANT ONLY IF YOU PLAN
+TO USE THE JAVA VERSION OF THE FEDEXAPI !!) 
+mydir/fedexapi/java/bin  FedExAPI.jar, FDXParser.jar,           The threaded jar files 
+			 JLblexts.jar				used for java clients.
+
+mydir/fedexapi/java/JavaDocs  ...                               Contains all Javadocs 
+                                                                for the API, 
+								FDXParser, and
+                                                                JLblexts Classes.
+
+************************************************************************************** 
+ATOM
+**************************************************************************************
+Atom is the communication piece that you would need along with your API in order to 
+send transactions. Atom has to be running, when you are sending transactions. 
+
+RUNNING ATOM:
+To start Atom go to the atom subdirectory and type <Aatom start>.
+To stop Atom go to the atom subdirectory and type <Aatom stop>.
+To find the status of Atom go to the atom subdirectory and type <Aatom status>. This 
+will give the number of instances of Atom running presently.
+Also note that there is a configuration file called config.ini that will be installed 
+in your atom directory. You need to edit this file and set the values of AtomAdminPort
+and Port_1 in this file to appropriate settings.
+
+RUNNING MULTIPLE INSTANCES:
+Note that one could have multiple instances of ATOM running in a system, but it is 
+important to note that each instance should have its own unique AtomAdminPort and 
+Port_1 settings. If in case you violate this condition and run multiple instances 
+having these 2 settings the same, you would find that only one instance really works, 
+where as the other would be idle consuming system resources.
+
+The point is, run one instance per AdminPort and Port_1. If you want multiple 
+instances, make sure you have a new set of values available for these two settings, 
+everytime you have a new instance.  
+
+NOTE ABOUT ATOM SCRIPTS:
+The Atom scripts have been made very descriptive, just to make sure that a person 
+using atom for the first time, is aware of all the environmental issues needed to run 
+it. You could edit these scripts and make them brief by hardcoding values inside the 
+script, instead of answering the same questions each time.
+ 
+**************************************************************************************
+SAMPLE TEST APPLICATION
+**************************************************************************************
+In the webetest subdirectory you will find the source files for a test application
+called the webetest, which will give an example as to how one could go about building 
+an application using the API. A makefile is also provided to help you build it. To 
+make webetest type <make> in the directory webetest.
+
+To run webetest: Choose a transaction that you would want to send,
+save it in a file called trans.in and then type <webetest>.
+ 
+A NOTE ABOUT TRANSACTION FORMAT USED BY WEBETEST: Note that the transaction that you
+put in the file trans.in should follow all the formatting(refer to our website for
+all the different formats) rules. Note that the format of a transaction in the trans.in
+file should be of the form: >UTI:FIELD TAG-VALUE PAIRS i.e.
+Every transaction should start with the universal transaction identifier followed by a 
+":" and then by all necessary field tags with their associated values.
+Placing the UTI in the transaction file is only necessary when using the webetest sample.

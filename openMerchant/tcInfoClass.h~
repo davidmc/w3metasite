@@ -1,0 +1,67 @@
+/*
+  tcInfoClass.h
+
+  TrustCommerce Merchant Account Path Determination
+  ---------------
+  Get customer id and password for linking to payment gateway 
+
+*/
+#ifndef tc_Info_Class_h
+#define tc_Info_Class_h
+#include "connectstring.h"
+#include "ocString.h"
+
+class tcInfo {
+  string tccid;
+  string tcpwd;
+};
+class tcInfo
+{
+protected:
+  // data members
+  string m_tccid;
+  string m_tcpwd;
+public:
+  // constructor
+tcInfo():
+  m_tccid(""),
+  m_tcpwd("")
+  { 
+    ;
+  }
+  // destructor
+  virtual ~tcInfo(){;}
+  // copy constructor 
+  tcInfo( const tcInfo & in):
+  m_tccid(in.m_tccid),
+  m_tcpwd(in.m_tcpwd)
+  { 
+    char * test = getConnectstring("gtway");
+    if( test && strlen(test) )
+    {
+      ocString oneLiner = test;
+      m_tccid = oneLiner.parse(":");
+      m_tcpwd= oneLiner.remainder();
+    }
+  }
+  // assignment operator
+  tcInfo & operator = ( const tcInfo & in )
+  {
+    m_tccid = in.m_tccid;
+    m_tcpwd = in.m_tcpwd;
+    return *this;
+  }
+  // member access operators  
+  // get
+  char * tccid( void ) { return m_tccid.c_str(); }
+  // set
+  void tccid( const string & in ) { m_tccid = in; }
+  
+    // get
+  char * tcpwd( void ) { return m_tcpwd.c_str(); }
+  // set
+  void tcpwd( const string & in ) { m_tcpwd = in; }
+
+};
+
+#endif

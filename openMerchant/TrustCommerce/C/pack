@@ -1,0 +1,68 @@
+#!/usr/bin/perl
+
+my $GPL = shift @ARGV;
+if ($GPL eq "gpl") { $GPL = 1; }
+elsif ($GPL eq "reg") { $GPL = 0; }
+else { die "specify gpl or reg"; }
+
+$version = `head README -n 5 | grep v`;
+chomp $version;
+$version =~ /v(\d.*\w)/;
+$version = $1;
+$name = "tclink-$version-C";
+
+`mkdir $name`;
+if ($GPL) {
+	`mkdir $name/doc`;
+	`cp ../../doc/user/TCDevGuide.txt $name/doc/`;
+	`cp ../../doc/user/TCDevGuide.html $name/doc/`;
+}
+
+`cp -f \`cat MANIFEST | grep -v TCDevGuide\` $name`;
+
+if ($GPL) {
+	`rpl XXXX TestMerchant $name/*.c`;
+	`rpl PPPP password $name/*.c`;
+}
+
+if (!$GPL) { `rm -f $name/LICENSE`; }
+
+filelicense("$name/tclink.c");
+filelicense("$name/tclink.h");
+filelicense("$name/tctest.c");
+filelicense("$name/tcexample.c");
+
+`cd $name; autoconf; rm -rf autom4te*cache`;
+`tar czvf $name.tar.gz $name`;
+`rm -rf $name`;
+
+print  "$name.tar.gz packed\n";
+exit 0;
+
+######################################
+
+sub filelicense
+{
+	my $file = shift @_ || die "no file passed to filelicense";
+
+	my $licfile = $ENV{HOME} . "/tc/clients/C/header-" . ($GPL ? "GPL" : "nonGPL");
+	my $license = loadfile($licfile);
+
+	my $text = loadfile($file);
+	$text =~ s/.*__LICENSE_HEADER__.*\n/$license/g;
+
+	open F,">$file";
+	print F $text;
+	close F;
+}
+
+sub loadfile
+{
+	my $file = shift @_ || die "no file passed to loadfile";
+	die "cant open $file" unless (-f $file);
+	open F,"<$file";
+	my @tmp = <F>;
+	close F;
+	return join "",@tmp;
+}
+

@@ -1,0 +1,405 @@
+/*
+  contentEditor.cpp
+
+  User Interface Definition and Implementation 
+  for paragraphs.
+
+  Copyright (C) 2006 by D.K. McCombs.
+  W3 Systems Design  
+
+  Template Requirements:
+    editingPane.htmp
+    childdivform.htmp
+    list.htmp
+
+*/
+
+#include <iostream>
+#include <iomanip>
+#include "cgiTemplates.h"
+#include "connectstring"
+#include "forms.h"
+#include "ocTypes.h"
+#include "ocString.h"
+#include "read_write_base.hpp"
+#include "forms_base.hpp"
+#include "cgiTemplates.h"
+#include "paragraphs.hpp"
+#include "openLogin.h" 
+#include "siteLimit.h"
+#include "InfoPoints.hpp"
+#include "sublist_base.hpp"
+#include "page_template.hpp"
+#include "ocXML.h"
+#include "page_obj.hpp"
+#include "lookup.hpp"
+#include "anyData.hpp"
+ 
+using namespace std;
+openLogin oLogin;
+
+class paragraphs_List:  public sublist_base
+{
+public: 
+  ocString Parent_Id;
+  ocString section;
+
+  
+  // Constructor
+  paragraphs_List(cgiScript&sc):sublist_base(sc){;}  
+  ~paragraphs_List(){;}
+  
+  bool list_display( void )
+  {
+    bool breturn = true;
+    string sql =  "select id,name,place_order "
+                  "from paragraphs where page_id = " ;
+    sql +=  Parent_Id;
+    sql += " and section = '";
+    sql += section;
+    sql += "' order by place_order";
+    skipCol=0;
+    hotCol=-2;    
+    editLink = listTemplate.getParagraph("hotcolumn");
+    editLink = editLink.replace("$prog$","contentEditor.cgi");        
+    string heading = "Name|Order";
+                           ;
+    emitHeadings(heading);
+    getData( sql );
+    emitData();
+    ocString list_new = listTemplate.getParagraph("list_new");
+    ocString url = "contentEditor.cgi?page_id=";
+    url += Parent_Id;
+    url += "&section=";
+    url += section;
+    webIO << list_new.replace("$location",url.c_str()).replace("$cols","2").replace("$name", " Entry");
+    emitEnd();
+    return breturn;
+  }      
+}; 
+
+class paragraphs_form:  public paragraphs_Obj, public forms_base
+{
+  int relPos;
+  hexEncoder hexify;
+  
+public:
+
+  string default_edit_handler;
+ 
+  paragraphs_form(cgiScript & script):paragraphs_Obj(),forms_base(script),relPos(0)
+  {
+    setKey(*this);
+  } 
+  virtual ~paragraphs_form(){;}
+  
+  void form_id_transfer( void )
+  {
+    llongFXfer( "id", id );
+
+  }
+  void form_data_transfer( void )
+  {
+    llongFXfer( "site_id", site_id);
+    // if it's still 0, then get it from where we are
+    if( site_id <= 0 )
+    {
+      site_id = atoll( currentSite().c_str() );
+    }
+    if( script.ClientArguments().count("relPos") > 0 )
+    {
+      relPos = atol( script.ClientArguments()["relPos"].c_str() );
+    }
+    stringFXfer( "name", name);
+    llongFXfer( "page_id", page_id);
+    intFXfer( "place_order", place_order);
+    stringFXfer( "template_tag", template_tag);
+    stringFXfer( "replace_tag", replace_tag);
+    stringFXfer( "name", name);
+    stringFXfer( "content", content);
+    llongFXfer( "author", author);
+    dateFXfer( "time_authored", time_authored);
+    dateFXfer( "time_start", time_start);
+    dateFXfer( "time_end", time_end);
+    boolFXfer( "approved", approved);
+    stringFXfer( "section", section);
+    llongFXfer( "edit_type", edit_type);
+    content = hexify.w3hexDecode( content );
+  }
+
+  bool dbf_action( string mode, changeMap & changes )
+  {
+    bool ret = true;
+    // may not have node set from xmlDirections initially
+    if( mode.length() == 0 ) mode="s";
+    script << "<!-- mode = [" << mode << "]-->" << endl;
+    
+    /*
+       This is for a bug in tiny (huge) mce, where update events don't fire after a
+       return from plugin changes like images, source, movies etc.
+    */
+    
+
+    if( mode == "u" )
+    {
+      if( changes.find("content") == changes.end() )
+      {
+        // May still have changed, but not fired change event, have to go see what it was
+        ocString temp = "select content from paragraphs where id = ";
+        temp.append(id);
+        temp = tableLookup(temp);
+        if( temp != content )
+        {
+          changes["content"] = "content";
+        }
+      }
+    }
+    ret = db_action( mode, changes );
+
+    
+
+    if( mode == "s" && ( relPos != 0 || key() == 0  ) )
+    {
+      id = 0;
+      key(0);
+      
+      // set default values
+      paragraphs_Obj defValues;
+      name =  defValues.name;
+      content =  defValues.content;
+      author = defValues.author;
+      time_authored = defValues.time_authored;
+      time_start = defValues.time_start;
+      time_end = defValues.time_end;
+      approved = defValues.approved;
+      script << "<!-- relPos = " << relPos << "-->" << endl;
+      if( relPos > 0 )
+      {
+      
+        // insert after
+        place_order++;
+      }
+    }
+
+    return ret;
+  }
+
+  // Creates the right edit environment
+  string editTypeHandler(void)
+  {
+    ocString retValue;
+    if( edit_type < 1 )
+    {
+      // send the default;
+      retValue = " <h6>default</h6> ";
+      retValue += default_edit_handler;
+    }
+    else
+    {
+      ocString sql = "select handler from edit_types where id = ";
+      sql.append(edit_type);
+      // retValue = "<!-- "  + sql + "-->";
+      retValue += tableLookup(sql);
+    }
+    
+    return retValue;
+  }
+  
+  // implement pure virtual of form display
+  bool form_display( void )
+  { 
+    bool breturn = true;
+    
+    ocString sql;
+    script << makeTop("contentEditor.cgi", "Content Editor")
+           << formTemplate.getParagraph("advanced_begin");
+    // This is to regulate when js dehexify code is called
+    script << makeHiddenBox( "inhex" ,"T");
+   // ADVANCED CONTENT
+    script << makeStaticBox("id", "id", id ,"8");
+    script << "<br class='clearall'>" << endl;
+
+    // automatic read only except if site-admin
+    sql = "select id, name from sites where id = ";
+    sql.append(site_id);
+    // script << sql << endl;
+    script << makeComboBox("site_id", "site_id", site_id ,sql);
+    script << "<br class='clearall'>" << endl;
+
+   // automatic read only except if site-admin
+    sql = "select id, name from pages where site_id = ";
+    sql.append(site_id);
+    // script << sql << endl;
+    script << makeComboBox("page_id", "page_id", page_id ,sql);
+    script << "<br class='clearall'>" << endl;
+
+    // consider making this a string combo based on the section
+    //script << makeMetatagComboChoice( "Formatted Item","template_tag" );
+    // script << "<br class='clearall'>" << endl;
+
+    // auto set according to value of above and reading the page template
+    script << makeTextBox("replace_tag", "replace_tag", replace_tag ,"125","35");
+    script << "<br class='clearall'>" << endl;
+
+    // automatic read only
+    script << makeTextBox("section", "section", section ,"125","35");
+    script << "<br class='clearall'>" << endl;
+
+    // automatic readonly based on login
+    string authVal = oLogin.FullName();
+    authVal += "=";
+    authVal += oLogin.Id();
+    script << makeManualComboBox("Author", "author", author , authVal );
+    script << "<br class='clearall'>" << endl;
+
+    // automatic read-only based on date created
+    script << makeTextBox("Time Authored", "time_authored", time_authored ,"24","24");
+    script << "<br class='clearall'>" << endl;
+    script << "&nbsp; <a href=\"javascript:jopen('edit_types_Popup.cgi','width=400,height=400')\">Manage content types</a>" << endl;
+    // END ADVANCED CONTENT
+    script << formTemplate.getParagraph("advanced_end");
+
+    // name of the content, for calendars, slides faq's and such.
+    script << makeTextBox("Name", "name", name ,"125","35");
+    // script << "<br class='clearall'>" << endl;
+    script << makeMetatagComboChoice( "Formatted Item","template_tag" );
+    script << "<br class='clearall'>" << endl;
+    // this is xformed into a GUI by tinyMCE
+    script << makeTextArea("", "content", hexify.w3HexEncode(content) ,"20","80","$control$");
+    script << "<div id='contentView'> &nbsp; </div> <br class='clearall'>" << endl;
+    script << editTypeHandler() << endl;
+    
+    
+    
+    // begin of validity for this content (begins to show)
+    script << makeTextBox("Starts On", "time_start", time_start ,"24","24");
+    // end of validity for this content (becomes 'archived')
+    script << makeTextBox("Ends On", "time_end", time_end ,"24","24");
+    script << "<br class='clearall'>" << endl;
+
+    // this should be only available to approver roles, defaults to false for non-approvers, true for approvers
+    // see business logic in object
+    script << makeTextBox("Order", "place_order", place_order ,"8","8");
+    script << makeBoolBox("Approved", "approved", approved );
+    script << "<br class='clearall'>" << endl;
+    sql = "select id, name from edit_types order by sequence";
+    script << makeComboBox("edit_type", "edit_type", edit_type ,sql );
+    script << "<br class='clearall'>" << endl;
+    script << makeButtons( key() );        
+    script << makeBottom( m_result ) << endl;
+     
+    
+     
+    return breturn;
+  }
+
+  string makeMetatagComboChoice( string Label, string Name  )
+  {
+    ocString ret;
+    ocString values;
+
+    page pobj;
+    pobj.key(page_id);
+    if( pobj.get_data() )
+    {
+      // Now we have the template id
+      page_template ptmp;
+      if( ptmp.load(pobj.template_id) )
+      {
+        // Now we want the control section and parse the xml to get the menu section named mnu.name
+        string ctrl =ptmp.getParagraph("control");
+        if( ctrl.length() )
+        {
+          xmlParser xparse = ctrl;
+          xparse.parse();
+
+          node_vector & xnodes = xparse.nodeList();
+          for(int i=0;i<xnodes.size();i++)
+          {
+            xmlNode & node = xnodes[i];
+            //cout <<  "node.name: " << node.name <<  endl;
+            if( node.name == "content" ||  node.name == "contactus" || node.name == "slides" )
+            {
+              //cout <<  "node.attr[section]: " << node.attr["section"] << "=" << section << endl;
+              if( node.attr["section"] == section )
+              {
+                
+                ocString itemsToLookyAt = node.attr["items"];
+                if( itemsToLookyAt.length() )
+                {
+                  //cout <<  "itemsToLookyAt: " << itemsToLookyAt <<  endl;
+                  // create a combo values string
+                  string val;
+                  do
+                  {
+                    val = itemsToLookyAt.parse(",");
+                    values += val;
+                    values += "=";
+                    values += val;
+                    values += ",";
+                  }
+                  while( !itemsToLookyAt.endOfParse() );
+                  // pull the last comma
+                  if( values.length())  values = values.substr(0, values.length()-1);
+                }
+                break; // we are done
+              }
+            }
+          }
+        } else script << "Could Not Find Control Section in " << ptmp.path() << "!<br>" << endl;
+      } else script << "Could Not Load Template " << pobj.template_id << "!<br>" << endl;
+    } else script << "Could Not Get PAGE " << page_id << "!<br>" << endl;
+    
+    ret = makeManualComboBox( Label, Name, template_tag, values );
+    return ret;
+  }
+
+};
+
+
+int main( int argcount, char ** args )
+{
+  cgiScript script( "text/html", false  );
+  paragraphs_form myFrm(script); 
+   
+  if( oLogin.testLoginStatus() )
+  {
+    script.closeHeader();
+    cgiTemplates pgTemplate;
+    
+    pgTemplate.load("Templates/editingPane.htmp");
+    
+    script << ocString(pgTemplate.getParagraph("top")).replaceAll("$heading$","W<sup>3</sup> content Editor");
+
+    // includes the essential scripts and styles for editing
+    myFrm.loadControlTemplates("Templates/childdivform.htmp");
+    myFrm.form_action();
+
+    // the default is rich edting
+    myFrm.default_edit_handler = pgTemplate.getParagraph("default_edit_handler");
+    myFrm.form_display();
+
+
+    if( myFrm.page_id && myFrm.section.length() )
+    {
+      script << "<br class='clearall'>" << endl; 
+      paragraphs_List paragraphsList(script);
+      paragraphsList.Parent_Id.append(myFrm.page_id);
+      paragraphsList.section = myFrm.section;
+      paragraphsList.loadListTemplates("Templates/list.htmp");
+      script << "<div class='heading'>All Section Entries:</div>" << endl;
+      paragraphsList.list_display();      
+    } 
+
+    
+    ocString end = pgTemplate.getParagraph("bottom");
+    script << end;          
+  }
+  else
+  {
+    script.Redirect("/"); 
+  } 
+}
+// compile implementations here
+#include "read_write_base.cpp"
+#include "forms_base.cpp"

@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Metasite</title>
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <meta content="">
+    <style>
+    pre { background: white; font: normal 10pt "courier"; padding: 8px; }
+    a.scheme { color: white; background: gray; }
+    a.scheme:hover { color: blue; background: lightgray; }
+    span.ex { color: navy; }
+    </style>
+  </head>
+  <body>
+<h2>Metasite Administration - Site Editor</h2>
+  <table>
+  <tr><td><strong>Navigation</strong>&nbsp;        
+        <a href='admin.cgi'>Admin Main</a>
+      </td></tr>
+  <tr><td>  
+  <pre>
+ +------------------<a class="scheme" href="siteList.cgi">Site</a>  := Containing object - holds all
+ |          (n,1)     |
+ |                    |
+ |                  <span class='ex'>Image</span> := Image Picker (on paragraph editor)
+ |
+ |          (1,n)                      (1,n)
+ +-<a class="scheme" href="templateList.cgi">Template</a>------------------<a class="scheme" href="pageList.cgi">Page</a>---------------<span class='ex'>Paragraph</span> := Paragraphs on a page
+ | := Distilled Page Patterns  | := Page made from Template and Paragraphs
+ |                             |
+ +--<a class="scheme" href="linkList.cgi">Link</a>-----------+ (1,n)     |
+ |       (1,n)     |           | 
+ |                 |           |                                     
+ +--<a class="scheme" href="menuList.cgi">Menu</a>--------<span class='ex'>Menu Item</span>      |
+ |    |                        | ( <span class='ex'>Link</span> := individual address. 
+ |    |(1,n)                   |   <span class='ex'>Menu</span> := list of <span class='ex'>Links</span> as <span class='ex'>Menu Items</span>.  
+ |    |                 (n,1)  |   <span class='ex'>Page Menu</span> := <span class='ex'>Menu</span> connected to a <span class='ex'>Page</span>. ) 
+ +--<a class="scheme" href="page_menuList.cgi">Page Menu</a>------------------+
+ |
+ |
+ +--<span class='ex'>Global Metatags</span> := tags that should be placed in all pages 
+ 
+  </pre>
+      </td></tr>
+  </table>  
+  </body>
+</html>

@@ -1,0 +1,64 @@
+body {
+font-family: Arial, Gill, Helvetica, sans-serif ;
+font-size: 10pt;
+color: rgb(60,45,105);
+}
+
+table {
+border-collapse: collapse;
+border-top: 1px solid rgb(60,45,105);
+border-left: 1px solid rgb(60,45,105);
+}
+
+td.listdata {
+padding: 2px;
+border-bottom: 1px solid  rgb(92,105,75);
+border-right: 1px solid  rgb(92,105,75);
+color: black;
+}
+
+td.listdata_right {
+padding: 2px;
+border-bottom: 1px solid  rgb(92,105,75);
+border-right: 1px solid  rgb(92,105,75);
+color: black;
+text-align: right;
+}
+
+td.listheader {
+padding: 3px;
+border-top: 2px solid  rgb(92,105,75);
+border-bottom: 2px solid  rgb(92,105,75);
+border-right: 1px solid  rgb(92,105,75);
+color: rgb(82,75,105);
+background: rgb(185,210,150);
+font-weight: bold;
+}
+
+td.grouped {
+padding: 2px;
+border-bottom: none;
+border-right: 1px solid  rgb(92,105,75);
+color: rgb(82,75,105);
+background: rgb(185,210,150);
+font-weight: bold;
+}
+
+td.endgrouped {
+padding: 2px;
+border-bottom: 1px solid  rgb(92,105,75);
+border-right: 1px dashed  rgb(92,105,75);
+color: rgb(82,75,105);
+background: rgb(185,210,150);
+font-weight: bold;
+}
+
+td.summed {
+padding: 2px;
+border-bottom: 1px solid  rgb(92,105,75);
+border-right: 1px solid  rgb(92,105,75);
+color: rgb( 82,75,105);
+background: rgb(165,150,210);
+font-weight: bold;
+text-align: right;
+}

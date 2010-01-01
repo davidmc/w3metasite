@@ -1,0 +1,13 @@
+
+mkdir intra
+mkdir intra/images
+mkdir intra/small_images
+mkdir intra/pg_images
+mkdir intra/reportTemplates
+mkdir intra/Templates
+mkdir intra/styles
+mkdir intra/resources
+cd intra
+ln -s ../sys sys
+cd ..
+

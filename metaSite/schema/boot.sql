@@ -1,0 +1,49 @@
+INSERT INTO groups ( name, site_admin ) VALUES ('administration',1);
+
+--
+-- port of admin routines to mysql from postgres
+--
+
+INSERT INTO users ( group_id, first, last, login, password, phone_number, email )
+                    VALUES (1,'David','McCombs','davidmc','freedom7','706-673-4606','davidmc@w3sys.com');
+
+INSERT INTO services ( sequence, tree_depth, enabled, name, menu_name, uri, local_uri, secure, xml_params )
+              VALUES ( 1, 1, 1, 'Manage services','manage services','services_ui.cgi',1,0,'');
+INSERT INTO services ( sequence, tree_depth, enabled, name, menu_name, uri, local_uri, secure, xml_params )
+              VALUES (2,1,1,'Manage users','manage users','users_ui.cgi',1,0,'');
+INSERT INTO services ( sequence, tree_depth, enabled, name,  menu_name, uri, local_uri, secure, xml_params )
+              VALUES (3,1,1,'Manage groups','manage groups','groups_ui.cgi',1,0,'');
+INSERT INTO services( sequence, tree_depth, enabled, name, menu_name, uri, local_uri, secure, xml_params )
+              VALUES (4,1,1,'Manage locations','manage locations','locationList.cgi',1,0,'');
+INSERT INTO services ( sequence, tree_depth, enabled, name, menu_name, uri, local_uri, secure, xml_params )
+              VALUES (5,1,1,'Manage roles','manage roles','roles_ui.cgi',1,0,'');
+INSERT INTO services ( sequence, tree_depth, enabled, name, menu_name, uri, local_uri, secure, xml_params )
+              VALUES (6,1,1,'Manage group sites','manage group sites','group_sites_ui.cgi',1,0,'');
+
+INSERT INTO group_services ( service_id, group_id, sequence ) VALUES ('1','1',1);
+INSERT INTO group_services ( service_id, group_id, sequence ) VALUES ('2','1',2);
+INSERT INTO group_services ( service_id, group_id, sequence ) VALUES ('3','1',3);
+INSERT INTO group_services ( service_id, group_id, sequence ) VALUES ('4','1',4);
+INSERT INTO group_services ( service_id, group_id, sequence ) VALUES ('5','1',5);
+INSERT INTO group_services ( service_id, group_id, sequence ) VALUES ('6','1',6);
+INSERT INTO group_services ( service_id, group_id, sequence ) VALUES ('7','1',7);
+
+INSERT INTO roles ( name, comment ) VALUES ('administrator','site administrator');
+
+INSERT INTO user_roles ( user_id, role_id, enabled ) VALUES ('1','1',1);
+
+INSERT INTO role_services (role_id, service_id, enabled )  VALUES ('1','1',1);
+INSERT INTO role_services (role_id, service_id, enabled )  VALUES ('1','2',1);
+INSERT INTO role_services (role_id, service_id, enabled )  VALUES ('1','2',1);
+INSERT INTO role_services (role_id, service_id, enabled )  VALUES ('1','3',1);
+INSERT INTO role_services (role_id, service_id, enabled )  VALUES ('1','5',1);
+INSERT INTO role_services (role_id, service_id, enabled )  VALUES ('1','6',1);
+INSERT INTO role_services (role_id, service_id, enabled )  VALUES ('1','7',1);
+
+INSERT INTO group_roles ( role_id , group_id , enabled ) VALUES ('1','1',1);
+
+
+
+
+
+

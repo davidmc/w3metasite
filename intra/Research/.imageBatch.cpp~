@@ -1,0 +1,150 @@
+/*
+  Copyright (c) 2007
+  imageBatch.cpp
+  Author David McCombs -- www.w3sys.com
+
+  Testing image magic API for edavced functionality
+
+
+*/
+
+
+// #define DO_OPEN_LOGGING
+#include "openLogger.h"
+#include <map>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <iostream>
+#include <iomanip>
+#include <Magick++.h>
+#include "ocString.h"
+#include "ocFileSys.h"
+
+
+using namespace Magick;
+class imageConditioner 
+{
+private:
+  string m_imageBase;
+  string m_imageDir;
+  string m_proofDir;
+
+  string m_imageName;
+  
+  // Quality and Filter Type
+  FilterTypes filter;
+  unsigned int quality;
+
+public:
+
+  // constructor  
+  imageConditioner()
+    :m_imageBase("./")
+    ,filter(LanczosFilter),quality(75)
+  {
+     m_imageDir = "images";
+     m_proofDir = "proofs";
+  }
+  virtual ~imageConditioner(){;}
+
+
+  void setArgs(  int argcount, char ** args  )
+  {
+    if( argcount > 1  )
+    {
+      m_imageName = args[1];
+    }
+  }
+  bool isFile( ocString candidate ) // is it an image really
+  {
+    bool bret;
+    bret = candidate.regExMatch("[A-Z,a-z,0-9]*\x2e[bmpnjpgtif,BMPNJPGTIF]*");
+    if( bret ) bret = !  candidate.regExMatch("imageBatch");
+    return bret;
+  }
+  
+  void  imageProcess(void)
+  {
+
+    cout << "Image Processing "<< m_imageBase << endl;
+
+
+    if( isFile(m_imageName) ) // make sure it's a file
+    {
+      cout << endl << "  Processing :  " <<  m_imageName << endl;
+      makeProof(m_imageName);
+    }
+
+  }
+  string imageDir( void )
+  {
+    return m_imageDir;
+  }
+  string imageBase( void )
+  {
+    return m_imageBase;
+  }
+   
+  Image * makeAnnot( string text, int width, int height, string font, string bg , string clr, double pSize )
+  {
+
+    Image * my_image = new Image( Geometry(width,height), Color(bg));
+    my_image->strokeColor( Color(clr) );
+    my_image->fillColor( Color(clr) );
+    my_image->font(font);
+    my_image->fontPointsize ( pSize );
+    my_image->annotate( text, CenterGravity );
+    return my_image;
+  }
+  void makeProof( string & imgEntry )
+  {
+    if (imgEntry.length())
+    {
+      string imgProof = m_imageBase;
+      string imgPath = m_imageBase;
+      imgPath += m_imageDir;
+      imgProof += m_proofDir;
+      imgPath +="/";
+      imgProof +="/";
+      imgPath += imgEntry;
+      imgProof += imgEntry;
+      cout << endl << " imgPath " <<   imgPath << " to  imgProof " << imgProof << endl;
+      try
+      {
+        Image image;
+        // read the image in
+        image.read(imgPath);
+
+        // write text orders in text retcangle
+        // Look for fonts in /usr/share/fonts/default/TrueType/
+        
+        // list<Drawable> text_to_draw;
+        Image * pImg = makeAnnot( "XaXaX\nHey", 220, 30, "NewCenturySchlbk-Bold", "#000000", "#aa0000", 14 );
+        image.composite( *pImg, 15, 110, OverCompositeOp );
+        
+        // write the image out
+        image.write(imgProof);
+        
+        delete pImg;
+         
+        // write the small image out
+        // image.write(imgProof);
+      }
+      catch( Exception &error_ )
+      {
+        cout << "Error Imagineering - Exception caught: " << error_.what() << endl;
+      }
+    }
+  }
+};
+
+int main( int argcount, char ** args )
+{
+  imageConditioner picker;
+  picker.setArgs(argcount, args);
+  picker.imageProcess();
+  return 0;
+}
+
+

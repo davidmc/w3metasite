@@ -1,0 +1,5 @@
+# Target Folder
+WEBDIR=../../web/customlogomats/sys/
+OLOGIN = -DALTSLOGINSOURCE="\"~/development/webconsole/sysadmin_source/openLogin.h\""
+
+

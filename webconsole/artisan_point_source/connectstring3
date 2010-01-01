@@ -1,0 +1,10 @@
+#ifdef CONNECTSTRING
+#undef CONNECTSTRING
+#undef PROVIDER
+#endif
+#define CONNECTSTRING "host=localhost;uid=meta_user;pwd=metesite12;db=metasite"
+#define PROVIDER MySQL
+
+
+
+

@@ -1,0 +1,140 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="color pick javascript program">
+    <style>
+
+    img{ border: none; }
+    a { text-decoration: none; }
+
+   #ccube {
+     position: absolute;
+     top: 0px;
+     left: 0px;    
+     height: 350px;
+     width: 350px;     
+    }
+    #cubic {
+      position: absolute;
+      top: 10px;
+      left: 10px;    
+      padding: 0px;
+      height: 255px;
+      width: 255px;
+    }   
+    #cursor {
+      position: absolute;
+      background: transparent;
+      top: 5px;
+      left: 285px;
+      }
+    </style>
+    <script src="openDom.js"></script> 
+    <script src="color_conversions.js"></script>
+    <script>
+    var myDom = new openDom();
+    var converter = new colorConverter();    
+    var r = 0, g = 0, b = 0;    
+    var redCursorTop = 5;
+    var redCursorLeft = 285;
+    var redMin = 10;
+    var redMax = 71;
+    var CubeLeft = 10;
+    var clearsquareImg;
+    var redCursorImg;
+    clearsquareImg = newImage("clrsqr.gif");
+    redCursorImg = newImage("color_cursor.jpg");
+    var cubeImg = newImage( "cube.png" );
+    function newImage(ipath) 
+    {
+      var rslt;
+      if (document.images) 
+      {
+        rslt = new Image();
+        rslt.src = ipath;        
+      }
+      return rslt;
+    }
+
+    function selectColor(color)
+    {
+      opener.setColor(color);
+      window.close();
+    }
+
+    function setColor( red, green, blue )
+    {
+      r = red;
+      g = green;
+      b = blue;      
+    }
+
+    function colorColors()
+    {      
+      var retVal = new String("");  
+      retVal += "<table cellspacing='1px' cellpadding='1px'>";           
+      for( g=0; g<=255; g+=15 ) 
+      {
+        retVal += "<tr>";
+        for( b=0; b<=255; b+=15 ) 
+        {
+          retVal += "<td style='background:"; 
+          retVal += "rgb(" + r + "," + g + "," + b + ")'>";
+          retVal += "<a href=\"javascript:setColor( ";
+          retVal += r + "," + g + "," + b ; 
+          retVal += ")\">"; 
+          retVal += "<img src='clrsqr.gif' width='11px' height='11px' alt='' onMouseOver='reportColor(";
+          retVal += r + "," + g + "," + b;
+          retVal += ")'></a>";
+          retVal += "</td>";
+        }
+        retVal += "</tr>\n";
+      }          
+      retVal += "</table>";  
+      
+      var tbl = myDom.getElementById('cubic');
+      if( tbl ) tbl.innerHTML = retVal; 
+    } // >
+
+    
+    function redSet(e)
+    {
+      if(!e) e=window.event;
+      var ypos = e.clientY;      
+
+      if( ypos <= redMin ) ypos = redMin;
+      if( ypos >= redMax ) ypos = redMax;
+      var redCenter = ypos-5-redCursorTop;
+      var xpos = redCursorLeft + (redCenter);
+      var cubexpos = CubeLeft + (redCenter);
+      myDom.setPosition( 'cursor', xpos, ypos-5); 
+      myDom.setPosition( 'cubic', cubexpos, ypos);
+      r = Math.round((( redCenter )*17)/4);
+      if(r >255)r=255;
+      if(r<0)r=0; 
+      colorColors();
+    }
+    function initPage()
+    {
+
+      var redCursor = myDom.getElementById('cursor');
+      var theCube = myDom.getElementById('ccube'); 
+
+      myDom.addListener(redCursor,"click", redSet, false);
+      myDom.addListener(theCube,"click", redSet, false);
+      colorColors();      
+    }
+
+    
+    </script>
+  </head>
+  <body onLoad="initPage()">
+  
+  <img id="ccube" src="cubectrl.png" alt="" />
+  <div id="cubic">  </div>
+  <img id="cursor" 
+       alt="red value"       
+       src="color_cursor.jpg">
+
+  </body>
+</html>

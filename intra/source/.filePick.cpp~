@@ -1,0 +1,53 @@
+/*
+  Copyright (c) 2004 W3 Systems Inc.
+  filePick.cpp 
+  Author David McCombs -- www.w3sys.com
+          
+*/
+#include "connectstring"
+#include "read_write_base.hpp"
+#include "openLogin.h"
+#include "filePick.hpp"
+ 
+int main( int argcount, char ** args )
+{
+  // the last param automatically save files to the path
+  string path =  getenv("PATH_INFO");
+  
+  openLogin login;
+  if( path.length() )
+  {
+    // take off the leading /
+    path = path.substr(1);
+  }
+  filePicker picker(login,path);
+  cgiScript script("text/html", false, picker.fileDir().c_str());
+  writelog("OK - script made");
+  // attempt to get cookie
+  if ( login.testLoginStatus() )
+  {
+    script.closeHeader();
+
+    writelog("Checking for files to delete");    
+    picker.checkForfilesToDelete(script);
+
+    writelog("Generating file list");        
+    picker.fileList(script); 
+
+    writelog("Done");
+  }
+  else
+  {
+    script.closeHeader();
+    script << "<html><body>" << endl;
+    script << "Not Logged in <!--";
+    script << login.getLastError() << endl;
+    // script << CONNECTSTRING << endl;
+    script << " --></body></html>" << endl;
+    writelog("INVALID ACCESS ATTEMPT"); 
+  }
+  writelog("OK - All Done");
+  return(0);
+}
+#include "read_write_base.cpp"
+

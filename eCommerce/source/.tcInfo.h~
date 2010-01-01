@@ -1,0 +1,16 @@
+/*
+TrustCommerce Merchant Account for Rainbow
+==========================================
+Cust ID: 390500
+PWD: &eebsa
+*/
+#ifdef RAINBOW
+const char * tccid = "390500";
+const char * tcpwd = "&eebsa";
+#else ifdef WTCI
+const char * tccid = "464200";
+const char * tcpwd = "afiJwvua";
+#else ifdef ARTPOINT
+const char * tccid = "206500";
+const char * tcpwd = "7JdNig";
+#endif

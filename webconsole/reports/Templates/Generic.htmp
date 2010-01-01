@@ -1,0 +1,31 @@
+<!--@top-->
+<html>
+<head>
+<style type=text/css media=screen>@import url(styles/reports.css);</style>
+</head>
+<body>
+    <h1>$name$</h1>
+    <table><tbody>
+        <!--/@top-->
+        <!--@tr-->        
+            <tr>
+                <!--/@tr-->
+                <!--@td-->
+                <td class='listdata'>
+                    $data$ 
+                </td>
+                <!--/@td-->
+                <!--@th-->
+                <td class='listheader'>
+                    $data$ 
+                </td>
+                <!--/@th-->
+                <!--@end_tr-->
+            </tr>
+            <!--/@end_tr-->
+            <!--@end-->
+        </tbody>
+    </table>    
+</body>
+</html>
+<!--/@end-->

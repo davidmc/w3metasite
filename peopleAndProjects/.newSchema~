@@ -1,0 +1,32 @@
+create table Messages
+(
+  Id bigint primary key auto_increment NOT NULL,
+  Subject text,
+  From_Id bigint,
+  To_Id bigint,
+  Importance int,
+  Content text,
+  From_String text,
+  To_String text,
+  Company bigint,
+  Project bigint,
+  Task bigint,
+  Author bigint,
+  Created datetime
+);
+create table Attachments
+(
+  Id bigint primary key auto_increment NOT NULL,
+  Message bigint,
+  Task bigint,
+  Type bigint,
+  URL text,
+  Data_Id bigint,
+  Title text,
+  Description text,
+  Search_String text
+);
+
+5/16/07
+alter table Task add column  Estimated_End datetime;
+alter table Task add column  Actual_End datetime;

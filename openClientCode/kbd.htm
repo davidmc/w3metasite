@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta name="Author" content="David McCombs">
+<meta name="Generator" content="Paint Shop Pro 9">
+<script type="text/javascript" src="kbd.js"></script>
+<title>Mouse Driven Querty Keyboard</title>
+</head>
+<body onLoad="focusFirstControl()">
+<h2>Mouse Driven Querty Keyboard</h2>
+<!-- for fun a sign on -->
+
+<form action='javascript:alert("No Way!")' method='post'>
+  <table>
+    <tr><th colspan='2'>Please Sign On
+    <tr><th>Login:<td>&nbsp;&nbsp;&nbsp;
+    <input type='text' name='login' Size='10' value='' AUTOCOMPLETE="OFF">&nbsp;&nbsp;
+
+    <tr><th>Password:<td>&nbsp;&nbsp;&nbsp;
+        <input type='password' name='password' Size='10' value='' AUTOCOMPLETE="OFF">&nbsp;&nbsp;
+    <tr><th>&nbsp;<td>&nbsp;&nbsp;&nbsp;
+        <input type='submit' value='&nbsp; Sign On &nbsp;'></form>
+  </table>
+</form>
+
+<!-- now the image -->
+<img name="qwertyKbd" id="qwertyKbd" 
+     src="qwerty.gif" width="391" 
+     height="131" border="0" usemap="#qwerty" alt="qwertyKbd" />
+
+<!-- now the map to the image -->
+<map name="qwerty">
+<area shape="rect" coords="34,1,58,26" href="javascript:ky('1')" alt="">
+<area shape="rect" coords="60,2,84,26" href="javascript:ky('2')" alt="">
+<area shape="rect" coords="83,1,110,26" href="javascript:ky('3')" alt="">
+<area shape="rect" coords="111,2,136,26" href="javascript:ky('4')" alt="">
+<area shape="rect" coords="137,0,162,26" href="javascript:ky('5')" alt="">
+<area shape="rect" coords="165,2,189,26" href="javascript:ky('6')" alt="">
+<area shape="rect" coords="190,2,214,26" href="javascript:ky('7')" alt="">
+<area shape="rect" coords="216,2,241,26" href="javascript:ky('8')" alt="">
+<area shape="rect" coords="242,0,266,26" href="javascript:ky('9')" alt="">
+<area shape="rect" coords="267,1,293,26" href="javascript:ky('0')" alt="">
+
+<area shape="rect" coords="46,26,71,52" href="javascript:ky('q')" alt="">
+<area shape="rect" coords="71,26,98,53" href="javascript:ky('w')" alt="">
+<area shape="rect" coords="98,26,125,54" href="javascript:ky('e')" alt="">
+<area shape="rect" coords="124,27,151,54" href="javascript:ky('r')" alt="">
+<area shape="rect" coords="150,27,176,53" href="javascript:ky('t')" alt="">
+<area shape="rect" coords="176,27,202,53" href="javascript:ky('y')" alt="">
+<area shape="rect" coords="201,25,228,53" href="javascript:ky('u')" alt="">
+<area shape="rect" coords="227,26,253,53" href="javascript:ky('i')" alt="">
+<area shape="rect" coords="253,25,280,53" href="javascript:ky('o')" alt="">
+<area shape="rect" coords="280,25,307,54" href="javascript:ky('p')" alt="">
+
+<area shape="rect" coords="53,53,80,79" href="javascript:ky('a')" alt="">
+<area shape="rect" coords="80,53,105,80" href="javascript:ky('s')" alt="">
+<area shape="rect" coords="105,54,131,80" href="javascript:ky('d')" alt="">
+<area shape="rect" coords="132,54,156,79" href="javascript:ky('f')" alt="">
+<area shape="rect" coords="156,52,182,80" href="javascript:ky('g')" alt="">
+<area shape="rect" coords="183,53,209,80" href="javascript:ky('h')" alt="">
+<area shape="rect" coords="210,54,236,79" href="javascript:ky('j')" alt="">
+<area shape="rect" coords="236,54,261,79" href="javascript:ky('k')" alt="">
+<area shape="rect" coords="261,54,286,79" href="javascript:ky('l')" alt="">
+<area shape="rect" coords="66,79,91,105" href="javascript:ky('z')" alt="">
+<area shape="rect" coords="91,80,119,105" href="javascript:ky('x')" alt="">
+<area shape="rect" coords="119,80,144,105" href="javascript:ky('c')" alt="">
+<area shape="rect" coords="143,79,171,105" href="javascript:ky('v')" alt="">
+<area shape="rect" coords="170,79,196,105" href="javascript:ky('b')" alt="">
+<area shape="rect" coords="196,79,222,105" href="javascript:ky('n')" alt="">
+<area shape="rect" coords="222,79,248,105" href="javascript:ky('m')" alt="">
+
+<area shape="rect" coords="1,26,46,52" href="javascript:kyTab()" alt="">
+<area shape="rect" coords="344,1,391,27" href="javascript:kyDel()" alt="">
+<area shape="rect" coords="339,53,391,79" href="javascript:kyEnter()" alt="">
+<area shape="rect" coords="104,104,312,131" href="javascript:kySpace()" alt="">
+<area shape="rect" coords="1,79,66,106" href="javascript:kyShift()" alt="">
+<area shape="rect" coords="326,80,390,105" href="javascript:kyShift()" alt="">
+</map>
+
+</body>
+</html>
+

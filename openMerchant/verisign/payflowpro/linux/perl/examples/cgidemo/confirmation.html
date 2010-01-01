@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Verisign Checkout - Confirmation</title>
+ #BASE#
+</head>
+
+<body>
+<form  action="#SCRIPTURL#" method="POST">
+<INPUT TYPE="HIDDEN" NAME="SESSIONID" VALUE="#SESSIONID#">
+<INPUT TYPE="HIDDEN" NAME="action" VALUE="return">
+
+<!-- Main Table Setup -->
+<div align="center"><center>
+
+        <table width="500" border="0">
+          <tr>
+            <td valign="middle" width="295" align="center">&nbsp;&nbsp;&nbsp; <img src="logo.gif" alt="logo.gif (2195 bytes)" WIDTH="233" HEIGHT="41"></td>
+            <td valign="top" width="294"><p align="right"><img src="signio.gif" alt="signio.gif (2351 bytes)" WIDTH="112" HEIGHT="53">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="2" face="Arial"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></td>
+          </tr>
+          <tr>
+            <td valign="top" width="589" colspan="2"><p align="center"><br>
+            </p>
+            <p align="center"><font size="2" face="Arial">Transaction Confirmation #</font><font color="#ff0000" face="Arial" size="2"><strong> #PNREF# <br>
+            </strong></font><font size="2" face="Arial"><font color="#000000">(Recording this number
+            is optional)</font><br>
+            </font></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="CENTER" valign="MIDDLE">&nbsp;</td>
+          </tr>          
+										<tr>
+            <td colspan="2" align="CENTER" valign="MIDDLE">#MSG#</td>
+          </tr>
+          <tr>
+            <td valign="top" width="589" colspan="2"><p align="center"><font size="2" face="Arial">&nbsp;</font></p>
+            <p align="center"><font size="2" face="Arial">Verisign has routed, processed, and secured
+            your personal payment information.<br>
+            Look for the Verisign logo (upper right) when you want to shop securely on the Internet.</font></p>
+            <p align="center"><font face="Arial" size="1"><a href="http://www.verisign.com/payment">More
+            information about Verisign</a></font></td>
+          </tr>
+        </table>
+
+</center></div>
+
+</form>
+</body>
+</html>

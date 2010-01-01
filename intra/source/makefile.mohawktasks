@@ -1,0 +1,5 @@
+# Target Folder
+WEBDIR=../../web/mohawk/tasks/
+OLOGIN = -DALTSLOGINSOURCE="\"../../peopleAndProjects/source/openLogin.h\"" -DREPORTDOESPDF
+
+

@@ -1,0 +1,56 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(tclink.c)
+AC_CONFIG_HEADER(config.h)
+AC_LANG_C
+
+dnl Checks for programs.
+AC_PROG_CC
+
+dnl Standard headers.
+AC_CHECK_HEADERS(fcntl.h strings.h sys/time.h unistd.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_HEADER_TIME
+
+dnl Check for standard headers.
+AC_HEADER_STDC
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(strdup)
+
+AC_CHECK_LIB(nsl, gethostbyaddr)
+AC_CHECK_LIB(socket, socket)
+
+CFLAGS=
+
+dnl OpenSSL directory, if specified.
+ac_ssl_dir="/usr/local/ssl"
+AC_ARG_WITH(ssl-dir,[  --with-ssl-dir=DIR     where to find OpenSSL libraries and includes [default=/usr/local/ssl]],[ac_ssl_dir=$withval])
+if test -n "$ac_ssl_dir"; then
+	LDFLAGS="$LDFLAGS -L$ac_ssl_dir/lib"
+	CFLAGS="$CFLAGS -I$ac_ssl_dir/include"
+	CPPFLAGS="$CPPFLAGS -I$ac_ssl_dir/include"   # check_headers insists on using the cpp flags - why?
+fi
+
+dnl OpenSSL libraries.
+ac_crypto_lib=1
+ac_ssl_lib=1
+AC_CHECK_LIB(crypto,CRYPTO_lock,,[ac_crypto_lib=0])
+AC_CHECK_LIB(ssl,SSL_connect,,[ac_ssl_lib=0])
+if test "$ac_crypto_lib" = "0" || test "$ac_ssl_lib" = "0"; then
+  AC_MSG_ERROR(Can't find OpenSSL libraries.  Please visit www.openssl.org.)
+fi
+
+dnl OpenSSL headers.
+ac_ssl_headers=1
+AC_CHECK_HEADER(openssl/crypto.h,,[ac_ssl_headers=0])
+if test "$ac_ssl_headers" = "0"; then
+  AC_MSG_ERROR(Can't find OpenSSL library headers.  Please visit www.openssl.org.)
+fi
+
+dnl Set TCLink version
+TCLINK_VERSION="3.4-C-`uname -sm | tr ' ' -`"
+AC_DEFINE_UNQUOTED(TCLINK_VERSION, "$TCLINK_VERSION")
+
+AC_OUTPUT(Makefile)

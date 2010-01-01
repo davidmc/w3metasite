@@ -1,0 +1,544 @@
+/*
+
+inner_forms_base.cpp
+================
+Forms Base Implementation
+
+*/
+#include "inner_forms_base.hpp"
+#include "ocXML.h"
+
+inner_forms_base::inner_forms_base(string formName,cgiScript & in):m_formName(formName),script(in)
+{
+  m_warn = "<br>";
+  getInstructions();
+}
+
+inner_forms_base::~inner_forms_base()
+{
+  ;
+} 
+
+bool inner_forms_base::getInstructions( void )
+{
+  bool breturn = false;
+
+  if( script.ClientArguments().count("xmldirections") )
+  {     
+    string xml = script.ClientArguments()["xmldirections"].c_str();
+    xmlParser parser(xml);
+    parser.parse();
+    node_vector & xnodes = parser.nodeList();
+    int i;
+    for(i=0;i<xnodes.size();i++)
+    {
+      xmlNode & node = xnodes[i];
+      if( node.name == "change" )
+      {
+        changes[node.data]=node.data;
+      }
+      else if( node.name == "mode" )
+      {
+        // the last one wins here
+        mode = node.data;
+        breturn = true;
+      }
+    }
+  }
+  // error handling:
+  //  cookie mode and mode should always agree, 
+  //  if not set to safe action s for 'show'
+  cgiCookie cookie;
+  string formModeKey = m_formName+"_mode";
+  string cookie_mode = cookie.get(formModeKey.c_str());
+  if( mode != cookie_mode )
+  {
+    mode = "s";    
+  }
+  return breturn;
+}
+
+// implement pure virtual of form action
+bool inner_forms_base::form_action( void )
+{  
+  // if not reset or new mode, move id   
+  if( mode != "r" && mode != "n" )
+  {
+    form_id_transfer();
+  }
+  // if not reset mode, move 
+  if( mode != "r" )
+  {
+    form_data_transfer();
+  }      
+  return dbf_action( mode, changes );
+}
+
+// load template for forms controls
+bool inner_forms_base::loadControlTemplates( string controlPath, string formPath )
+{
+  bool bret = false;
+  bret =  formTemplate.load(formPath.c_str());
+  if( bret )
+  {
+    if( controlPath == formPath )
+    {
+      controlsTemplate = formTemplate;
+    }
+    else
+    {
+      bret = controlsTemplate.load( controlPath.c_str() );
+    }
+  }
+  return bret;
+}
+string inner_forms_base::makeButtons( long long key, buttonStyle bStyle )
+{
+  ocString ret = formTemplate.getParagraph("button_group");
+  ocString strButtons;
+  if(  bStyle == full )
+  {
+    if( key )
+    {
+      strButtons += controlsTemplate.getParagraph("update");
+      strButtons += controlsTemplate.getParagraph("delete");
+      strButtons += controlsTemplate.getParagraph("reset");
+      strButtons += controlsTemplate.getParagraph("new");
+    }
+    else
+    {
+      strButtons += controlsTemplate.getParagraph("insert");
+    }
+  }
+  else
+  {
+    if( key )
+    {
+      strButtons += controlsTemplate.getParagraph("update");
+      if(  bStyle == updateAndReset )
+      {
+        strButtons += controlsTemplate.getParagraph("reset");
+        strButtons += controlsTemplate.getParagraph("new");
+      }
+    
+    }
+    else
+    {
+      strButtons += controlsTemplate.getParagraph("insert");
+    }
+  }
+  return ret.replace("$buttons$",strButtons.replaceAll("$FORMID",m_formName));
+}
+
+
+string inner_forms_base::makeTop(string uri, string name )
+{
+  ocString ret = formTemplate.getParagraph("form_begin");  
+  return ret.replace("$action$",uri.c_str()).replaceAll("$name$",name.c_str());
+} 
+string inner_forms_base::makeBottom( string status  )
+{
+  ocString ret = formTemplate.getParagraph("form_end");
+  if( m_warn != "<br>" )  status += m_warn; 
+  return ret.replace("$status$",status.c_str());
+} 
+  
+// form to class property exchange methods
+void inner_forms_base::stringFXfer( string in, string & out )
+{
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    out=script.ClientArguments()[in.c_str()].c_str();
+  }
+}
+void inner_forms_base::llongFXfer( string in, long long & out )
+{ 
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    out=atoll(script.ClientArguments()[in.c_str()].c_str());
+  }  
+}
+void inner_forms_base::longFXfer( string in, long & out )
+{ 
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    out=atol(script.ClientArguments()[in.c_str()].c_str());
+  }  
+}
+void inner_forms_base::unfmtLongFXfer( string in, long & out )
+{ 
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    ocString fixUp = script.ClientArguments()[in.c_str()].c_str();
+    out=atol(fixUp.replaceAll(",","").c_str());
+  }  
+}
+void inner_forms_base::intFXfer( string in, int & out )
+{ 
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    out=atoi(script.ClientArguments()[in.c_str()].c_str());
+  }  
+}
+void inner_forms_base::shortFXfer( string in, short & out )
+{ 
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    out=atoi(script.ClientArguments()[in.c_str()].c_str());
+  }  
+}
+void inner_forms_base::doubleFXfer( string in, double & out )
+{
+  if( script.ClientArguments().count(in.c_str()) )
+  {     
+    out=atof( script.ClientArguments()[in.c_str()].c_str());
+  }
+}
+void inner_forms_base::moneyFXfer( string in, money & out )
+{
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    ocString tmpVal = script.ClientArguments()[in.c_str()].c_str();
+    double val = atof( tmpVal.replaceAll("$","").replaceAll(",","").c_str() );
+    out=val;
+  }
+}
+void inner_forms_base::boolFXfer( string in, bool & out )
+{
+  out = false;
+  if( script.ClientArguments().count(in.c_str()) )
+  {
+    out=true;
+  }
+}
+
+void inner_forms_base::dateFXfer( string in, oc_date & out )
+{
+  if( script.ClientArguments().count(in.c_str())&&  script.ClientArguments()[in.c_str()].length() )
+  out.parse( script.ClientArguments()[in.c_str()].c_str() ); // date using locale
+}
+
+void inner_forms_base::dateFXfer( string in, time_date & out )
+{
+  if( script.ClientArguments().count(in.c_str()) &&  script.ClientArguments()[in.c_str()].length())
+  { // time_date using locale
+    out.parse( script.ClientArguments()[in.c_str()].c_str() ,"%m/%d/%Y  %H:%M" );
+  }
+}
+
+void inner_forms_base::timeFXfer( string in, oc_time & out )
+{
+  if( script.ClientArguments().count(in.c_str()) &&  script.ClientArguments()[in.c_str()].length() )
+  {
+    out.setFormat("%I:%M %p");
+    out.parse( script.ClientArguments()[in.c_str()].c_str() );
+  }
+}
+
+string inner_forms_base::makeEmailBox( string label,
+                                 string name, string value, 
+                                 string size, string length)
+{
+  ocString ret = formTemplate.getParagraph("control_group");
+  ocString strEmail = controlsTemplate.getParagraph( "email" );
+
+  ret = ret.replace("$label$",label.c_str()).replace("$name$",name.c_str())
+           .replace("$control$", strEmail.replace("$FORMID",m_formName)
+                                         .replaceAll("$ID",name)
+                                         .replace("$SIZE",size)
+                                         .replace("$MAX",length)
+                                         .replace("$VALUE",value)
+                   );
+  return ret;
+}
+
+
+string inner_forms_base::makePasswordBox( string label,
+                                    string name, string value,
+                                    string size)
+{
+  ocString ret = formTemplate.getParagraph("control_group");    
+  ocString strPassword = controlsTemplate.getParagraph("password");
+
+  ret = ret.replace("$label$",label).replace("$name$",name)
+            .replace("$control$",strPassword.replace("$FORMID",m_formName)
+                                            .replaceAll("$ID",name)
+                                            .replace("$SIZE",size)
+                                            .replace("$MAX",size)
+                                            .replace("$VALUE",value)
+                    );
+
+  return ret;
+}                          
+   
+string inner_forms_base::makeZipBox( string label,
+                               string name, string value,
+                               string size)
+{
+  ocString ret = formTemplate.getParagraph("control_group");    
+  ocString strZip = controlsTemplate.getParagraph("zip");
+ 
+    ret = ret.replace("$label$",label.c_str()).replace("$name$",name.c_str())
+             .replace("$control$", strZip.replace("$FORMID",m_formName)
+                                         .replaceAll("$ID",name)
+                                         .replace("$SIZE",size)
+                                         .replace("$MAX",size)
+                                         .replace("$VALUE",value)
+                     );
+
+  return ret;
+} 
+string inner_forms_base::makePhoneBox( string label,
+                                 string name, string value,
+                                 string size)
+{
+  ocString ret = formTemplate.getParagraph("control_group");    
+  ocString strPhone = controlsTemplate.getParagraph("phone");
+
+    ret = ret.replace("$label$",label.c_str()).replace("$name$",name.c_str())
+             .replace("$control$", strPhone.replace("$FORMID",m_formName)
+                                           .replaceAll("$ID",name)
+                                           .replace("$SIZE",size)
+                                           .replace("$MAX",size)
+                                           .replace("$VALUE",value)
+                     );
+
+  return ret;
+}
+
+// a text box in the file (picking) group
+string inner_forms_base::makeFilePickBox( string label,
+                                string name, string value,
+                                string size, string maxlen) 
+{
+  ocString ret = formTemplate.getParagraph("file_group");    
+  ocString strTextbox = controlsTemplate.getParagraph("text");
+
+  ret = ret.replace("$label$",label.c_str())
+           .replace("$name$",name.c_str())
+           .replace("$id$",name.c_str())
+           .replace("$control$",strTextbox.replace("$FORMID",m_formName)
+                                          .replaceAll("$ID",name)
+                                          .replace("$SIZE",size)
+                                          .replace("$MAX",maxlen)
+                                          .replace("$VALUE",value)
+                   );
+  return ret;
+}
+
+// a real file control
+string inner_forms_base::makeFileBox( string label,
+                                string name, string value,
+                                string size, string maxlen )
+{
+  ocString ret = formTemplate.getParagraph("control_group");
+  ocString strFilebox  = controlsTemplate.getParagraph("file");
+  ret = ret.replace("$label$",label.c_str())
+           .replace("$name$",name.c_str())
+           .replace("$id$",name.c_str())
+           .replace("$control$", strFilebox.replace("$FORMID",m_formName)
+                                           .replaceAll("$ID",name)
+                                           .replace("$SIZE",size)
+                                           .replace("$MAX",maxlen)
+                                           .replaceAll("$VALUE",value)
+                   );
+  return ret;
+}
+
+string inner_forms_base::makeMetaBox( string label,
+                                string name, string value,
+                                string size, string metaFile, // defaulted
+                                string context ) // defaulted
+{
+  ocString ret = formTemplate.getParagraph("meta_group");    
+  ocString strTextbox = controlsTemplate.getParagraph("text");
+  ocString jopen_url="metatagPick.cgi";
+  if( metaFile.length() )
+  {
+    jopen_url += "?template_path=";
+    jopen_url += metaFile;
+    if( context.length() )
+    {
+      jopen_url += "&context=";
+      jopen_url += context;
+    }
+  }
+  else if(context.length() )
+  {
+    jopen_url += "?context=";
+    jopen_url += context;
+  }
+
+  ret = ret.replace("$label$",label)
+            .replace("$name$",name)
+            .replace("$id$",name)
+            .replace("metatagPick.cgi",jopen_url.c_str())
+            .replace("$control$",strTextbox.replace("$FORMID",m_formName)
+                                          .replaceAll("$ID",name)
+                                          .replace("$SIZE",size)
+                                          .replace("$MAX",size)
+                                          .replace("$VALUE",value)
+                    );
+  return ret;
+}
+
+string inner_forms_base::makeImageBox( string label, string name,
+                                 string value, string size, string max)
+{
+  ocString ret = formTemplate.getParagraph("image_group");    
+  ocString strTextbox = controlsTemplate.getParagraph("text");
+
+  ret = ret.replace("$label$",label)
+            .replace("$name$",name)
+            .replace("$id$",name)
+            .replace("$value",value)
+            .replace("$control$", strTextbox.replace("$FORMID",m_formName)
+                                            .replaceAll("$ID",name)
+                                            .replace("$SIZE",size)
+                                            .replace("$MAX",max)
+                                            .replace("$VALUE",value)
+                    );
+
+
+  return ret;
+}
+
+
+string inner_forms_base::makeTextArea(string label, string name,
+                                string value, string rows,
+                                string cols, string altTemplate)
+{
+  ocString ret = altTemplate;
+  if( ret.length() == 0 ) ret = formTemplate.getParagraph("wide_group");
+  ocString strTextarea = controlsTemplate.getParagraph("textarea");
+  ret = ret.replace("$label$",label.c_str()).replace("$name$",name.c_str())
+           .replace("$control$", strTextarea.replaceAll("$FORMID",m_formName)
+                                            .replaceAll("$ID", name)
+                                            .replace("$VALUE",value)
+                                            .replace("$ROWS",rows)
+                                            .replace("$COLS",cols)
+                   );
+
+  return ret;
+}
+string inner_forms_base::genericBox( string controlName, string label, string name,
+                               string  value, string attr, string size,
+                               string length )
+{
+  ocString ret = formTemplate.getParagraph("control_group");
+  ocString strControlbox = controlsTemplate.getParagraph(controlName);
+  ret = ret.replace("$label$",label)
+            .replace("$name$",name)
+            .replace("$id$",name)
+            .replace("$value",value)
+            .replace("$control$", strControlbox.replace("$FORMID",m_formName)
+                                            .replaceAll("$ID",name)
+                                            .replace("$SIZE",size)
+                                            .replace("$MAX",length)
+                                            .replace("$ATTR",attr)
+                                            .replace("$VALUE",value)
+                    );
+  return ret;
+}
+string inner_forms_base::genericChoiceBox(
+                       string opening, string closing, string option,
+                       string label, string name, ocString selectedValue,
+                       ocString labelValuePair, ocString defaulted,
+                       string selMarker )
+{
+  ocString ret = formTemplate.getParagraph("control_group");
+  ocString selStart = controlsTemplate.getParagraph(opening);
+  string strControl = selStart.replaceAll("$ID", name)
+                              .replaceAll("$FORMID",m_formName);
+  ocString selOption =  controlsTemplate.getParagraph(option);
+
+  if(  defaulted.length() > 0 )
+  {
+    if(defaulted.find("=") == string::npos) // just a label
+    {
+      strControl +=  selOption.replace("$VALUE","-1")
+                                .replace("$SELECTED","")
+                                .replace("$CHECKED","")
+                                .replace("$LABEL",defaulted);
+    }
+    else // a label with a specific value
+    {
+      string lbl =  defaulted.parse("=");
+      string vlu =   defaulted.parse("=");
+      strControl +=  selOption.replace("$VALUE",vlu)
+                                .replace("$SELECTED","")
+                                .replace("$CHECKED","")
+                                .replace("$LABEL",lbl);
+    }
+  }
+  // DBG  cerr << labelValuePair << endl;
+  
+  labelValuePair.parseInit();
+  ocString pair = labelValuePair.parse(",");
+  while( ! labelValuePair.endOfParse() )
+  {
+    
+    string selected = "";
+    if( ! labelValuePair.endOfParse() )
+    {
+      string label = pair.parse("=");
+      string value = pair.parse("=");
+      if( value == selectedValue)  selected = selMarker;
+
+      // cerr <<  label << "=" << value << endl;
+      
+      strControl +=  selOption.replace("$VALUE",value)
+                                .replace("$SELECTED",selected)
+                                .replace("$CHECKED",selected)
+                                .replace("$LABEL",label);
+    }
+    pair = labelValuePair.parse(",");
+  }
+  strControl += controlsTemplate.getParagraph(closing);
+  ret = ret.replace("$label$",label.c_str())
+            .replace("$name$",name.c_str())
+            .replace("$control$", strControl );
+
+  return ret;
+  
+}
+
+string inner_forms_base::makeStateBox( string label,
+                                 string name,
+                                 string selectedValue)
+{
+
+    ocString ret = formTemplate.getParagraph("control_group");
+    ocString selStart = controlsTemplate.getParagraph("dropdown_start");
+    string strDropDown = selStart.replaceAll("$ID", name).replaceAll("$FORMID",m_formName);
+    ocString selOption =  controlsTemplate.getParagraph("dropdown_option");
+    ocString states = controlsTemplate.getParagraph("states");
+
+    return genericChoiceBox( "dropdown_start" , "dropdown_end",
+                             "dropdown_option", label, name, selectedValue,
+                             states, "", " selected='selected' " );
+
+
+}
+     
+string inner_forms_base::makeBoolBox( string label,
+                                string name,
+                                bool value )
+{
+  ocString ret = formTemplate.getParagraph("control_group");
+
+  ocString strBoolbox = controlsTemplate.getParagraph("boolbox");
+
+  string strChecked = value?" checked ":"";
+
+  ret = ret.replace("$label$",label.c_str())
+           .replace("$name$",name.c_str())
+           .replace("$control$", strBoolbox.replaceAll("$FORMID",m_formName)
+                                           .replaceAll("$ID",name)
+                                           .replace("$CHECKED",strChecked)
+                    );
+ 
+  return ret; 
+}
+
+

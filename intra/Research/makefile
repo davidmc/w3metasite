@@ -1,0 +1,32 @@
+# base defs are here
+include ../../build.mak
+
+LOGINMODEL=-DLOGIN_LITE_SECURITY=TRUE
+
+WEBDIR=../../web/
+
+
+all:  imageBatch
+
+#
+# link applications
+#
+
+	
+imageBatch:  imageBatch.o
+	$(CC) -o imageBatch  imageBatch.o  $(CGILIB) $(MLIB) -lMagick++ -lMagick -ltiff -ljpeg -lpng -luuid
+
+
+#
+#compile objects
+#
+
+imageBatch.o: imageBatch.cpp  makefile
+	$(CC) -c  $(CGIINC)  imageBatch.cpp  $(IMPL_DEFS)
+
+
+clean:
+	rm imageBatch
+	rm *.o
+	
+	

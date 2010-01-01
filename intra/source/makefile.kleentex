@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/customlogomats/
+OLOGIN = -DALTSLOGINSOURCE="\"../../kleentex/source/affiliateLogin.h\""
+

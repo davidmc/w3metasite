@@ -1,0 +1,58 @@
+<!--@top-->
+<html><head>
+<style>
+body {
+font-family: Arial, Gill, Helvetica, sans-serif ;
+font-size: 10pt; 
+}
+div.postage {
+float: right;
+margin: 1mm;
+}
+div.destination {
+float: left:
+margin: 1mm;
+}
+div.source {
+margin: 1m;
+margin-left: 70mm;
+page-break-after: always; 
+}
+br.all {
+clear: both;
+}
+</style>
+</head>
+<body>
+<!--/@top-->
+
+<!--@tr-->
+<div class='postage'>
+Non-Profit Organization<br> 
+<b>US Postage Paid</b><br> 
+Permit 688<br>
+Chattanooga, TN
+</div>
+<div class='destination'>
+<!--/@tr-->
+
+<!--@td-->
+<div class='destinationline'>
+$data$
+</div>
+<!--/@td-->
+
+<!--@end_tr-->
+</div>
+<br class='all'>
+<div class='source'>
+<b>WTCI - TV45 DT29</b><br>
+4411 Amnicola Hwy.<br>
+Chattanooga, TN. 37406<br>
+</div>
+<!--/@end_tr-->
+
+<!--@end-->
+</body>
+</html>
+<!--/@end-->

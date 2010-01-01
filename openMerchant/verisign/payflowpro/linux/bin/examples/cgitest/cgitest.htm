@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<title>SLTest CGI</title>
+</head>
+
+<body>
+
+<form method="POST" action="cgitest.cgi">
+  <div align="left"><table border="0" width="464" height="30">
+    <tr>
+      <td width="126" height="30">User:&nbsp;&nbsp;&nbsp; </td>
+      <td width="326" height="30"><input type="text" value="user" name="userId" size="35"></td>
+    </tr>
+    <tr>
+      <td width="126" height="30">Vendor:&nbsp;&nbsp;&nbsp; </td>
+      <td width="326" height="30"><input type="text" value="vendor" name="vendorId" size="35"></td>
+    </tr>
+    <tr>
+      <td width="126" height="30">Partner:&nbsp;&nbsp;&nbsp; </td>
+      <td width="326" height="30"><input type="text" value="partner" name="partnerId" size="35"></td>
+    </tr>
+    <tr>
+      <td width="126" height="30">Merchant Password:</td>
+      <td width="326" height="30"><input type="text" value="password" name="userPW" size="35"></td>
+    </tr>
+    <tr>
+      <td width="126" height="30">Card Number:</td>
+      <td width="326" height="30"><input type="text" value="5105105105105100" name="cardNum"
+      size="35"></td>
+    </tr>
+    <tr>
+      <td width="126" height="30">Card Expiration: </td>
+      <td width="326" height="30"><input type="text" value="1209" name="cardExp" size="35"></td>
+    </tr>
+    <tr>
+      <td width="126" height="30">Amount:&nbsp; </td>
+      <td width="326" height="30"><input type="text" value="1.00" name="amount" size="35"></td>
+    </tr>
+  </table>
+  </div><p><font color="#FF0000">*** You will need to change the UserID/Password/Vendor/Partner to those specified when signing up for the Signio service.</font></p>
+  <p><input type="submit" value="Process" name="B1"></p>
+</form>
+</body>
+</html>

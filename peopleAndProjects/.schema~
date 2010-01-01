@@ -1,0 +1,109 @@
+create table Company
+(
+Id bigint primary key auto_increment NOT NULL,
+Name text,
+Key_Contact bigint,
+Address1 text,
+Address2 text,
+City text,
+State text,
+Zip text,
+Country text,
+Notes text,
+Last_Contacted datetime,
+Status bigint,
+Open_PO text
+);
+
+create table Contact
+(
+Id bigint primary key auto_increment NOT NULL,
+First text,
+Last text,
+Prefix text,
+Phone text,
+Mobile text,
+Email text,
+Fax text,
+Home_Phone text,
+Company bigint,
+Password text
+);
+
+create table Project
+(
+Id bigint primary key auto_increment NOT NULL,
+Name text,
+Company bigint,
+Estimated_Start datetime,
+Actual_Start datetime,
+Estimated_Time int,
+Actual_Time int,
+Phase int,
+Parent_Project bigint,
+Notes text,
+Status bigint,
+Rate double,
+PO text,
+Estimate double
+);
+
+create table Task
+(
+Id bigint primary key auto_increment NOT NULL,
+Project bigint,
+Name text,
+Estimated_Time int,
+Actual_Time int,
+Description text,
+Start datetime,
+Task_Order int,
+Hierarchy int,
+Status bigint,
+Percent_Complete int,
+Parent_Task bigint,
+Estimate double
+);
+
+create table Time
+(
+Id bigint primary key auto_increment NOT NULL,
+Task bigint,
+Start datetime,
+Stop datetime,
+Description text,
+Hours double
+);
+
+create table Status
+(
+Id bigint primary key auto_increment NOT NULL,
+Name text,
+Class text,
+Sequence int,
+Prog_Enum int
+);
+
+create table Appointment
+(
+Id bigint primary key auto_increment NOT NULL,
+Company bigint,
+Contact bigint,
+Location text,
+Title text,
+Description text,
+Starts datetime,
+Stops datetime
+);
+
+create table Notes
+(
+Id bigint primary key auto_increment NOT NULL,
+Company bigint,
+Project bigint,
+Task bigint,
+Author bigint,
+Created datetime,
+Status bigint
+);
+

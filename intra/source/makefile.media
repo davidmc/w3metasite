@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/media/
+OLOGIN = -DALTSLOGINSOURCE="\"../../mediaplayer/source/openLogin.h\""
+

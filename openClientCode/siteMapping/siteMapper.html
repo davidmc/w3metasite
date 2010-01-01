@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>Site Mapping - W3Sys</title>
+    <meta content="Load Testing - W3Sys">
+    <script  type='text/javascript' src="../openDom.js"></script>
+    <style>
+    body {
+      background: rgb(85,136,238);
+      color: white;
+      font: 10pt "Arial";
+      }
+    #heading {
+      color: rgb(252,222,8);
+      font: bold 14pt "Arial";
+      }
+    a {
+      color: rgb(252,222,8);
+      }
+    a:hover {
+      color: rgb(222,252,8);
+      }
+    #testSetup {
+      text-align: right;
+      position: absolute;
+      top: 70px;
+      left: 30px;
+      }
+    #testButton {
+      position: absolute;
+      top: 150px;
+      left: 30px;
+      color: rgb(252,222,8);
+      }
+    .fixedwidth {
+      margin-top: 2px;
+      width: 250px;
+      }
+    </style>
+    <script type='text/javascript'>
+    var dom = new openDom();
+    // object for holding hierarchy
+    function treeNode( location, tagName )    
+    {
+      this.location = new String(location);
+      this.name = new String( tagName );
+      this.children = new Array(); 
+      this.emit = treeNode_emit;           
+    }
+    function treeNode_emit ()
+    {
+      var siteMapDiv = dom.getElementById("siteMap");
+      var newListItem = document.createElement("li");
+      var cont = new String("<a href='");
+      cont += this.location;
+      cont += "'>";
+      cont += this.name;
+      cont += "</a></li>\n";
+      var newText = document.createTextNode(cont);
+      newListItem.appendChild(newText);     
+      siteMapDiv.appendChild(newListItem);      
+    }    
+    var nodes = new Array();
+    function test()
+    {
+      var url = document.forms[0].url.value;       
+      var curWin = window.open(url,"look","height=250,width=350");
+      var curHost = url;
+      var siteMapDiv = dom.getElementById("siteMap");
+      var newHeading = document.createElement("h2");
+      var cont = new String("Site Map for ");
+      cont +=  curHost;
+      var newText = document.createTextNode(cont);
+      newHeading.appendChild(newText);     
+      siteMapDiv.appendChild(newHeading);
+      links = curWin.document.links;
+      for( var i=0; i < links.length; ++i ) // >
+      {
+         var nd = new treeNode( links[i].href, links[i].getAttribute("innerHTML") );
+         nd.emit();    
+      }
+    }
+    </script>
+  </head>
+  <body margin="0">
+ 
+  <span id="heading"><a href="http://www.w3sys.com">W3 Systems</a> Site Mapping</span>
+  <p>
+  <form  action="javascript:test()">    
+  URL: &nbsp; <input id="url" name="url" type="text" class="fixedwidth"><br>
+  Submit Test: &nbsp; <input id="goTest" name="goTest" type="submit" value="Go Test" class="fixedwidth">  
+  </form>
+  </p>
+
+  <div id="siteMap">
+  &nbsp;
+  </div>
+  </body>
+</html>
+

@@ -1,0 +1,127 @@
+<!--@top-->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso8859-1">
+<TITLE>Console</TITLE>
+<style type=text/css media=screen>@import url(main.css );</style>
+<SCRIPT type="text/javascript" src="openDom.js"></SCRIPT>
+<SCRIPT type="text/javascript">
+  var myDom = new openDom();
+  var updates = new Array();
+  var ctrlId;   
+  function placeFile(id)
+  {
+    // save id for call back  
+    ctrlId = id;    
+    window.open("filePick.cgi", 
+                "_blank",
+                "scrollbars=yes,toolbar=no,menubar=no,location=no");
+  }
+  function placeFileCallback( link )
+  {
+    var ctrl = myDom.getElementById(ctrlId);
+    ctrl.value = link;
+    updates[ctrl.name] = ctrl.name;    
+  }
+  function remenu()
+  {
+    parent.menu.location.href = parent.menu.location.href;
+  }
+  function placeImage(id)
+  {
+    // save id, relPath  and attributes for call back  
+    ctrlId = id;    
+    window.open("imagePick.cgi?noBasePath=true", 
+                "_blank",
+                "scrollbars=yes,toolbar=no,menubar=no,location=no");
+  }
+  function placeImageCallback( link )
+  {
+    var ctrl = myDom.getElementById(ctrlId);
+    ctrl.value = link;
+    updates[ctrl.name] = ctrl.name;    
+  }  
+  function placeTagCallback( value )
+  {
+    // Using id saved by jcontrol for call back
+    ctrl.value = value;
+    updates[ctrl.name] = ctrl.name; 
+  }
+  function jcontrol(id,url)
+  {
+    // save id for call back
+    ctrl = myDom.getElementById(id);  
+    window.open(url, "ctrlaid", "scrollbars,resizable,toolbar=no,menubar=no,location=no,width=500,height=400");
+  }
+  function toggleVis( elemId )
+  {
+    // used to hide and unhide form elements considered 'advanced'
+    ctrl = myDom.getElementById(elemId);
+    if( ctrl.style.display == "none" || !ctrl.style.display )
+      ctrl.style.display = "block";
+    else
+      ctrl.style.display = "none"; 
+  }
+  function addChild( cgi, name)
+  {
+    // add a child item to a combo box
+    jopen(cgi,'scrollbars,resizable,width=400,height=300',name);
+  }
+  function updateChild(cgi, name, ctrl_id )
+  {
+    // update the curent selected combo box item
+    var link=cgi;
+    link += '?Id=';
+    link += myDom.getElementById(ctrl_id).value;
+    jopen(link,'scrollbars,resizable,width=400,height=300',name);
+  }
+  // More Functions?
+</SCRIPT>
+<SCRIPT type="text/javascript" src="forms.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="formEvents.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="winHandlers.js"></SCRIPT>
+<!--Added_Header_Content-->
+</HEAD>
+<BODY onLoad="finalize()">
+<!--/@top-->
+
+Your Content Goes Here!
+
+<!--@bottom-->
+</BODY>
+</HTML>
+<SCRIPT>
+function finalize()
+{  
+  // Now we are in show mode
+  document.forms["uiForm"].xmldirections.value="<mode>s</mode>";
+  myDom.setCookie( "mode","s" ); 
+  // This is to show the latest key 
+  // if we move back to show on a refresh 
+  if( document.forms["uiForm"].Id )
+  {
+    myDom.setCookie( "key", document.forms["uiForm"].Id.value );
+  }
+  else if( document.forms["uiForm"].id )
+  {
+    myDom.setCookie( "key",document.forms["uiForm"].id.value );
+  }
+  /*_extra_js_*/
+}
+</SCRIPT>
+<!--/@bottom-->
+<!--@list-bottom-->
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>
+<SCRIPT>
+function finalize()
+{
+  // myDom.setCookie( "key","0" );
+  // Add your own script here 
+  /*_extra_js_*/
+}
+</SCRIPT>
+<!--/@list-bottom-->

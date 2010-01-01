@@ -1,0 +1,74 @@
+<!-- for template paragraph form_begin, replace $action$ and $name$ -->
+<!--@list_begin-->
+<table class='ui_list'>
+<!--/@list_begin-->
+<!--@tr--><tr>
+<!--/@tr-->
+<!--@th--><td class='listheader'>$data$</td><!--/@th-->
+<!--@td--><td class='listdata'>$data$</td><!--/@td-->
+<!--@ltd--><td class='lightlistdata'>$data$</td><!--/@ltd-->
+<!--@end_tr--></tr>
+<!--/@end_tr-->
+<!--@list_end-->
+</table>
+&nbsp;<br>
+<script type="text/javascript">
+myDom.setCookie( 'lPg','$lpg');
+</script>
+<!--/@list_end-->
+
+<!--@hotcolumn-->
+<a target="_self" href='$prog$?Id=$key$'>$col$</a>
+<!--/@hotcolumn-->
+
+<!--@list_filter-->
+<div id="list_filter"><form method='get' action='$location' 
+name='uiListCriteria' id='uiListCriteria'>$label:
+<input type='text' size='20' name='filter' id='filter' value="$value"> 
+&nbsp;
+<input type='submit' class='searchbutton' value='Search'>
+&nbsp;
+<a href='$location?init=1'>Show All</a>
+</form>
+</div>
+<!--/@list_filter-->
+
+<!--@multi_filter_start-->
+<div id="list_filter"><form method='get' action='$location' 
+name='uiListCriteria' id='uiListCriteria'>
+<!--/@multi_filter_start-->
+<!--@multi_filter_item-->
+$label:
+<input type='text' size='20' name='filter' id='filter' value="$value"> 
+&nbsp;
+<!--/@multi_filter_item-->
+<!--@multi_filter_end-->
+<input type='submit' class='searchbutton' value='Search'>
+&nbsp;
+<a href='$location?init=1'>Show All</a>
+</form>
+</div>
+<!--/@multi_filter_end-->
+
+<!--@list_new-->
+<tr><td colspan='$cols' style='text-align:right'>
+<a href="$location">New Item</a>
+</td></tr>
+<!--/@list_new-->
+
+<!--@list_nav-->
+<caption>Showing $dsetCount of $recCount entries.<br>
+<form action='$location' name='uiListPosition'>
+&nbsp;
+<a style='text-decoration: none;' href="$location?navigate=prev">&lt; previous</a> 
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+Page
+<input type='text' size='5' name='Pg' id='Pg' value='$Page'> of $total$
+<input type='submit' value='get'>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+<a style='text-decoration: none;' href="$location?navigate=next">next &gt;</a>
+</form>
+</caption>
+<!--/@list_nav-->
+
+

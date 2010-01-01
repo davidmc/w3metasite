@@ -1,0 +1,26 @@
+<!--@top-->
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style>@import "rad.css";</style>
+  </head>
+  <body>
+  <h1>R~A~D</h1>
+  <h3>Step 1 of 4</h3>
+  <p>Please select the file with the class definitions:</p>
+  <div class='ui'>
+  <form action='parseDiaFile.cgi' encType='multipart/form-data' method="post">
+    <select name='file'>
+<!--/@top-->
+<!--@files-->
+    <option value='_file_'>_file_</option>
+<!--/@files-->
+<!--@bottom-->
+    </select>
+    <input type='image' src='go_right.png' class="push">
+  </form>
+  </div>
+  </body>
+</html>
+<!--/@bottom-->

@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+  <head>
+    <title>Load Testing - W3Sys</title>
+    <meta content="Load Testing - W3Sys">
+    <style>
+    body {
+      background: rgb(85,136,238);
+      color: white;
+      font: 10pt "Arial";
+      }
+    #heading {
+      color: rgb(252,222,8);
+      font: bold 14pt "Arial";
+      }
+    a {
+      color: rgb(252,222,8);
+      }
+    a:hover {
+      color: rgb(222,252,8);
+      }
+    #testSetup {
+      text-align: right;
+      position: absolute;
+      top: 70px;
+      left: 30px;
+      }
+    #testButton {
+      position: absolute;
+      top: 150px;
+      left: 30px;
+      color: rgb(252,222,8);
+      }
+    .fixedwidth {
+      margin-top: 2px;
+      width: 250px;
+      }
+    </style>
+    <script type='text/javascript'>
+    var testWins;
+    var winsLoaded;
+    var winCount;
+    var startTime;
+    var stopTime;
+    function test()
+    {
+      var url = document.forms[0].url.value;
+      winCount = document.forms[0].count.value;
+      testWins = new Array(winCount);
+      winsLoaded = 0;
+      var i;
+      startTime = new Date();
+      for(i=0; winCount>i; i++)
+      {
+        testWins[i] = window.open(url,"_blank","height=100,width=150");
+      }
+    }
+    /*
+      In the child window under test,
+      add to the body tag:
+      onLoad="opener.loadCallback()"
+    */
+    function loadCallback()
+    {
+      winsLoaded++;
+      if( winsLoaded == winCount )
+      {
+        stopTime = new Date();
+        stopTime -= startTime;
+        var ms = stopTime.valueOf();
+        var sec = (ms/1000.00);
+        var result="Time Elapsed = ";
+        result += sec;
+        result += " seconds\n";
+        var avg = sec/winCount;
+        result += "Average Window Load TIme = ";
+        result += avg;
+        result += " seconds\n";
+
+        alert(result);
+      }
+    }
+    function closeWindows()
+    {
+      var i;
+      for(i=0; testWins.length>i; i++)
+      {
+        testWins[i].close();
+      }
+    }
+    </script>
+  </head>
+  <body margin="0">
+  <div id="message">
+  <span id="heading"><a href="http://www.w3sys.com">W3 Systems</a> Load Testing</span>
+  <form  action="javascript:test()">
+  <div id="testSetup">
+  <nobr>
+  Count: &nbsp; <input id="count" name="count" type="text" class="fixedwidth"><br>
+  URL: &nbsp; <input id="url" name="url" type="text" class="fixedwidth"><br>
+  Submit Test: &nbsp; <input id="goTest" name="goTest" type="submit" value="Go Test" class="fixedwidth">
+  </div>
+  <a href="javascript:closeWindows()" id="testButton">Close windows</a>
+  </body>
+</html>
+

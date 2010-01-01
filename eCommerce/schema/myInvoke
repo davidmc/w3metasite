@@ -1,0 +1,6 @@
+# /usr/bin/sh
+
+#mysql   --user='http_user' --password='mydeal99' --database='wtci'
+mysql   --user='http_user' --password='mydeal99' --database='auction'
+
+

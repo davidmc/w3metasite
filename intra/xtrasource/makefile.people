@@ -1,0 +1,4 @@
+# Target Folder
+WEBDIR=../../web/projects/
+OLOGIN = -DALTSLOGINSOURCE="\"../../peopleAndProjects/source/openLogin.h\"" -DREPORTDOESPDF
+

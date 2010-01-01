@@ -1,0 +1,18 @@
+
+all: makeclas.obj classdef.obj hstring.obj makeclas.exe
+
+hstring.obj: hstring.cpp hstring.h makefile
+  bcc -ml -c hstring.cpp
+
+classdef.obj: classdef.cpp makeclas.hpp vector.h makefile
+ bcc -ml -c  classdef.cpp
+
+makeclas.obj: makeclas.cpp makeclas.hpp vector.h makefile
+ bcc -ml -c  makeclas.cpp
+
+
+makeclas.exe: makeclas.obj classdef.obj hstring.obj makefile
+ bcc -ml -C makeclas.obj classdef.obj hstring.obj 
+
+
+

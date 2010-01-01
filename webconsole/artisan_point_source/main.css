@@ -1,0 +1,72 @@
+/* 
+  main.css 
+
+*/
+
+body { 
+  color: rgb(75,100,250);
+  background: rgb(255,255,200);
+  }
+.heading1 {
+  color: rgb(255,255,200);
+  background: rgb(75,100,250);
+  font: bold 14pt georgia;
+  text-align: left;
+  padding: 10px;
+  }
+.menu {  
+  color: black;
+  background: rgb(255,255,200);
+  font: normal 10pt georgia;
+  padding-left: 20px;
+  text-align: left; 
+  }
+.instructions
+ {
+  padding: 12px;
+  color: rgb(75,100,150);
+  background: white;
+  border: solid 1px rgb(255,155,55);
+ }
+.welcome
+ {
+  margin: 35px;  
+  margin-top: 15px;  
+  
+  color: rgb(75,100,150);
+  background: transparent;
+  text-align: left;
+  vertical-align: top;  
+ } 
+  body {
+  color: black;
+  background: white;
+  font: normal 10pt georgia;
+  text-align: left; 
+  }
+table { 
+  margin: 5px:
+  margin-left: 12px;
+  }
+td {
+  padding: 5px;
+  text-align: left;
+  }
+th {
+  padding: 5px;
+  color: darkblue;
+  border-bottom: solid 1px rgb(75,100,250);
+  text-align: left;
+  }
+a { 
+  color:  darkgreen; 
+  text-decoration: none;
+  }
+a:hover { 
+  color:  darkred; 
+  text-decoration: none;
+  } 
+    
+  
+  
+  

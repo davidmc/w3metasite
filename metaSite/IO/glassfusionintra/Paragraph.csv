@@ -1,0 +1,61 @@
+3422,961,0,"heading","$content","Filters Heading","Filters"
+3423,961,1,"paragraph","$content","TO DO LIST","<span style=""font-weight: bold;"">TO DO LIST</span><br />Specify Jobs - Only for Sales Role (jobs for you and your staff as salespersons.)<br />Inspect Jobs - Only for Operations Role (jobs for you or your staff as operations supervisors.)<br />Quote Jobs - Only for Sales Role (jobs for you as and your staff)<br />Receive PO - Only for Sales Role (jobs for you as and your staff)<br />Schedule Jobs - Only for Operations Role (jobs for you or your staff as operations supervisors.)<br />Job Starts -  Only for Operations Role (jobs for you or your staff as operations supervisors.)<br />Job Completes - Only for Operations Role (jobs for you or your staff as operations supervisors.)<br />Sign Off &amp; Invoice - Only for Sales Role (jobs for you as and your staff)<br />Look for Payment - for Accounting Role  (jobs for you as and your sales staff)<br />Read Job Order Notes - for Everyone (Notes that are addressed to you but not marked as reviewed.<br />"
+3424,961,2,"paragraph","$content","Job Order Role Restrictions","<span style=""font-weight: bold;"">Job Order Group Restrictions<br /><br />The Job Order list restrictions for The Operations group</span> <br />Determined by group XML: &lt; filter &gt; operations &lt; /filter &gt; <br />Price is hidden from list and form <br />New: discount is also hidden.<br />List results only show jobs that are set as having this supervisor or staff under this supervisor.<br />Also only show jobs in this supervisors region.<br /><br /><span style=""font-weight: bold;"">The Job list restrictions for Sales Group</span><br />Determined by group XML: &lt; filter &gt;sales&lt; /filter &gt;<br />List results only show jobs that are set as having this sales person or staff under this sales person.<br /><br />Form also limits Company choices to those in region if either filter above is true.<br /><br />"
+4037,751,0,"heading","$content","Section Name Here","<img src=""/intra/images/siti_logo.png"" alt=''  />"
+4502,752,1,"paragraph","$content","Operations","<ul><li><a href=""/intra/resources/Change%20Order%20Form.pdf"">Change Order Form</a></li>
+<li><a href=""/intra/resources/Employee%20Manual.doc"">Employee Manual</a></li>
+<li><a href=""/intra/resources/Safety%20Manual%2010-07.doc"">Safety Manual</a></li>
+<li><a href=""/intra/resources/SilTanium%20Letterhead.doc"">SilTanium Letterhead</a></li>
+</ul><br />"
+4503,752,2,"paragraph","$content","MSDS","<h2>MSDS</h2><br /><ul><li><a href=""/intra/resources/Bare%20Bones%20MSDS.pdf"">Bare Bones</a></li><li><a href=""/intra/resources/Bleach%20MSDS.doc"">Bleach</a></li><li><a href=""/intra/resources/elephant%20snot%20MSDS.pdf"">Elephant Snot</a></li><li><a href=""/intra/resources/H&amp;C%20water%20based%20MSDS%20.pdf"">H&amp;C Degreaser</a></li><li><a href=""/intra/resources/HI%20SPEED%20READY%20STRIP.doc"">Hi Speed Ready Strip</a></li><li><a href=""/intra/resources/HYDROCHLORIC%20ACID%20MSDS.htm"">Hydrochloric Acid</a></li><li><a href=""/intra/resources/Isopropyl%20Alcohol%20MSDS.doc"">Isopropyl Alcohol</a></li><li><a href=""/intra/resources/Klean%20Strip%20MSDS.pdf"">Klean Strip</a></li><li><a href=""/intra/resources/N-Propyl%20Alcohol.doc"">N-Propyl Alcohol</a></li><li><a href=""/intra/resources/shadowmax%20MSDS.pdf"">Shadowmax</a></li><li><a href=""/intra/resources/SilTanium%20MSDS.doc"">Siltanium</a></li><li><a href=""/intra/resources/SiTi%20One-Step%20MSDS.pdf"">SiTi One-Step</a></li><li><a href=""/intra/resources/SiTi%20Two%20Step%20Cleaner.pdf"">SiTi Two-Step</a></li><li><a href=""/intra/resources/Tough2-Strip.doc"">Tough2-Strip</a></li><li><a href=""/intra/resources/Ultra-Strip.doc"">Ultra-Strip</a></li></ul><br />"
+4505,753,1,"paragraph","$content","Sales Documents","<ul><li><a href=""/intra/resources/Abrasion%20sand%20results%20H&amp;C.doc"">Abrasion sand results H&amp;C </a></li><li><a href=""/intra/resources/Archit%20Spec%20SilTan.doc"">Architecture Spec. SilTanium </a></li><li><a href=""/intra/resources/Change%20order%20costs.doc"">Change Order Costs</a></li><li><a href=""/intra/resources/Change%20Order%20Form.pdf"">Change Order Form</a></li><li><a href=""/intra/resources/Concrete%20Coef%20Frict%20Test.doc"">Concrete Coefficient of Friction Tests</a></li><li><a href=""/intra/resources/Cust%20&amp;%20Applications%203-08.doc"">Cust &amp; Applications 3-08</a></li><li><a href=""/intra/resources/Customer%20name%20change%208-07.doc"">Customer name change</a></li><li><a href=""/intra/resources/Employee%20Manual.doc"">Employee Manual</a></li><li><a href=""/intra/resources/PRICING%20GUIDELINES%203-08.doc"">PRICING GUIDELINES 3-08 </a></li><li><a href=""/intra/resources/Quote%20form%20general.doc"">Quote form general. </a></li><li><a href=""/intra/resources/Safety%20Manual%2010-07.doc"">Safety Manual 10-07</a></li><li><a href=""/intra/resources/Sales%20Test%20Proc%202-08.doc"">Sales Test Proc 2-08</a></li><li><a href=""/intra/resources/Siltanium%20green%20info.doc"">Siltanium green info</a></li><li><a href=""/intra/resources/SilTanium%20Letterhead.doc"">SilTanium Letterhead</a></li><li><a href=""/intra/resources/SilTanium%20Mold%20&amp;%20MRSA.doc"">SilTanium Mold &amp; MRSA</a></li><li><a href=""/intra/resources/Siltanium%20Powerpoint-3-1.ppt"">Siltanium Powerpoint-3-1</a></li><li><a href=""/intra/resources/Sole%20Source%20letter.doc"">Sole Source letter</a></li><li><a href=""/intra/resources/ST%20General%20overview.doc"">ST General overview</a></li><li><a href=""/intra/resources/tca14504pdf%20tests%20S-17.pdf"">tca14504pdf tests S-17</a></li><li><a href=""/intra/resources/Tech%20Data%20Sheet%203-08.doc"">Tech Data Sheet 3-08</a></li><li><a href=""/intra/resources/TheSaleOfSilTanium.doc"">The sale of SilTanium™</a></li><li><a href=""/intra/resources/W-9.pdf"">W-9</a></li></ul><br />"
+2796,747,5,"paragraph","$content","When you don't have Microsoft Office...","<h3>When you don't have Microsoft Office...</h3>
+<img src=""http://download.openoffice.org/branding/images/logonew.gif"" alt="""" /><br />
+All of the documents on this site work with Open Office.<br />
+Open Office&nbsp; is a free Microsoft compatible product originally developed by Sun Microsystems.<br />
+Download it at <a href=""http://download.openoffice.org/index.html"">http://download.openoffice.org/index.html</a><br />"
+2795,747,1,"paragraph","$content","s13","<h2>New S-13</h2>
+A new S-13 report has been created which replaces all of the old
+S-13 forms.&nbsp; It requires that you have Adobe Acrobat 7.0 reader on you
+computer.&nbsp; Earlier versions of Acrobat do not work well with this
+report.<br />
+<p>Download Adobe Reader.<a href=""http://www.adobe.com/products/acrobat/readstep2.html"" class=""noHover""><img src=""http://www.adobe.com/images/get_adobe_reader.gif"" alt=""Get Adobe Reader"" /></a><br />
+</p>
+<p>Printing is very easy; just click on the print icon just above the document itself:</p>
+<p>
+<img src=""/intra/images/AdobePrinting.jpg"" alt="""" /><br />
+</p>"
+2791,753,2,"heading","$content","Sales Documents","Sales Documents"
+2792,754,1,"heading","$content","Administration Documents","Administration Documents"
+2793,754,7,"paragraph","$content","S19,20,21","<a target=""automate"" href=""/intra/resources/S-19%20Credit%20Application.doc""></a><a target=""automate"" href=""/intra/resources/S-21%20projected%20sales%2090%20days.xls"">S-21 projected sales 90 days</a><br>"
+2788,752,1,"heading","$content","head","Operations Documents<br>
+"
+4504,753,3,"paragraph","$content","MSDS","<h2>MSDS</h2><br /><ul><li><a href=""/intra/resources/Bare%20Bones%20MSDS.pdf"">Bare Bones</a></li><li><a href=""/intra/resources/Bleach%20MSDS.doc"">Bleach</a></li><li><a href=""/intra/resources/elephant%20snot%20MSDS.pdf"">Elephant Snot</a></li><li><a href=""/intra/resources/H&amp;C%20water%20based%20MSDS%20.pdf"">H&amp;C Degreaser</a></li><li><a href=""/intra/resources/HI%20SPEED%20READY%20STRIP.doc"">Hi Speed Ready Strip</a></li><li><a href=""/intra/resources/HYDROCHLORIC%20ACID%20MSDS.htm"">Hydrochloric Acid</a></li><li><a href=""/intra/resources/Isopropyl%20Alcohol%20MSDS.doc"">Isopropyl Alcohol</a></li><li><a href=""/intra/resources/Klean%20Strip%20MSDS.pdf"">Klean Strip</a></li><li><a href=""/intra/resources/N-Propyl%20Alcohol.doc"">N-Propyl Alcohol</a></li><li><a href=""/intra/resources/shadowmax%20MSDS.pdf"">Shadowmax</a></li><li><a href=""/intra/resources/SilTanium%20MSDS.doc"">Siltanium</a></li><li><a href=""/intra/resources/SiTi%20One-Step%20MSDS.pdf"">SiTi One-Step</a></li><li><a href=""/intra/resources/SiTi%20Two%20Step%20Cleaner.pdf"">SiTi Two-Step</a></li><li><a href=""/intra/resources/Tough2-Strip.doc"">Tough2-Strip</a></li><li><a href=""/intra/resources/Ultra-Strip.doc"">Ultra-Strip</a></li></ul><br />"
+2780,747,3,"subheading","$content","Intranet","<span style=""font-style: italic;"">Intranet Help and What's New</span><br />"
+2781,747,2,"paragraph","$content","Notes TODO","<h2>New Notes To Do item</h2>
+There is a new Notes item in your To DO list which shows notes that
+have been sent to you but not marked reviewed.&nbsp; When you click on
+the To Do item for a note, it should take you to the Job Order and
+pop-up the note.&nbsp; If the note does not pop-up, the browser
+propably has a security restriction message about pop-ups near the
+top.&nbsp; Click on the message and choose 'Allow pop-ups from
+glassfusion.com'.&nbsp; Pop-ups will work after you do this.<br />"
+2777,747,4,"paragraph","$content","Get Firefox:","<h3>Please Download and Install Firefox.</h3>If you haven't already
+done so, please download and install Firefox.&nbsp; Firefox is known to
+work very well with Intranet based applications like this.<br />
+<strong>Instructions:</strong><br />
+<ol>
+
+<li>
+<a href=""http://www.mozilla.com/firefox"" target=""_blank"">Click Here to Start.</a></li>
+<li>Click on the 'Download' button.<br /></li><li>When asked to 'Run' or 'Save', choose Run.</li>
+<li>Follow all instructions, and allow the installation to add an icon to your desktop.</li>
+<li>When installation is complete, click on the new 'FireFox' desktop icon and navigate to this URL:   <strong>https://www.siltanium.com:10441/intra/</strong></li>
+<li>Go to the Firefox menu 'Tools', then go to the 'Options' dropdown menu item.  This should bring up the Options Dialog.</li>
+<li>On the General section, click on the ""Use Current Page"" button.</li>
+
+</ol><span style=""font-weight: bold; color: rgb(0, 0, 153);"">Thats It!&nbsp;</span> <br />From now on, all you have to do is click on the 'Firefox' icon to get to this application.<br />"
+2799,747,5,"paragraph","$content","Camino","<span style=""font-weight: bold;"">Note:&nbsp;</span> Apple MAC OSX users should use the Camino web browser instead of Firefox.&nbsp; Firefox will work, but Camino was written specifically for a MAC by the same people that created Firefox.&nbsp; <br />The MAC OSX native browser 'Safari' will also work.&nbsp; <br />(Safari has some issues with the content editor which will not effect you if you are not editing the web site.)<br />"
+4400,747,0,"paragraph","$content","1/29/2008","<h2><span style=""font-weight: bold;"">1/29/2008 - Latest Changes...</span></h2>The <span style=""font-style: italic;"">To Do to Notes</span> interface has been changed because of changes in browser security.<br /><br />Browsers make it very hard to have a window pop-up on the event of a new page loading.&nbsp; This is how the <span style=""font-style: italic;"">To Do to Notes</span> task action worked.<br /><br />It now asks you to 'Click Here' to have the Not dialog show, which is legal and reliable in all browsers because the user explicitly asked for the action.<br /><br /><span style=""font-weight: bold;"">New Operations Report</span><br />There is a new report under the Operations category intended for the Operations Supervisor.<br />"
+4506,1145,0,"heading","$content","Section Name Here","Developer Notes"
+4507,1145,0,"paragraph","$content","Items","Contact search by contact, not company<br />Fix Company - Contact dialog and defaulting<br />Un-check notes by default<br /><br /><br />"

@@ -1,0 +1,8 @@
+Changes
+MANIFEST
+Makefile.PL
+PFProAPI.pm
+PFProAPI.xs
+test.pl
+lib/libpfpro.so
+lib/pfpro.h
